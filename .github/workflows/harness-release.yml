@@ -29,7 +29,14 @@ jobs:
           npm_config_node_gyp: ${{ github.workspace }}/apps/node_modules/node-gyp/bin/node-gyp.js
       - run: pnpm --dir apps --filter @harness/eval-hub build
       - run: python3 -m unittest discover -s scripts/tests/integration -p 'test_*.py'
-      - run: python3 scripts/ci-harness-release.py --version "${GITHUB_REF_NAME#harness-v}" --output dist/harness-ci --dry-run-publish
+      - name: Verify reproducible harness bundle
+        shell: bash
+        run: |
+          version="0.0.0-ci.${GITHUB_RUN_ID}"
+          if [[ "$GITHUB_REF" == refs/tags/harness-v* ]]; then
+            version="${GITHUB_REF_NAME#harness-v}"
+          fi
+          python3 scripts/ci-harness-release.py --version "$version" --output dist/harness-ci --dry-run-publish
       - uses: actions/upload-artifact@v4
         with:
           name: harness-release-linux-x86_64

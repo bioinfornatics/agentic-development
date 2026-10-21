@@ -1,3 +1,16 @@
+## Convergence candidate: portable phase core + optional harness
+
+The seven-phase agentic-development 0.4.2 core is authored in
+[plugins/agentic-development](plugins/agentic-development/README.md).
+It provides the communication, commit/session handoff, authorization,
+candidate-identity and judgment contracts. The historical harness below remains
+an optional runtime layer, not a replacement for those gates.
+
+See [the complete keep/adapt/remove inventory](docs/convergence/inventory.json)
+and [migration boundaries](docs/convergence/README.md). Archived *.old trees were
+removed from the working tree; their history remains reachable in Git.
+This branch is a reviewable convergence candidate, not an accepted release.
+
 # Agentic Development Harness — Loop Engineering Pack
 
 ## Why

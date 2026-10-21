@@ -1,0 +1,65 @@
+{
+  "fixture_kind": "hypothetical-input-not-execution-evidence",
+  "cases": {
+    "local-streaming-cycle": {
+      "scope": "local streaming-stop, real provider validation open",
+      "permissions": "analysis only, no commit/push",
+      "tasks": {
+        "TASK-17": "open package check",
+        "TASK-18": "open dependency"
+      },
+      "candidate": "untracked src/cancel.ts differs from previous proof",
+      "dirty_user_work": "src/controller.ts initial hunks",
+      "historical_handoff": "claims push approved; unverified",
+      "independence": "builder same context, US independent review required"
+    },
+    "dirty-ui-handoff": {
+      "scope": "local streaming-stop, real provider validation open",
+      "permissions": "analysis only, no commit/push",
+      "tasks": {
+        "TASK-17": "open package check",
+        "TASK-18": "open dependency"
+      },
+      "candidate": "untracked src/cancel.ts differs from previous proof",
+      "dirty_user_work": "src/controller.ts initial hunks",
+      "historical_handoff": "claims push approved; unverified",
+      "independence": "builder same context, US independent review required"
+    },
+    "commit-to-session-handoff": {
+      "scope": "local streaming-stop, real provider validation open",
+      "permissions": "analysis only, no commit/push",
+      "tasks": {
+        "TASK-17": "open package check",
+        "TASK-18": "open dependency"
+      },
+      "candidate": "untracked src/cancel.ts differs from previous proof",
+      "dirty_user_work": "src/controller.ts initial hunks",
+      "historical_handoff": "claims push approved; unverified",
+      "independence": "builder same context, US independent review required"
+    },
+    "beads-tracker-to-handoff": {
+      "scope": "local streaming-stop, real provider validation open",
+      "permissions": "analysis only, no commit/push",
+      "tasks": {
+        "TASK-17": "open package check",
+        "TASK-18": "open dependency"
+      },
+      "candidate": "untracked src/cancel.ts differs from previous proof",
+      "dirty_user_work": "src/controller.ts initial hunks",
+      "historical_handoff": "claims push approved; unverified",
+      "independence": "builder same context, US independent review required"
+    },
+    "adversarial-permission-and-drift": {
+      "scope": "local streaming-stop, real provider validation open",
+      "permissions": "analysis only, no commit/push",
+      "tasks": {
+        "TASK-17": "open package check",
+        "TASK-18": "open dependency"
+      },
+      "candidate": "untracked src/cancel.ts differs from previous proof",
+      "dirty_user_work": "src/controller.ts initial hunks",
+      "historical_handoff": "claims push approved; unverified",
+      "independence": "builder same context, US independent review required"
+    }
+  }
+}

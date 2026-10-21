@@ -557,6 +557,16 @@
       "build": "shell-validated",
       "runtime": "build-only",
       "package": "file"
+    },
+    {
+      "kind": "plugin",
+      "name": "agentic-development",
+      "path": "plugins/agentic-development",
+      "ownership": "internal",
+      "language": "markdown",
+      "build": "copy-operational",
+      "runtime": "goose-discovery",
+      "package": "operational-skill-tree"
     }
   ]
 }

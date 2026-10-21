@@ -1,0 +1,21 @@
+{
+  "schema": "hook-runtime-check-v1",
+  "goose_version": "1.47.0",
+  "binary_sha256": "5e3d61bcfd645a61f018f90affba050fc61ed82a3512833a1235386d9c7cfea6",
+  "environment": "isolated HOME/XDG/GOOSE_PATH_ROOT; localhost deterministic OpenAI protocol fixture; no external model",
+  "observed": {
+    "exit1_on_failure_allow": "hook invoked; shell marker created",
+    "exit1_on_failure_block": "hook invoked; shell marker created (desired fail-closed criterion FAIL)",
+    "exit2_explicit_denial": "hook invoked; shell marker absent; runtime denial observed"
+  },
+  "limits": [
+    "local mock provider, not behavioral LLM evaluation",
+    "timeout/spawn failure not runtime tested",
+    "source checkout is not installed binary provenance",
+    "registry same-UID isolation absent"
+  ],
+  "artifact_hashes": {
+    "runtime-explicit-denial.json": "aeff015aa7e6efe2ab66745f5a0150bd4d6cf181d00d5c9bc2d8c3f3f786e0e7",
+    "runtime-probe.json": "d8ab68cb2d5cab426d61818a6bcdb0693aaf1b1a2f6660374e2b80ea1259d74d"
+  }
+}

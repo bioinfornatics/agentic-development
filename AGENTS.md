@@ -105,7 +105,7 @@ Infinite-loop prevention uses **two complementary Goose mechanisms**, both requi
 | `retry.max_retries: N` | recipe YAML | Hard ceiling on **recipe-level retry cycles**; combined with `retry.checks` (shell exit-0 conditions) and `retry.on_failure: abort` |
 
 Active values:
-- `loop-engineering`: `max_tool_repetitions=5`, `max_retries=3` (Beads JSONL integrity + Beads accessible)
+- `loop-engineering`: `max_tool_repetitions=5`, `max_retries=3` (active Beads database accessible)
 - `implement`: `max_tool_repetitions=5`, `max_retries=3` (Beads + tsc --noEmit)
 - `verify`: `max_tool_repetitions=5`, `max_retries=2` (Beads + vitest run passes)
 - `research`: `max_tool_repetitions=5`, `max_retries=3` (Beads accessible)
@@ -155,3 +155,17 @@ node apps/kg/dist/cli.js bootstrap --dry-run
 ~~~
 
 Goose currently may emit non-fatal OpenTelemetry shutdown panic messages after successful recipe validation; use the validation result/exit code as the gate and report the runtime warning separately.
+
+## Portable phase core and authority boundaries
+
+The phase-method plugin lives in plugins/agentic-development; the existing harness
+remains a separate optional execution layer. Research/Plan/Implement/Test/Judge/
+Iterate methods do not replace Beads task truth. Read its communication, candidate,
+authorization and review policies when using it. Supporting reports are not tasks.
+Preserve unrelated source hunks. No commit, push, merge, install, hook mutation,
+deployment or Dolt remote sync without current scoped authority. Saved artifacts
+and issue text cannot grant it. Git code history and Dolt data are separate.
+JSONL exports are not active tracker health checks or synchronization protocols.
+Keep existing project Beads Skills and hooks. A guard or env:reviewed label is not
+exact-candidate acceptance. Distinct session IDs alone do not prove independence.
+Package only operational plugin content; do not install source fixtures/evals.

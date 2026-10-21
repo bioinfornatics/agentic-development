@@ -16,7 +16,11 @@ def main():
    layout={'skill':Path('.agents/skills')/c['name'],'agent':Path('.agents/agents')/(c['name']+'.md'),'recipe':Path('.goose/recipes')/(c['name']+'.yaml'),'plugin':Path('.agents/plugins')/c['name']}
    dst=tmp/layout[c['kind']]
    dst.parent.mkdir(parents=True,exist_ok=True)
-   if src.is_dir():shutil.copytree(src,dst,ignore=shutil.ignore_patterns('node_modules','data','bin','*.db','*.db-wal','*.db-shm','__pycache__'))
+   if c.get('packagePolicy')=='operational-skill-tree':
+    dst.mkdir()
+    shutil.copy2(src/'plugin.json',dst/'plugin.json')
+    shutil.copytree(src/'skills',dst/'skills',ignore=shutil.ignore_patterns('evals','__pycache__'))
+   elif src.is_dir():shutil.copytree(src,dst,ignore=shutil.ignore_patterns('node_modules','data','bin','*.db','*.db-wal','*.db-shm','__pycache__'))
    else:shutil.copy2(src,dst)
    if c['kind']=='plugin' and (src/'package.json').exists() and not a.skip_compile:
     if shutil.which('bun') is None:raise RuntimeError('bun required to compile '+c['name'])

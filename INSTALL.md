@@ -71,34 +71,15 @@ By default, the installer upserts slash commands for every top-level recipe in `
 
 The update is idempotent: existing entries for those command names are replaced, not duplicated. Other user-defined slash commands are preserved. Use `--skip-slash-commands` or `-SkipSlashCommands` to opt out.
 
-### Option B: manual install
+### Installation safety
 
-```bash
-mkdir -p ~/.config/goose ~/.agents
-
-rm -rf ~/.config/goose/recipes
-rm -rf ~/.agents/skills
-rm -rf ~/.agents/agents
-
-cp -a .goose/recipes ~/.config/goose/recipes
-cp -a .agents/skills ~/.agents/skills
-cp -a .agents/agents ~/.agents/agents
-```
-
-### Option C: manual install with backups
-
-```bash
-stamp=$(date +%Y%m%d-%H%M%S)
-
-[ -d ~/.config/goose/recipes ] && mv ~/.config/goose/recipes ~/.config/goose/recipes.backup-$stamp
-[ -d ~/.agents/skills ] && mv ~/.agents/skills ~/.agents/skills.backup-$stamp
-[ -d ~/.agents/agents ] && mv ~/.agents/agents ~/.agents/agents.backup-$stamp
-
-mkdir -p ~/.config/goose ~/.agents
-cp -a .goose/recipes ~/.config/goose/recipes
-cp -a .agents/skills ~/.agents/skills
-cp -a .agents/agents ~/.agents/agents
-```
+Do not delete or replace user-wide skills/agents/recipes catalogs to install this
+candidate. The legacy install.sh/install.ps1 are retained only for compatibility
+and must not be executed without a scoped migration review. Prefer an isolated
+prefix for the immutable harness installer. The core operational projection is
+produced by scripts/project-phase-core.py into a new, empty destination.
+Source plugins/agentic-development includes evaluation material and is not a
+ready-to-install projection. No Git hooks are installed automatically.
 
 ## Validate
 

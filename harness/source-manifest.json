@@ -446,6 +446,22 @@
         "required": false,
         "reason": "covered by integration contracts"
       }
+    },
+    {
+      "id": "plugin:agentic-development",
+      "kind": "plugin",
+      "name": "agentic-development",
+      "ownership": "internal",
+      "sourcePath": "plugins/agentic-development",
+      "packagePolicy": "operational-skill-tree",
+      "targets": [
+        "linux-x86_64"
+      ],
+      "dependencies": [],
+      "evaluation": {
+        "required": true,
+        "reason": "Seven phase skills and cross-phase reporting; behavioral acceptance pending"
+      }
     }
   ],
   "releaseExcludes": [

@@ -1,0 +1,3375 @@
+{
+  "schema": "convergence-inventory-v1",
+  "historicalBase": "eb9edb1a252d07e5c87feb2ee448cbbb939dbb5b",
+  "localCoreVersion": "0.4.2",
+  "sourceRoot": "/home/jmercier/Codes/me/agentic-devlopment",
+  "entries": [
+    {
+      "path": ".agents.old/COOPERATION.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/agents/architect.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/agents/codebase-researcher.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/agents/harness-judge.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/agents/implementation-worker.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/agents/orchestrator.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/agents/planner.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/agents/principal-engineer.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/agents/product-owner.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/agents/qa-automation.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/agents/review-critic.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/agents/tdd-guide.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/agents/ui-designer.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/agents/ux-researcher.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/plugins/harness-consistency/hooks/hooks.json",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/plugins/harness-consistency/plugin.json",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/plugins/harness-consistency/scripts/check-and-regenerate.sh",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/plugins/harness-consistency/scripts/pre-commit.sh",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/README.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/agentic-devlopment/SKILL.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/agentic-devlopment/references/beads-goose-lifecycle.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/agentic-ux/SKILL.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/agentic-ux/references/ai-safety-guardrails.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/agentic-ux/references/multi-agent-orchestration-patterns.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/atomic-design/SKILL.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/beads/SKILL.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/beads/references/session-close.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/code-review/SKILL.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/code-review/references/feature-review.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/code-review/references/global-review.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/code-review/references/hotfix-review.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/code-review/references/pr-review.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/code-review/references/release-review.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/code-review/references/security-audit.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/cognitive-ux/SKILL.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/cognitive-ux/references/cognitive-biases-design-patterns.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/cognitive-ux/references/laws-of-ux-encyclopedia.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/cognitive-ux/references/neurodesign-engagement-science.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/design-systems-arch/SKILL.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/design-systems-arch/references/design-token-architecture.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/design-systems-arch/references/governance-scaling.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/design-systems-arch/references/maturity-model-multi-brand.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/design-systems-arch/references/token-specification-guide.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/frontend-blueprint/SKILL.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/goose-orchestration/SKILL.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/harness-judge/SKILL.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/harness-judge/references/domain-a-prompt-context-loop.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/harness-judge/references/domain-b-skills.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/harness-judge/references/domain-c-agents-extended.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/harness-judge/references/domain-c-agents.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/harness-judge/references/domain-calibration.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/harness-judge/references/domain-cross-artifact.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/harness-judge/references/domain-d-recipes.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/harness-judge/references/domain-e-frameworks.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/harness-judge/references/domain-f-orchestration.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/harness-judge/references/domain-g-ontology-graph.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/harness-judge/references/domain-red-flags.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/harness-judge/references/judging-procedure.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/harness-judge/templates/audit-contract.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/knowledge-graph/SKILL.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/knowledge-graph/agents/openai.yaml",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/knowledge-graph/references/domain-g-audit.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/knowledge-graph/references/harness-ontology.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/knowledge-graph/references/integrity-constraints.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/knowledge-graph/references/product-ontology.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/knowledge-graph/references/query-cookbook.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/knowledge-graph/references/relation-catalogue.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/knowledge-graph/scripts/export_graph.py",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/knowledge-graph/scripts/graph_metrics.py",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/knowledge-graph/scripts/validate_graph.py",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/sdd/SKILL.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/systematic-debugging/CREATION-LOG.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/systematic-debugging/SKILL.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/systematic-debugging/condition-based-waiting.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/systematic-debugging/defense-in-depth.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/systematic-debugging/root-cause-tracing.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/systematic-debugging/scripts/condition-based-waiting-example.ts",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/systematic-debugging/scripts/find-polluter.sh",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/systematic-debugging/test-academic.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/systematic-debugging/test-pressure-1.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/systematic-debugging/test-pressure-2.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/systematic-debugging/test-pressure-3.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/ui-quality/SKILL.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/ui-quality/references/ui-technical.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/ux-quality/SKILL.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/ux-quality/references/critique-methodology.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/ux-quality/references/ux-research-methods.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/wcag-accessibility-audit/SKILL.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/wcag-accessibility-audit/references/wcag-audit-steps.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/wcag-accessibility-audit/references/wcag-checklist-detail.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/wcag-accessibility-audit/references/wcag-criteria-pour.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/wcag-accessibility-audit/references/wcag-quick-reference.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/wcag-accessibility-audit/scripts/wcag-postprocess.py",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/webapp-testing/SKILL.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents.old/skills/webapp-testing/scripts/with_server.py",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".agents/agents/change-builder-premium.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/agents/change-builder.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/agents/error-analyzer.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/agents/independent-verifier-premium.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/agents/independent-verifier.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/agents/repository-researcher.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/plugins/beads-telemetry/hooks/hooks.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/plugins/beads-telemetry/plugin.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/plugins/beads-telemetry/scripts/record-event.sh",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/plugins/beads-telemetry/tests/test-plugin.sh",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/plugins/loop-breaker/.gitignore",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/plugins/loop-breaker/bun.lock",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/plugins/loop-breaker/hooks/hooks.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/plugins/loop-breaker/package.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/plugins/loop-breaker/plugin.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/plugins/loop-breaker/scripts/count-failures.sh",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/plugins/loop-breaker/src/audit.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/plugins/loop-breaker/src/counters.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/plugins/loop-breaker/src/db/index.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/plugins/loop-breaker/src/db/schema.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/plugins/loop-breaker/src/guidance.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/plugins/loop-breaker/src/index.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/plugins/loop-breaker/src/patterns.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/plugins/loop-breaker/tests/test-plugin.sh",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/plugins/loop-gate/hooks/hooks.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/plugins/loop-gate/plugin.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/plugins/loop-gate/scripts/gate-reviewed.sh",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/plugins/loop-gate/tests/test-plugin.sh",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/plugins/prevent-catastrophe/hooks/hooks.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/plugins/prevent-catastrophe/plugin.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/plugins/prevent-catastrophe/scripts/guard-shell.sh",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/plugins/prevent-catastrophe/tests/test-plugin.sh",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/skills/domain-modeling/ADR-FORMAT.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/skills/domain-modeling/CONTEXT-FORMAT.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/skills/domain-modeling/SKILL.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/skills/domain-modeling/agents/openai.yaml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/skills/evidence-verification/SKILL.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/skills/grill-me/SKILL.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/skills/grill-me/agents/openai.yaml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/skills/grill-with-docs/SKILL.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/skills/grill-with-docs/agents/openai.yaml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/skills/grilling/SKILL.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/skills/grilling/agents/openai.yaml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/skills/interface-quality/SKILL.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/skills/loop-control/SKILL.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/skills/loop-control/references/beads-control-plane.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/skills/output-discipline/SKILL.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/skills/output-discipline/references/beads.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/skills/output-discipline/references/shell.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/skills/output-discipline/references/typescript.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/skills/skill-creator/LICENSE.txt",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/skills/skill-creator/SKILL.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/skills/skill-creator/agents/analyzer.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/skills/skill-creator/agents/comparator.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/skills/skill-creator/agents/grader.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/skills/skill-creator/assets/eval_review.html",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/skills/skill-creator/eval-viewer/generate_review.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/skills/skill-creator/eval-viewer/viewer.html",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/skills/skill-creator/references/schemas.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/skills/skill-creator/scripts/__init__.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/skills/skill-creator/scripts/aggregate_benchmark.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/skills/skill-creator/scripts/generate_report.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/skills/skill-creator/scripts/improve_description.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/skills/skill-creator/scripts/package_skill.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/skills/skill-creator/scripts/quick_validate.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/skills/skill-creator/scripts/run_eval.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/skills/skill-creator/scripts/run_loop.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/skills/skill-creator/scripts/utils.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/skills/task-framing/SKILL.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/skills/ui-design/SKILL.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/skills/ux-principles/SKILL.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".agents/skills/wcag-accessibility-audit/SKILL.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".artifacts/agentic-devlopment-2khl.1/attempt2-diffcheck-final.log",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".artifacts/agentic-devlopment-2khl.1/attempt2-exits.txt",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".artifacts/agentic-devlopment-2khl.1/attempt2-focused-final.log",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".artifacts/agentic-devlopment-2khl.1/attempt2-focused-pre-fix.log",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".artifacts/agentic-devlopment-2khl.1/attempt2-full-final.log",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".artifacts/agentic-devlopment-2khl.1/attempt2-typecheck-final.log",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".artifacts/agentic-devlopment-2khl.1/attempt3-diffcheck.log",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".artifacts/agentic-devlopment-2khl.1/attempt3-exits.txt",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".artifacts/agentic-devlopment-2khl.1/attempt3-focused.log",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".artifacts/agentic-devlopment-2khl.1/attempt3-full.log",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".artifacts/agentic-devlopment-2khl.1/attempt3-typecheck.log",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".artifacts/agentic-devlopment-2khl.1/full-tests.log",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".artifacts/agentic-devlopment-2khl.1/targeted-attempt2.exit",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".artifacts/agentic-devlopment-2khl.1/targeted-attempt2.log",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".artifacts/agentic-devlopment-2khl.1/targeted-final.log",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".artifacts/agentic-devlopment-2khl.1/targeted.log",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".artifacts/agentic-devlopment-2khl.1/typecheck-attempt2.exit",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".artifacts/agentic-devlopment-2khl.1/typecheck-attempt2.log",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".artifacts/agentic-devlopment-2khl.1/typecheck-final.log",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".artifacts/agentic-devlopment-2khl.1/typecheck.log",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".artifacts/agentic-devlopment-2khl.2/rework2-validation.log",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".artifacts/agentic-devlopment-2khl.2/validation.log",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".artifacts/agentic-devlopment-2khl.3/builder-20260726_19.log",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".artifacts/agentic-devlopment-2khl.3/builder-20260726_20.log",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".artifacts/agentic-devlopment-2khl.3/contract.txt",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".artifacts/agentic-devlopment-2khl.3/exits.txt",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".artifacts/agentic-devlopment-2khl.3/rework-20260726_22-final.log",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".artifacts/agentic-devlopment-2khl.3/rework-20260726_22.log",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".beads/.gitignore",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".beads/README.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".beads/config.yaml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".beads/formulas/eval-scenario-analysis.formula.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".beads/formulas/eval-skill-analysis.formula.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".beads/formulas/eval-suite-analysis.formula.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".beads/hooks/post-checkout",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".beads/hooks/post-merge",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".beads/hooks/pre-commit",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".beads/hooks/pre-push",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".beads/hooks/prepare-commit-msg",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".beads/issues.jsonl",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".beads/metadata.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".github/workflows/eval-hub.yml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".github/workflows/eval-scripts.yml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".github/workflows/harness-release.yml",
+      "action": "adapt",
+      "reason": "Integrate core, operational packaging, active DB checks, matching metadata or CI regression coverage"
+    },
+    {
+      "path": ".github/workflows/pages.yml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".gitignore",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".goose.old/recipes/README.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".goose.old/recipes/design.yaml",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".goose.old/recipes/dev.yaml",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".goose.old/recipes/doc-review.yaml",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".goose.old/recipes/explore.yaml",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".goose.old/recipes/harness-audit.yaml",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".goose.old/recipes/harness-review.yaml",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".goose.old/recipes/implement.yaml",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".goose.old/recipes/plan.yaml",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".goose.old/recipes/release.yaml",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".goose.old/recipes/review.yaml",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".goose.old/recipes/spec.yaml",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".goose.old/recipes/subrecipes/amend-spec.yaml",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".goose.old/recipes/subrecipes/doc-review.yaml",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".goose.old/recipes/subrecipes/explore.yaml",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".goose.old/recipes/subrecipes/harness-judge-audit.yaml",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".goose.old/recipes/subrecipes/harness-judge-audit.yaml.ori",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".goose.old/recipes/subrecipes/implement.yaml",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".goose.old/recipes/subrecipes/plan.yaml",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".goose.old/recipes/subrecipes/release.yaml",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".goose.old/recipes/subrecipes/review.yaml",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".goose.old/recipes/subrecipes/spec.yaml",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".goose.old/recipes/subrecipes/verify.yaml",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".goose.old/recipes/verify.yaml",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": ".goose/recipes/implement.yaml",
+      "action": "adapt",
+      "reason": "Integrate core, operational packaging, active DB checks, matching metadata or CI regression coverage"
+    },
+    {
+      "path": ".goose/recipes/loop-engineering.yaml",
+      "action": "adapt",
+      "reason": "Integrate core, operational packaging, active DB checks, matching metadata or CI regression coverage"
+    },
+    {
+      "path": ".goose/recipes/research.yaml",
+      "action": "adapt",
+      "reason": "Integrate core, operational packaging, active DB checks, matching metadata or CI regression coverage"
+    },
+    {
+      "path": ".goose/recipes/verify.yaml",
+      "action": "adapt",
+      "reason": "Integrate core, operational packaging, active DB checks, matching metadata or CI regression coverage"
+    },
+    {
+      "path": ".goose/skills/skill-creator/LICENSE.txt",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".goose/skills/skill-creator/SKILL.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".goose/skills/skill-creator/agents/analyzer.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".goose/skills/skill-creator/agents/comparator.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".goose/skills/skill-creator/agents/grader.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".goose/skills/skill-creator/assets/eval_review.html",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".goose/skills/skill-creator/eval-viewer/generate_review.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".goose/skills/skill-creator/eval-viewer/viewer.html",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".goose/skills/skill-creator/references/schemas.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".goose/skills/skill-creator/scripts/__init__.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".goose/skills/skill-creator/scripts/aggregate_benchmark.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".goose/skills/skill-creator/scripts/generate_report.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".goose/skills/skill-creator/scripts/improve_description.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".goose/skills/skill-creator/scripts/package_skill.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".goose/skills/skill-creator/scripts/quick_validate.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".goose/skills/skill-creator/scripts/run_eval.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".goose/skills/skill-creator/scripts/run_loop.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".goose/skills/skill-creator/scripts/utils.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".idea/.gitignore",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/Eval - A-B Suite Subset.run.xml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/Eval - Analyze Results + Open Analysis Index.run.xml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/Eval - Analyze Results + Quality Gate.run.xml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/Eval - Build Trend Report.run.xml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/Eval - Export History (DB to JSON).run.xml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/Eval - Full A-B Suite + Post-Suite Workflow.run.xml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/Eval - Full A-B Suite.run.xml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/Eval - Open Analysis Index.run.xml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/Eval - Open Skill Review.run.xml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/Eval - Open Suite Results.run.xml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/Eval - Open Trend Report.run.xml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/Eval - Post-Suite Workflow.run.xml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/Eval - Skills + Recipes (Parallel) + Post-Suite.run.xml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/Eval - Skills + Recipes (Parallel).run.xml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/Eval_-_Agent_Single_prompt.run.xml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/Eval_-_Agents_Full_Suite.run.xml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/Eval_-_All_Kinds_Full_Suite.run.xml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/Eval_-_Recipe_Single_prompt.run.xml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/Eval_-_Recipes_Full_Suite.run.xml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/Eval_Hub_-_All_Layers.run.xml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/Eval_Hub_-_Build.run.xml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/Eval_Hub_-_Export_History.run.xml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/Eval_Hub_-_L1_Skills_All.run.xml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/Eval_Hub_-_Open_Report.run.xml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/Eval_Hub_-_Report.run.xml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/Eval_Hub_-_Resume.run.xml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/Harness - Build Documentation.run.xml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/Harness - Install - Update Local Config.run.xml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/Harness - Validate All Recipes.run.xml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/Harness - goose skills list.run.xml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/KG - Bootstrap + Reason + Visualize.run.xml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/KG - Bootstrap.run.xml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/KG - Full Pipeline.run.xml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/KG - Open Local Visualizer.run.xml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/KG - Open Online Visualizer.run.xml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/KG - Reason.run.xml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/SDD-Discover.run.xml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/SDD-Spec.run.xml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/docs-index-check/check-docs-index.mjs",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/docs-index-check/desktop-1440x900.png",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/docs-index-check/mobile-390x844.png",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/docs-index-check/preflight.txt",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/docs-index-check/results.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/docs-index-check/run-output.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/ui-review/desktop.png",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/ui-review/focus-after-tabs.png",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/ui-review/mobile.png",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/ui-review/overflow.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/ui-review/overflow.mjs",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/ui-review/results.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/ui-review/review-docs.mjs",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".run/ui-review/server.log",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".specs/features/loop-engineering/spec.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".specs/harness/recipe-workflow-metadata.json",
+      "action": "adapt",
+      "reason": "Integrate core, operational packaging, active DB checks, matching metadata or CI regression coverage"
+    },
+    {
+      "path": ".specs/schemas/recipe-workflow-metadata.schema.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".vscode/settings.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": ".vscode/tasks.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "AGENTS.md",
+      "action": "adapt",
+      "reason": "Integrate core, operational packaging, active DB checks, matching metadata or CI regression coverage"
+    },
+    {
+      "path": "INSTALL.md",
+      "action": "adapt",
+      "reason": "Integrate core, operational packaging, active DB checks, matching metadata or CI regression coverage"
+    },
+    {
+      "path": "README.md",
+      "action": "adapt",
+      "reason": "Integrate core, operational packaging, active DB checks, matching metadata or CI regression coverage"
+    },
+    {
+      "path": "USE_CASES.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/.node-version",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/.npmrc",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/README.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/ARCHITECTURE.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/REVIEW.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/e2e/api.spec.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/package.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/playwright.config.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/scripts/check-native-deps.mjs",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/smoke/startup.spec.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/app/index.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/app/routes/consistency.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/app/routes/dashboard.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/app/routes/history.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/app/state.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/benchmark.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/authentication/__tests__/authenticationFlow.test.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/authentication/authenticationFlow.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/execution/__tests__/beadsPhaseEvidence.test.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/execution/__tests__/binaryProvenance.test.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/execution/__tests__/evaluationContracts.test.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/execution/__tests__/executionIntegrity.test.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/execution/__tests__/fixtureCatalog.test.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/execution/__tests__/gooseLogAnalyzer.test.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/execution/__tests__/layeredIntegrity.test.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/execution/__tests__/layeredV2Integration.test.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/execution/__tests__/minimalHarnessCatalog.test.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/execution/__tests__/phaseComplianceChecker.test.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/execution/__tests__/recipeExecution.test.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/execution/__tests__/sessionChainAnalyzer.test.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/execution/__tests__/suiteIntegrity.test.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/execution/__tests__/suiteIntegrityDrift.test.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/execution/__tests__/suiteIntegrityV2Adapter.test.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/execution/__tests__/terminalIntegrity.test.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/execution/beadsPhaseEvidence.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/execution/binaryProvenance.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/execution/evalRunner.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/execution/executionIntegrity.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/execution/gooseLogAnalyzer.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/execution/gooseRunner.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/execution/grader.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/execution/layeredRunner.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/execution/minimalHarnessCatalog.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/execution/phaseComplianceChecker.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/execution/ports.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/execution/promptBuilder.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/execution/sessionChainAnalyzer.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/execution/suiteRunner.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/governance/consistencyChecker.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/measurement/__tests__/deltaService.test.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/measurement/__tests__/integrityMeasurement.test.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/measurement/__tests__/minimalBaseline.test.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/measurement/__tests__/qualityGate.test.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/measurement/deltaService.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/measurement/integrityMeasurement.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/measurement/minimalHarnessEvaluation.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/measurement/ports.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/measurement/qualityGate.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/persistence/__tests__/contentHash.test.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/persistence/__tests__/historyRepo.test.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/persistence/__tests__/integrityV2Store.test.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/persistence/__tests__/workspaceReader.test.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/persistence/contentHash.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/persistence/historyExporter.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/persistence/historyRepo.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/persistence/integrityV2Store.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/persistence/ports.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/persistence/workspaceReader.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/persistence/workspaceWriter.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/reporting/__tests__/htmlBuilder.test.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/reporting/__tests__/htmlBuilderIntegrity.test.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/reporting/__tests__/integrityArtifacts.test.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/reporting/__tests__/integrityOutputs.test.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/reporting/__tests__/integrityReport.test.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/reporting/__tests__/workspaceDataCollector.test.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/reporting/components/atoms/ChartCanvas.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/reporting/components/atoms/DeltaCell.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/reporting/components/atoms/KindBadge.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/reporting/components/atoms/PaginationButton.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/reporting/components/atoms/StatMetric.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/reporting/components/atoms/css.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/reporting/components/molecules/ChartCard.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/reporting/components/molecules/EvalResultCard.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/reporting/components/molecules/PaginationBar.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/reporting/components/molecules/StatCard.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/reporting/components/molecules/TableRow.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/reporting/components/molecules/TableToolbar.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/reporting/components/molecules/css.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/reporting/components/organisms/ChartGrid.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/reporting/components/organisms/RunsTable.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/reporting/components/organisms/StatRow.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/reporting/components/organisms/SubjectResultsGrid.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/reporting/components/organisms/css.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/reporting/components/pages/EvalReportPage.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/reporting/components/quarks/tokens.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/reporting/components/scripts/chartBuilders.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/reporting/components/scripts/tableController.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/reporting/components/templates/ReportLayout.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/reporting/components/templates/css.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/reporting/components/utils.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/reporting/htmlBuilder.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/reporting/integrityArtifacts.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/reporting/integrityOutputs.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/reporting/integrityReport.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/reporting/workspaceDataCollector.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/users/__tests__/userValidator.test.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/domains/users/userValidator.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/export.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/index.test.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/index.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/open.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/report.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/run.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/server/__tests__/api.test.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/server/index.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/shared/__tests__/archiveBoundary.test.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/shared/__tests__/harConformance.test.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/shared/__tests__/loopLevels.test.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/shared/__tests__/result.test.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/shared/archiveBoundary.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/shared/beadsAdapter.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/shared/eventBus.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/shared/events.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/shared/loopLevels.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/shared/paths.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/shared/result.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/src/shared/types.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/tsconfig.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/eval-hub/vitest.config.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/kg-visualizer/AGENTS.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/kg-visualizer/INSTALL.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/kg-visualizer/README.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/kg-visualizer/package.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/kg-visualizer/src/app.html",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/kg-visualizer/src/server.test.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/kg-visualizer/src/server.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/kg-visualizer/tsconfig.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/kg-visualizer/vitest.config.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/kg/AGENTS.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/kg/INSTALL.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/kg/README.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/kg/package.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/kg/src/bootstrap.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/kg/src/cli.test.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/kg/src/cli.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/kg/src/harness.test.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/kg/src/reason.test.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/kg/src/reason.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/kg/src/types.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/kg/tsconfig.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/kg/vitest.config.ts",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/package.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/pnpm-lock.yaml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "apps/pnpm-workspace.yaml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/AGENTS.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/adr/ADR-007-script-language-choice.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/adr/ADR-008-tool-agnostic-agents-layer.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/adr/ADR-009-one-iteration-per-invocation.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/adr/ADR-010-harness-release-architecture.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/assets/site.css",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/loop-engineering/MAPPING.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/loop-engineering/README.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/loop-engineering/diagrams/builder.puml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/loop-engineering/diagrams/controller.puml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/loop-engineering/diagrams/index.puml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/loop-engineering/diagrams/manager.puml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/loop-engineering/diagrams/memory.puml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/loop-engineering/diagrams/planner.puml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/loop-engineering/diagrams/trigger.puml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/loop-engineering/diagrams/verifier.puml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/loop-engineering/generated/.gitkeep",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/loop-engineering/generated/builder.svg",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/loop-engineering/generated/controller.svg",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/loop-engineering/generated/index.svg",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/loop-engineering/generated/loop_engineering.png",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/loop-engineering/generated/manager.svg",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/loop-engineering/generated/memory.svg",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/loop-engineering/generated/planner.svg",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/loop-engineering/generated/verifier.svg",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/loop-engineering/includes/common-artifacts.iuml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/loop-engineering/includes/legend.iuml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/loop-engineering/includes/loop-nodes.iuml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/loop-engineering/includes/theme.iuml",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/loop-engineering/scripts/render.sh",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/loop-engineering/stages/builder.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/loop-engineering/stages/controller.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/loop-engineering/stages/manager.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/loop-engineering/stages/memory.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/loop-engineering/stages/planner.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/loop-engineering/stages/verifier.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/migration/root-rewrite-announcement.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/migration/root-rewrite-plan.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/reference/00-index.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/reference/README.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/reference/agentic-development-skill-alias.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/reference/architecture-overview.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/reference/artifact-contribution-schema.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/reference/context-budget-policy.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/reference/eval-hub-results-guide.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/reference/getting-started.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/reference/harness-release-operations.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/reference/recipe-guide.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/reference/review-recipe-routing.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/reference/ui-ux-skill-loading-policy.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/reference/use-cases/01-init-project.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/reference/use-cases/02-code-review.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/reference/use-cases/03-security-review.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/reference/use-cases/04-uxr-simulation.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/reference/use-cases/05-ui-review.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/reference/use-cases/06-test-review.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/reference/use-cases/07-spec-review.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/reference/use-cases/08-project-judge-score.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/reference/use-cases/09-implementation-loop.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/reference/use-cases/10-release-readiness.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/reference/use-cases/11-incident-sre.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/reference/use-cases/12-multi-agent-research.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/reference/use-cases/13-documentation-review.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/specs/harness-release-v1.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/tutorials/01-build-feature.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/tutorials/02-review-code.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/tutorials/03-explore-codebase.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "docs/tutorials/README.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "evals.old/FLAKY_TEST_QUARANTINE.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": "evals.old/agents/architect.json",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": "evals.old/agents/codebase-researcher.json",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": "evals.old/agents/harness-judge.json",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": "evals.old/agents/implementation-worker.json",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": "evals.old/agents/orchestrator.json",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": "evals.old/agents/planner.json",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": "evals.old/agents/principal-engineer.json",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": "evals.old/agents/product-owner.json",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": "evals.old/agents/qa-automation.json",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": "evals.old/agents/review-critic.json",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": "evals.old/agents/tdd-guide.json",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": "evals.old/agents/ui-designer.json",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": "evals.old/agents/ux-researcher.json",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": "evals.old/fixtures/README.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": "evals.old/fixtures/code-review/current-diff-regression.py",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": "evals.old/fixtures/code-review/eval-docs-todo-antipattern.patch",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": "evals.old/fixtures/code-review/install-missing-recipe.py",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": "evals.old/history/.gitkeep",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": "evals.old/history/runs.json",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": "evals.old/recipes/amend-spec.json",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": "evals.old/recipes/design.json",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": "evals.old/recipes/dev.json",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": "evals.old/recipes/doc-review.json",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": "evals.old/recipes/explore.json",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": "evals.old/recipes/harness-audit.json",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": "evals.old/recipes/harness-review.json",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": "evals.old/recipes/implement.json",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": "evals.old/recipes/plan.json",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": "evals.old/recipes/release.json",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": "evals.old/recipes/review.json",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": "evals.old/recipes/spec.json",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": "evals.old/recipes/verify.json",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": "evals.old/skills/README.md",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": "evals.old/skills/agentic-devlopment.json",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": "evals.old/skills/agentic-ux.json",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": "evals.old/skills/atomic-design.json",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": "evals.old/skills/beads.json",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": "evals.old/skills/code-review.json",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": "evals.old/skills/cognitive-ux.json",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": "evals.old/skills/design-systems-arch.json",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": "evals.old/skills/frontend-blueprint.json",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": "evals.old/skills/goose-orchestration.json",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": "evals.old/skills/harness-judge.json",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": "evals.old/skills/knowledge-graph.json",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": "evals.old/skills/sdd.json",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": "evals.old/skills/systematic-debugging.json",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": "evals.old/skills/ui-quality.json",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": "evals.old/skills/ux-quality.json",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": "evals.old/skills/wcag-accessibility-audit.json",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": "evals.old/skills/webapp-testing.json",
+      "action": "remove",
+      "reason": "Archived superseded source retained in Git history"
+    },
+    {
+      "path": "evals/README.md",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "evals/agents/change-builder.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "evals/agents/error-analyzer.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "evals/agents/independent-verifier.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "evals/agents/repository-researcher.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "evals/benchmarks/architecture-ablation.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "evals/history/.gitkeep",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "evals/recipes/implement.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "evals/recipes/loop-engineering.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "evals/recipes/research.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "evals/recipes/verify.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "evals/skills/domain-modeling.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "evals/skills/evidence-verification.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "evals/skills/grill-me.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "evals/skills/grill-with-docs.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "evals/skills/grilling.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "evals/skills/interface-quality.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "evals/skills/loop-control.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "evals/skills/skill-creator.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "evals/skills/task-framing.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "evals/skills/ui-design.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "evals/skills/ux-principles.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "evals/skills/wcag-accessibility-audit.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "harness/external-skills.lock.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "harness/runtime-inventory.json",
+      "action": "adapt",
+      "reason": "Integrate core, operational packaging, active DB checks, matching metadata or CI regression coverage"
+    },
+    {
+      "path": "harness/schemas/external-lock.schema.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "harness/schemas/source-manifest.schema.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "harness/source-manifest.json",
+      "action": "adapt",
+      "reason": "Integrate core, operational packaging, active DB checks, matching metadata or CI regression coverage"
+    },
+    {
+      "path": "requirements-ci.txt",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "scripts/analyze-skill-eval-results.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "scripts/assemble-harness-release.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "scripts/audit-baseline-manifest.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "scripts/audit-repository-root.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "scripts/beads-readonly-evidence.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "scripts/build-docs.sh",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "scripts/build-harness.py",
+      "action": "adapt",
+      "reason": "Integrate core, operational packaging, active DB checks, matching metadata or CI regression coverage"
+    },
+    {
+      "path": "scripts/check-consistency.py",
+      "action": "adapt",
+      "reason": "Integrate core, operational packaging, active DB checks, matching metadata or CI regression coverage"
+    },
+    {
+      "path": "scripts/check-recipe-metadata.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "scripts/ci-harness-release.py",
+      "action": "adapt",
+      "reason": "Integrate core, operational packaging, active DB checks, matching metadata or CI regression coverage"
+    },
+    {
+      "path": "scripts/context-budget.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "scripts/evaluate-harness-release.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "scripts/export-harness-graph.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "scripts/find-spec-deviations.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "scripts/find-spec-deviations.sh",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "scripts/generate-tables.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "scripts/harness-audit-preflight.sh",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "scripts/install-git-hooks.sh",
+      "action": "remove",
+      "reason": "Broken source path and bypasses configured Beads hooksPath"
+    },
+    {
+      "path": "scripts/install-harness-release.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "scripts/install.ps1",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "scripts/install.sh",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "scripts/loop_transition_guard.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "scripts/resolve-external-skills.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "scripts/subagent-provider-preflight.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "scripts/subagent-provider-preflight.sh",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "scripts/test_analyze_skill_eval_results.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "scripts/test_loop_transition_guard.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "scripts/test_recipe_metadata.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "scripts/tests/e2e/test_harness_release_e2e.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "scripts/tests/integration/test_agent_l2_contracts.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "scripts/tests/integration/test_eval_corpus.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "scripts/tests/integration/test_external_skill_resolver.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "scripts/tests/integration/test_harness_assembly.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "scripts/tests/integration/test_harness_build.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "scripts/tests/integration/test_harness_installer.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "scripts/tests/integration/test_harness_manifest_v2.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "scripts/tests/integration/test_harness_operations_docs.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "scripts/tests/integration/test_harness_release_spec.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "scripts/tests/integration/test_harness_release_workflow.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "scripts/tests/integration/test_ownership_consistency.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "scripts/tests/integration/test_release_evaluation.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "scripts/tests/integration/test_root_migration.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "scripts/tests/unit/test_analyze_skill_eval_results.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "scripts/tests/unit/test_beads_readonly_evidence.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "scripts/validate-harness-manifests.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "scripts/wcag-postprocess.py",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    },
+    {
+      "path": "skills-lock.json",
+      "action": "keep",
+      "reason": "Preserve active historical implementation, tooling, specs or provenance; not revalidated by retention"
+    }
+  ],
+  "excludedLocal": [
+    ".git",
+    ".beads",
+    ".agents",
+    ".claude",
+    ".codex",
+    ".vscode",
+    "docs/reviews",
+    "docs/validation"
+  ],
+  "pending": [
+    "legacy hook compatibility and closure gate",
+    "independent feature acceptance",
+    "paired behavior eval",
+    "full release supply chain",
+    "main promotion"
+  ]
+}

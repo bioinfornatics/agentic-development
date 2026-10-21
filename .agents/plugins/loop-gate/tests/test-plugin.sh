@@ -12,11 +12,11 @@ payload='{"tool_input":{"command":"echo hello"}}'
 result=$(printf '%s' "$payload" | sh "$SCRIPT" 2>&1)
 [ -z "$result" ] && echo "PASS: non-bd command passes" || { echo "FAIL: unexpected output: $result"; exit 1; }
 
-# 3. bd close without bd available exits cleanly
+# 3. Closure must emit an explicit denial; exit 0 alone is not safety proof.
 payload='{"tool_input":{"command":"bd close fake-id-xyz"}}'
-result=$(printf '%s' "$payload" | sh "$SCRIPT" 2>&1; echo "exit:$?")
-case "$result" in *"exit:0"*) echo "PASS: exits 0 cleanly when bd absent or id not found" ;;
-  *) echo "INFO: $result" ;; esac
+result=$(printf '%s' "$payload" | sh "$SCRIPT")
+printf '%s' "$result" | python3 -c 'import json,sys; assert json.load(sys.stdin)["decision"] == "block"'
+echo "PASS: recognized closure explicitly denied"
 
 # 4. No .loop state created
 [ ! -d "$PLUGIN_ROOT/../../.loop" ] || { echo "FAIL: .loop state created"; exit 1; }

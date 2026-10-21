@@ -1,0 +1,39 @@
+{
+  "schema": "scoped-judgment-v1",
+  "candidate": "638662331f694fa7b615801b39de3ad8b5a30f74fae2461a4efb6a778c528c5e",
+  "reviewer": "20261021_36",
+  "scope": "serial bridge and corrected closure parsing only; not full release",
+  "verdict": "needs-correction",
+  "raw_report": "docs/convergence/bridge-review-20261021_36-raw.json",
+  "raw_report_sha256": "fd12033a3a93788b704490c8a8e396c445bf4db3bc4c26a6aaf5bf83fa04a276",
+  "transport": "failed max turns; substantive report recovered from exact delegate messages",
+  "findings": [
+    {
+      "id": "F1",
+      "severity": "medium",
+      "criterion": "fresh distinct resume session",
+      "path": "scripts/loop_handoff_bridge.py",
+      "lines": "133-135",
+      "repro": "checkpoint(builder) -> handoff(builder) -> resume(verifier) -> handoff(verifier) -> resume(builder)",
+      "observed": "historical session reused, written=true",
+      "required": "reject resume session IDs already present in run history; regression test and refreeze/review"
+    }
+  ],
+  "checks": {
+    "freeze": "PASS before and after review",
+    "bridge_tests": 9,
+    "hook_tests": 6,
+    "limits": "reviewer ran disposable fake-bd tests; no live Beads/CAS/host/package proof"
+  },
+  "independence": {
+    "construction_participation": false,
+    "raw_access": true,
+    "writes_prohibited": true,
+    "write_tools_available": true,
+    "inherited_expected_verdict": false
+  },
+  "rubric": "slice-acceptance 1.0.1",
+  "score": null,
+  "score_status": "unassessed",
+  "promotion": "blocked; host and official creator/runtime gates unresolved"
+}

@@ -93,16 +93,16 @@ expected_agents = {
     "error-analyzer",  # Support agent summoned by loop-breaker plugin
 }
 expected_recipes = {"loop-engineering", "implement", "research", "verify"}
-expected_plugins = {"prevent-catastrophe", "loop-gate", "beads-telemetry", "loop-breaker"}
+expected_plugins = {"prevent-catastrophe", "loop-gate", "beads-telemetry", "loop-breaker", "agentic-development"}
 if set(skills) != active_expected_skills:
     fail(f"Active skills drift: {skills}")
 else:
     ok(f"Active skill inventory = {len(expected_skills)} internal + {len(external_skills)} external")
-plugins = sorted(p.parent.name for p in (ROOT / ".agents/plugins").glob("*/plugin.json"))
+plugins = sorted(p.parent.name for folder in (ROOT / ".agents/plugins", ROOT / "plugins") for p in folder.glob("*/plugin.json"))
 if set(plugins) != expected_plugins:
     fail(f"Active plugins drift: {plugins}")
 else:
-    ok("Active plugin inventory = 4")
+    ok("Active plugin inventory = 5")
 
 # ── 2. README SKILLS TABLE ────────────────────────────────────────────────────
 print("\n── README skills table ───────────────────────────────────────────────")

@@ -1,0 +1,140 @@
+{
+  "schema": "convergence-progress-v1",
+  "base": "99fb2de399affdfc7f9645b3612c469fa3e56fb4",
+  "issues": [
+    "agentic-devlopment-w70",
+    "agentic-devlopment-w70.1",
+    "agentic-devlopment-ecv",
+    "agentic-devlopment-a8x"
+  ],
+  "stage1": "serial handoff bridge prototype implemented; protected host, packaging and automatic integration pending",
+  "stage2": "partial; real isolated import and seven discoveries pass; rollback/full routing not yet verified",
+  "stage3": "previous independent subset needs-correction retained; historical session reuse fixed with regression; latest integration not independently accepted",
+  "stage4": "user explicitly authorized Git source merge/push 2026-10-21 17:14; release acceptance and real installation remain blocked",
+  "checks": {
+    "sandbox_guard_tests": {
+      "status": "PASS",
+      "count": 6,
+      "limits": "6 handler/consistency tests; same-user repinning cannot unlock intercepted closure; no host isolation"
+    },
+    "actual_plugin_import": {
+      "status": "PASS",
+      "sandbox": "/tmp/agentic-import-zWmhb9",
+      "skills": 7,
+      "fixtures_discovered": 0
+    },
+    "hook_creator": {
+      "status": "FAIL",
+      "artifact": "/tmp/agentic-convergence-M6MfIM/gate-validator.json",
+      "reason": "installed validator rejects on_failure documented by current Goose docs"
+    },
+    "runtime_on_failure": {
+      "status": "FAIL",
+      "reason": "actual Goose 1.47.0 proceeds on handler exit1 even with on_failure block",
+      "artifact": "docs/convergence/runtime-evidence/receipt.json"
+    },
+    "runtime_explicit_denial": {
+      "status": "PASS",
+      "signal": "exit2",
+      "limit": "localhost mock provider; no real LLM"
+    },
+    "runtime_on_failure_1_55": {
+      "status": "PASS",
+      "binary": "/usr/lib/Goose/resources/bin/goose",
+      "sha256": "6b5fa8b1068559567f9b81b0f6495bf708a96e5cac42e933e9dd46a35edd8c3a",
+      "artifact": "docs/convergence/runtime-evidence/runtime-1.55.0.json",
+      "limits": "exit1 fail-closed and exit2 tested; timeout/spawn not yet tested; local mock provider"
+    },
+    "runtime_failure_matrix_1_55": {
+      "status": "PASS",
+      "cases": 9,
+      "artifact": "docs/convergence/runtime-evidence/receipt-round2.json",
+      "limits": "actual Goose; simulated localhost provider; no behavioral model acceptance"
+    },
+    "creator_runtime_layout": {
+      "status": "FAIL",
+      "artifact": "docs/convergence/runtime-evidence/creator-layout-validation.json",
+      "reason": "creator-approved fixture not discovered by runtime; root validator rejects on_failure"
+    },
+    "registry_authority": {
+      "status": "BLOCKED",
+      "reason": "same-UID env-selected registry cannot establish authority; recognized closure now always denied; external protected broker and mediated DB access required"
+    },
+    "targeted_regressions": {
+      "status": "PASS",
+      "count": 10,
+      "limits": "6 hook/consistency + 4 core tests, two shell suites, consistency; not full release identity"
+    },
+    "latest_review": {
+      "status": "INDETERMINATE",
+      "reviewer": "20261021_33",
+      "reason": "max turns transport failed without final report",
+      "candidate": "26c50a48196e9efc193b393a74200bc5d43d349ea5574cf4c94d0606f70351f7"
+    },
+    "bridge": {
+      "status": "PASS",
+      "tests": 9,
+      "limits": "fake bd serial protocol; no CAS/live persistence/host authority"
+    },
+    "bridge_review": {
+      "reviewer": "20261021_36",
+      "verdict": "needs-correction",
+      "candidate": "638662331f694fa7b615801b39de3ad8b5a30f74fae2461a4efb6a778c528c5e",
+      "artifact": "docs/convergence/bridge-judgment.json",
+      "limits": "subset only, raw report recovered after failed transport"
+    },
+    "final_integration": {
+      "status": "PASS",
+      "count": 65,
+      "command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s scripts/tests/integration -p test_*.py",
+      "limits": "local tests include fake Beads; not real provider/host release acceptance"
+    },
+    "F1_correction": {
+      "status": "PASS",
+      "reason": "resume rejects every historical session ID; multi-handoff regression allows never-used session",
+      "review_status": "not independently assessed after fix"
+    }
+  },
+  "findings": [
+    {
+      "id": "R1",
+      "severity": "high",
+      "issue": "raw shell quoting bypass",
+      "state": "corrected; new negative tests pass; rereview pending"
+    },
+    {
+      "id": "R2",
+      "severity": "high",
+      "issue": "direct destructive options/quotes bypass",
+      "state": "corrected; negative tests pass; rereview pending"
+    },
+    {
+      "id": "R3",
+      "severity": "high",
+      "issue": "receipt issuer trust unavailable",
+      "state": "local registry unlock removed; intercepted closure denied; genuine host-mediated protection BLOCKED"
+    },
+    {
+      "id": "R4",
+      "severity": "medium",
+      "issue": "producer-controlled output exclusions",
+      "state": "host policy pins criteria/repo/exclusions; rejects tracked-source exclusion; regressions PASS; independent rereview and actual trusted host provisioning still pending"
+    }
+  ],
+  "pending": [
+    "host-registry independent trusted provisioning and approved criteria/exclusions",
+    "runtime hook compatibility on_failure and layout",
+    "actual wrapper coverage or explicit unavailable guard boundary",
+    "persistent task-candidate-commit-session handoff bridge",
+    "loop-breaker observation-only adaptation",
+    "full import routing and rollback",
+    "independent corrected-candidate rereview",
+    "paired official behavioral evaluation",
+    "PR/main/migration/install after gates"
+  ],
+  "judge": "needs-correction",
+  "score": null,
+  "main_unchanged": true,
+  "installed_plugin_unchanged": true,
+  "handoff_bridge": "NOT IMPLEMENTED; current record-event.sh is ephemeral best-effort telemetry, not durable session/commit bridge"
+}

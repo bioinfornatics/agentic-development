@@ -1,0 +1,67 @@
+{
+  "schema": "runtime-probe-receipt-v1",
+  "recorded_at": "2026-10-21T14:40:36.209347+00:00",
+  "binary": "/usr/lib/Goose/resources/bin/goose",
+  "binary_sha256": "6b5fa8b1068559567f9b81b0f6495bf708a96e5cac42e933e9dd46a35edd8c3a",
+  "version": "1.55.0",
+  "probe_script_sha256": "cca2fc65f932ba6618af8e412a37ff49bcb29abece007b8ab0e2089f247a2271",
+  "provider": "localhost deterministic OpenAI JSON/SSE fixture; no real model evaluation",
+  "root_layout_failures": {
+    "status": "PASS",
+    "cases": 9,
+    "artifact": "runtime-1.55.0-failures-verified.json"
+  },
+  "creator_layout": {
+    "runtime_status": "FAIL",
+    "reason": "allow and exit2 hooks not invoked; marker created",
+    "validator_exit": 0,
+    "validator_artifact": "creator-layout-validation.json"
+  },
+  "official_root_validator": {
+    "status": "FAIL",
+    "reason": "unsupported on_failure; extension migration warning"
+  },
+  "historical_artifacts": "1.47 evidence and initial diagnostic assertion failures retained, not overwritten",
+  "artifacts": [
+    {
+      "path": "creator-layout-validation.json",
+      "sha256": "10ad1724d04a2c1cf685b490808664f18ed6736ff92e377684c0d9f5cfdba2aa"
+    },
+    {
+      "path": "guard-review-input.json",
+      "sha256": "3697e216ce4433b9ca522152b4f9be7d53b18dcfa9bc88032fb7692169ee8e38"
+    },
+    {
+      "path": "receipt.json",
+      "sha256": "7bb20d365e713631b8239a892490d94518f64aea037826d7f27a656442de2496"
+    },
+    {
+      "path": "root-layout-validation.json",
+      "sha256": "6aceb9abbb80d09ed169687086b1414eb2472a358c4c88d27f0196bfd9d758b7"
+    },
+    {
+      "path": "runtime-1.55.0-creator-layout.json",
+      "sha256": "c3303bc2ec4518a57a8d73dc577e597c191ef8315dd07d588be673bfc0b67c6c"
+    },
+    {
+      "path": "runtime-1.55.0-failures-verified.json",
+      "sha256": "3dd06862aae7d4b8f8bdb7373c959807173380d51273721f8aa7fc25b4d315c0"
+    },
+    {
+      "path": "runtime-1.55.0-failures.json",
+      "sha256": "1e3702c989793e58afc57666bb3ee792f9229294a4c96c8afd62b01d461a2e64"
+    },
+    {
+      "path": "runtime-1.55.0.json",
+      "sha256": "2f94927e5c339c238809b25c2f2282077133ed4741545ba4412c402f40ac43af"
+    },
+    {
+      "path": "runtime-explicit-denial.json",
+      "sha256": "aeff015aa7e6efe2ab66745f5a0150bd4d6cf181d00d5c9bc2d8c3f3f786e0e7"
+    },
+    {
+      "path": "runtime-probe.json",
+      "sha256": "d8ab68cb2d5cab426d61818a6bcdb0693aaf1b1a2f6660374e2b80ea1259d74d"
+    }
+  ]
+}

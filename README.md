@@ -1,3 +1,14 @@
+## Convergence source integration status
+
+The phase-core and historical harness are integrated as source code. This is not
+an accepted release or permission to install/enable safety hooks. The serial
+Beads/Git/session bridge is experimental, explicit-caller only and not yet wired
+into recipes or packaged as a supported runtime component. Protected host closure
+mediation, official hook-creator/runtime compatibility, live Beads/CAS, paired
+behavioral evaluation and installation/rollback acceptance remain open. See
+[convergence progress](docs/convergence/progress.json),
+[host boundary and bridge](docs/convergence/host-boundary-and-bridge.md).
+
 ## Convergence candidate: portable phase core + optional harness
 
 The seven-phase agentic-development 0.4.2 core is authored in

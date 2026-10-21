@@ -1,0 +1,35 @@
+[
+  {
+    "probe_case": "allow",
+    "binary": "/usr/lib/Goose/resources/bin/goose",
+    "on_failure": "allow",
+    "root": "/tmp/goose-hook-runtime-g09ugdiy",
+    "exit": 0,
+    "hook_invoked": true,
+    "marker_created": true,
+    "mock_requests": 2,
+    "output_tail": "\n    __( O)>  \u25cf new session \u00b7 openai gpt-4o\n   \\____)    20261021_1 \u00b7 /tmp/goose-hook-runtime-g09ugdiy/work\n     L L     goose is ready\n\n  \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n  \u25b8 shell\n    command: printf runtime-probe > marker.txt\n\n(no output)fixture finished\n"
+  },
+  {
+    "probe_case": "block",
+    "binary": "/usr/lib/Goose/resources/bin/goose",
+    "on_failure": "block",
+    "root": "/tmp/goose-hook-runtime-q3ujl0me",
+    "exit": 0,
+    "hook_invoked": true,
+    "marker_created": false,
+    "mock_requests": 2,
+    "output_tail": "\n    __( O)>  \u25cf new session \u00b7 openai gpt-4o\n   \\____)    20261021_1 \u00b7 /tmp/goose-hook-runtime-q3ujl0me/work\n     L L     goose is ready\n\n  \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n  \u25b8 shell\n    command: printf runtime-probe > marker.txt\n\n    -32603: Tool call blocked because policy hook `runtime-fixture` could not complete: the hook exited with status 1 and no usable decision. That hook is configured to block on failure.\nfixture finished\n"
+  },
+  {
+    "probe_case": "exit2",
+    "binary": "/usr/lib/Goose/resources/bin/goose",
+    "on_failure": "block",
+    "root": "/tmp/goose-hook-runtime-bu1atrak",
+    "exit": 0,
+    "hook_invoked": true,
+    "marker_created": false,
+    "mock_requests": 2,
+    "output_tail": "\n    __( O)>  \u25cf new session \u00b7 openai gpt-4o\n   \\____)    20261021_1 \u00b7 /tmp/goose-hook-runtime-bu1atrak/work\n     L L     goose is ready\n\n  \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n  \u25b8 shell\n    command: printf runtime-probe > marker.txt\n\n    -32603: Tool call denied by policy hook `runtime-fixture`: denied by plugin hook. Do not retry; this is a policy denial, not a transient failure.\nfixture finished\n"
+  }
+]

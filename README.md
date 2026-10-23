@@ -335,5 +335,5 @@ This pack is a local operational configuration. Adapt it to the governance, secu
 
 The [site sources and preview instructions](website/README.md) cover the portable
 phase core with a partial French edition. This branch replaces the legacy Pages
-workflow with a manual, explicitly gated workflow. No site has been deployed by
-this change. Harness/apps/runtime source remains unchanged.
+workflow with PR verification and automatic publication on main updates.
+Publication remains gated by repository configuration. Harness/apps/runtime source remains unchanged.

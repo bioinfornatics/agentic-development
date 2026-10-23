@@ -1,6 +1,10 @@
-name: Documentation (manual build and gated Pages deployment)
+name: Documentation (PR verification and automatic main publication)
 
 on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
   workflow_dispatch:
     inputs:
       publish:
@@ -16,8 +20,8 @@ permissions:
   contents: read
 
 concurrency:
-  group: documentation-pages
-  cancel-in-progress: false
+  group: documentation-pages-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   build:
@@ -28,7 +32,7 @@ jobs:
       pages: read
     steps:
       - name: Check publication prerequisites
-        if: inputs.publish
+        if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.publish)
         env:
           ENABLED: ${{ vars.PAGES_DEPLOY_ENABLED }}
           CONFIRMED_REPOSITORY: ${{ vars.PAGES_REPOSITORY }}
@@ -49,7 +53,7 @@ jobs:
           python-version: '3.13'
       - name: Read existing Pages configuration
         id: pages
-        if: inputs.publish
+        if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.publish)
         uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
         with:
           enablement: false
@@ -59,7 +63,7 @@ jobs:
         run: python -m unittest discover -s website/tests -v
       - name: Resolve site and source URLs
         env:
-          PUBLISH: ${{ inputs.publish }}
+          PUBLISH: ${{ github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.publish) }}
           REQUESTED_URL: ${{ inputs.site_url }}
           PAGES_URL: ${{ steps.pages.outputs.base_url }}
           REPOSITORY: ${{ github.repository }}
@@ -99,7 +103,7 @@ jobs:
 
   deploy:
     if: >-
-      inputs.publish &&
+      (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.publish)) &&
       vars.PAGES_DEPLOY_ENABLED == 'true' &&
       vars.PAGES_REPOSITORY == github.repository &&
       github.ref == format('refs/heads/{0}', github.event.repository.default_branch)

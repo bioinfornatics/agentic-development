@@ -21,7 +21,7 @@ class IntegrationScope(unittest.TestCase):
 
     def test_site_does_not_claim_runtime_upgrade(self):
         text = (ROOT / 'website/README.md').read_text()
-        self.assertIn('0.4.2 unchanged', text)
+        self.assertIn('Bundled core 0.4.3 uses the short', text)
         self.assertIn('legacy harness/evaluation public URLs are not preserved', text)
 
     def test_only_one_pages_deployment_workflow(self):

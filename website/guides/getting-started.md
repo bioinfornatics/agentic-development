@@ -9,19 +9,19 @@ Specify what is excluded and what the agent may actually execute.
 > must be cancelled exactly once. Do not change the interface or storage.
 > You may modify code and local tests; do not push or deploy anything.
 
-Load **agentic-development:drive-cycle** to guide the workflow. For a single phase,
+Load **agentic-development:cycle** to guide the workflow. For a single phase,
 load the corresponding skill through your tool's mechanism:
 
 | Intent | Skill to load | Expected result |
 |---|---|---|
-| Explore a need or risk | agentic-development:research-slice | Source-grounded findings and a decision to prepare |
-| Structure a roadmap, US or tickets | agentic-development:plan-slice | Ready plan and tasks; authorized and verified tracker writes |
-| Implement an authorized plan | agentic-development:implement-slice | Bounded change and local checks |
-| Verify a candidate | agentic-development:test-slice | Reproducible results and limits |
-| Judge evidence and the candidate | agentic-development:judge-slice | Verdict on the exact scope |
-| Correct findings | agentic-development:iterate-slice | Bounded corrective action or precise prerequisite |
+| Explore a need or risk | agentic-development:research | Source-grounded findings and a decision to prepare |
+| Structure a roadmap, US or tickets | agentic-development:plan | Ready plan and tasks; authorized and verified tracker writes |
+| Implement an authorized plan | agentic-development:implement | Bounded change and local checks |
+| Verify a candidate | agentic-development:test | Reproducible results and limits |
+| Judge evidence and the candidate | agentic-development:judge | Verdict on the exact scope |
+| Correct findings | agentic-development:iterate | Bounded corrective action or precise prerequisite |
 
-Example: “Load agentic-development:plan-slice to create a roadmap and priority tasks
+Example: “Load agentic-development:plan to create a roadmap and priority tasks
 from this need. You may create tickets in the project's tracker,
 but not modify code.” These identifiers are not shell commands.
 

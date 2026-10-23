@@ -10,7 +10,7 @@ en préservant le contexte entre tâches, commits et sessions.
 3. [Relier tâches, commits et sessions](integrations.md).
 4. [Contribuer à la méthode](contributing.md).
 
-Chargez **agentic-development:drive-cycle** pour coordonner le parcours, ou utilisez
+Chargez **agentic-development:cycle** pour coordonner le parcours, ou utilisez
 une seule phase si votre demande se limite à celle-ci. Les tests fournissent des preuves,
 pas une acceptation automatique.
 

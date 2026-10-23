@@ -104,9 +104,10 @@ are not fully locked. Never upload or serve the repository itself.
 
 ## Integration boundary
 
-This branch preserves harness, apps and portable core 0.4.2 unchanged. Site guides
-use its existing drive-cycle and *-slice identifiers. The standalone 0.5.0 core
-and observation hooks are not ported. English guides in website/guides are canonical
+This branch preserves harness and apps. Bundled core 0.4.3 uses the short
+cycle/research/plan/implement/test/judge/iterate discovery names; its existing
+procedures are unchanged. The standalone 0.5.0 behavior and observation hooks
+are not ported. English guides in website/guides are canonical
 for this site. Existing harness docs stay in Git, but are not included in the new
 site; legacy harness/evaluation public URLs are not preserved by this slice.
 Exactly one Pages workflow remains; the legacy Pandoc pipeline is not retained.

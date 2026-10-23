@@ -86,3 +86,14 @@ class DocumentationBuilder(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class DefaultLanguageLanding(unittest.TestCase):
+    def test_root_opens_english_with_accessible_language_fallback(self):
+        page = builder.landing_page()
+        self.assertIn('http-equiv="refresh"', page)
+        self.assertIn('url=en/', page)
+        self.assertIn('href="en/"', page)
+        self.assertIn('href="fr/"', page)
+        self.assertNotIn('localhost', page)
+        self.assertIn('<html lang="en">', page)

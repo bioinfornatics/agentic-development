@@ -330,3 +330,10 @@ See [`evals/README.md`](evals/README.md).
 ## License / ownership
 
 This pack is a local operational configuration. Adapt it to the governance, security, and delivery constraints of each project.
+
+## Zensical documentation preview
+
+The [site sources and preview instructions](website/README.md) cover the portable
+phase core with a partial French edition. This branch replaces the legacy Pages
+workflow with a manual, explicitly gated workflow. No site has been deployed by
+this change. Harness/apps/runtime source remains unchanged.

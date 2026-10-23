@@ -40,9 +40,11 @@ Only the four English guides, landing pages and French starter are
 published. AGENTS.md, Skill fixtures, evidence and task data are never copied.
 This prototype does not install the agent plugin or activate Goose hooks.
 
-A manually gated workflow is prepared in .github/workflows/pages.yml.
-It has not executed on GitHub. Pages settings, push and publication have not been
-performed. Browser verification remains separate from a successful build.
+The workflow is in .github/workflows/pages.yml. PRs run tests and builds only;
+pushes to main automatically build and publish after repository guards pass.
+The previous manual workflow has executed and the site has been deployed.
+Automatic triggering must still be verified after this change is merged.
+Browser verification remains separate from a successful build.
 
 ## Prepare GitHub Pages (separate remote authorization)
 
@@ -57,15 +59,18 @@ performed. Browser verification remains separate from a successful build.
 7. After explicit publication approval, dispatch on the default branch with
    publish true; verify the resulting public URL and both locales.
 
-No push-triggered deployment exists. Publish defaults to false. Publication fails
-unless both variables match the guards and the default branch is used.
+Pushes to main request publication automatically. PRs never publish and have no
+Pages/OIDC write permissions. Manual publish defaults to false. Publication fails
+unless both variables match the guards and the default branch is used. To pause
+automatic publication, set PAGES_DEPLOY_ENABLED to false; main builds fail closed.
+PR runs are isolated per ref; publication runs serialize on the main ref.
 configure-pages reads metadata with enablement false, without enabling Pages.
 Build permissions are read-only; only deployment has Pages/OIDC writes.
 Leave site_url empty for publication to use existing Pages metadata including
 custom domains. A manual override must match the actual hosting URL; it does not
 configure a domain. Build-only fallback handles standard project/user Pages URLs.
 Source links derive from github.repository, not the prototype assumption.
-The workflow is prepared locally, not executed as a live deployment.
+This automatic workflow revision has not executed on GitHub yet.
 Top-level actions use observed upstream SHAs; transitive action/package references
 are not fully locked. Never upload or serve the repository itself.
 
@@ -82,5 +87,5 @@ use its existing drive-cycle and *-slice identifiers. The standalone 0.5.0 core
 and observation hooks are not ported. English guides in website/guides are canonical
 for this site. Existing harness docs stay in Git, but are not included in the new
 site; legacy harness/evaluation public URLs are not preserved by this slice.
-The former push-triggered pages.yml is replaced, not kept alongside this workflow.
+Exactly one Pages workflow remains; the legacy Pandoc pipeline is not retained.
 The integration checkout has a confirmed remote, bioinfornatics/agentic-development.

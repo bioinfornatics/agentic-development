@@ -6,11 +6,11 @@ ROOT = Path(__file__).resolve().parents[2]
 class PagesWorkflow(unittest.TestCase):
     def setUp(self):
         self.text = (ROOT / '.github/workflows/pages.yml').read_text()
-    def test_manual_only(self):
+    def test_automatic_triggers_and_manual_build_default(self):
         trigger = self.text.split('permissions:', 1)[0]
         self.assertIn('workflow_dispatch:', trigger)
-        self.assertNotIn('push:', trigger)
-        self.assertNotIn('pull_request', trigger)
+        self.assertIn('push:', trigger)
+        self.assertIn('pull_request:', trigger)
         self.assertIn('default: false', trigger)
     def test_explicit_deployment_guards(self):
         deploy = self.text.split('  deploy:', 1)[1]
@@ -36,3 +36,10 @@ class PagesWorkflow(unittest.TestCase):
         for token in ('PAGES_REPOSITORY', 'PAGES_DEPLOY_ENABLED', 'workflow_dispatch',
                       'not executed'):
             self.assertIn(token, text)
+
+    def test_publication_intent_excludes_pr_and_includes_main_push(self):
+        intent = "github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.publish)"
+        self.assertEqual(self.text.count(intent), 4)
+        self.assertIn('branches: [main]', self.text)
+        self.assertNotIn('pull_request_target', self.text)
+        self.assertIn('group: documentation-pages-', self.text)

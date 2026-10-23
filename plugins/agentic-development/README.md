@@ -1,6 +1,6 @@
 # Agentic Development
 
-Plugin **agentic-development**, version **0.4.2**, créé avec les outils
+Plugin **agentic-development**, version **0.4.3**, créé avec les outils
 `agent-plugins:plugin-creator` et `agent-plugins:skill-creator`.
 
 ## Objectif
@@ -10,13 +10,13 @@ savoir où l'agent en est, ce qu'il a modifié et quelle décision arrive.
 
 | Skill | Responsabilité |
 |---|---|
-| drive-cycle | Coordination, roadmap, checkpoints et reprise |
-| research-slice | Exploration adaptative, hypothèses et preuves |
-| plan-slice | Tranche, critères d'acceptation, tâches et permissions |
-| implement-slice | Diff minimal, propriété des changements et UI ASCII |
-| test-slice | Vérifications reproductibles liées au candidat |
-| judge-slice | Verdict, grille versionnée, score et limites d'indépendance |
-| iterate-slice | Corrections bornées et invalidation des preuves périmées |
+| cycle | Coordination, roadmap, checkpoints et reprise |
+| research | Exploration adaptative, hypothèses et preuves |
+| plan | Tranche, critères d'acceptation, tâches et permissions |
+| implement | Diff minimal, propriété des changements et UI ASCII |
+| test | Vérifications reproductibles liées au candidat |
+| judge | Verdict, grille versionnée, score et limites d'indépendance |
+| iterate | Corrections bornées et invalidation des preuves périmées |
 
 ## Contrat de communication
 
@@ -74,7 +74,7 @@ Après décision explicite, une copie manuelle peut être placée dans
 `~/.agents/plugins/agentic-development/` ou
 `<projet>/.agents/plugins/agentic-development/`.
 Les skills du plugin Open Plugins sont qualifiés, par exemple
-`agentic-development:drive-cycle`. Aucune installation ni activation n'est
+`agentic-development:cycle`. Aucune installation ni activation n'est
 réalisée par la création de ces fichiers. Aucun dépôt distant n'est inventé.
 
 ## Vérification
@@ -151,3 +151,12 @@ les intégrations existantes sans les dupliquer ni les supprimer implicitement.
 Les hooks de contexte et Git sont distincts ; ils ne garantissent pas les bilans
 structurés du plugin. Leur installation ne donne pas autorisation de commit/sync.
 Le skill Beads local reste prioritaire pour les procédures opérationnelles.
+
+## Skill name migration in 0.4.3
+
+The discovery names are now cycle, research, plan, implement, test, judge and
+iterate. Update qualified calls and saved prompts accordingly: drive-cycle
+becomes cycle, and each phase name drops its -slice suffix. Old names are not
+aliases. Upgrade the bundled plugin together with its documentation; previous
+manual installations do not update automatically. This change preserves the
+existing phase procedures; it does not import the standalone 0.5.0 behavior.

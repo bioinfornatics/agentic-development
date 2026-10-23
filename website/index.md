@@ -10,7 +10,7 @@ across tasks, commits and sessions.
 3. [Connect tasks, commits and sessions](guides/integrations.md).
 4. [Contribute to the method](guides/contributing.md).
 
-Load **agentic-development:drive-cycle** to coordinate the workflow, or use one phase
+Load **agentic-development:cycle** to coordinate the workflow, or use one phase
 when that is all your request covers. Tests provide evidence, not automatic acceptance.
 
 ## Language and scope

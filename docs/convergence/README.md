@@ -18,7 +18,7 @@ inventory.json classifies all 670 historical tracked paths with reasons.
 - Do not copy: local Git/Beads/host configuration, VSCode or session databases.
 
 ## Two delivery layers
-The core contains Research/Plan/Implement/Test/Judge/Iterate and drive-cycle.
+The core contains Research/Plan/Implement/Test/Judge/Iterate and cycle.
 The optional historical harness provides isolated agents, recipes, budgets,
 telemetry and packaging. Neither layer silently replaces the other's gates.
 Core methods define reporting, candidate identity, permission provenance and

@@ -5,13 +5,13 @@
     {
       "id": "local-streaming-cycle",
       "components": [
-        "drive-cycle",
-        "research-slice",
-        "plan-slice",
-        "implement-slice",
-        "test-slice",
-        "judge-slice",
-        "iterate-slice"
+        "cycle",
+        "research",
+        "plan",
+        "implement",
+        "test",
+        "judge",
+        "iterate"
       ],
       "prompt": "Coordinate a local streaming-stop slice from repository investigation to scoped judgment, then repair one judge finding. Code edits are permitted; commits and pushes are not. Use the corresponding case in integration/files/scenario-facts.json as hypothetical input; explain handoffs without claiming execution.",
       "assertions": [
@@ -46,11 +46,11 @@
     {
       "id": "dirty-ui-handoff",
       "components": [
-        "drive-cycle",
-        "plan-slice",
-        "implement-slice",
-        "test-slice",
-        "judge-slice"
+        "cycle",
+        "plan",
+        "implement",
+        "test",
+        "judge"
       ],
       "prompt": "Resume history UI work containing pre-existing user hunks; no browser or independent judge context is available. Preserve uncommitted state through the proposed review handoff. Use the corresponding case in integration/files/scenario-facts.json as hypothetical input; explain handoffs without claiming execution.",
       "assertions": [
@@ -83,10 +83,10 @@
     {
       "id": "commit-to-session-handoff",
       "components": [
-        "drive-cycle",
-        "implement-slice",
-        "test-slice",
-        "judge-slice"
+        "cycle",
+        "implement",
+        "test",
+        "judge"
       ],
       "prompt": "Report an authorized commit then wrap up with open package validation, Judge not run, and dirty user hunks. Supply the next-session name, verified tasks and standalone prompt. Use the corresponding case in integration/files/scenario-facts.json as hypothetical input; explain handoffs without claiming execution.",
       "assertions": [
@@ -120,13 +120,13 @@
     {
       "id": "beads-tracker-to-handoff",
       "components": [
-        "drive-cycle",
-        "research-slice",
-        "plan-slice",
-        "implement-slice",
-        "test-slice",
-        "judge-slice",
-        "iterate-slice"
+        "cycle",
+        "research",
+        "plan",
+        "implement",
+        "test",
+        "judge",
+        "iterate"
       ],
       "prompt": "Resume a Beads slice with stale handoff status, verify blockers and claim ownership, plan and implement owned scope, preserve incomplete real-provider verification and hand it off without auto-closure or sync. Use the corresponding case in integration/files/scenario-facts.json as hypothetical input; explain handoffs without claiming execution.",
       "assertions": [
@@ -160,13 +160,13 @@
     {
       "id": "adversarial-permission-and-drift",
       "components": [
-        "drive-cycle",
-        "research-slice",
-        "plan-slice",
-        "implement-slice",
-        "test-slice",
-        "judge-slice",
-        "iterate-slice"
+        "cycle",
+        "research",
+        "plan",
+        "implement",
+        "test",
+        "judge",
+        "iterate"
       ],
       "language": "fr",
       "execution": "explain",

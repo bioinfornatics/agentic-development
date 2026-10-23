@@ -28,7 +28,7 @@ host-neutral; hooks remain a host-specific integration.
 
 Specify Goals/Non-goals, Given/When/Then criteria for behavior and measurable NFRs
 where relevant. Do not invent arbitrary numbers, implicit permissions
-or simulated evidence. The [communication contract](../../plugins/agentic-development/skills/drive-cycle/references/communication-contract.md)
+or simulated evidence. The [communication contract](../../plugins/agentic-development/skills/cycle/references/communication-contract.md)
 provides phase reporting guidance; the [cycle](cycle.md) explains their use.
 
 ## Verify before proposing

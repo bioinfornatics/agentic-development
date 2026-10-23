@@ -30,7 +30,7 @@ indépendante de l'hôte ; les hooks restent une intégration propre à l'hôte.
 
 Spécifiez Goals/Non-goals, des critères Given/When/Then pour le comportement et des NFRs mesurables
 lorsque c'est pertinent. N'inventez pas de chiffres arbitraires, de permissions implicites
-ou de preuves simulées. Le [contrat de communication](../../../plugins/agentic-development/skills/drive-cycle/references/communication-contract.md)
+ou de preuves simulées. Le [contrat de communication](../../../plugins/agentic-development/skills/cycle/references/communication-contract.md)
 fournit les consignes de bilan par phase ; le [cycle](cycle.md) en explique l'usage.
 
 ## Vérifier avant de proposer

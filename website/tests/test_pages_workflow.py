@@ -31,10 +31,10 @@ class PagesWorkflow(unittest.TestCase):
         for token in ('path: .site', 'python website/build.py',
                       '--base-url "$SITE_URL"', '--repo-url "$REPO_URL"'):
             self.assertIn(token, self.text)
-    def test_preparation_not_publication(self):
+    def test_publication_still_requires_separate_authorization(self):
         text = (ROOT / 'website/README.md').read_text()
         for token in ('PAGES_REPOSITORY', 'PAGES_DEPLOY_ENABLED', 'workflow_dispatch',
-                      'not executed'):
+                      'separately authorized'):
             self.assertIn(token, text)
 
     def test_publication_intent_excludes_pr_and_includes_main_push(self):

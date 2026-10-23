@@ -33,14 +33,15 @@ class DocumentationBuilder(unittest.TestCase):
             self.assertIn('/blob/main/plugins/agentic-development/skills/drive-cycle/references/', contribution)
         self.assertEqual((ROOT / 'website/guides/getting-started.md').read_bytes(), original)
 
-    def test_french_links_to_equivalent_source_and_marks_fallback(self):
+    def test_french_links_to_equivalent_source_and_local_guides(self):
         with tempfile.TemporaryDirectory() as temp:
             stage = Path(temp) / 'fr'
             builder.stage_language(ROOT, stage, stage / 'output', 'fr',
                                    'http://localhost:8000/agentic-development/')
             text = (stage / 'docs/getting-started.md').read_text()
             self.assertIn('http://localhost:8000/agentic-development/en/getting-started/', text)
-            self.assertIn('http://localhost:8000/agentic-development/en/cycle/', text)
+            self.assertIn('](cycle.md)', text)
+            self.assertNotIn('/en/cycle/', text)
             self.assertIn('anglais', (stage / 'docs/index.md').read_text())
 
     def test_output_guards_preserve_sources_and_user_files(self):

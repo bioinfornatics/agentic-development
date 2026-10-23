@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build a local bilingual prototype, without installing or deploying anything.
+"""Build bilingual documentation, without installing or deploying anything.
 
 Run: python website/build.py --output .site --base-url
      http://localhost:8000/agentic-development/
@@ -18,6 +18,7 @@ that repository's main branch. English documentation remains canonical.
 from __future__ import annotations
 
 import argparse
+from html import escape
 import json
 import os
 from pathlib import Path
@@ -41,6 +42,9 @@ ENGLISH_PAGES = {
 FRENCH_PAGES = {
     "website/i18n/fr/index.md": "index.md",
     "website/i18n/fr/getting-started.md": "getting-started.md",
+    "website/i18n/fr/cycle.md": "cycle.md",
+    "website/i18n/fr/integrations.md": "integrations.md",
+    "website/i18n/fr/contributing.md": "contributing.md",
 }
 
 
@@ -134,6 +138,15 @@ def rewrite_links(text: str, source: Path, root: Path, pages: dict[str, str],
     return "".join(result)
 
 
+def validate_parity(root: Path) -> None:
+    """Refuse incomplete locale sets before producing any staged project."""
+    if list(ENGLISH_PAGES.values()) != list(FRENCH_PAGES.values()):
+        raise ValueError("Translation parity requires identical ordered page routes")
+    for relative in (*ENGLISH_PAGES, *FRENCH_PAGES):
+        if not (root / relative).is_file():
+            raise ValueError(f"Translation parity source is missing: {relative}")
+
+
 def stage_language(root: Path, stage: Path, site_dir: Path, language: str,
                    base_url: str, repo_url: str = DEFAULT_REPO_URL) -> Path:
     """Public staging seam: write only selected Markdown and a documented TOML config."""
@@ -142,6 +155,7 @@ def stage_language(root: Path, stage: Path, site_dir: Path, language: str,
     base_url = validate_url(base_url, base=True)
     repo_url = validate_url(repo_url)
     root = root.resolve()
+    validate_parity(root)
     docs_dir = stage.resolve() / "docs"
     docs_dir.mkdir(parents=True, exist_ok=False)
     pages = ENGLISH_PAGES if language == "en" else FRENCH_PAGES
@@ -151,19 +165,18 @@ def stage_language(root: Path, stage: Path, site_dir: Path, language: str,
             raise ValueError(f"Allowlisted source cannot escape the repository: {relative}")
         text = rewrite_links(source.read_text(encoding="utf-8"), source, root,
                              pages, language, base_url, repo_url)
-        if target == "getting-started.md":
-            other = "fr" if language == "en" else "en"
-            label = "Lire cette page en français" if language == "en" else "Read the English source"
-            text += f"\n\n[{label}]({page_url(base_url, other, target)})\n"
-        if language == "fr" and target == "index.md":
-            text += ("\n\nLes guides non traduits restent disponibles en anglais : "
-                     f"[English documentation]({page_url(base_url, 'en', 'index.md')}).\n")
+        if language == "fr":
+            text += (f"\n\n<small>Source canonique : "
+                     f'<a href="{escape(page_url(base_url, "en", target), quote=True)}" lang="en">English</a>.'
+                     "</small>\n")
         (docs_dir / target).write_text(text, encoding="utf-8")
     nav = [("Home", "index.md"), ("Getting started", "getting-started.md"),
            ("Cycle", "cycle.md"), ("Integrations", "integrations.md"),
            ("Contributing", "contributing.md")]
     if language == "fr":
-        nav = [("Accueil", "index.md"), ("Bien démarrer", "getting-started.md")]
+        nav = [("Accueil", "index.md"), ("Bien démarrer", "getting-started.md"),
+               ("Cycle", "cycle.md"), ("Intégrations", "integrations.md"),
+               ("Contribuer", "contributing.md")]
     q = lambda value: json.dumps(str(value), ensure_ascii=False)
     config = stage / "zensical.toml"
     config.write_text(
@@ -198,6 +211,39 @@ def zensical_command() -> list[str]:
                        "in an authorized isolated environment; no automatic install is performed.")
 
 
+def language_selector(base_url: str, language: str, page: str) -> str:
+    """Native disclosure with real equivalent-page links and visible language names."""
+    base_url = validate_url(base_url, base=True)
+    if language not in {"en", "fr"} or page not in ENGLISH_PAGES.values():
+        raise ValueError("Unknown selector language or page")
+    labels = {"en": ("🇬🇧", "English"), "fr": ("🇫🇷", "Français")}
+    flag, name = labels[language]
+    label = "Documentation language" if language == "en" else "Langue de la documentation"
+    markup = (f'<details class="language-selector"><summary aria-label="{label}: {name}">'
+              f'<span aria-hidden="true">{flag}</span><span>{name}</span>'
+              '<span aria-hidden="true">▾</span></summary>'
+              f'<nav aria-label="{label}">')
+    for locale, (flag, name) in labels.items():
+        current = ' aria-current="page"' if locale == language else ''
+        url = escape(page_url(base_url, locale, page), quote=True)
+        markup += (f'<a href="{url}" hreflang="{locale}" lang="{locale}"{current}>'
+                   f'<span aria-hidden="true">{flag}</span><span>{name}</span></a>')
+    return markup + '</nav></details>'
+
+
+def replace_language_selector(text: str, base_url: str, language: str, page: str) -> str:
+    """Replace only the pinned theme selector; fail closed if its structure drifts."""
+    pattern = r'<div class="md-header__option">\s*<div class="md-select">.*?</ul>\s*</div>\s*</div>\s*</div>'
+    text, count = re.subn(pattern, lambda _: language_selector(base_url, language, page),
+                          text, flags=re.DOTALL)
+    if count != 1:
+        raise ValueError(f"Expected one Zensical language selector, found {count}")
+    style = (ROOT / "website/assets/language-selector.css").read_text(encoding="utf-8")
+    script = (ROOT / "website/assets/language-selector.js").read_text(encoding="utf-8")
+    return text.replace('</head>', f'<style>{style}</style></head>', 1).replace(
+        '</body>', f'<script>{script}</script></body>', 1)
+
+
 def landing_page() -> str:
     """Open the themed English home using prefix-safe relative URLs."""
     return ('<!doctype html><html lang="en"><head><meta charset="utf-8">'
@@ -214,6 +260,7 @@ def build(output: Path, base_url: str, repo_url: str = DEFAULT_REPO_URL) -> Path
     base_url = validate_url(base_url, base=True)
     repo_url = validate_url(repo_url)
     output = validate_output(output)
+    validate_parity(ROOT)
     command = zensical_command()
     output.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory(prefix="agentic-stage-") as staging, \
@@ -227,6 +274,10 @@ def build(output: Path, base_url: str, repo_url: str = DEFAULT_REPO_URL) -> Path
             subprocess.run(command + ["build", "--strict", "--config-file", str(config)], cwd=stage, check=True)
             if not (locale_output / "index.html").is_file():
                 raise RuntimeError(f"Zensical did not produce {language}/index.html")
+            for target in ENGLISH_PAGES.values():
+                html = locale_output / ("index.html" if target == "index.md" else target[:-3] + "/index.html")
+                html.write_text(replace_language_selector(html.read_text(encoding="utf-8"),
+                                base_url, language, target), encoding="utf-8")
             shutil.move(str(locale_output), artifact / language)
         (artifact / "index.html").write_text(landing_page(), encoding="utf-8")
         # Recheck immediately before rename; rename itself refuses a nonempty target.

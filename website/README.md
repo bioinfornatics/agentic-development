@@ -1,12 +1,19 @@
-# Local Zensical documentation prototype
+# Zensical documentation website
 
-English guides in guides/ are canonical. The builder stages an explicit allowlist
-in temporary directories; generated copies are disposable, never edited sources.
-The French edition currently contains only Getting started and a language landing.
+English guides in guides/ and the English home are canonical. The builder stages
+an explicit allowlist in temporary directories; generated copies are disposable,
+never edited sources. French mirrors all five English pages, with matching section
+structure and navigation order, French guide links and a discreet English source
+link on every page. Missing translations or route mismatches stop staging.
 The site root opens the themed English home by default, with language fallback links.
-The header selector opens each edition's home. Getting started links its equivalent;
-other French links explicitly lead to English. No translation plugin is assumed.
-Zensical's search interface is currently English, including in the French edition.
+The header shows the active flag and language name. Its native disclosure offers
+both named languages and retains the current page when switching. Enter/Space open
+it; Tab follows links, arrow keys move between choices, and Escape dismisses it.
+Links and disclosure also work without JavaScript. The pinned theme selector is
+replaced after building; unexpected upstream markup stops the build rather than
+silently removing the selector. Only the contained CSS/JavaScript assets are read.
+No translation plugin is assumed. Zensical's search interface is currently English,
+including in the French edition. Structural checks cannot prove translation fidelity.
 
 ## Build and preview
 
@@ -22,6 +29,23 @@ not the repository (which includes internal instructions and local task data).
 Existing nonempty outputs are refused, including earlier builds. Choose a fresh
 output path; inspect old generated artifacts before removing them yourself.
 
+## Verify local bilingual journeys
+
+Run the standard-library suite from the repository root:
+
+    python3 -m unittest discover -s website/tests -v
+
+For a generated preview already served on loopback, with Playwright and Chromium
+already available, run the opt-in browser probe using a fresh evidence directory:
+
+    python3 website/tests/browser_probe.py --base-url http://localhost:8000/agentic-development/ --evidence-dir /tmp/agentic-browser-evidence
+
+It checks ten equivalent-page switches, keyboard opening/navigation/dismissal,
+mobile widths 320/390/768, root redirect, no-JavaScript switching and observed
+HTTP/page errors. It records screenshots and a result summary. It does not install
+anything, prove screen-reader accessibility or certify every browser. Translation
+structure checks are not a substitute for independent semantic review.
+
 ## Scope and configuration
 
 Two independent Zensical builds set theme.language to en/fr and generate separate
@@ -29,21 +53,20 @@ search indexes. The builder uses supported language/alternate configuration,
 not MkDocs translation plugins. Version is pinned in requirements.txt; transitive
 dependencies are not fully locked. No global install or automatic install occurs.
 
-Use --base-url https://OWNER.github.io/REPOSITORY/ for a future project site.
+Use --base-url https://OWNER.github.io/REPOSITORY/ for a project site.
 Use --repo-url https://github.com/OWNER/REPOSITORY for source links. The default
 repository URL is bioinfornatics/agentic-development, matching this checkout
 remote; confirm the destination again before publication. Source links use main; local uncommitted
 source content may not exist remotely. Relative guide links become local site
 links; optional non-guide references become GitHub source links, not public copies.
 
-Only the four English guides, landing pages and French starter are
-published. AGENTS.md, Skill fixtures, evidence and task data are never copied.
-This prototype does not install the agent plugin or activate Goose hooks.
+Only the two homes and four guides in each language are published. AGENTS.md, Skill fixtures, evidence and task data are never copied.
+This documentation builder does not install the agent plugin or activate Goose hooks.
 
 The workflow is in .github/workflows/pages.yml. PRs run tests and builds only;
 pushes to main automatically build and publish after repository guards pass.
 The previous manual workflow has executed and the site has been deployed.
-Automatic triggering must still be verified after this change is merged.
+Automatic main-push publication was observed after the workflow change was merged.
 Browser verification remains separate from a successful build.
 
 ## Prepare GitHub Pages (separate remote authorization)
@@ -69,8 +92,7 @@ Build permissions are read-only; only deployment has Pages/OIDC writes.
 Leave site_url empty for publication to use existing Pages metadata including
 custom domains. A manual override must match the actual hosting URL; it does not
 configure a domain. Build-only fallback handles standard project/user Pages URLs.
-Source links derive from github.repository, not the prototype assumption.
-This automatic workflow revision has not executed on GitHub yet.
+Source links derive from github.repository, not a fixed site assumption.
 Top-level actions use observed upstream SHAs; transitive action/package references
 are not fully locked. Never upload or serve the repository itself.
 

@@ -15,10 +15,6 @@ when that is all your request covers. Tests provide evidence, not automatic acce
 
 ## Language and scope
 
-English is canonical. The [French edition](i18n/fr/index.md) currently includes
-only Getting started. Other guides remain available in English; translations
-are separate and linked to their source. The header language selector opens
-the chosen edition's home; Getting started also links to its equivalent page.
-
-This is a local Zensical prototype, not a deployed GitHub Pages site.
-The [portable phase core](../plugins/agentic-development/README.md) is separate from the optional harness.
+English is canonical. The French edition is a complete mirror of the five English
+pages, with the same sections and navigation order. Translations remain separate
+and linked to their English source.

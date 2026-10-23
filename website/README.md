@@ -3,6 +3,7 @@
 English guides in guides/ are canonical. The builder stages an explicit allowlist
 in temporary directories; generated copies are disposable, never edited sources.
 The French edition currently contains only Getting started and a language landing.
+The site root opens the themed English home by default, with language fallback links.
 The header selector opens each edition's home. Getting started links its equivalent;
 other French links explicitly lead to English. No translation plugin is assumed.
 Zensical's search interface is currently English, including in the French edition.

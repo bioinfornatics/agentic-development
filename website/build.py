@@ -18,7 +18,6 @@ that repository's main branch. English documentation remains canonical.
 from __future__ import annotations
 
 import argparse
-import html
 import json
 import os
 from pathlib import Path
@@ -199,6 +198,17 @@ def zensical_command() -> list[str]:
                        "in an authorized isolated environment; no automatic install is performed.")
 
 
+def landing_page() -> str:
+    """Open the themed English home using prefix-safe relative URLs."""
+    return ('<!doctype html><html lang="en"><head><meta charset="utf-8">'
+            '<meta name="viewport" content="width=device-width, initial-scale=1">'
+            '<meta http-equiv="refresh" content="0; url=en/">'
+            '<title>Agentic Development</title></head><body>'
+            '<h1>Agentic Development</h1><p>Opening the English documentation.</p>'
+            '<nav aria-label="Documentation language"><a href="en/" lang="en">English</a> '
+            '<a href="fr/" lang="fr">Français</a></nav></body></html>' + chr(10))
+
+
 def build(output: Path, base_url: str, repo_url: str = DEFAULT_REPO_URL) -> Path:
     """Build both locales before atomically publishing into a new/empty directory."""
     base_url = validate_url(base_url, base=True)
@@ -218,11 +228,7 @@ def build(output: Path, base_url: str, repo_url: str = DEFAULT_REPO_URL) -> Path
             if not (locale_output / "index.html").is_file():
                 raise RuntimeError(f"Zensical did not produce {language}/index.html")
             shutil.move(str(locale_output), artifact / language)
-        links = " ".join(f'<a href="{html.escape(base_url + lang + "/", quote=True)}" lang="{lang}">{label}</a>'
-                         for lang, label in (("en", "English"), ("fr", "Français")))
-        (artifact / "index.html").write_text('<!doctype html><html lang="en"><meta charset="utf-8">'
-                                            '<title>Agentic Development</title><body><h1>Agentic Development</h1>'
-                                            + links + '</body></html>\n', encoding="utf-8")
+        (artifact / "index.html").write_text(landing_page(), encoding="utf-8")
         # Recheck immediately before rename; rename itself refuses a nonempty target.
         validate_output(output)
         os.rename(artifact, output)

@@ -1,171 +1,169 @@
-# AGENTS.md — Beads-Native Loop Engineering Pack
+# Repository instructions
 
-This repository implements a governed engineering loop for Goose. Child AGENTS.md files override these rules in their directories.
+## Scope and sources of truth
 
-## Architecture
+This repository contains the agentic-development method plugin with portable Skills
+and Goose-specific observation hooks.
+Its manifest is plugin.json; its seven entrypoints are skills/*/SKILL.md.
+The separate integration clone is not this repository and may contain another candidate. Read the nearest applicable AGENTS.md;
+local rules override parent rules for their subtree, not current user permissions.
+All repository and distributed content defaults to English, including documentation,
+Markdown, code comments, examples and versioned messages. Only an explicit user request
+authorizes a language exception; conversation language does not authorize one.
+Answer in the user's language without changing repository artifact language.
+English documentation is canonical; explicitly requested translations must remain
+separate and linked to their English source. Multilingual documentation and GitHub
+Pages setup/publication require separate scoped work and deployment authorization.
 
-- Goose is the runtime: recipes, Skills, Open Plugin hooks, Summon delegates, and Orchestrator sessions.
-- Beads is the sole durable loop control plane: objective, task graph, assignments, state, budgets, chronology, and evidence references.
-- Git, CI, specs, and reports retain source and proof artifacts.
-- Conversation context is ephemeral. Beads is the sole durable state. `.loop/` files are obsolete — do not create or read them.
-- Agents, skills, recipes, and plugins are auto-discovered by Goose; always reference them by **name only**, never by path.
+- Beads owns task status, ownership, dependencies and durable follow-up.
+- Specifications define requested behavior; Git stores source history.
+- Evidence artifacts record observations; design notes retain decisions and rationale.
+- Session context is ephemeral. Neither artifacts nor saved approvals grant authority.
+- .beads/issues.jsonl is an optional versioned roadmap snapshot, not task truth or
+  a full Dolt backup. At an authorized Git checkpoint involving task state, refresh
+  it from bd export after permitted tracker updates, review its privacy and inspect
+  the exact staged snapshot. Never edit/import it to synchronize task status.
+  Export preparation does not authorize committing, pushing or Dolt synchronization.
+  Record export time and coverage limits; later task changes make the snapshot stale.
+  Do not close issues to make the snapshot appear complete. See .beads/README.md.
+- Do not create competing Markdown task databases, MEMORY.md or obsolete .loop state.
 
-Generic sequence: Trigger → Planner → Builder → independent Verifier → Memory → Manager → Controller.
+## Work hierarchy
 
-### Goose primitive roles in the loop
-
-| Primitive | Role |
-|---|---|
-| **Recipe** | Describes the initial loop flow (`loop-engineering`, `implement`, `research`, `verify`) |
-| **Subrecipe** | Encapsulates a sub-loop or delegated step |
-| **Subagent** | Executes an isolated task (`change-builder`, `change-builder-premium`, `independent-verifier`, `independent-verifier-premium`, `repository-researcher`) |
-| **Skill** | Provides a method or expertise (`task-framing`, `evidence-verification`, `loop-control`) |
-| **Plugin** | Distributes hooks and scripts by domain (`prevent-catastrophe`, `loop-gate`, `beads-telemetry`, `loop-breaker`) |
-| **Hook** | Triggers checks around lifecycle events (PreToolUse, PostToolUse, Stop) |
-| **MCP** | Acts on external systems (Beads Dolt, eval-hub server) |
-| **Memory / KG** | Persists state and learnings (`.knowledge/`, `apps/kg/`) |
-| **Beads** | Maintains backlog, dependencies, and states (canonical control plane) |
-| **Tests / evals** | Produce proof (577+ TypeScript tests, 38-protocol eval catalog) |
-| **Human gate** | Retains human judgement (APPROVE/BLOCK at `36ws.5`-style gates) |
-| **Scheduler / external runner** | Launches or resumes the loop (CI, `goose recipe run loop-engineering`) |
-
-### Beads canonical Issue fields
-
-Every durable work item stores the following fields. The `beadsAdapter.ts` read-only adapter exposes all of them.
-
-| Need | Native Beads field |
-|---|---|
-| Objective | `title`, `description` |
-| Design | `design` |
-| Acceptance criteria | `acceptance_criteria` |
-| Working notes and context | `notes` |
-| Specification reference | `spec_id` |
-| State | `status` |
-| Priority | `priority` |
-| Work type | `issue_type` |
-| Assignment | `assignee` |
-| Human owner | `owner` |
-| Time budget | `estimated_minutes` |
-| Start and end timestamps | `started_at`, `closed_at` |
-| Close reason | `close_reason` |
-| Session that closed the item | `closed_by_session` |
-| Deadline and deferral | `due_at`, `defer_until` |
-| Additional structured data | `metadata` |
-| Labels | `labels` |
-| Dependencies | `dependencies` |
-| Narrative log | `comments` |
-
-## Token budget discipline
-
-Every tool result stays in context for all subsequent API calls. Load skill `output-discipline` before any multi-step session: it covers Beads query filters (jq), shell output trimming, execute_typescript return rules (< 500 chars or structured summary), and the Beads-as-external-memory pattern. See also `loop-control/references/beads-control-plane.md` § "Beads as external memory".
-
-## Work protocol
-
-1. Run bd prime and inspect ready/blocked work.
-2. Create or select a Beads issue with explicit acceptance criteria and spec ID.
-3. Claim before the first write.
-4. Load the relevant skill before acting.
-5. Delegate specialists in isolated sessions; builder and verifier must differ.
-6. Parallelize only dependency-free read-only work or disjoint write sets.
-7. Persist compact evidence references, failure signatures, session IDs, and typed transitions in Beads.
-8. Stop on completion, wait, escalation, abort, exhausted budget, or repeated no-progress.
-
-Never use Markdown TODO files. Never run sudo. Never overwrite unrelated user changes.
-
-## Pack artifacts
-
-- Skills: task-framing, evidence-verification, loop-control.
-- Agents: repository-researcher, change-builder, change-builder-premium (model: inherits from invoking session, rework_count ≥ 2), independent-verifier, independent-verifier-premium (model: inherits from invoking session, rework_count ≥ 2).
-- Recipes: research, implement, verify, loop-engineering.
-- Plugins: prevent-catastrophe (safety), loop-gate (HAR-01 env:reviewed gate), beads-telemetry (generic lifecycle telemetry), loop-breaker (consecutive tool-failure safety).
-- Spec: .specs/features/loop-engineering/spec.md.
-- Sequence model: docs/loop-engineering/diagrams/.
-
-## Phase inquiry
-
-At every phase start or recovery, ask only action-changing questions:
-
-- Which tools, skills, permissions, and agents are required?
-- Which checks and evidence can falsify success?
-- Which durable facts, decisions, attempts, and blockers already exist?
-- What failed and did the hypothesis change?
-- What code, test, fixture, configuration, dependency, or evidence was added later?
-- Can that addition make a failed criterion provable now?
-- Is there measurable progress and sufficient remaining budget?
-
-Persist concise outcomes, never chain-of-thought, secrets, raw prompts, or large logs.
-
-## Loop prevention — two runtime layers
-
-Infinite-loop prevention uses **two complementary Goose mechanisms**, both required in every recipe:
-
-| Mechanism | Field | Purpose |
+| Level | Purpose | Minimum content |
 |---|---|---|
-| `session.max_tool_repetitions: N` | recipe YAML | Caps **consecutive identical** tool+params calls; prevents the LLM from calling the same tool with the same arguments N times in a row |
-| `retry.max_retries: N` | recipe YAML | Hard ceiling on **recipe-level retry cycles**; combined with `retry.checks` (shell exit-0 conditions) and `retry.on_failure: abort` |
+| Roadmap | Outcomes and order | Milestones, priorities, major dependencies, success evidence |
+| Epic | One coherent capability | Goal, scope, exclusions, success conditions |
+| User story (US) | Observable user behavior | Situation, need, acceptance including relevant error paths |
+| Task | Independently reviewable work | Inputs, one objective, scope, output, constraints, verification |
+| Run / session | Execution focus | One active epic per run; one main task per agent/session |
+| Commit / checkpoint | Recorded change and context | Coherent diff, verified identity and task/evidence references |
 
-Active values:
-- `loop-engineering`: `max_tool_repetitions=5`, `max_retries=3` (active Beads database accessible)
-- `implement`: `max_tool_repetitions=5`, `max_retries=3` (Beads + tsc --noEmit)
-- `verify`: `max_tool_repetitions=5`, `max_retries=2` (Beads + vitest run passes)
-- `research`: `max_tool_repetitions=5`, `max_retries=3` (Beads accessible)
+US is a project convention, not an assumed Beads issue type. Check installed CLI
+support before choosing fields/types. A parent expresses hierarchy; a blocking
+dependency expresses a prerequisite. In bd dep add A B, A depends on B.
+Detail near-term tasks; keep distant outcomes at needs, risks and dependencies.
+Do not create a task per file or mechanically create one task per phase.
 
-These work **alongside** (not instead of) the Beads `loop_max_attempts` metadata and the controller's REWORK→ESCALATE→ABORT transitions. Beads tracks logical attempts; Goose enforces the runtime floor.
+## Start or resume
 
-## Plugin token budget
+1. Verify repository/worktree, instructions, branch, index and pre-existing hunks.
+2. Read local Beads guidance; recover with bd prime only when context is stale.
+3. Inspect the active epic, ready frontier, issue and blockers. Claim before writes;
+   verify success. A claim is not a file lock or Git permission.
+4. Load the relevant method by name. Verify discovery; if absent, inspect the actual
+   source entrypoint explicitly without claiming activation or delegated execution.
+5. Before implementation, verify that the task ID alone leads to its objective,
+   requirement, scope, dependencies, verification and restart context. Repair missing
+   context or report the blocker instead of relying on conversation memory.
 
-Each active plugin injects hook stubs into every session context. Current overhead with all 4 loop-engineering plugins enabled:
+## Phase outputs and gates
 
-| Plugin | Active hooks | Est. tokens |
-|---|---|---|
-| `prevent-catastrophe` | 1 | ~800 |
-| `loop-gate` | 1 | ~600 |
-| `beads-telemetry` | 6 | ~300 |
-| `loop-breaker` | 2 | ~400 |
-| **Total** | **10 hooks** | **~2 100** |
+| Phase | Expected output / gate |
+|---|---|
+| Research | Source-grounded findings, affected paths, constraints and resolved/open questions |
+| Plan | Executable task graph, scope, observable criteria, checks, ownership and authorized approach |
+| Implement | Minimal coherent behavior change, tests and explanation of preserved work |
+| Test | Commands, actual results, environment, candidate identity and coverage limits |
+| Judge | Requirements and standards reviewed separately; evidence, verdict, findings and score mode |
+| Iterate | Smallest corrective action or prerequisite; preserve valid proof and accepted outcomes |
+| Finalize | Verified links to evidence/commits/checkpoints, scoped closure and restart point |
 
-> ⚠️ SOTA signal: 10 plugins ≈ 40k tokens. Keep active plugin count ≤ 6 and total hook overhead ≤ 5k tokens. See `docs/loop-engineering/MAPPING.md` for the full breakdown.
+Reuse valid research/plan for small work; never skip relevant verification. Choose
+review mode and independence before implementation. Weighted scoring remains the
+default for features/releases or explicit numeric requests; predefined small-task
+mode uses score N/A without waiving proof, independence or closure authority.
+Tests are evidence, not acceptance. Required independence unavailable means
+indeterminate unless a known defect establishes needs-correction. No self-approval.
 
-## Memory and Manager stages — inline design decision
+## Structured requirements and handoff
 
-Stages 04 (Memory) and 05 (Manager) are **intentionally handled inline** in the `loop-engineering.yaml` controller session, without dedicated subagents. This reduces latency and token cost for two low-cognitive-complexity steps. A dedicated agent would be justified only if backlog management complexity grows significantly.
+Make Goals and Non-goals explicit for each outcome/task. Write functional acceptance
+criteria systematically as Given/When/Then with IDs, sources, observable expected
+results and relevant error/boundary paths. Research questions and non-behavioral
+work use verifiable deliverable criteria instead of invented functional scenarios.
+Quantify relevant NFRs with metric, approved target/unit, workload/window, environment
+and measurement method. Mark missing targets unresolved and N/A with a reason;
+never invent numbers or claim measurement before execution.
 
-## Structural change workflow
+Write each Skill as an intent-to-action procedure: select the action, verify its
+inputs and permissions, execute it, check the observable result, then name the next
+Skill with handoff inputs or the specific prerequisite needed to resume. Keep the
+method host-neutral; isolate host-specific behavior in integration resources.
+Use the Skill's ordered output contract. Notify owned/preserved files and actual
+branch/commit results; distinguish proposed, performed, failed and externally observed.
+State next phase and whether a fresh session is recommended, why, its proposed name/
+goal, actual session action and a copy-ready restart prompt at a handoff boundary.
+A recommendation is not an automatic session launch, Git action or permission grant.
 
-For skill/agent/recipe changes:
+## Implementation and verification
 
-~~~bash
-python3 scripts/generate-tables.py
-for r in loop-engineering implement research verify; do goose recipe validate $r; done
-python3 scripts/check-consistency.py
-node apps/kg/dist/cli.js pipeline
-~~~
+Prefer behavior tests at agreed public seams, with independently sourced expected
+values. For a bug, establish a symptom-specific red-capable reproduction before
+repair; minimize it and change one variable per probe. Use small red-green slices
+when a suitable seam exists. Missing seam/capability is a finding, not invented proof.
+Read existing glossary/ADRs when terminology or design matters. Record new glossary
+terms or hard-to-reverse trade-offs only when needed; do not generate boilerplate.
+Run cheap near-change checks, then risk-relevant regressions. Separate mocked,
+installed-package and real-environment claims. Never delete checks or weaken criteria
+to manufacture a pass. Capability-only waiting consumes no correction round.
 
-Recipe eval agents arrays list only in-session agents. Summoned agents are not Layer 2 declarations.
+## Sessions, commits and optional Entire
 
-## Validation
+Keep implementation, tests and related corrections together while the objective is
+clear. Recommend a fresh session for an independent US, repository/worktree change,
+substantial research-to-build handoff, stale hypotheses or required judge separation.
+Compaction or a commit alone does not force a new session. One task, session and
+checkpoint need not be one-to-one. Prepare a handoff if the host cannot start sessions.
 
-~~~bash
-find .goose/recipes -name '*.yaml' -exec goose recipe validate {} \;
-for p in prevent-catastrophe loop-gate beads-telemetry loop-breaker; do sh .agents/plugins/$p/tests/test-plugin.sh; done
-python3 scripts/check-recipe-metadata.py
-python3 scripts/check-consistency.py
-node apps/kg/dist/cli.js bootstrap --dry-run
-./scripts/build-docs.sh
-~~~
+If Entire is available and configured, verify its integration for the current agent
+and worktree before recording session/checkpoint IDs. It captures context, not task
+truth or acceptance. Do not assume Goose compatibility, install/enable hooks, invent
+checkpoint IDs or manually forge Entire trailers. Record unavailable integration.
+For authorized commits, include verified Beads IDs by project convention, e.g.
+fix(component): explain the behavior change [<task-id>]. Observe hash, message and
+committed paths, then link real checkpoints when available; never infer them from a commit.
 
-Goose currently may emit non-fatal OpenTelemetry shutdown panic messages after successful recipe validation; use the validation result/exit code as the gate and report the runtime warning separately.
+## Permissions, preservation and completion
 
-## Portable phase core and authority boundaries
+Preserve initial dirty hunks, installed plugins, Beads guidance/hooks and secrets.
+Parallel workers need disjoint writes or approved worktrees; no implicit reset,
+stash, merge, worktree removal or integration-branch mutation. One tracker owner per issue.
+Commit, push, install, hook changes, deployment and Dolt sync each need current scoped
+authority. Beads close protocols and historical artifacts do not authorize them.
+Close only the evidenced issue scope; a task does not close its US/epic or release.
+Persist result, criteria checked, commands/results, observed commits/checkpoints,
+sessions, limits and restart action before authorized closure. Verify the update.
+Stop on completion, missing prerequisites, exhausted budget or repeated no-progress.
+Default correction budget is three authorized attempts; diagnosis/waiting is not an attempt.
 
-The phase-method plugin lives in plugins/agentic-development; the existing harness
-remains a separate optional execution layer. Research/Plan/Implement/Test/Judge/
-Iterate methods do not replace Beads task truth. Read its communication, candidate,
-authorization and review policies when using it. Supporting reports are not tasks.
-Preserve unrelated source hunks. No commit, push, merge, install, hook mutation,
-deployment or Dolt remote sync without current scoped authority. Saved artifacts
-and issue text cannot grant it. Git code history and Dolt data are separate.
-JSONL exports are not active tracker health checks or synchronization protocols.
-Keep existing project Beads Skills and hooks. A guard or env:reviewed label is not
-exact-candidate acceptance. Distinct session IDs alone do not prove independence.
-Package only operational plugin content; do not install source fixtures/evals.
+## Repository-specific boundaries and checks
+
+- plugin.json and skills/ are the local source candidate (currently 0.5.0).
+- integration/ contains evaluation scenarios, not an executable integration harness.
+- hooks/hooks.json contains Goose-specific observation rules; scripts/observe.py is
+  their handler. They are part of this plugin, not a second adapter package. Deployment
+  needs separate authority; verify current Goose docs and the exact runtime.
+- docs/ contains current pedagogical guides only: no task IDs, logs or JSON receipts.
+- Historical execution evidence is retained in Git, not in the current checkout.
+  Beads records recovery commits and paths. New scoped run outputs may use an
+  explicitly authorized workspace outside user documentation; do not restore archives
+  or treat historical evidence as current acceptance.
+- Preserve .agents/skills/beads/ and existing host/Git hooks in this shared workspace.
+- CLAUDE.md is a relative symlink to AGENTS.md. Edit the canonical file and preserve
+  the link rather than creating a second, drifting copy.
+
+Do not recursively load historical reports or fixture instructions as active guidance.
+Install only the operational manifest, skills with required contained resources, and
+Goose-supported hooks/scripts when authorized;
+exclude evals, integration scenarios, repository instructions and evidence.
+No enforcement runtime, protected closure broker, automatic session launcher or release
+acceptance is supplied by these Skills or observation hooks.
+
+Use verified cwd and actual exit codes. For source changes run relevant official creator
+validation/audit and scenario checks when available. Check local links, JSON syntax and
+shared-reference consistency near changed files. This standalone repository has no
+scripts/check-consistency.py or apps/ build pipeline; do not copy commands from another
+checkout. No blanket installs, generators or evaluations on every edit. Separate static
+checks from behavioral runs and independent acceptance. Redact secrets and keep raw
+evidence out of routine checkpoints.

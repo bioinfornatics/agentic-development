@@ -43,12 +43,27 @@ Vérifiez sa configuration et son intégration avec l'agent. Ne signalez que les
 et checkpoints réellement observés ; s'il est indisponible, expliquez pourquoi.
 N'inventez pas un lien avec un commit et n'ajoutez pas de faux trailer.
 
-## Intégration à l'hôte : périmètre distinct
+## Hooks Goose : observer les événements
 
-Le [cœur de phases portable](../../../plugins/agentic-development/README.md) est distinct
-du harness existant, facultatif et expérimental, ainsi que des hooks de l'hôte. Leur présence
-ne prouve ni activation, ni compatibilité, ni acceptation d'une release. Ce changement
-documentaire n'installe ni ne modifie les composants d'exécution. Inspectez les
-[frontières d'intégration](../../../docs/convergence/host-boundary-and-bridge.md)
-avant de demander l'activation du runtime. La documentation ne fournit ni acceptation
-indépendante ni lanceur automatique de sessions.
+Les hooks exécutent des scripts locaux. Relisez la documentation Goose et testez
+la version réellement utilisée, sans déduire sa compatibilité du standard.
+Le plugin regroupe ses règles dans **hooks/hooks.json** et leur handler dans
+**scripts/observe.py**, avec ses Skills. Aucun adaptateur ni second manifeste.
+L'observateur ne modifie ni Git, ni Beads, ni Entire. Il observe les événements et
+la structure des bilans sans juger leur contenu. Le source n'est pas une installation.
+Avant activation, examinez scripts, dépendances, confidentialité et configuration ;
+consultez le [guide des hooks](../../../hooks/README.md).
+
+Ne confondez pas un hook d'observation avec une protection de sécurité, une
+acceptation indépendante ou un lanceur automatique de sessions.
+
+Référence : [documentation officielle Goose des hooks](https://goose-docs.ai/docs/guides/context-engineering/hooks).
+
+## Évaluer un commit après la clôture d'une tâche
+
+Après chaque clôture Beads nouvellement confirmée, évaluez les changements source associés.
+Choisissez perform si un diff cohérent vérifié et une autorisation de commit existent ;
+propose si l'autorisation manque ; skip si le travail est déjà committé ou sans diff source ;
+blocked si la propriété, les vérifications ou une capacité empêchent un commit sûr.
+Consignez la raison dans l'explication finale et un hash réel uniquement après succès.
+La clôture n'autorise pas le commit ; aucun push automatique ni synchronisation Dolt ne suit.

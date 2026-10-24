@@ -15,7 +15,7 @@ spec.loader.exec_module(builder)
 
 class DocumentationBuilder(unittest.TestCase):
     def test_staging_is_allowlisted_and_does_not_edit_canonical_sources(self):
-        original = (ROOT / 'website/guides/getting-started.md').read_bytes()
+        original = (ROOT / 'docs/getting-started.md').read_bytes()
         with tempfile.TemporaryDirectory() as temp:
             stage = Path(temp) / 'en'
             config = builder.stage_language(ROOT, stage, stage / 'output', 'en',
@@ -30,8 +30,8 @@ class DocumentationBuilder(unittest.TestCase):
                              'http://localhost:8000/agentic-development/fr/')
             contribution = (stage / 'docs/contributing.md').read_text()
             self.assertIn('/blob/main/AGENTS.md', contribution)
-            self.assertIn('/blob/main/plugins/agentic-development/skills/cycle/references/', contribution)
-        self.assertEqual((ROOT / 'website/guides/getting-started.md').read_bytes(), original)
+            self.assertIn('/blob/main/skills/cycle/references/', contribution)
+        self.assertEqual((ROOT / 'docs/getting-started.md').read_bytes(), original)
 
     def test_french_links_to_equivalent_source_and_local_guides(self):
         with tempfile.TemporaryDirectory() as temp:

@@ -32,13 +32,18 @@ Une vérification du format documentaire ne prouve pas le comportement d'un agen
 
 ## Lire le bilan de chaque étape
 
-Le bilan suit six sections, dans cet ordre :
-1. **Objectif et position dans la roadmap** : jalon, epic, US, tranche, phase, périmètre et tâche.
-2. **Résultat** : ce qui est terminé, incomplet ou inchangé.
-3. **Changements et preuves** : fichiers, branches, commits, commandes et limites.
-4. **Verdict et incertitudes** : faits, risques, indépendance et score applicable.
-5. **Transition** : prochaine phase et recommandation de session, distinctes de l'action.
-6. **Prochaine action et reprise** : prérequis et première étape concrète.
+Le bilan final utilise toujours ces sept champs, dans cet ordre :
+1. **step** : la phase réellement exécutée.
+2. **modified files** : les chemins modifiés, ou N/A si aucun fichier n'a changé.
+3. **next step** : la phase recommandée, loop again, blocked ou done.
+4. **current goal** : l'objectif court traité.
+5. **next goal** : le prochain objectif ou le prérequis manquant.
+6. **closed tasks** : les identifiants des tâches dont la clôture est confirmée, ou N/A.
+7. **explanation** : ce qui a été fait et pourquoi, les preuves, limites et prochaine porte.
+
+Les libellés restent fixes ; les valeurs sont rédigées dans la langue de l'utilisateur.
+L'explication conserve les Goals/Non-goals, critères, vérifications, verdict et détails
+pertinents de session. Un résultat bloqué ou inchangé conserve les sept champs.
 
 Un commit proposé n'a pas de hash. Une session recommandée n'a pas été lancée.
 Le bilan distingue les fichiers modifiés des fichiers réellement commités.
@@ -47,17 +52,14 @@ Le bilan distingue les fichiers modifiés des fichiers réellement commités.
 
 Figez le candidat et les critères avant le jugement. Les tests sont des preuves,
 pas une acceptation. Une indépendance requise mais indisponible reste une limite.
-Figez la grille de jugement v1.0.1 ou un remplacement explicitement approuvé avant
-l'implémentation. La méthode embarquée utilise un score pondéré et préserve les critères
-inconnus ; cette documentation n'introduit pas de mode de notation pour petites tâches.
+Choisissez le mode de notation avant l'implémentation ; un score numérique demandé
+ne disparaît pas parce que la tâche est petite.
 
 Corrigez le défaut le plus précis, puis relancez ses vérifications et les régressions.
 Conservez les preuves encore valides ; invalidez celles dont les entrées ont changé.
 Ne baissez pas un seuil et ne supprimez pas un test pour obtenir un succès.
-Le budget par défaut du coordinateur est de trois tours de correction. Iterate enregistre
-le compteur de tours et s'arrête lorsqu'une capacité requise est indisponible. Suivez la
-politique de tours embarquée ; cette documentation n'ajoute pas d'exemption pour le diagnostic ou l'attente.
-En cas de blocage ou de budget épuisé, arrêtez-vous et préparez la reprise. Ne clôturez que
-le périmètre réellement vérifié et autorisé.
+Le budget par défaut est de trois tentatives autorisées ; l'attente et le diagnostic
+ne consomment pas de tentative. En cas de blocage ou de budget épuisé, arrêtez-vous
+et préparez la transmission. Ne clôturez que le périmètre réellement vérifié et autorisé.
 
 Suite : [gérer tâches, commits et sessions](integrations.md).

@@ -1,10 +1,25 @@
-# Candidate identity v1.0.0
+# Candidate identity v1.1.0
 
 Read when planning a verification strategy, freezing a candidate, reviewing
 proofs or resuming evidence. A Git diff hash alone is never a sufficient identity
 when relevant inputs can be staged, untracked, ignored, binary or external.
 
-## Freeze scope before execution
+## Preliminary checks versus acceptance-bound evidence
+
+For a near-change smoke check that does not support acceptance or proof reuse,
+record the command, relevant input paths, environment, observed exit/result and
+known provenance limits. A preliminary result may be PASS for that check while
+its candidate provenance remains limited; do not claim a frozen candidate,
+independent acceptance, installed behavior or release readiness from it.
+Do not block useful preliminary checks merely because no full manifest exists.
+
+Before promoting a result into exact-candidate acceptance or reusing it as proof,
+freeze the scope and full identity below and rerun the relevant checks on that
+candidate. A later manifest must not retroactively relabel preliminary evidence.
+The acceptance identity may cover a narrow agreed slice, but must include every
+input relevant to that slice. Missing inputs still block its acceptance.
+
+## Freeze scope before acceptance-bound execution
 
 Define and record the verification scope: code, tests, configuration, lockfiles,
 build inputs, relevant local instruction/policy files and any fixtures consumed.

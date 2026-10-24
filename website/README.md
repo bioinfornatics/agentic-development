@@ -1,6 +1,6 @@
 # Zensical documentation website
 
-English guides in guides/ and the English home are canonical. The builder stages
+English guides in ../docs/ and the English home are canonical. The builder stages
 an explicit allowlist in temporary directories; generated copies are disposable,
 never edited sources. French mirrors all five English pages, with matching section
 structure and navigation order, French guide links and a discreet English source
@@ -55,8 +55,8 @@ dependencies are not fully locked. No global install or automatic install occurs
 
 Use --base-url https://OWNER.github.io/REPOSITORY/ for a project site.
 Use --repo-url https://github.com/OWNER/REPOSITORY for source links. The default
-repository URL is bioinfornatics/agentic-development, matching this checkout
-remote; confirm the destination again before publication. Source links use main; local uncommitted
+repository URL is bioinfornatics/agentic-development, the delivered upstream destination; this local checkout has no configured remote.
+Confirm the destination again before publication. Source links use main; local uncommitted
 source content may not exist remotely. Relative guide links become local site
 links; optional non-guide references become GitHub source links, not public copies.
 
@@ -65,8 +65,8 @@ This documentation builder does not install the agent plugin or activate Goose h
 
 The workflow is in .github/workflows/pages.yml. PRs run tests and builds only;
 pushes to main automatically build and publish after repository guards pass.
-The previous manual workflow has executed and the site has been deployed.
-Automatic main-push publication was observed after the workflow change was merged.
+This workflow is adapted from the delivered integration repository. It has not
+executed from this standalone candidate; no publication is performed by preparation.
 Browser verification remains separate from a successful build.
 
 ## Prepare GitHub Pages (separate remote authorization)
@@ -104,11 +104,12 @@ are not fully locked. Never upload or serve the repository itself.
 
 ## Integration boundary
 
-This branch preserves harness and apps. Bundled core 0.4.3 uses the short
-cycle/research/plan/implement/test/judge/iterate discovery names; its existing
-procedures are unchanged. The standalone 0.5.0 behavior and observation hooks
-are not ported. English guides in website/guides are canonical
-for this site. Existing harness docs stay in Git, but are not included in the new
-site; legacy harness/evaluation public URLs are not preserved by this slice.
-Exactly one Pages workflow remains; the legacy Pandoc pipeline is not retained.
-The integration checkout has a confirmed remote, bioinfornatics/agentic-development.
+Standalone source 0.5.0 uses the seven short Skill names and the current
+seven-field final report, conditional commit evaluation and correction policy.
+English guides in ../docs/ remain canonical; the builder does not create duplicate
+English guide sources. This checkout has no configured remote. The delivered
+integration website supplied the pinned builder and selector, not its older core
+procedures or harness topology. No harness, runtime or hook activation is imported.
+Exactly one Pages workflow is prepared; the old manual-only workflow is preserved
+outside the repository, not kept as a second deployer. Publication needs separate
+current authority and verification in the actual destination repository.

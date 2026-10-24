@@ -3,41 +3,17 @@
 .dolt/
 *.db
 .beads-credential-key
+.beads/proxieddb/
 
-# Python cache
-__pycache__/
-*.py[cod]
+# Local Python source-contract test caches
+/tests/__pycache__/
 
-# Generated documentation/build outputs
-dist/
-
-# Claude Code local integration (project uses AGENTS.md)
-CLAUDE.md
-.claude/
-.playwright-mcp/
-.idea/
-
-# Auto-added
-*.pyc
-apps/*/node_modules/
-apps/node_modules/
-
-# Plugin build artifacts (compiled binaries + bun deps)
-.agents/plugins/*/bin/
-.agents/plugins/*/node_modules/
-.agents/plugins/*/bun.lockb
-
-# Ephemeral audit outputs
-.audit/
-
-# Python CI test outputs
-.coverage
-test-results/
-*.db-wal
-
-*.db-shm
-
-.vite/
-
-# Local Zensical documentation artifact
+# Local documentation output and Python caches
 .site/
+website/__pycache__/
+
+# Python caches from the bilingual website test suite
+/website/tests/__pycache__/
+
+# Local interaction journal; roadmap snapshots use .beads/issues.jsonl
+/.beads/interactions.jsonl

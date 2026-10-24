@@ -34,10 +34,10 @@ DEFAULT_BASE_URL = "http://localhost:8000/agentic-development/"
 DEFAULT_REPO_URL = "https://github.com/bioinfornatics/agentic-development"
 ENGLISH_PAGES = {
     "website/index.md": "index.md",
-    "website/guides/getting-started.md": "getting-started.md",
-    "website/guides/cycle.md": "cycle.md",
-    "website/guides/integrations.md": "integrations.md",
-    "website/guides/contributing.md": "contributing.md",
+    "docs/getting-started.md": "getting-started.md",
+    "docs/cycle.md": "cycle.md",
+    "docs/integrations.md": "integrations.md",
+    "docs/contributing.md": "contributing.md",
 }
 FRENCH_PAGES = {
     "website/i18n/fr/index.md": "index.md",

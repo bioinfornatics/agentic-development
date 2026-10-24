@@ -2,9 +2,11 @@
 
 ## Choisir le bon emplacement
 
-- **plugins/agentic-development/skills/** : instructions en anglais et ressources requises par chaque skill.
-- **website/guides/** : guides utilisateur courts, sans logs ni historique.
-- **website/tests/** : vérifications reproductibles et sondes explicitement déclenchées.
+- **skills/** : instructions en anglais et ressources requises par chaque skill.
+- **docs/** : guides utilisateur courts, sans logs ni historique.
+- **tests/** : vérifications reproductibles et sondes explicitement déclenchées.
+- **hooks/** : configuration des événements Goose du plugin.
+- **scripts/** : handlers appelés par les hooks ; aucun second plugin n'est requis.
 - Les preuves d'exécution restent séparées de la documentation ; le tracker conserve
   l'état courant du travail.
 
@@ -30,16 +32,16 @@ indépendante de l'hôte ; les hooks restent une intégration propre à l'hôte.
 
 Spécifiez Goals/Non-goals, des critères Given/When/Then pour le comportement et des NFRs mesurables
 lorsque c'est pertinent. N'inventez pas de chiffres arbitraires, de permissions implicites
-ou de preuves simulées. Le [contrat de communication](../../../plugins/agentic-development/skills/cycle/references/communication-contract.md)
-fournit les consignes de bilan par phase ; le [cycle](cycle.md) en explique l'usage.
+ou de preuves simulées. Le [contrat de sortie](../../../skills/cycle/references/requirements-output.md)
+fournit les formats complets ; le [cycle](cycle.md) en explique l'usage.
 
 ## Vérifier avant de proposer
 
 Depuis la racine du dépôt, exécutez :
 
-    python3 -m unittest discover -s website/tests -v
+    python3 -m unittest discover -s tests -v
 
-Ces tests couvrent les contrats du générateur documentaire, pas la qualité du modèle
+Ces tests couvrent les contrats source et le handler d'observation, pas la qualité du modèle
 ni une installation globale. Utilisez aussi les validations officielles disponibles
 pour le composant modifié. Un conflit entre un validateur et Goose exige de vérifier
 la documentation et le runtime, pas de déclarer automatiquement la compatibilité.

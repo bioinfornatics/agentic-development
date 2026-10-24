@@ -23,12 +23,11 @@ for tracker writes, Git operations, installation or production effects.
 
 ## Structured requirements and output format
 
-Read [the requirements and output contract](references/requirements-output.md)
-for Goals/Non-goals, functional Given/When/Then criteria, relevant quantified NFRs
-and the mandatory seven-field final report with phase-specific evidence and notifications.
-Produce this phase's artifact using the contract's headings; map every result to
-its verified criterion ID/target and mark unresolved or N/A fields explicitly.
-Do not invent metrics, Git results, session launches or acceptance to fill a field.
+Before starting work, read [the common requirements and output contract](references/common-output.md)
+and [this phase's requirements and output contract](references/requirements-output.md).
+The common contract defines Goals/Non-goals, FR/GWT, quantified NFRs and the seven-field
+final envelope; the phase contract supplies this step's deliverable, checklist and
+worked handoff example. Reuse verified criteria; do not invent results or permissions.
 
 ## Shared requirements
 
@@ -129,6 +128,16 @@ authorized correction consumes one. Preserve still-current proof; invalidate act
 input/freshness drift only. Re-run the original symptom and relevant regressions,
 remove temporary instrumentation and return the changed frozen candidate to Judge.
 
+## Before delivery or handoff
+
+- [ ] Verify [the common output checklist](references/common-output.md): seven headings,
+  verified tasks/goals/criteria, actual files, truthful Git/session status and next action.
+- [ ] Verify [this phase's delivery checklist](references/requirements-output.md) and
+  include its specific evidence, remaining criteria and recommended review order.
+- [ ] At a handoff boundary include the worked state card inside explanation and a
+  copy-ready restart prompt; distinguish recommendations from performed actions.
+- [ ] Keep missing proof/independence open; report source-only checks as static.
+
 ## Execute the handoff or stop
 
 Execute the next phase only when it belongs to the user's requested workflow and
@@ -152,5 +161,5 @@ specific missing input, permission or capability, who can supply it when known,
 and the next executable action. Do not merely say "blocked" or "continue later".
 
 End every phase delivery with the mandatory seven-field final report from
-[the requirements and output contract](references/requirements-output.md), including
+[the common requirements and output contract](references/common-output.md), including
 blocked or unchanged results. Keep the ordered fields and explain the next gate.

@@ -21,12 +21,12 @@ Use a full checkpoint at commit boundaries, judgment, session handoff, US closur
 session start, objective change, and slice completion. Do not repeat an unchanged
 full report after every tool call. Report discoveries that affect scope or safety
 immediately. When no files changed, say so; never invent a diff for a phase.
-At phase delivery and handoff use the seven-field final report in requirements-output.md;
+At phase delivery and handoff use the seven-field final report in common-output.md;
 this supersedes the six-field envelope for final messages, not its evidence safeguards.
 
 ## Required structure and notification fields
 
-Apply the requirements-output.md contract linked directly from this Skill for
+Apply common-output.md and this phase's requirements-output.md, both linked directly from this Skill, for
 explicit Goals/Non-goals, systematic functional Given/When/Then, relevant quantified
 NFR measurement matrices and the exact ordered seven-field final report. It is the sole final envelope;
 the six checkpoint detail groups above belong inside its explanation, not a second report. Notify modified files,

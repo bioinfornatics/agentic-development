@@ -1,4 +1,4 @@
-# Communication contract v1.3.0
+# Communication contract v1.6.0
 
 Mandatory for every phase. This is an instruction contract, not a tool firewall.
 Respond in the user's language. Keep evidence and decisions inspectable; do not
@@ -21,6 +21,17 @@ Use a full checkpoint at commit boundaries, judgment, session handoff, US closur
 session start, objective change, and slice completion. Do not repeat an unchanged
 full report after every tool call. Report discoveries that affect scope or safety
 immediately. When no files changed, say so; never invent a diff for a phase.
+At phase delivery and handoff use the seven-field final report in requirements-output.md;
+this supersedes the six-field envelope for final messages, not its evidence safeguards.
+
+## Required structure and notification fields
+
+Apply the requirements-output.md contract linked directly from this Skill for
+explicit Goals/Non-goals, systematic functional Given/When/Then, relevant quantified
+NFR measurement matrices and the exact ordered seven-field final report. It is the sole final envelope;
+the six checkpoint detail groups above belong inside its explanation, not a second report. Notify modified files,
+actual branches/commits and next-session recommendations with explicit action status.
+Do not repeat unchanged detailed tables; use verified locators and concise summaries.
 
 ## Roadmap and working tree
 
@@ -61,7 +72,7 @@ Maintain four separate indicators:
   NOT RUN, BLOCKED, UNKNOWN. Mark simulated/mock/real explicitly.
 - Judge verdict: accepted, needs-correction, indeterminate, or not-run; give
   justification, acceptance scope, blocking findings and judge independence.
-- Score: rubric identifier/version, per-criterion evidence, weighted result and
+- Score: rubric identifier/version and selected mode; numerical values only when applicable, weighted result and
   coverage. Never call it a probability of software correctness. Unassessed
   criteria remain unknown and cannot silently receive full points.
 - Insights/uncertainties: each insight is observed, inferred, or to-verify;
@@ -70,7 +81,9 @@ Maintain four separate indicators:
 
 A mock integration test proves only its tested path. It does not prove real
 provider behavior, installed-package operation, production readiness, or UI
-rendering. Bind proofs and judgment to the deterministic candidate manifest
+rendering. Preliminary near-change checks may use the limited-provenance path in
+candidate-identity.md; they cannot establish exact-candidate acceptance or reuse.
+Bind acceptance proofs and judgment to the deterministic candidate manifest
 defined by the directly linked candidate-identity.md reference. A diff hash alone
 is insufficient: include staged, untracked, binary and relevant ignored inputs,
 with frozen scope and explicit output-only exclusions. Compare content and
@@ -101,85 +114,16 @@ Example (illustrative, not an observed screen):
 Verification: inferred from code; browser check NOT RUN.
 ```
 
-## Mandatory commit report
+## Action-specific reports (load only when applicable)
 
-Before a permitted commit announce the problem/feature, intended outcome, exact
-owned files/hunks, known checks, limitations and proposed message. Immediately
-after each successful agent commit, before another task, emit the report below.
-Verify actual commit metadata and its file list; working-tree changes are not
-necessarily committed. Include renames/deletions and separate remaining dirty
-work and pre-existing user hunks. A failed commit has no invented hash; report
-its error and remaining state. Label a recommendation proposed/not performed.
-Verify externally observed commits and label them external, without claiming
-agent authorship. This contract is not a Git event hook.
-
-Translate these required fields into the user's language:
-
-Default report:
-- Commit status: performed / failed / proposed / externally observed.
-- Problem or feature; milestone / epic / US / slice / verified linked task IDs.
-- Outcome covered and acceptance scope.
-- Committed files: + added / ~ modified / - removed / renamed old -> new;
-  each path with reason and owned hunks when relevant.
-- Checks: evidence IDs, candidate, actual results, mock/real environment.
-- Limitations and open criteria.
-- Actual hash and message, or not performed / error.
-- Remaining staged / unstaged / untracked state and preserved user work.
-- Next action, expected result and prerequisites.
-
-Unknown task IDs remain unknown or not-applicable. A commit does not by itself
-accept a US or make checks pass. Session closure never grants commit permission.
-
-## Mandatory session-end report and restart prompt
-
-Before a planned session end, explicit wrap-up request or recommended context
-transition emit the full session summary. A normal phase checkpoint does not
-mean the session ended. Announce foreseeable transitions early. Summarize the
-session's purpose, not merely its last tool operation. Persist the handoff only
-in an approved workspace, or provide it inline and say not saved. Abrupt
-interruptions cannot guarantee reporting; use durable checkpoints when possible.
-Do not claim automatic session detection, creation or renaming.
-
-Required session-end fields, translated into the user's language:
-- Purpose: problem/feature, expected user value and original session objective.
-- Roadmap: milestone / epic / US / slice and verified linked tasks.
-- Phase reached, accepted outcomes, unfinished work and blockers.
-- Agent-owned changes and reasons; preserved pre-existing paths/hunks.
-- Evidence: actual checks, candidate identity, artifacts, results and limits.
-- Judgment: scoped verdict and reviewer independence.
-- Score: rubric ID/version, criterion values and coverage, or not assessed.
-- Insights: observed / inferred / to-verify; uncertainties and risks.
-- Preserved state: root, branch, actual commits, staged/unstaged/untracked work.
-- Resume conditions: ownership conflicts, stale proofs, prerequisites, permissions.
-- Next-session proposed name: <US/slice> — <next phase/action> — <expected outcome>.
-- Next-session goal: one coherent objective.
-- Linked tasks: verified ID, title, status, dependency/blocker and expected result.
-- Immediate next action, expected result and prerequisites.
-- Actual handoff location, or inline / not saved.
-- A copy-ready standalone restart prompt, not a promise to write it later.
-
-Always propose a concise descriptive next-session name. If fully complete, state
-that no continuation is required and make any review/next-goal suggestion optional;
-do not invent unfinished tasks. List only verified task IDs. Unavailable tracking
-is unknown; suggested new tasks are proposed without fictitious IDs. Follow the
-project tracker when required; the handoff is not a competing task database.
-
-The actual restart prompt must work without the previous conversation. Include
-objective, roadmap, verified tasks and blockers, repository/branch/candidate,
-actual artifact paths to read (or necessary inline context if not saved), accepted
-outcomes, remaining work, pre-existing and uncommitted changes to preserve,
-evidence limitations/stale checks, historical permission claims with provenance,
-currently verified grants and pending permissions, first action,
-acceptance criteria and stop conditions. Instruct the next agent to inspect local
-instructions, tracker, working tree, current authorization and evidence freshness
-before mutation and
-resume at the first incomplete phase. Never include secrets or nonexistent paths.
-For Judge require a frozen candidate and disclose the independence requirement.
-
-If Judge has not run, report verdict not-run and score not assessed; do not force
-a judge or invent a percentage to fill the report. Unknown rubric criteria stay
-unknown. Finishing a session does not authorize commit, stash, push or discard.
-A proposed name is not an actual session launch or rename.
+Before committing, reviewing an externally observed commit, or reporting a failed
+commit, read references/commit-report.md through its direct entrypoint link.
+Before planned session end, explicit wrap-up, or a recommended context transition,
+read references/session-report.md through its direct entrypoint link.
+These forms remain mandatory at their applicable boundary, not at every phase.
+One combined report may satisfy overlapping checkpoint/commit/session boundaries
+when it contains all required fields; do not repeat the same facts in three forms.
+A normal task answer does not imply that the development session has ended.
 
 ## Conditional shared task truth
 
@@ -191,7 +135,9 @@ verified issue IDs, current status, blockers, claim/update outcomes and local-on
 persistence in checkpoints and restart prompts. Close only completed scope,
 never merely because a commit or session ended. Missing tracker access or a
 failed claim is an explicit blocker, not permission to invent tasks or ownership.
-No automatic tracker installation, Git mutation or Dolt sync is authorized.
+After each confirmed closure evaluate commit suitability using beads-integration.md
+and report the decision in the final explanation. Evaluation is mandatory; execution
+requires current scoped authority. No automatic tracker installation or Dolt sync is authorized.
 
 ## Trust and acceptance invariants
 

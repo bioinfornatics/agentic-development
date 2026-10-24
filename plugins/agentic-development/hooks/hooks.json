@@ -1,0 +1,83 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${PLUGIN_ROOT}/scripts/observe.py\"",
+            "timeout": 3
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${PLUGIN_ROOT}/scripts/observe.py\"",
+            "timeout": 3
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${PLUGIN_ROOT}/scripts/observe.py\"",
+            "timeout": 3
+          }
+        ]
+      }
+    ],
+    "AfterFileEdit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${PLUGIN_ROOT}/scripts/observe.py\"",
+            "timeout": 3
+          }
+        ]
+      }
+    ],
+    "AfterShellExecution": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${PLUGIN_ROOT}/scripts/observe.py\"",
+            "timeout": 3
+          }
+        ]
+      }
+    ],
+    "PostToolUseFailure": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${PLUGIN_ROOT}/scripts/observe.py\"",
+            "timeout": 3
+          }
+        ],
+        "matcher": "^(developer__)?(shell|write|edit)$"
+      }
+    ],
+    "PreToolUseResult": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${PLUGIN_ROOT}/scripts/observe.py\"",
+            "timeout": 3
+          }
+        ],
+        "matcher": "^(developer__)?(shell|write|edit)$"
+      }
+    ]
+  }
+}

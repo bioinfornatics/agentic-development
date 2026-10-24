@@ -1,4 +1,4 @@
-# slice-acceptance — rubric v1.0.1
+# slice-acceptance — rubric v1.1.0
 
 Freeze this default rubric before implementation, or record the approved
 replacement identifier/version. Score is a structured assessment, not a
@@ -30,6 +30,20 @@ For each finding record ID, severity, criterion, file/location, evidence,
 impact, remediation and verification needed. Distinguish blocking findings from
 nonblocking recommendations. Report reviewer identity/context and whether
 review was independent, limited self-review or not executed.
+
+## Explicit small-task mode
+
+Select the mode before implementation, in the plan or verified scope. For a narrow local
+or authoring task whose decision does not benefit from numerical grading, use
+small-task mode: mandatory criteria, observed checks, findings, limitations and
+scoped verdict; score and numerical coverage are not-applicable. No rubric
+amendment is needed for this predefined mode. Never switch modes after seeing a
+failure to hide it. A numeric score already required by the user/approved plan
+remains required unless that authority approves the change.
+
+Small-task mode does not waive exact-candidate acceptance, any mandatory proof,
+independence, closure authority or parent/release gates. Weighted mode remains
+the default for feature/release slices and for explicit numerical requests.
 
 ## Interpreting conformity
 

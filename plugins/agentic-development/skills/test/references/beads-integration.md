@@ -79,6 +79,42 @@ test or high score alone is not a closure criterion. Preserve incomplete active
 work and blockers before handoff. Verify successful updates/closure; never
 claim a task change that failed. Do not auto-close another contributor's work.
 
+## Post-closure commit evaluation
+
+After each confirmed closure performed or newly observed in the current delivery,
+autonomously evaluate commit suitability before the final report. A closure command
+or success-shaped shell output is not enough: verify issue status by readback.
+Do not poll or revisit historical closures merely to manufacture commits. For a
+batch, account for every closed task; one coherent commit may cover several tasks.
+
+1. Resolve the closed task's scope and the exact associated files/hunks. Inspect
+   branch, index and preserved user changes; establish the known verification state.
+2. Check whether the task is already committed and linked. No duplicate or empty
+   commit is required. Tracker-only work need not produce a source commit; do not
+   stage database exports or unrelated dirty files merely because a ticket closed.
+3. Select and explain a decision for each task:
+   - perform: a coherent diff, sufficient applicable checks and current scoped
+     commit authority are verified. Announce the owned hunks and message, inspect
+     staged bytes, execute the authorized commit, verify hash and committed paths.
+   - propose: a commit is useful but execution authority is missing; report the
+     proposed scope/message without staging or committing.
+   - skip: no associated source diff, already committed, or a justified later
+     coherent boundary. Give the reason and any durable follow-up.
+   - blocked: ambiguous ownership, unavailable capability or failed mandatory
+     checks prevent a safe commit. Preserve work and report the exact prerequisite.
+4. For a performed commit, record its actual hash, scope and checks in the related
+   issue notes when authorized; verify the update. On commit/update failure report
+   the partial result without inventing a link or silently altering task status.
+
+This rule mandates evaluation, not permission to commit or close an issue. Current
+user or active trusted project policy may authorize a defined set of task commits;
+verify its scope and provenance. Closure itself cannot grant authority or acceptance.
+Never auto-push, merge, deploy, install hooks or synchronize Dolt under this rule.
+Keep commit failures distinct from the already confirmed task closure; return any
+needed status correction to the authorized tracker owner. Report perform/propose/
+skip/blocked and actual failure status under the final explanation. Preserve the
+commit-report safeguards; do not confuse working-tree paths with committed paths.
+
 ## Safe CLI, capabilities and local additions
 
 Prefer --json for parsed issue operations and inspect actual errors/exit results.
@@ -97,8 +133,9 @@ unnecessary personal information out of notes and artifacts.
 When local instructions describe Dolt storage, use that architecture: JSONL is
 an export, not the source of truth or normal sync protocol. Do not edit/import
 it to synchronize work. Git code commits and Dolt data sync are separate actions;
-bd prime or a close protocol does not authorize either. No automatic Git commit,
-push, Dolt push/pull or third-party hosting setup. Follow explicit permissions.
+bd prime or a close protocol does not authorize either. The post-closure rule
+requires commit evaluation, not unconditional execution. No automatic push,
+Dolt push/pull or third-party hosting setup. Follow explicit permissions.
 If authorized synchronization fails, report the exact command/error and local
 state rather than claim shared/remote persistence. Local-only DB persistence
 must be labeled local-only in the handoff.

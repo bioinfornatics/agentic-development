@@ -2,9 +2,9 @@
 
 ## Choose the right location
 
-Create feature branches from **development** and target feature PRs there.
+Create feature branches from **develop** and target feature PRs there.
 `main` receives only a reviewed generated installation projection, never a direct
-merge of development source. Follow [the branch and promotion contract](../CONTRIBUTING.md)
+merge of develop source. Follow [the branch and promotion contract](../CONTRIBUTING.md)
 for exact-source verification, independent approval and current migration limits.
 
 - **skills/**: English instructions and resources required by each skill.

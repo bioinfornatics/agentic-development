@@ -14,6 +14,88 @@ Rubric mode and score/coverage; Insights, risks and unknowns; Next action.
 Assess FR/GWT and approved NFR bounds separately from coding standards; missing
 measurement/required independence stays explicit. No self-approval.
 
+## Result block
+
+Keep the five outer headings. Put this fenced YAML block in explanation (or retain
+it in the linked judgment.md and show its verdict/score summary). It is a report
+contract, not a runtime schema or permission grant. Replace illustrative values.
+
+~~~yaml
+verdict: accepted
+review_mode: weighted
+rubric_id: slice-acceptance
+rubric_version: "1.1.0"
+score_status: complete
+score: 75
+score_max: 100
+assessment_coverage_percent: 100
+blocking_findings: []
+limitations: []
+~~~
+
+Use exact field names and values:
+
+| Field | Required value / rule |
+|---|---|
+| verdict | accepted / needs-correction / indeterminate / not-run, with reason and scope in adjacent prose |
+| review_mode | weighted / small-task; null only if no mode was selected and no review ran |
+| rubric_id, rubric_version | Actual approved rubric identifier/version; null if unavailable, disclose the gap |
+| score_status | complete / partial / not-applicable / not-assessed |
+| score | Number 0–100 only for complete weighted assessment; otherwise null |
+| score_max | 100 in weighted mode; null in small-task or unselected mode |
+| assessment_coverage_percent | Assessed weight / total weight * 100 in weighted mode; null for small-task or not-run |
+| blocking_findings | List confirmed blocking finding IDs, linked to evidence; [] means none confirmed, not proof of completeness |
+| limitations | List concrete gaps or review limits; [] only when none were identified |
+
+No numerical acceptance threshold is defined. Derive verdict from mandatory gates,
+not score. Document criterion values, weights and calculation in judgment.md.
+Keep unknown criteria null; never normalize a partial assessment. N/A is represented
+by score_status: not-applicable and null numeric fields, not a zero score.
+
+Use these variants; retain all other fields and replace the illustrative reason:
+
+~~~yaml
+# Partial weighted review: first four criteria rated 3, operability unknown.
+verdict: indeterminate
+review_mode: weighted
+score_status: partial
+score: null
+score_max: 100
+assessment_coverage_percent: 95
+blocking_findings: []
+limitations: ["Mandatory operability proof missing; earned points 71.25, assessed weight 95"]
+~~~
+
+~~~yaml
+# Preselected small-task mode, mandatory evidence and independence satisfied.
+verdict: accepted
+review_mode: small-task
+score_status: not-applicable
+score: null
+score_max: null
+assessment_coverage_percent: null
+blocking_findings: []
+limitations: []
+~~~
+
+~~~yaml
+# No review executed; weighted mode was selected in the plan.
+verdict: not-run
+review_mode: weighted
+score_status: not-assessed
+score: null
+score_max: 100
+assessment_coverage_percent: null
+blocking_findings: []
+limitations: ["Judge not executed"]
+~~~
+
+For a confirmed blocker, use needs-correction and its finding ID even if evidence
+is also missing. For missing required independence, use indeterminate unless a
+known blocker already establishes correction; a complete score may still exist.
+A failed check is FAIL evidence; it establishes correction only when linked to a
+confirmed defect or unmet mandatory criterion, not merely a tool/capability failure.
+
 ## Phase delivery checklist
 
 Complete the common delivery checklist, then verify these judge obligations:

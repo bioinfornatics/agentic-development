@@ -123,6 +123,25 @@ These stages do not authorize additional phases or side effects.
    blocking findings. Candidate changes invalidate affected judgment. Never silently
    relax criteria, retroactively redefine the rubric or approve your own human gate.
 
+   **Result contract**
+
+   Return one scoped verdict and a separate score state; PASS/FAIL labels belong to
+   executed checks, not the acceptance verdict. Use these exact verdict values:
+
+   | Verdict | Choose when |
+   |---|---|
+   | `accepted` | Every mandatory criterion is evidenced, no blocker remains and required independence is satisfied |
+   | `needs-correction` | A confirmed defect or unmet mandatory criterion requires correction; known blockers take precedence over gaps |
+   | `indeterminate` | Required evidence, capability, provenance or independence is missing, with no known blocker establishing correction |
+   | `not-run` | No Judge review was executed; do not assign a score |
+
+   Use the plan-time mode: `weighted` yields a 0–100 score only when every rubric
+   criterion is assessed; unknowns leave the overall score null. `small-task` yields
+   score N/A. A high score never overrides mandatory gates; 75/100 can mean conformity,
+   not failure. At step 6 emit the delivery contract's result block inside explanation,
+   with reasons and evidence; do not create another outer report or runtime JSON.
+
+
 5. [ ] **Collect judgment facts and the immediate prerequisite**
 
    Collect judgment.md facts in the approved workspace, or return them inline
@@ -131,6 +150,8 @@ These stages do not authorize additional phases or side effects.
    delivery only at the output gate below.
    Use accepted, needs-correction or indeterminate with reasons. If no review ran,
    report not-run and no score. Local acceptance is not real-provider approval.
+   Collect verdict, review mode, rubric identity/version, score state/coverage,
+   blockers and limitations for the result block; do not invent missing values.
 
    Collect checkpoint inputs: candidate, exact acceptance scope, open findings,
    immediate action and its prerequisite. Publish them only at the delivery gate;
@@ -149,11 +170,18 @@ These stages do not authorize additional phases or side effects.
    phase result and proposed handoff, then stop; do not expand the request by loading
    or executing a new phase. If continuing is authorized, apply the routes below.
 
-   For needs-correction, Load `agentic-development:iterate` with the scoped
-   verdict, evidence-linked findings and minimal corrective checks. For indeterminate,
-   return the specific evidence/independence prerequisite, not a speculative correction.
-   For accepted, return the exact accepted scope to the coordinator or user; perform no
-   implicit issue closure, commit, merge or release.
+   Select exactly one route from the verdict; record its owner, prerequisite and expected result.
+
+   | Verdict | Immediate action | Required inputs / result |
+   |---|---|---|
+   | `accepted` | Return the exact accepted scope to the coordinator/user; no implicit closure, commit, push, merge or release | Candidate ID, criterion evidence, score state and limits; any publication/closure needs separate authority |
+   | `needs-correction` | If continuation is authorized, Load `agentic-development:iterate`; otherwise return the proposed correction handoff and stop | Confirmed finding IDs, scoped verdict, candidate, evidence, minimal corrective checks and current correction budget; repair then Test and Judge the changed candidate |
+   | `indeterminate` | Resolve the named proof/capability/provenance/independence gap; no speculative code repair | Name missing input and supplier; route missing checks to Test only when authorized, or request the required reviewer/access. Re-run Judge when prerequisites are satisfied; a newly confirmed defect changes the route to needs-correction |
+   | `not-run` | Execute Judge only if requested and its prerequisites are available; otherwise return its prerequisite checklist and stop | Approved scope, frozen candidate, evidence index, plan-time mode and reviewer/independence; first review produces a verdict, not an assumed failure or acceptance |
+
+   needs-correction means change a confirmed defective candidate; indeterminate means
+   establish whether it can be judged. Keep them distinct because their actions differ.
+   Missing permission blocks the selected action, not permission to substitute another route.
 
    Use the host's available Skill-loading mechanism; these identifiers are not shell
    commands. If loading is unavailable, read the selected bundled SKILL.md and its

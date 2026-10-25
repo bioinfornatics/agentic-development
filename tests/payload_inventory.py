@@ -14,6 +14,12 @@ import sys
 from urllib.parse import unquote, urlsplit
 
 
+DEVELOPMENT_COMPONENTS = frozenset(("AGENTS.md", "evals", "evaluations", "tests",
+    "__pycache__", "evidence", "research", "integration", "evaluation-fixtures",
+    "conformance-fixtures", "fixtures"))
+DEVELOPMENT_FILES = frozenset(("materialize-fixtures.mjs", "synthetic-sessions.json"))
+
+
 class InventoryError(ValueError):
     """A bounded diagnostic with no payload or absolute-path content."""
 
@@ -89,9 +95,13 @@ def inventory(root):
                     contained(resource, skill)
                     if not resource.is_file() and not resource.is_dir():
                         raise InventoryError("special-resource-not-supported")
-                    if any(part in ("AGENTS.md", "evals", "__pycache__", "evidence", "research", "integration")
-                           for part in resource.relative_to(skill).parts):
+                    if any(part in DEVELOPMENT_COMPONENTS
+                           for part in resource.relative_to(skill).parts) or resource.name in DEVELOPMENT_FILES:
                         continue
+                    # Inert-looking suffixes are not a safe host discovery boundary.
+                    # Unclassified nested entrypoints fail closed instead of disappearing.
+                    if resource.name.lower().startswith("skill.md"):
+                        raise InventoryError("nested-skill-entrypoint")
                     if resource.is_file():
                         add(resource, skill)
         markdown = [path for name, path in selected.items()

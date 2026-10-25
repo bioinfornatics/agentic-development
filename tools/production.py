@@ -12,6 +12,11 @@ import sys
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
+SKILLS = frozenset(("cycle", "research", "plan", "implement", "test", "judge", "iterate"))
+DEVELOPMENT_COMPONENTS = frozenset(("AGENTS.md", "evals", "evaluations", "tests",
+    "__pycache__", "evidence", "research", "integration", "evaluation-fixtures",
+    "conformance-fixtures", "fixtures"))
+DEVELOPMENT_FILES = frozenset(("materialize-fixtures.mjs", "synthetic-sessions.json"))
 
 
 def plain(path):
@@ -148,10 +153,14 @@ def verify(output):
         parts = Path(name).parts
         if name in required:
             continue
-        if len(parts) < 3 or parts[0] != "skills" or any(p in
-                ("evals", "AGENTS.md", "evidence", "integration", "research", "__pycache__")
-                for p in parts[2:]):
+        if (len(parts) < 3 or parts[0] != "skills" or parts[1] not in SKILLS
+                or any(p in DEVELOPMENT_COMPONENTS for p in parts[2:])
+                or parts[-1] in DEVELOPMENT_FILES):
             raise ValueError("forbidden payload")
+        if parts[-1].lower().startswith("skill.md") and (len(parts) != 3 or parts[-1] != "SKILL.md"):
+            raise ValueError("nested skill entrypoint")
+    if {name for name in paths if name.endswith("/SKILL.md")} != {"skills/" + name + "/SKILL.md" for name in SKILLS}:
+        raise ValueError("unexpected skills")
     return receipt
 
 

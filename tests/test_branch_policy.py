@@ -10,7 +10,7 @@ class BranchPolicy(unittest.TestCase):
         text = (ROOT / "CONTRIBUTING.md").read_text()
         for term in ("develop", "Feature PRs target", "Never merge",
                      "sole parent", "fast-forward", "exact source SHA",
-                     "independent", "isolated", "not yet", "no build"):
+                     "independent", "isolated", "do not assume it matches the latest develop", "no build"):
             self.assertIn(term, text)
         self.assertIn("../CONTRIBUTING.md", (ROOT / "docs/contributing.md").read_text())
 

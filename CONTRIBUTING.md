@@ -79,13 +79,12 @@ preview. Both keep `release_ready=false`: integrity is not review or installatio
 approval. Verify candidate hashes after isolated Git install/update and before
 publication. These commands never publish or mutate branches.
 
-## Current migration limits
+## Distribution status and limits
 
-The public develop branch is established from the existing public main history.
-The current main is **not yet** a verified production-only projection: do not claim
-installation readiness from the branch name. Projection publication automation and
-isolated installation acceptance remain gates. No license grant is currently
-present in source; do not invent one or copy another project license. These gates
-are not capabilities provided
-by this policy change. Keep main unchanged until those gates and publication
-authority are satisfied. Existing source history and local work stay preserved.
+- main contains a generated installation projection; develop remains its editable source.
+- Resolve the published source SHA from main's distribution.json; do not assume it matches the latest develop.
+- Source updates require a new verified projection and separately authorized promotion.
+- Inventory integrity and branch names do not establish installation compatibility or release acceptance.
+- The generator and read-only CI do not publish, approve, configure protection or bypass promotion gates.
+- No license grant is present in source; do not invent one or copy another project's license.
+- Preserve local tracker/evidence and source history; do not infer publication authority from prior runs.

@@ -1,13 +1,13 @@
 ---
 name: test
-description: Verifies an exact software candidate against acceptance criteria with reproducible evidence and explicit mock, installed-package, and real-environment limits. Use for testing implementation, regression repairs, or changes that invalidate earlier checks.
+description: Verifies software candidates against acceptance criteria. Use for testing implementations or regression repairs, or rechecking evidence after candidate changes.
 ---
 
 # Test
 
 ## Select the action from the intent
 
-Resolve the criteria, candidate, required environments and check permissions. Inventory tools before executing; an unavailable required environment leaves its criterion open, not silently skipped.
+Select the verification intent; bind criteria, candidate and environment through the workflow.
 
 | Intent / condition | Execute | Required result |
 |---|---|---|
@@ -15,137 +15,148 @@ Resolve the criteria, candidate, required environments and check permissions. In
 | Reuse previous proof after a change | Compare the proof's inputs/environment with current ones; rerun affected checks | Justified retained proof and new evidence for changed inputs |
 | Verify an installed package, real provider or rendered UI | Use the exact required artifact/environment and inspect actual behavior | Environment-specific observations, or explicit missing capability; mock proof is not substituted |
 
-Execute the selected action through the workflow below. Read only the references
-required by that action, reuse guidance already loaded in this context, and verify
-the result before taking the next action. Loading this Skill is not authorization
+Execute the selected action through the workflow below and verify its result
+before taking the next action. Loading this Skill is not authorization
 for tracker writes, Git operations, installation or production effects.
-
-## Structured requirements and output format
-
-Before starting work, read [the common requirements and output contract](references/common-output.md)
-and [this phase's requirements and output contract](references/requirements-output.md).
-The common contract defines Goals/Non-goals, FR/GWT, quantified NFRs and the seven-field
-final envelope; the phase contract supplies this step's deliverable, checklist and
-worked handoff example. Reuse verified criteria; do not invent results or permissions.
-
-## Shared requirements
-
-Read [the communication contract](references/communication-contract.md) before
-working, including repository ownership, early transitions, evidence, judgment
-and conditional UI reporting. Apply it even when this skill is used alone.
-Respond in the user's language. Verify tools and permissions; unavailable
-capabilities produce an explicit blocker, never simulated execution evidence.
-Use the coordinator's approved slice state when available. Return the seven-field final report
-and phase artifacts; report unchanged files explicitly.
-
-## Conditional durable tracking
-
-If the target repository uses Beads, read [the Beads integration](references/beads-integration.md)
-before choosing work or mutating shared task state. Recover context when stale,
-verify issue status and claim before implementation, and keep Beads as task
-truth. Artifact plans and handoffs are not a competing tracker. Follow the
-reference for missing tools, failed claims, durable follow-up and closure;
-evaluate commit suitability after each confirmed closure, without inferring Git authority.
-
-## Trust, candidate and review gates
-
-Read [the authorization policy](references/authorization-policy.md) before
-resuming artifact claims or executing consequential actions. Recorded permissions
-are historical unless their current authoritative source and scope are verified.
-Read [candidate identity](references/candidate-identity.md) when planning checks,
-freezing inputs or reusing evidence; include staged, untracked and binary inputs
-and explicitly defined output-only exclusions. Read [the review policy](references/review-policy.md)
-before agreeing acceptance, judging or closing a task/US. Independence and closure
-requirements are set before implementation, not waived by a missing capability.
 
 ## Workflow
 
-1. Freeze candidate identity and the acceptance/check matrix before running
+A phase report is the result of this Skill, not a file to find before execution.
+Collect its facts during work; deliver them inline by default at the delivery step.
+Save a report only with an explicit destination and permission to write, following
+the common output contract loaded at that step. Required evidence inputs and tracker
+updates retain their own gates; an inline response does not replace task truth.
+
+Apply contracts before their governed actions, even before the nominal step
+containing the link when its condition arises earlier. Load a reference only when its
+applicable content is absent, incomplete or outdated in the active context; reuse
+identical available content from another Skill's contained copy. The same ID/version
+with different content is a conflict, not proof of identity: resolve it before the
+affected action. A previous read or loaded marker does not prove availability.
+After compaction, a new session or worker, recover required unavailable instructions;
+on workspace changes revalidate applicability. Reusing authorization guidance never renews
+a previous permission. This is an agent instruction, not a runtime cache.
+
+1. [ ] **Verify test inputs and authority**
+
+   Verify repository root, local instructions, tools and task goal.
+
+   Before creating or repairing task descriptions or acceptance criteria, apply
+   [ticket authoring](references/ticket-authoring.md); verify readable purpose,
+   criteria, ordered inputs and restart context without duplicating execution history.
+
+   If the repository uses Beads, apply [the Beads integration](references/beads-integration.md)
+   before choosing work or mutating task state. Use fresh `bd prime` guidance;
+   retain task ownership, readback and phase gates;
+   evaluate commit suitability after each confirmed closure without inferring Git authority.
+
+   Apply [the authorization policy](references/authorization-policy.md) before
+   resuming artifact claims or executing consequential actions; verify current
+   permission for the intended action, not historical approval.
+
+   Apply [the requirements baseline](references/requirements-baseline.md) before
+   defining or changing scope, criteria or verification, and before running checks.
+   Reuse verified Goals/Non-goals, FR/GWT and applicable quantified NFRs; do not
+   invent targets. Investigation needs a bounded question, not a completed plan.
+
+   Apply [the review policy](references/review-policy.md)
+   before implementation or setting review requirements, and before agreeing acceptance,
+   judging or closing a task/US. Independence and closure
+   requirements are set before implementation, not waived by a missing capability.
+
+   Apply [the communication contract](references/communication-contract.md) before
+   the first mutation, checkpoint or Git/session transition, for ownership, transition, evidence
+   and conditional UI reporting safeguards. Apply these safeguards in standalone use too.
+   Respond in the user's language. Verify tools and permissions; unavailable
+   capabilities produce an explicit blocker, never simulated execution evidence.
+   Use the coordinator's verified slice state when available; do not fabricate execution or acceptance.
+
+   Before committing or drafting a proposed, performed, failed or externally observed commit report, apply [the commit report](references/commit-report.md). Before drafting a planned session end, explicit wrap-up or recommended context transition report, apply [the session report](references/session-report.md).  These conditions govern earlier boundaries too.
+
+2. [ ] **Freeze the candidate and map checks**
+
+   Apply [candidate identity](references/candidate-identity.md) before planning checks,
+   freezing inputs or reusing evidence; include staged, untracked and binary inputs
+   and explicitly defined output-only exclusions. 
+   For exact-candidate proof, use the contained [capture/validate/compare CLI](scripts/candidate_identity.py) with the [scope example](references/candidate-scope.example.json); consult the [manifest schema](references/candidate-identity.schema.json) and [manifest example](references/candidate-identity.example.json) when preparing or validating its JSON. Follow the candidate procedure above; equality is not acceptance.
+
+   Freeze candidate identity and the acceptance/check matrix before running
    acceptance-bound checks. Preliminary near-change checks may use the limited-
    provenance path in candidate-identity.md; they must be rerun against a frozen
    candidate before acceptance or reuse, not retroactively promoted.
    Read the project test instructions and verify commands, environment, tooling
    and side effects. Isolate data; production tests need explicit authorization.
-2. Map mandatory criteria to checks: unit, integration, negative paths,
+
+   Map mandatory criteria to checks: unit, integration, negative paths,
    regression, build/install and real-provider behavior as required by scope.
    Do not invent a command or assume a tool exists; inspect project scripts.
-3. Execute available relevant checks. Capture command, exit result, timestamp,
-   environment, candidate, mock/real mode and sanitized output artifact in
-   evidence.md. Record PASS, FAIL, NOT RUN, BLOCKED or UNKNOWN distinctly.
-4. For UI changes test the functional journey and, when possible, capture and
+
+   Deterministic checks must discriminate the requested symptom, not just show a command
+   ran. Prefer public seams and independent expected values. For nondeterminism record
+   seed, repetition budget and observed failure rate; never call flaky runs deterministic
+   or synthetic fixtures real usage.
+
+3. [ ] **Run available verification without repairing**
+
+   Execute available relevant checks. Capture command, exit result, timestamp,
+   environment, candidate, mock/real mode and sanitized output or authorized log
+   locator in the verification report. Record PASS, FAIL, NOT RUN, BLOCKED or UNKNOWN distinctly.
+
+   For UI changes test the functional journey and, when possible, capture and
    inspect actual rendering with viewport/state and evidence path. ASCII and
    source review alone are inferred, not visual observation. Missing browser
    leaves visual acceptance open. A passing automation test need not prove
    full visual correctness.
-5. For installed-package or real-provider criteria use the exact candidate
+
+   For installed-package or real-provider criteria use the exact candidate
    artifact/environment. Mock tests cannot substitute. Explicitly distinguish
    missing credentials/capability from a failing executed test.
-6. Return failures, repro steps, evidence coverage and unknowns to Judge. If a
-   code repair is needed, hand back to Implement/Iterate rather than mutating
-   the frozen candidate silently. Invalidate affected evidence after a change.
 
-## Gate
+   Run cheap near-change checks and risk-relevant regressions. Record exact cwd, relevant
+   versions/fixtures, exit codes and timestamps; unknown data stays unknown. Formatting
+   checks do not establish functional quality. Do not repair the frozen candidate or
+   weaken criteria. If checks mutate inputs, record before/after identities and rerun on
+   a stable candidate or disclose that proof does not match the final candidate.
 
-Test reports evidence, not acceptance on behalf of Judge. Announce the judge
-context transition and preserve the possibly uncommitted candidate, artifacts
-and replay commands. Missing mandatory evidence cannot become an implicit pass.
+4. [ ] **Integrate observations and coverage limits**
 
-## Conditional reporting details
+   Bind the observations collected in step 3 to the criterion/check matrix.
+   Confirm candidate/environment identity remained stable, or mark affected proof
+   invalid and rerun. Preliminary near-change checks retain limited provenance
+   until replayed against the frozen candidate. Separate current results from
+   justified retained evidence and expose uncovered criteria.
 
-Read [the commit report](references/commit-report.md) only for a proposed,
-performed, failed or externally observed commit. Read
-[the session report](references/session-report.md) only for planned session end,
-explicit wrap-up or recommended context transition. The common communication
-contract remains mandatory; do not reload identical content already present in
-the current context. Combine overlapping reports without dropping required fields.
+   When checks were delegated, verify each worker's scope, invocation/completion status, candidate/environment identity, replay commands and result locators. Integrate coverage and expose contradictions; incomplete or failed workers do not establish passing gates. Delegation is not required.
 
-## Verification output contract
+   Keep mandatory missing evidence, credentials, capabilities, permissions and required review/independence open; distinguish an executed failure from a blocked or not-run check. Test reports evidence, not acceptance, and does not repair the candidate.
 
-Produce the phase artifact with the canonical headings in
-[the requirements and output contract](references/requirements-output.md).
-Include exact cwd, versions/fixtures relevant
-to reproducibility, exit codes and timestamps; unknown data stays unknown.
-A deterministic check should fail on the requested symptom, not merely prove
-that a command did not crash. Use public behavior seams and independent expected
-values. For nondeterminism record seed, repetition budget and observed failure rate;
-never describe a flaky run as deterministic or a synthetic fixture as real usage.
+   Preserve the possibly uncommitted candidate, artifacts and replay commands for Judge;
+   missing mandatory evidence cannot become an implicit pass.
 
-Run near-change checks and risk-relevant regressions. Use new observations only
-for their candidate/environment; separate old valid evidence explicitly. Report
-missing tools/credentials as blocked or not-run, never skip silently. Output formatting
-checks do not establish functional quality. Do not write acceptance or repair the
-candidate as part of verification; return defects to the authorized correction phase.
+5. [ ] **Verify readiness and draft the phase response**
 
-## Before delivery or handoff
+   Prepare the immediate next action and exact prerequisites, owner when known and expected result. Preserve the candidate and artifacts; supply the criterion/check matrix, actual results, failures/repro steps, replay commands and limits, and the inputs needed for a handoff; draft its state card and restart prompt only after reading the delivery guidance.
 
-- [ ] Verify [the common output checklist](references/common-output.md): seven headings,
-  verified tasks/goals/criteria, actual files, truthful Git/session status and next action.
-- [ ] Verify [this phase's delivery checklist](references/requirements-output.md) and
-  include its specific evidence, remaining criteria and recommended review order.
-- [ ] At a handoff boundary render one fenced YAML state card inside explanation and a
-  copy-ready restart prompt; distinguish recommendations from performed actions.
-- [ ] Keep missing proof/independence open; report source-only checks as static.
+   After investigation and before drafting any user-facing phase response (including blocked or unchanged results), apply [the common output contract](references/common-output.md) and [this phase's delivery contract](references/requirements-output.md); apply their checklists and five-section report. Combine overlapping reports without duplication. After reading delivery guidance, draft the response and, at an actual handoff, the fenced YAML state card and copy-ready restart prompt.
 
-## Execute the handoff or stop
+   Announce the Judge context transition when applicable; Test reports evidence, not acceptance.
 
-Execute the next phase only when it belongs to the user's requested workflow and
-current scope/permissions cover its actions. For a phase-only request, return the
-phase result and proposed handoff, then stop; do not expand the request by loading
-or executing a new phase. If continuing is authorized, apply the routes below.
+6. [ ] **Execute the handoff or stop**
 
-After recording available verification, Load `agentic-development:judge`
-with candidate identity, criteria/check matrix, actual results and missing evidence.
-For a confirmed repair need, Load `agentic-development:iterate` with the
-failing criterion and replay command; do not silently edit the tested candidate.
-An unavailable mandatory check stays open and is handed off as a prerequisite.
+   Execute the next phase only when it belongs to the user's requested workflow and
+   current scope/permissions cover its actions. For a phase-only request, return the
+   phase result and proposed handoff, then stop; do not expand the request by loading
+   or executing a new phase. If continuing is authorized, apply the routes below.
 
-Use the host's available Skill-loading mechanism; these identifiers are not shell
-commands. If loading is unavailable, read the selected bundled SKILL.md and its
-required contained references, and report direct reading rather than activation.
-Pass a copy-ready handoff if execution cannot continue in this context. State the
-specific missing input, permission or capability, who can supply it when known,
-and the next executable action. Do not merely say "blocked" or "continue later".
+   After recording available verification, Load `agentic-development:judge`
+   with candidate identity, criteria/check matrix, actual results and missing evidence.
+   For a confirmed repair need, Load `agentic-development:iterate` with the
+   failing criterion and replay command; do not silently edit the tested candidate.
+   An unavailable mandatory check stays open and is handed off as a prerequisite.
 
-End every phase delivery with the mandatory seven-field final report from
-[the common requirements and output contract](references/common-output.md), including
-blocked or unchanged results. Keep the ordered fields and explain the next gate.
+   Use the host's available Skill-loading mechanism; these identifiers are not shell
+   commands. If loading is unavailable, read the selected bundled SKILL.md and its
+   required contained references, and report direct reading rather than activation.
+   Pass a copy-ready handoff if execution cannot continue in this context. State the
+   specific missing input, permission or capability, who can supply it when known,
+   and the next executable action. Do not merely say "blocked" or "continue later".

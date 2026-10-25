@@ -1,18 +1,24 @@
-# Iterate output and handoff contract v1.2.0
+# Iterate output and handoff contract v1.3.0
 
-Apply this contract only to iterate. Before work read it with the common-output.md
-contract directly linked from SKILL.md. Before delivery check both. The common
-seven-heading Markdown envelope remains mandatory; this reference adds this phase's
+Apply this contract only to iterate. Read after investigation and before drafting the
+phase response, with common-output.md directly linked from SKILL.md. Check both
+before delivery. Operational requirements are separate in requirements-baseline.md.
+The common five-heading Markdown envelope remains mandatory; this reference adds this phase's
 content, not another final report or permission to write artifacts.
 
 ### iterate
 
-Artifact: iteration.md. Headings: Finding and task; Goals and Non-goals;
+Report content: iteration report. Topics: Finding and task; Goals and Non-goals;
 Unchanged criteria (FR/NFR IDs); Current candidate and retained proof;
 Cause hypothesis and reproduction; Capability/budget decision; Authorized correction;
 Observed result and invalidated evidence; Next phase and restart conditions.
 Record counter before/after, selective proof invalidation and original GWT/NFR rerun.
 Capability-only waiting consumes zero attempts; no weaker criteria to make tests pass.
+
+Optional filename: `iteration.md` — not a required input or automatic write.
+Deliver inline by default; save only through the common output contract’s explicit-destination,
+permission and conflict checks. These topics belong inside explanation or its linked
+report, not additional outer response headings.
 
 ## Phase delivery checklist
 
@@ -24,7 +30,7 @@ Complete the common delivery checklist, then verify these iterate obligations:
 ## Worked handoff example
 
 Hypothetical missing-prerequisite example, not an executed run. Place this card
-inside the common report's explanation; retain all seven outer headings. Replace
+inside the common report's explanation; retain all five outer headings. Replace
 placeholders with verified values; use locators for long unchanged details.
 
 ~~~yaml
@@ -35,6 +41,7 @@ current_tasks:
   - id: "<verified Beads ID, or N/A if no tracker>"
     status: "<read-back status, or unknown>"
 phase: iterate
+roadmap_position: "Roadmap unavailable; resolve the named prerequisite before later phases"
 current_goal: "Establish a reviewable cancellation slice"
 success_criteria:
   - id: "AC-1 (illustrative)"

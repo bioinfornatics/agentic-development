@@ -24,6 +24,10 @@ Seven reusable Skills guide the work:
 Use the whole cycle or the phase your task needs. These are agent instructions,
 not an enforcement engine or a guarantee of correct software.
 
+Install: `goose plugin install https://github.com/bioinfornatics/agentic-development.git`.
+Check: `goose skills list` — only this plugin’s seven Skills, no evaluation fixtures.
+Update: `goose plugin update agentic-development`. See [Goose Plugins](https://goose-docs.ai/docs/guides/context-engineering/plugins) and [Agent Skills](https://goose-docs.ai/docs/guides/context-engineering/using-skills).
+
 ## Dependencies and workflow tools
 
 The Skills are Markdown instructions: use an agent that can load them and your

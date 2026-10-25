@@ -77,7 +77,24 @@ The candidate binds the exact source commit/tree and rejects dirty or untracked
 source and uncommitted operational resources. `project` remains a working-tree
 preview. Both keep `release_ready=false`: integrity is not review or installation
 approval. Verify candidate hashes after isolated Git install/update and before
-publication. These commands never publish or mutate branches.
+publication. The opt-in real-host probe uses disposable HOME, XDG and Goose
+roots and a local Git transport repository; it never replaces a live installation:
+
+```sh
+python3 -B tests/probe_goose_distribution.py /absolute/new/product
+```
+
+The probe requires Goose 1.47.0, checks the exact seven Skills with
+`goose skills list` after installation and update, verifies installed payload
+hashes and observer execution, and confirms that update removes an obsolete
+fixture. Working-tree previews are diagnostic evidence, not committed-source
+or release approval. This probe is not part of the automatic unit suite.
+
+Production excludes creator eval sets, evaluation/conformance fixtures and
+synthetic study inputs, including those nested under Skill resources. Unknown
+nested `SKILL.md*` entrypoints fail closed; suffixes such as `.fixture` are not
+a reliable discovery boundary. Operational references and user output templates
+remain contained and available. These commands never publish or mutate branches.
 
 ## Distribution status and limits
 

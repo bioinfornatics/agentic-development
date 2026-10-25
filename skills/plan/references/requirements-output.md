@@ -1,30 +1,38 @@
-# Plan output and handoff contract v1.2.0
+# Plan output and handoff contract v1.3.0
 
-Apply this contract only to plan. Before work read it with the common-output.md
-contract directly linked from SKILL.md. Before delivery check both. The common
-seven-heading Markdown envelope remains mandatory; this reference adds this phase's
+Apply this contract only to plan. Read after investigation and before drafting the
+phase response, with common-output.md directly linked from SKILL.md. Check both
+before delivery. Operational requirements are separate in requirements-baseline.md.
+The common five-heading Markdown envelope remains mandatory; this reference adds this phase's
 content, not another final report or permission to write artifacts.
 
 ### plan
 
-Artifact: plan.md. Headings: Outcome and task graph; Goals and Non-goals;
+Report content: planning report. Topics: Outcome and task graph; Goals and Non-goals;
 Scope and exclusions; Functional requirements (Given/When/Then);
 Non-functional requirements (measurement matrix); Acceptance and verification matrix;
 Public seams; Ownership and permissions; Review/closure policy; Commit boundaries;
 Risks and stop budget; Next ready task and restart context. Map approved FR/NFR IDs
 to checks and capabilities before declaring ready.
 
+Optional filename: `plan.md` — not a required input or automatic write.
+Deliver inline by default; save only through the common output contract’s explicit-destination,
+permission and conflict checks. These topics belong inside explanation or its linked
+report, not additional outer response headings.
+
 ## Phase delivery checklist
 
 Complete the common delivery checklist, then verify these plan obligations:
 
+- [ ] Verify cited research product context and coverage/freshness; report decision-critical gaps before planning.
+- [ ] Attach verified task-specific reading references with locator/root, section/symbol, reason, read order, source identity and freshness limits; read back authorized tracker updates. A local capture is knowledge, not task truth or proof of currency.
 - [ ] Map approved scope and FR/NFR to checks, dependencies and ownership; name unresolved readiness decisions.
 - [ ] Include the phase artifact or verified locator, remaining criteria and handoff inputs.
 
 ## Worked handoff example
 
 Hypothetical missing-prerequisite example, not an executed run. Place this card
-inside the common report's explanation; retain all seven outer headings. Replace
+inside the common report's explanation; retain all five outer headings. Replace
 placeholders with verified values; use locators for long unchanged details.
 
 ~~~yaml
@@ -35,6 +43,7 @@ current_tasks:
   - id: "<verified Beads ID, or N/A if no tracker>"
     status: "<read-back status, or unknown>"
 phase: plan
+roadmap_position: "Roadmap unavailable; resolve the named prerequisite before later phases"
 current_goal: "Establish a reviewable cancellation slice"
 success_criteria:
   - id: "AC-1 (illustrative)"

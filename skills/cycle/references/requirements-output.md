@@ -1,16 +1,22 @@
-# Cycle output and handoff contract v1.2.0
+# Cycle output and handoff contract v1.3.0
 
-Apply this contract only to cycle. Before work read it with the common-output.md
-contract directly linked from SKILL.md. Before delivery check both. The common
-seven-heading Markdown envelope remains mandatory; this reference adds this phase's
+Apply this contract only to cycle. Read after investigation and before drafting the
+phase response, with common-output.md directly linked from SKILL.md. Check both
+before delivery. Operational requirements are separate in requirements-baseline.md.
+The common five-heading Markdown envelope remains mandatory; this reference adds this phase's
 content, not another final report or permission to write artifacts.
 
 ### cycle
 
-Artifact: cycle state. Headings: Active outcome and task; Goals and Non-goals;
+Report content: cycle coordination report. Topics: Active outcome and task; Goals and Non-goals;
 FR/NFR baseline; Phase and gate; Evidence and blockers; Authorized next action;
 Restart point. Finalization links verified task updates, observed Git/Entire context
 and checked scope; parent/release gates remain separate.
+
+Optional filename: `cycle-state.md` — not a required input or automatic write.
+Deliver inline by default; save only through the common output contract’s explicit-destination,
+permission and conflict checks. These topics belong inside explanation or its linked
+report, not additional outer response headings.
 
 ## Phase delivery checklist
 
@@ -22,7 +28,7 @@ Complete the common delivery checklist, then verify these cycle obligations:
 ## Worked handoff example
 
 Hypothetical missing-prerequisite example, not an executed run. Place this card
-inside the common report's explanation; retain all seven outer headings. Replace
+inside the common report's explanation; retain all five outer headings. Replace
 placeholders with verified values; use locators for long unchanged details.
 
 ~~~yaml
@@ -33,6 +39,7 @@ current_tasks:
   - id: "<verified Beads ID, or N/A if no tracker>"
     status: "<read-back status, or unknown>"
 phase: cycle
+roadmap_position: "Roadmap unavailable; resolve the named prerequisite before later phases"
 current_goal: "Establish a reviewable cancellation slice"
 success_criteria:
   - id: "AC-1 (illustrative)"

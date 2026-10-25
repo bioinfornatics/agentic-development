@@ -4,13 +4,13 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 NAMES = ("cycle", "research", "plan", "implement", "test", "judge", "iterate")
-FIELDS = ("step", "modified files", "next step", "current goal", "next goal", "closed tasks", "explanation")
+FIELDS = ("current goal {step: <cycle|research|plan|implement|test|judge|iterate>}", "roadmap position", "modified files", "closed tasks", "explanation")
 
 class PhaseFinalReport(unittest.TestCase):
     def test_every_entrypoint_requires_final_report(self):
         for name in NAMES:
             text = (ROOT / "skills" / name / "SKILL.md").read_text()
-            self.assertIn("End every phase delivery with the mandatory seven-field final report", text, name)
+            self.assertIn("apply their checklists and five-section report", text, name)
             self.assertIn("evaluate commit suitability after each confirmed closure", text, name)
 
     def test_final_fields_are_ordered_and_truthful(self):
@@ -24,19 +24,27 @@ class PhaseFinalReport(unittest.TestCase):
     def test_delivery_checklist_loads_both_contracts_before_handoff(self):
         for name in NAMES:
             text = (ROOT / "skills" / name / "SKILL.md").read_text()
-            self.assertIn("Before starting work, read", text)
-            self.assertIn("## Before delivery or handoff", text)
-            block = text.split("## Before delivery or handoff", 1)[1].split("## ", 1)[0]
-            self.assertIn("references/common-output.md", block)
-            self.assertIn("references/requirements-output.md", block)
-            self.assertIn("- [ ]", block)
-            self.assertLess(text.index("## Before delivery or handoff"), text.index("## Execute the handoff or stop"))
+            self.assertNotIn("Before starting work, read", text)
+            self.assertIn("references/requirements-baseline.md", text)
+            from test_cycle_disclosure import workflow_steps
+            steps = workflow_steps(text)
+            self.assertGreaterEqual(len(steps), 5, name)
+            self.assertEqual([number for number, _, _ in steps], list(range(1, len(steps) + 1)), name)
+            delivery = steps[-2][2]
+            self.assertRegex(delivery, r'After investigation and (?:immediately )?before drafting')
+            self.assertIn('including blocked or unchanged results', delivery)
+            for reference in ('references/common-output.md', 'references/requirements-output.md'):
+                self.assertIn(reference, delivery, name)
+                self.assertEqual(text.count(reference), 1, (name, reference))
+            self.assertEqual(steps[-1][1], 'Execute the handoff or stop')
+            self.assertNotIn('## Before delivery or handoff', text)
+            self.assertNotIn('## Execute the handoff or stop', text)
 
     def test_integration_aggregation_uses_current_final_report(self):
         import json
         cases = json.loads((ROOT / "integration/evals.json").read_text())["scenarios"]
         case = next(c for c in cases if c["id"] == "local-streaming-cycle")
-        self.assertIn("The coordinator aggregates seven-field final reports with phase-specific explanation.", case["assertions"])
+        self.assertIn("The coordinator aggregates five-section final reports with phase-specific explanation.", case["assertions"])
         self.assertNotIn("The coordinator aggregates six-field checkpoints.", case["assertions"])
 
     def test_closure_is_evaluation_not_permission(self):
@@ -44,6 +52,14 @@ class PhaseFinalReport(unittest.TestCase):
             text = (ROOT / "skills" / name / "references/beads-integration.md").read_text()
             for required in ("## Post-closure commit evaluation", "perform", "propose", "skip", "blocked", "already committed", "not permission", "Never auto-push", "readback"):
                 self.assertIn(required, text, name)
+            self.assertGreaterEqual(len(text.splitlines()), 25)
+            self.assertLessEqual(len(text.splitlines()), 40)
+            for required in ("bd prime", "failed claim", "workers return", "separate scoped authority", "not a CLI manual", "Read the complete output"):
+                self.assertIn(required, text, name)
+            self.assertNotIn("bd create --", text)
+            self.assertNotIn("bd close <", text)
+        refs = list((ROOT / "skills").glob("*/references/beads-integration.md"))
+        self.assertEqual(len({p.read_bytes() for p in refs}), 1)
 
 if __name__ == "__main__":
     unittest.main()

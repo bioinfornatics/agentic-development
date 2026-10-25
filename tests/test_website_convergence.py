@@ -11,6 +11,6 @@ class WebsiteConvergence(unittest.TestCase):
         self.assertIn("push:",paths[0].read_text())
     def test_local_canonical_reporting_preserved(self):
         text=(ROOT / "website/i18n/fr/cycle.md").read_text()
-        for field in ("step", "modified files", "next step", "current goal", "next goal", "closed tasks", "explanation"):
+        for field in ("current goal {step: …}", "roadmap position", "modified files", "closed tasks", "explanation"):
             self.assertIn("**"+field+"**",text)
         self.assertNotIn("Le bilan suit six",text)

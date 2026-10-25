@@ -31,7 +31,9 @@ class WorkflowSourceContracts(unittest.TestCase):
         text = (SKILLS / "implement/SKILL.md").read_text()
         self.assertIn("observed red", text)
         self.assertIn("independent oracle", text)
-        self.assertIn("## Red, green and refactor evidence", text)
+        self.assertLess(text.index("observed red", text.index("## Workflow")), text.index("3. [ ]"))
+        for token in ("symptom-specific red-capable reproduction", "rerun the same checks", "then refactor without changing behavior", "for instruction-only work, label checks static"):
+            self.assertIn(token, text)
 
     def test_missing_capability_fixture_is_not_a_known_defect(self):
         facts = json.loads((SKILLS / "iterate/evals/files/scenario-facts.json").read_text())
@@ -83,7 +85,7 @@ class WorkflowSourceContracts(unittest.TestCase):
             self.assertIn("references/common-output.md", p.read_text())
 
     def test_goals_behavior_and_measurable_nfr_formats(self):
-        text = (SKILLS / "plan/references/common-output.md").read_text()
+        text = (SKILLS / "plan/references/requirements-baseline.md").read_text()
         for expected in ("Goals", "Non-goals", "Given", "When", "Then",
                          "Metric", "Target", "Unit", "Workload", "Environment",
                          "Measurement", "Approval", "Do not invent"):
@@ -130,7 +132,10 @@ class WorkflowSourceContracts(unittest.TestCase):
             self.assertEqual(len({p.read_bytes() for p in paths}), 1)
         text = (SKILLS / "iterate/SKILL.md").read_text()
         self.assertIn("do not increment the round counter", text)
-        self.assertIn("Never start a correction after its budget is exhausted", text)
+        self.assertIn("Stop corrective execution on exhaustion or repeated no-progress", text)
+        self.assertIn("Never start after exhaustion or repeated no-progress", text)
+        self.assertIn("Default maximum: three authorized attempts", text)
+        self.assertIn("Zero-budget diagnosis/waiting remains allowed and consumes zero attempts", text)
 
 
 if __name__ == "__main__":

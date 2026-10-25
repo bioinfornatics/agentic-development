@@ -31,6 +31,6 @@ class IntegrationScope(unittest.TestCase):
 
     def test_cycle_follows_current_reporting_policy(self):
         text = (ROOT / 'docs/cycle.md').read_text()
-        for field in ('step','modified files','next step','current goal','next goal','closed tasks','explanation'):
+        for field in ('current goal {step: …}', 'roadmap position', 'modified files', 'closed tasks', 'explanation'):
             self.assertIn('**' + field + '**', text)
         self.assertIn('three authorized attempts',text)

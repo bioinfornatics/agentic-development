@@ -1,28 +1,37 @@
-# Research output and handoff contract v1.2.0
+# Research output and handoff contract v1.3.0
 
-Apply this contract only to research. Before work read it with the common-output.md
-contract directly linked from SKILL.md. Before delivery check both. The common
-seven-heading Markdown envelope remains mandatory; this reference adds this phase's
+Apply this contract only to research. Read after investigation and before drafting the
+phase response, with common-output.md directly linked from SKILL.md. Check both
+before delivery. Operational requirements are separate in requirements-baseline.md.
+The common five-heading Markdown envelope remains mandatory; this reference adds this phase's
 content, not another final report or permission to write artifacts.
 
 ### research
 
-Artifact: research.md. Headings: Question and task; Goals and Non-goals;
-Sources and affected paths; Observed findings; Hypotheses and discriminating probes;
-Options and risks; Requirement gaps (FR/NFR proposed or N/A); Recommendation and
+Report content: research report. Topics: Product context and requested outcome; Question and task;
+Goals and Non-goals; Context coverage/freshness and reuse rationale; Sources and affected paths; Investigation modes and findings; Optional state of the art (dated sources or N/A); Observed findings; Hypotheses and discriminating probes;
+Task reading references (locator, section/symbol, reason, order, identity and freshness); Delegated worker status and evidence limits; Options and risks; Requirement gaps (FR/NFR proposed or N/A); Recommendation and
 unresolved questions; Handoff. Separate observations from hypotheses and targets.
+
+Optional filename: `research.md` — not a required input or automatic write.
+Deliver inline by default; save only through the common output contract’s explicit-destination,
+permission and conflict checks. These topics belong inside explanation or its linked
+report, not additional outer response headings.
 
 ## Phase delivery checklist
 
 Complete the common delivery checklist, then verify these research obligations:
 
-- [ ] Separate source observations from hypotheses; identify affected paths and unresolved questions.
+- [ ] Evidence product purpose, users/outcome, current behavior and relevant constraints, or mark unknowns and their decision impact.
+- [ ] Verify context coverage/freshness before reuse; separate observations from hypotheses and identify affected paths and unresolved questions.
+- [ ] Tie WHERE/HOW/pattern findings to sources; when web freshness matters, report publication/version/access dates or missing capability, without inventing recency.
+- [ ] Verify worker completion separately from findings; retain curated reading references and authorized offline capture provenance/digests, or disclose unavailable persistence.
 - [ ] Include the phase artifact or verified locator, remaining criteria and handoff inputs.
 
 ## Worked handoff example
 
 Hypothetical missing-prerequisite example, not an executed run. Place this card
-inside the common report's explanation; retain all seven outer headings. Replace
+inside the common report's explanation; retain all five outer headings. Replace
 placeholders with verified values; use locators for long unchanged details.
 
 ~~~yaml
@@ -33,6 +42,7 @@ current_tasks:
   - id: "<verified Beads ID, or N/A if no tracker>"
     status: "<read-back status, or unknown>"
 phase: research
+roadmap_position: "Roadmap unavailable; resolve the named prerequisite before later phases"
 current_goal: "Establish a reviewable cancellation slice"
 success_criteria:
   - id: "AC-1 (illustrative)"
@@ -40,6 +50,8 @@ success_criteria:
     status: "unverified"
     evidence: "None: required prerequisite missing"
 phase_output:
+  product_context: "User cancellation outcome known; current journey requires source verification"
+  context_gaps: ["Current behavior and boundary constraints need primary sources"]
   observations: ["Supplied trace lacks a cancellation signal"]
   hypotheses: ["Adapter may not propagate cancellation"]
   open_questions: ["Which public seam discriminates this hypothesis?"]

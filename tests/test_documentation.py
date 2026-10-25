@@ -57,7 +57,11 @@ class DocumentationLayout(unittest.TestCase):
     def test_new_run_outputs_do_not_pollute_user_docs(self):
         text = (ROOT / 'skills/cycle/SKILL.md').read_text()
         self.assertNotIn('docs/agentic/slices/<slice-id>/', text)
-        self.assertIn('evidence/runs/<slice-id>/', text)
+        self.assertIn('Do not invent a default directory', text)
+        self.assertIn('verify the destination, conflicts', text)
+        policy = (ROOT / 'docs/AGENTS.md').read_text()
+        self.assertIn('Do not put execution logs', policy)
+        self.assertIn('Store run evidence outside this directory', policy)
 
     def test_current_doc_links_resolve(self):
         for p in [ROOT / 'README.md', *list((ROOT / 'docs').glob('*.md'))]:

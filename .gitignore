@@ -17,3 +17,10 @@ website/__pycache__/
 
 # Local interaction journal; roadmap snapshots use .beads/issues.jsonl
 /.beads/interactions.jsonl
+
+# Local embedded Beads state; keep issues.jsonl and shared configuration eligible
+/.beads/embeddeddolt/
+/.beads/backup/
+/.beads/.local_version
+/.beads/last-touched
+/.beads/metadata.json

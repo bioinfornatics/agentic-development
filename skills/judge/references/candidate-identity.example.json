@@ -1,0 +1,26 @@
+{
+  "format_version": 1,
+  "root": "/example/project",
+  "projection": "working-tree",
+  "scope": {
+    "include": [
+      "src"
+    ],
+    "exclude": [],
+    "environment": {
+      "python": "3.10",
+      "tool": "candidate_identity.py v1"
+    },
+    "criteria": "FR-example-v1"
+  },
+  "git": null,
+  "entries": [
+    {
+      "path": "src/example.txt",
+      "kind": "file",
+      "mode": "0644",
+      "sha256": "13550350a8681c84c861aac2e5b440161c2b33a3e4f302ac680ca5b686de48de"
+    }
+  ],
+  "candidate_id": "21a95f7141042b7b7938677a32e35e0215175d485f2123e063128bca19b68879"
+}

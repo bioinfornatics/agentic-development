@@ -24,7 +24,7 @@ Seven reusable Skills guide the work:
 Use the whole cycle or the phase your task needs. These are agent instructions,
 not an enforcement engine or a guarantee of correct software.
 
-## Dependencies and optional tools
+## Dependencies and workflow tools
 
 The Skills are Markdown instructions: use an agent that can load them and your
 project's own development tools. No package installation or build is required for the Skills.
@@ -33,12 +33,16 @@ project's own development tools. No package installation or build is required fo
 | --- | --- | --- |
 | Git | Preserve reviewable source history. | Inspect the diff, then commit verified changes when authorized. |
 | GitHub CLI (`gh`), optional | Manage GitHub reviews from the terminal. | Verify the account and repository; create or inspect PRs and check CI results. |
-| Beads (`bd`), optional | Recover task scope, ownership, dependencies, and progress across sessions. | Read and claim the task before editing; record results and the next action in the existing tracker. |
+| Beads (`bd`), required when the project uses it | Recover task scope, ownership, dependencies, and progress across sessions. | Read and claim the task before editing; record results and the next action in the existing tracker. |
 | Entire, optional | Capture session context and connect it to checkpoints. | Verify support for your agent and worktree; link only observed session/checkpoint IDs to the task. |
 
-Without these integrations, keep an explicit task brief and handoff. Entire does
-not replace task tracking or acceptance, and no tool grants permission to commit,
-push, or close tasks. Optional observation hooks require Python 3.10+ only.
+**Handoff:** user prompt → task with scope and acceptance criteria → execution →
+evidence, status, and next action recorded in Beads → restart prompt with task ID.
+The next session rereads the task: Beads is task truth, not the prompt or a notebook.
+Beads adoption is conditional; once chosen, missing access or a failed claim blocks
+implementation, not permission to continue untracked. Without Beads, agree another
+tracking approach. Entire captures context, not task truth or acceptance; no tool
+grants permission to commit, push, or close tasks.
 See the [integration guide](https://github.com/bioinfornatics/agentic-development/blob/develop/docs/integrations.md) for setup checks and boundaries.
 
 ## Learn more

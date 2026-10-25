@@ -23,13 +23,16 @@ class DocumentationLayout(unittest.TestCase):
         for name in ['getting-started', 'cycle', 'integrations', 'contributing']:
             self.assertIn('docs/' + name + '.md', text)
 
-    def test_readme_explains_optional_workflow_tools(self):
+    def test_readme_explains_workflow_tools_and_mandatory_beads_handoff(self):
         text = (ROOT / 'README.md').read_text()
-        self.assertIn('## Dependencies and optional tools', text)
+        self.assertIn('## Dependencies and workflow tools', text)
         for tool in ['GitHub CLI', 'Beads', 'Entire']:
             self.assertIn(tool, text)
-        self.assertEqual(text.count(', optional |'), 3)
-        self.assertIn('not replace task tracking or acceptance', text)
+        self.assertEqual(text.count(', optional |'), 2)
+        self.assertIn('required when the project uses it', text)
+        self.assertIn('missing access or a failed claim blocks', text)
+        self.assertIn('The next session rereads the task', text)
+        self.assertIn('restart prompt with task ID', text)
         self.assertIn('observed session/checkpoint IDs', text)
 
     def test_repository_language_policy_requires_explicit_exceptions(self):

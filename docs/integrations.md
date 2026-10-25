@@ -1,9 +1,16 @@
 # Connecting tasks, commits and sessions
 
-These integrations are optional. Verify their tools and permissions in the
-current project; their presence proves neither activation nor compatibility.
+Adopting these integrations is conditional. In a project using Beads, its task
+tracking contract is mandatory; missing access or a failed claim blocks implementation.
+Verify tools and permissions; presence proves neither activation nor compatibility.
 
 ## Beads: recover the work
+
+Turn the user prompt into a task with objective, scope, criteria and restart context
+(or reuse an existing matching task), with authorized tracker writes. After execution,
+record evidence, status, blockers and next action in Beads. Give the next session a
+restart prompt containing the verified task ID; it must reread the task before work.
+The prompt transfers intent and references, not authoritative task status.
 
 In a project using Beads, consult local guidance, the task, its owner
 and dependencies before writing. Verify the result of claiming it;

@@ -74,15 +74,16 @@ class WorkflowSourceContracts(unittest.TestCase):
         self.assertIn("acceptance-bound checks", text)
         self.assertIn("Preliminary near-change checks", text)
 
-    def test_requirements_output_contract_is_direct_and_identical(self):
-        refs = list(SKILLS.glob("*/references/requirements-output.md"))
+    def test_common_output_contract_is_direct_and_identical(self):
+        refs = list(SKILLS.glob("*/references/common-output.md"))
         self.assertEqual(len(refs), 7)
         self.assertEqual(len({p.read_bytes() for p in refs}), 1)
         for p in SKILLS.glob("*/SKILL.md"):
             self.assertIn("references/requirements-output.md", p.read_text())
+            self.assertIn("references/common-output.md", p.read_text())
 
     def test_goals_behavior_and_measurable_nfr_formats(self):
-        text = (SKILLS / "plan/references/requirements-output.md").read_text()
+        text = (SKILLS / "plan/references/common-output.md").read_text()
         for expected in ("Goals", "Non-goals", "Given", "When", "Then",
                          "Metric", "Target", "Unit", "Workload", "Environment",
                          "Measurement", "Approval", "Do not invent"):
@@ -90,22 +91,21 @@ class WorkflowSourceContracts(unittest.TestCase):
         self.assertIn("research question", text)
         self.assertIn("N/A", text)
 
-    def test_handoff_has_fixed_notification_fields(self):
-        text = (SKILLS / "cycle/references/requirements-output.md").read_text()
-        for expected in ("## 1. Objective and scope", "## 2. Result",
-                         "## 3. Changes and evidence", "## 4. Verdict and uncertainties",
-                         "## 5. Transition", "## 6. Next action and restart",
-                         "Files", "Branches", "Commits", "Session recommendation",
-                         "Session action", "none", "failed", "externally observed"):
-            self.assertIn(expected, text)
-
-    def test_phase_output_formats_are_explicit(self):
-        text = (SKILLS / "cycle/references/requirements-output.md").read_text()
-        for name in ("cycle", "research", "plan", "implement",
-                     "test", "judge", "iterate"):
-            self.assertIn("### " + name, text)
-        self.assertIn("Unchanged criteria", text)
-        self.assertIn("do not silently lower", text)
+    def test_phase_output_formats_are_specific_and_actionable(self):
+        bodies = []
+        names = ("cycle", "research", "plan", "implement", "test", "judge", "iterate")
+        for name in names:
+            text = (SKILLS / name / "references/requirements-output.md").read_text()
+            bodies.append(text)
+            for token in ("### " + name, "## Phase delivery checklist", "## Worked handoff example",
+                          "phase: " + name, "review_order:", "success_criteria:", "restart:"):
+                self.assertIn(token, text)
+            for other in names:
+                if other != name:
+                    self.assertNotIn("### " + other + chr(10), text)
+        self.assertEqual(len(set(bodies)), 7)
+        self.assertIn("do not silently lower", (SKILLS / "cycle/references/common-output.md").read_text())
+        self.assertIn("Unchanged criteria", (SKILLS / "iterate/references/requirements-output.md").read_text())
 
     def test_task_structure_is_in_the_state_template(self):
         text = (SKILLS / "cycle/assets/cycle-state.md").read_text()

@@ -1,6 +1,1 @@
-{
-  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
-  "name": "agentic-development",
-  "version": "0.5.0",
-  "description": "Evidence-driven agentic development with a steerable Research Plan Implement Test Judge Iterate cycle"
-}
+{"$schema":"https://agent-plugins.org/schemas/1.0.0/plugin.schema.json","description":"Evidence-driven agentic development with a steerable Research Plan Implement Test Judge Iterate cycle","extensions":{"io.github.bioinfornatics.agentic-development.runtime":{"dependencies":[],"entrypoint":"scripts/observe.pyz","install_build":false,"interpreter":"Python >=3.10","language":"python","manifest":"runtime.json","mode":"stdlib-zipapp","version":1}},"name":"agentic-development","version":"0.5.0"}

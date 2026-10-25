@@ -49,12 +49,10 @@ already loaded; these internal steps are not additional development-cycle phases
    assumptions. A request to implement this slice authorizes its scoped code changes,
    not Git commits, remote operations, production actions or unrelated work.
 
-   If the target repository uses Beads, read [the Beads integration](references/beads-integration.md)
-   before choosing work or mutating shared task state. Recover context when stale,
-   verify issue status and claim before implementation, and keep Beads as task
-   truth. Artifact plans and handoffs are not a competing tracker. Follow the
-   reference for missing tools, failed claims, durable follow-up and closure;
-   evaluate commit suitability after each confirmed closure, without inferring Git authority.
+   If the repository uses Beads, read [the Beads integration](references/beads-integration.md)
+   before choosing work or mutating task state. Use fresh `bd prime` guidance;
+   retain task ownership, readback and phase gates;
+   evaluate commit suitability after each confirmed closure without inferring Git authority.
 
    If Beads is explicitly chosen but not yet initialized, read [controlled Beads initialization](references/beads-initialization.md)
    before any setup. It documents minimal agent integration with reviewed optional Git hooks and

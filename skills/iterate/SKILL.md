@@ -38,12 +38,10 @@ These stages do not authorize additional phases or side effects.
    resuming artifact claims or executing consequential actions. Recorded permissions
    are historical unless their current authoritative source and scope are verified.
 
-   If the target repository uses Beads, read [the Beads integration](references/beads-integration.md)
-   before choosing work or mutating shared task state. Recover context when stale,
-   verify issue status and claim before implementation, and keep Beads as task
-   truth. Artifact plans and handoffs are not a competing tracker. Follow the
-   reference for missing tools, failed claims, durable follow-up and closure;
-   evaluate commit suitability after each confirmed closure, without inferring Git authority.
+   If the repository uses Beads, read [the Beads integration](references/beads-integration.md)
+   before choosing work or mutating task state. Use fresh `bd prime` guidance;
+   retain task ownership, readback and phase gates;
+   evaluate commit suitability after each confirmed closure without inferring Git authority.
 
    Read [the communication contract](references/communication-contract.md) before preparing
    the first checkpoint or a Git/session transition, for ownership, transition, evidence

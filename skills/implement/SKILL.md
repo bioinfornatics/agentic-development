@@ -30,12 +30,10 @@ earlier than the nominal step. Reuse unchanged guidance already loaded.
 
    Verify repository root, local instructions, tools and task goal.
 
-   If the target repository uses Beads, read [the Beads integration](references/beads-integration.md)
-   before choosing work or mutating shared task state. Recover context when stale,
-   verify issue status and claim before implementation, and keep Beads as task
-   truth. Artifact plans and handoffs are not a competing tracker. Follow the
-   reference for missing tools, failed claims, durable follow-up and closure;
-   evaluate commit suitability after each confirmed closure, without inferring Git authority. Read back permitted updates; one owner manages task state.
+   If the repository uses Beads, read [the Beads integration](references/beads-integration.md)
+   before choosing work or mutating task state. Use fresh `bd prime` guidance;
+   retain task ownership, readback and phase gates;
+   evaluate commit suitability after each confirmed closure without inferring Git authority.
 
    Read [the authorization policy](references/authorization-policy.md) before
    resuming artifact claims or executing consequential actions. Recorded permissions
@@ -110,6 +108,17 @@ earlier than the nominal step. Reuse unchanged guidance already loaded.
 
    When work was delegated, verify each worker's authorized scope, exclusive writable paths, invocation/completion status, source identity and result locator against the actual diff and checks. Resolve or expose conflicting results; incomplete or failed work remains provisional. Delegation is not required.
 
+   After each coherent verified unit, evaluate its commit boundary before starting a distinct objective.
+   Use the approved plan and verified task IDs, with epic/US context when available.
+   Commit one reviewable outcome, not one commit per file or task: a task may need
+   more than one commit, and closely related tasks may share a coherent commit.
+   Keep unrelated outcomes separate; record scope and a proposed message while the
+   reason is fresh. Evaluate incomplete work as WIP, not verified or accepted.
+   If committing is appropriate and current scoped authority covers the action,
+   apply step 5 now rather than accumulate unrelated changes until final handoff.
+   Otherwise propose the message and retain the owned/preserved-hunk ledger; seek
+   a decision before combining an objective that would obscure the existing scope.
+
 5. [ ] **Check candidate provenance and any separate commit boundary**
 
    Match the change ledger to the authorized plan and criterion IDs; confirm
@@ -118,6 +127,11 @@ earlier than the nominal step. Reuse unchanged guidance already loaded.
    Check recorded observations: requirement-derived observed red before executable production changes, the smallest green change and same-check refactor reruns; for instruction-only work, label checks static. Retain actual commands/results, relevant regressions and any UI journey/capture limits.
 
    Keep missing evidence, public-seam access, tools, permissions and required review/independence explicit; passing focused checks is not acceptance. Verify candidate/check provenance and identify what remains unverified. Freeze exact handoff candidate.
+
+   Describe the actual outcome and scope using the project message convention,
+   with verified task IDs when the tracker applies. Use Gitmoji only when the project convention approves it;
+   the emoji never replaces meaningful text or proves task completion. Choose the
+   type/emoji from the actual staged change, not from a parent epic or intended work.
 
    A commit is optional and separately authorized. Before an authorized commit,
    announce coverage, checks/limits, exact owned paths/hunks and message; inspect

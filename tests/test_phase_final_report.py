@@ -52,6 +52,14 @@ class PhaseFinalReport(unittest.TestCase):
             text = (ROOT / "skills" / name / "references/beads-integration.md").read_text()
             for required in ("## Post-closure commit evaluation", "perform", "propose", "skip", "blocked", "already committed", "not permission", "Never auto-push", "readback"):
                 self.assertIn(required, text, name)
+            self.assertGreaterEqual(len(text.splitlines()), 25)
+            self.assertLessEqual(len(text.splitlines()), 40)
+            for required in ("bd prime", "failed claim", "workers return", "separate scoped authority", "not a CLI manual", "Read the complete output"):
+                self.assertIn(required, text, name)
+            self.assertNotIn("bd create --", text)
+            self.assertNotIn("bd close <", text)
+        refs = list((ROOT / "skills").glob("*/references/beads-integration.md"))
+        self.assertEqual(len({p.read_bytes() for p in refs}), 1)
 
 if __name__ == "__main__":
     unittest.main()

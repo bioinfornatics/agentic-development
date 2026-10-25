@@ -29,12 +29,10 @@ earlier than the nominal step. Reuse unchanged guidance already loaded.
 
    Verify repository root, local instructions, tools and task goal.
 
-   If the target repository uses Beads, read [the Beads integration](references/beads-integration.md)
-   before choosing work or mutating shared task state. Recover context when stale,
-   verify issue status and ownership/claim before verification, and keep Beads as task
-   truth. Artifact plans and handoffs are not a competing tracker. Follow the
-   reference for missing tools, failed claims, durable follow-up and closure;
-   evaluate commit suitability after each confirmed closure, without inferring Git authority. Read back permitted updates; one owner manages task state.
+   If the repository uses Beads, read [the Beads integration](references/beads-integration.md)
+   before choosing work or mutating task state. Use fresh `bd prime` guidance;
+   retain task ownership, readback and phase gates;
+   evaluate commit suitability after each confirmed closure without inferring Git authority.
 
    Read [the authorization policy](references/authorization-policy.md) before
    resuming artifact claims or executing consequential actions. Recorded permissions

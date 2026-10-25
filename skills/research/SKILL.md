@@ -38,9 +38,9 @@ than their numbered stage. These are not additional development-cycle phases.
    - Verify root and local instructions, requested outcome, available roadmap/task and
      sources. Missing roadmap information is explicit, not permission to invent goals.
    - If the repository uses Beads, read [the Beads integration](references/beads-integration.md)
-     before choosing work or mutating task state. Recover stale context, verify task
-     status and ownership, and keep Beads as task truth. Read back permitted updates;
-     evaluate commit suitability after each confirmed closure, without inferring Git authority.
+     before choosing work or mutating task state. Use fresh `bd prime` guidance;
+     retain task ownership, readback and phase gates;
+     evaluate commit suitability after each confirmed closure without inferring Git authority.
    - Before resuming artifact claims or executing consequential actions, read
      [the authorization policy](references/authorization-policy.md); verify the current
      authority and allowed probe effects, not historical permissions alone. Research

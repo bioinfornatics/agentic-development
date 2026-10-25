@@ -57,6 +57,7 @@ These stages do not authorize additional phases or side effects.
    and explicitly defined output-only exclusions. Read [the review policy](references/review-policy.md)
    before agreeing acceptance, judging or closing a task/US. Independence and closure
    requirements are set before implementation, not waived by a missing capability.
+   For exact-candidate proof, use the contained [capture/validate/compare CLI](scripts/candidate_identity.py) with the [scope example](references/candidate-scope.example.json); consult the [manifest schema](references/candidate-identity.schema.json) and [manifest example](references/candidate-identity.example.json) when preparing or validating its JSON. Follow the candidate procedure above; equality is not acceptance.
 
    Read the available judgment or failed-check evidence, current candidate and
    verified task scope. Consult the roadmap when it exists; a missing roadmap or

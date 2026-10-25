@@ -65,6 +65,7 @@ earlier than the nominal step. Reuse unchanged guidance already loaded.
    Read [candidate identity](references/candidate-identity.md) before planning checks,
    freezing inputs or reusing evidence; include staged, untracked and binary inputs
    and explicitly defined output-only exclusions. 
+   For exact-candidate proof, use the contained [capture/validate/compare CLI](scripts/candidate_identity.py) with the [scope example](references/candidate-scope.example.json); consult the [manifest schema](references/candidate-identity.schema.json) and [manifest example](references/candidate-identity.example.json) when preparing or validating its JSON. Follow the candidate procedure above; equality is not acceptance.
 
    Before committing or drafting a proposed, performed, failed or externally observed commit report, read [the commit report](references/commit-report.md). Before drafting a planned session end, explicit wrap-up or recommended context transition report, read [the session report](references/session-report.md).  These conditions govern earlier boundaries too.
 

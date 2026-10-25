@@ -80,6 +80,7 @@ already loaded; these internal steps are not additional development-cycle phases
    Read [candidate identity](references/candidate-identity.md) when planning checks,
    freezing inputs or reusing evidence; include staged, untracked and binary inputs
    and explicitly defined output-only exclusions.
+   For exact-candidate proof, use the contained [capture/validate/compare CLI](scripts/candidate_identity.py) with the [scope example](references/candidate-scope.example.json); consult the [manifest schema](references/candidate-identity.schema.json) and [manifest example](references/candidate-identity.example.json) when preparing or validating its JSON. Follow the candidate procedure above; equality is not acceptance.
 
    Read [the state template](assets/cycle-state.md)
    when persisting or recovering a slice artifact or preparing a handoff, not for ordinary

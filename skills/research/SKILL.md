@@ -108,6 +108,7 @@ than their numbered stage. These are not additional development-cycle phases.
      and comparing solutions. Search the repository first, compare reuse/extend/build
      and disclose unavailable channels. Reuse a current evidence-backed decision; this
      investigation is not installation permission.
+   For exact-candidate proof, use the contained [capture/validate/compare CLI](scripts/candidate_identity.py) with the [scope example](references/candidate-scope.example.json); consult the [manifest schema](references/candidate-identity.schema.json) and [manifest example](references/candidate-identity.example.json) when preparing or validating its JSON. Follow the candidate procedure above; equality is not acceptance.
 
 4. [ ] **Integrate evidence and prepare the decision**
 

@@ -76,6 +76,14 @@ requirements are set before implementation, not waived by a missing capability.
    if persistence is unavailable. Include question, sources, findings, options,
    recommended scope, unknowns and evidence-producing next actions.
 
+## Conditional reuse decision
+
+For a new utility, dependency, integration or capability that may already exist,
+read [the reuse decision procedure](references/reuse-decision.md). Search the
+repository first, compare reuse/extend/build options and disclose unavailable
+channels before handing a justified decision to Plan. Do not repeat a current
+evidence-backed decision or treat research as installation permission.
+
 ## Gate and failure behavior
 
 Enough grounded information to plan is the exit gate, not exhaustive knowledge.

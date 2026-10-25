@@ -97,6 +97,14 @@ requirements are set before implementation, not waived by a missing capability.
 6. Return the full checkpoint: candidate, exact acceptance scope, open findings,
    transition to closure or Iterate, and immediate next action.
 
+## Conditional finding verification
+
+For code review or specialist findings, read [finding verification](references/finding-verification.md)
+before publishing claims. Check surrounding context and reachable failure paths,
+separate observed from inferred evidence, justify severity by impact and consolidate
+duplicates. Keep mandatory defects and missing-evidence gates; a filter against
+unsupported findings is not permission to suppress a required acceptance failure.
+
 ## Exit gate
 
 Accept only an exact candidate with every mandatory criterion evidenced and no

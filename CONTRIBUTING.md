@@ -56,6 +56,23 @@ Do not use GitHub Merge for the promotion request. Source changes enter main onl
 through the generated projection. Approval and branch-protection enforcement are
 separate repository settings; this policy and read-only CI do not configure them.
 
+## Generate and verify a distribution candidate
+
+From a clean committed development source checkout, use a new destination outside
+the repository:
+
+```sh
+python3 -B tools/production.py candidate /absolute/new/product
+python3 -B tools/production.py verify /absolute/new/product
+python3 -B tools/production.py smoke /absolute/new/product
+```
+
+The candidate binds the exact source commit/tree and rejects dirty or untracked
+source and uncommitted operational resources. `project` remains a working-tree
+preview. Both keep `release_ready=false`: integrity is not review or installation
+approval. Verify candidate hashes after isolated Git install/update and before
+publication. These commands never publish or mutate branches.
+
 ## Current migration limits
 
 The public development branch is established from the existing public main history.

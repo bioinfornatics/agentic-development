@@ -31,3 +31,10 @@ jobs:
         run: test "$BASE_BRANCH" = development
       - name: Check source contracts and handler behavior
         run: python -B -m unittest discover -s tests -v
+      - name: Check contained operational inventory
+        run: python -B tests/payload_inventory.py .
+      - name: Build and verify committed-source candidate
+        run: |
+          python -B tools/production.py candidate "$RUNNER_TEMP/product"
+          python -B tools/production.py verify "$RUNNER_TEMP/product"
+          python -B tools/production.py smoke "$RUNNER_TEMP/product"

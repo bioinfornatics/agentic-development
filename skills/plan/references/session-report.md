@@ -1,5 +1,8 @@
 ## Mandatory session-end report and restart prompt
 
+Contract ID: agentic-development/session-report
+Contract version: 1.0.0
+
 Before a planned session end, explicit wrap-up request or recommended context
 transition emit the full session summary. A normal phase checkpoint does not
 mean the session ended. Announce foreseeable transitions early. Summarize the

@@ -1,0 +1,12 @@
+{
+  "include": [
+    "src",
+    "tests"
+  ],
+  "exclude": [],
+  "environment": {
+    "python": "REPLACE with observed version",
+    "tools": "REPLACE with relevant versions and non-secret configuration identity"
+  },
+  "criteria": "REPLACE with approved criteria version/digest"
+}

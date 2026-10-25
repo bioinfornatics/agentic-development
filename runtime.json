@@ -1,0 +1,1 @@
+{"dependencies":[],"entrypoint":"scripts/observe.pyz","format_version":1,"install_build":false,"interpreter":"Python >=3.10","language":"python","mode":"stdlib-zipapp","native":"not-promised","source_sha256":"8221f476aeae64783e81e9db503cb496d76891db0853b1b3a924eb05bb918359"}

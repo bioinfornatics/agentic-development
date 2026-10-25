@@ -1,0 +1,48 @@
+name: Production distribution checks
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  distribution:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.13'
+      - name: Freeze distribution and resolve exact source
+        id: product
+        run: |
+          mkdir "$RUNNER_TEMP/product"
+          git archive HEAD | tar -x -C "$RUNNER_TEMP/product"
+          python - <<'SCRIPT'
+          import json, os, re
+          from pathlib import Path
+          receipt = json.loads(Path('distribution.json').read_text())
+          sha = receipt['source_head']
+          assert receipt['source_state'] == 'committed-source-candidate'
+          assert re.fullmatch('[0-9a-f]{40}', sha)
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              print('source_sha=' + sha, file=output)
+          SCRIPT
+      - name: Check out declared source without retained credentials
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ steps.product.outputs.source_sha }}
+          path: _source
+          persist-credentials: false
+      - name: Verify inventory, runtime and exact-source rebuild
+        run: |
+          python -B _source/tools/production.py verify "$RUNNER_TEMP/product"
+          python -B _source/tools/production.py smoke "$RUNNER_TEMP/product"
+          python -B _source/tools/production.py candidate "$RUNNER_TEMP/rebuilt"
+          diff -qr "$RUNNER_TEMP/product" "$RUNNER_TEMP/rebuilt"

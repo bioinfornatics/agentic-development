@@ -16,7 +16,7 @@ class BranchPolicy(unittest.TestCase):
 
     def test_source_ci_checks_exact_head_without_write_permissions(self):
         text = (ROOT / ".github/workflows/source-checks.yml").read_text()
-        for term in ("branches: [development, develop]", "contents: read",
+        for term in ("branches: [develop]", "contents: read",
                      "github.event.pull_request.head.sha || github.sha",
                      "persist-credentials: false",
                      "python -B -m unittest discover -s tests -v"):
@@ -28,6 +28,11 @@ class BranchPolicy(unittest.TestCase):
             self.assertRegex(action, r"^actions/[a-z-]+@[0-9a-f]{40}$")
 
 class DevelopLinks(unittest.TestCase):
+    def test_old_branch_is_not_a_ci_target(self):
+        text = (ROOT / ".github/workflows/source-checks.yml").read_text()
+        self.assertNotIn("development", text.lower())
+        self.assertIn('run: test "$BASE_BRANCH" = develop', text)
+
     def test_generated_readme_targets_develop(self):
         text = (ROOT / "tools/production.py").read_text()
         self.assertIn("/tree/develop", text)

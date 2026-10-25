@@ -62,6 +62,16 @@ class ProductionProjection(unittest.TestCase):
             os.mkfifo(pipe)
             self.assertNotEqual(self.call("verify").returncode, 0)
 
+    def test_extra_empty_directories_are_rejected(self):
+        self.assertEqual(self.call("project").returncode, 0)
+        for name in ("private-empty", "skills/research/references/private-empty"):
+            with self.subTest(directory=name):
+                extra = self.out / name
+                extra.mkdir()
+                self.assertNotEqual(self.call("verify").returncode, 0)
+                extra.rmdir()
+        self.assertEqual(self.call("verify").returncode, 0)
+
     def test_unsafe_destination_is_rejected_before_write(self):
         target = Path(self.temp.name) / "target"
         target.mkdir()

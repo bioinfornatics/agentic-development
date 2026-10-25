@@ -149,6 +149,21 @@ class PayloadInventory(unittest.TestCase):
                         self.assertEqual(result.stdout, b"")
                         self.assertLessEqual(len(result.stderr), 2048)
 
+    @unittest.skipUnless(hasattr(__import__("os"), "mkfifo"), "FIFO unavailable")
+    def test_special_operational_resource_is_rejected_without_reading(self):
+        import os
+        for directory in ("references", "scripts", "assets"):
+            with self.subTest(directory=directory):
+                pipe = self.root / "skills/review" / directory / "pipe"
+                pipe.parent.mkdir(exist_ok=True)
+                os.mkfifo(pipe)
+                result = self.run_tool()
+                self.assertNotEqual(result.returncode, 0)
+                self.assertEqual(result.stdout, b"")
+                self.assertLessEqual(len(result.stderr), 2048)
+                pipe.unlink()
+        self.assertEqual(self.run_tool().returncode, 0)
+
     def test_real_repository_inventory_excludes_eval_and_evidence(self):
         result = subprocess.run([sys.executable, "-B", str(TOOL), str(ROOT)], capture_output=True, timeout=5)
         self.assertEqual(result.returncode, 0, result.stderr)

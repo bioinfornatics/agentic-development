@@ -50,6 +50,19 @@ class CommittedProjection(unittest.TestCase):
         (self.root / "unknown.txt").write_text("unknown")
         self.assertNotEqual(self.call().returncode, 0)
         self.assertFalse(self.out.exists())
+    @unittest.skipUnless(hasattr(__import__("os"), "mkfifo"), "FIFO unavailable")
+    def test_ignored_special_resource_rejects_before_destination(self):
+        import os
+        (self.root / ".gitignore").write_text("/skills/research/assets/pipe" + chr(10))
+        self.git("add", ".gitignore")
+        self.git("commit", "-qm", "ignore special probe")
+        pipe = self.root / "skills/research/assets/pipe"
+        pipe.parent.mkdir(exist_ok=True)
+        os.mkfifo(pipe)
+        self.assertEqual(self.git("status", "--porcelain", "--untracked-files=all"), "")
+        self.assertNotEqual(self.call().returncode, 0)
+        self.assertFalse(self.out.exists())
+
     def test_ignored_operational_resource_is_not_committed_evidence(self):
         (self.root / ".gitignore").write_text("/skills/research/assets/hidden.txt\n")
         self.git("add", ".gitignore")

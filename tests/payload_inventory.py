@@ -87,6 +87,8 @@ def inventory(root):
                     raise InventoryError("resource-root-not-directory")
                 for resource in sorted(resources.rglob("*")):
                     contained(resource, skill)
+                    if not resource.is_file() and not resource.is_dir():
+                        raise InventoryError("special-resource-not-supported")
                     if any(part in ("AGENTS.md", "evals", "__pycache__", "evidence", "research", "integration")
                            for part in resource.relative_to(skill).parts):
                         continue

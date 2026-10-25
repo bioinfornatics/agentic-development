@@ -24,14 +24,22 @@ def plain(path):
 
 def records(root):
     result = []
+    directories = set()
     for path in sorted(root.rglob("*")):
         plain(path)
         if not path.is_file() and not path.is_dir():
             raise ValueError("special node")
+        if path.is_dir():
+            directories.add(path.relative_to(root))
         if path.is_file() and path != root / "distribution.json":
             result.append({"path": path.relative_to(root).as_posix(),
                            "mode": stat.S_IMODE(path.stat().st_mode),
                            "sha256": hashlib.sha256(path.read_bytes()).hexdigest()})
+    required_directories = {parent for entry in result
+                            for parent in Path(entry["path"]).parents
+                            if parent != Path(".")}
+    if directories != required_directories:
+        raise ValueError("unexpected directory")
     return result
 
 

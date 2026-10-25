@@ -46,8 +46,8 @@ def probe(candidate, goose):
             return result.stdout
 
         version = run(executable, ["--version"]).strip()
-        if version != "1.47.0":
-            raise ValueError("Probe requires verified Goose 1.47.0")
+        if version != "1.55.0":
+            raise ValueError("Probe requires verified Goose 1.55.0")
         git = lambda *args: run("git", list(args), repo)
         git("init", "-q")
         git("config", "user.name", "Distribution QA")

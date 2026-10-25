@@ -42,6 +42,15 @@ class SkillOperability(unittest.TestCase):
         self.assertNotIn('do not assume Goose support', text)
 
 
+class ProgressiveCommits(unittest.TestCase):
+    def test_coherent_units_have_task_bound_commit_decisions(self):
+        text = (ROOT / 'skills/implement/SKILL.md').read_text()
+        batch = text.split('4. [ ]', 1)[1].split('5. [ ]', 1)[0]
+        for rule in ('before starting a distinct objective', 'verified task IDs', 'epic/US', 'not one commit per file or task', 'more than one commit'):
+            self.assertIn(rule, batch)
+        for rule in ('Gitmoji only when the project convention approves it', 'meaningful text', 'current scoped authority', 'propose the message', 'Never auto-push'):
+            self.assertIn(rule, text)
+
 class ShortSkillNames(unittest.TestCase):
     def test_exact_seven_short_entrypoints(self):
         names = {'cycle', 'research', 'plan', 'implement', 'test', 'judge', 'iterate'}

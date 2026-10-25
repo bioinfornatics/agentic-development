@@ -1,5 +1,8 @@
 # Communication contract v1.7.0
 
+Contract ID: agentic-development/communication-contract
+Contract version: 1.7.0
+
 Mandatory for every phase. This is an instruction contract, not a tool firewall.
 Respond in the user's language. Keep evidence and decisions inspectable; do not
 request or expose private reasoning. Use explicit unknown values rather than

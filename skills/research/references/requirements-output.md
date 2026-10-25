@@ -8,10 +8,15 @@ content, not another final report or permission to write artifacts.
 
 ### research
 
-Artifact: research.md. Headings: Product context and requested outcome; Question and task;
+Report content: research report. Topics: Product context and requested outcome; Question and task;
 Goals and Non-goals; Context coverage/freshness and reuse rationale; Sources and affected paths; Investigation modes and findings; Optional state of the art (dated sources or N/A); Observed findings; Hypotheses and discriminating probes;
 Task reading references (locator, section/symbol, reason, order, identity and freshness); Delegated worker status and evidence limits; Options and risks; Requirement gaps (FR/NFR proposed or N/A); Recommendation and
 unresolved questions; Handoff. Separate observations from hypotheses and targets.
+
+Optional filename: `research.md` — not a required input or automatic write.
+Deliver inline by default; save only through the common output contract’s explicit-destination,
+permission and conflict checks. These topics belong inside explanation or its linked
+report, not additional outer response headings.
 
 ## Phase delivery checklist
 

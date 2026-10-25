@@ -8,12 +8,17 @@ content, not another final report or permission to write artifacts.
 
 ### iterate
 
-Artifact: iteration.md. Headings: Finding and task; Goals and Non-goals;
+Report content: iteration report. Topics: Finding and task; Goals and Non-goals;
 Unchanged criteria (FR/NFR IDs); Current candidate and retained proof;
 Cause hypothesis and reproduction; Capability/budget decision; Authorized correction;
 Observed result and invalidated evidence; Next phase and restart conditions.
 Record counter before/after, selective proof invalidation and original GWT/NFR rerun.
 Capability-only waiting consumes zero attempts; no weaker criteria to make tests pass.
+
+Optional filename: `iteration.md` — not a required input or automatic write.
+Deliver inline by default; save only through the common output contract’s explicit-destination,
+permission and conflict checks. These topics belong inside explanation or its linked
+report, not additional outer response headings.
 
 ## Phase delivery checklist
 

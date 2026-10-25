@@ -27,9 +27,21 @@ for tracker writes, Git operations, installation or production effects.
 
 ## Workflow
 
-Read each reference before its governed action when its local condition first applies,
-even if that occurs earlier than the step containing its link. Reuse unchanged guidance
-already loaded; these internal steps are not additional development-cycle phases.
+A phase report is the result of this Skill, not a file to find before execution.
+Collect its facts during work; deliver them inline by default at the delivery step.
+Save a report only with an explicit destination and permission to write, following
+the common output contract loaded at that step. Required evidence inputs and tracker
+updates retain their own gates; an inline response does not replace task truth.
+
+Apply contracts before their governed actions, even before the nominal step
+containing the link when its condition arises earlier. Load a reference only when its
+applicable content is absent, incomplete or outdated in the active context; reuse
+identical available content from another Skill's contained copy. The same ID/version
+with different content is a conflict, not proof of identity: resolve it before the
+affected action. A previous read or loaded marker does not prove availability.
+After compaction, a new session or worker, recover required unavailable instructions;
+on workspace changes revalidate applicability. Reusing authorization guidance never renews
+a previous permission. This is an agent instruction, not a runtime cache.
 
 1. [ ] **Verify planning inputs and authority**
 
@@ -38,28 +50,31 @@ already loaded; these internal steps are not additional development-cycle phases
    speculative implementation. Verify approval status and inspect root, branch,
    dirty files and dependencies; do not invent roadmap approval or accepted outcomes.
 
-   Read [the communication contract](references/communication-contract.md) when preparing
+   Apply [the communication contract](references/communication-contract.md) when preparing
    the first checkpoint or a Git/session transition, for ownership, transition, evidence
    and conditional UI reporting safeguards. Apply these safeguards in standalone use too.
    Respond in the user's language. Verify tools and permissions; unavailable
    capabilities produce an explicit blocker, never simulated execution evidence.
    Use the coordinator's verified slice state when available; do not fabricate execution or acceptance.
 
-   If the repository uses Beads, read [the Beads integration](references/beads-integration.md)
+   Before creating or repairing task descriptions or acceptance criteria, apply
+   [ticket authoring](references/ticket-authoring.md); verify readable purpose,
+   criteria, ordered inputs and restart context without duplicating execution history.
+
+   If the repository uses Beads, apply [the Beads integration](references/beads-integration.md)
    before choosing work or mutating task state. Use fresh `bd prime` guidance;
    retain task ownership, readback and phase gates;
    evaluate commit suitability after each confirmed closure without inferring Git authority.
 
-   Read [the authorization policy](references/authorization-policy.md) before
-   resuming artifact claims or executing consequential actions. Recorded permissions
-   are historical unless their current authoritative source and scope are verified.
+   Apply [the authorization policy](references/authorization-policy.md) before
+   resuming artifact claims or executing consequential actions; verify current
+   permission for the intended action, not historical approval.
 
 2. [ ] **Define the requested outcome and scope**
 
-   Read [the requirements baseline](references/requirements-baseline.md) before
-   defining or changing scope, criteria or verification, and before implementation.
-   Reuse verified Goals/Non-goals, FR/GWT and applicable quantified NFRs; do not
-   invent targets. Investigation needs a bounded question, not a completed plan.
+   Apply [the requirements baseline](references/requirements-baseline.md) before
+   defining or changing scope, criteria or checks. Resolve the approved task baseline;
+   retain Goals/Non-goals, FR/GWT and relevant NFRs; keep missing requirements explicit.
 
    Plan at the requested level: roadmap outcomes, epic capability, user story
    behavior or independently reviewable tasks. Define in/out scope, observable
@@ -69,16 +84,16 @@ already loaded; these internal steps are not additional development-cycle phases
 
 3. [ ] **Set verification and review gates**
 
-   Read [candidate identity](references/candidate-identity.md) when planning checks,
+   Apply [candidate identity](references/candidate-identity.md) when planning checks,
    freezing inputs or reusing evidence; include staged, untracked and binary inputs
    and explicitly defined output-only exclusions.
    For exact-candidate proof, use the contained [capture/validate/compare CLI](scripts/candidate_identity.py) with the [scope example](references/candidate-scope.example.json); consult the [manifest schema](references/candidate-identity.schema.json) and [manifest example](references/candidate-identity.example.json) when preparing or validating its JSON. Follow the candidate procedure above; equality is not acceptance.
 
-   Read [the review policy](references/review-policy.md)
+   Apply [the review policy](references/review-policy.md)
    before agreeing acceptance, judging or closing a task/US. Independence and closure
    requirements are set before implementation, not waived by a missing capability.
 
-   Read [the default judgment rubric](references/judgment-rubric.md) before agreeing
+   Apply [the default judgment rubric](references/judgment-rubric.md) before agreeing
    acceptance unless an explicitly approved replacement is supplied. Record its
    version and the review-policy independence/closure decision in the plan.
 
@@ -119,11 +134,11 @@ already loaded; these internal steps are not additional development-cycle phases
    an ASCII sketch and the real visual verification planned. A drawing is not
    a rendered proof. Resolve product/UX choices rather than invent approval.
 
-5. [ ] **Produce and verify the planning artifact**
+5. [ ] **Prepare and verify the planning report**
 
-   Produce plan.md with checks, candidate identity strategy, permissions,
-   unresolved decisions, rollback considerations and iteration stop budget in the
-   authorized workspace, or return its content inline when persistence is unavailable.
+   Collect planning report facts: checks, candidate identity strategy, permissions,
+   unresolved decisions, rollback considerations and iteration stop budget. Deliver
+   them inline by default; save only at an explicitly authorized destination.
 
    Create or update issues only when requested/authorized in the agreed tracker.
    Inspect existing issues first, reuse matching work, verify supported fields and
@@ -150,11 +165,11 @@ already loaded; these internal steps are not additional development-cycle phases
 
    - Verify the cited product-context baseline, requested planning level, scope and approval status; expose decision-critical gaps and carry nonblocking assumptions explicitly.
    - Check the planning artifact's criteria, verification matrix, review policy and next executable frontier; when tasks or tickets are in scope, verify inputs, outputs, dependencies, ownership, permissions and restart context. Read back actual tracker writes when applicable; distinguish proposed tickets from created ones.
-   - Prepare the immediate next action and blockers; collect verified reading pointers and permissions for any proposed handoff; format them after the output-contract read below.
-   - After investigation and before drafting any user-facing phase response (including blocked or unchanged results), read [the common output contract](references/common-output.md) and [this phase's delivery contract](references/requirements-output.md); apply their checklists and five-section report. Reuse unchanged guidance already loaded.
+   - Prepare the immediate next action and blockers; collect verified reading pointers and permissions for any proposed handoff; format them after the output-contract application below.
+   - After investigation and before drafting any user-facing phase response (including blocked or unchanged results), apply [the common output contract](references/common-output.md) and [this phase's delivery contract](references/requirements-output.md); apply their checklists and five-section report.
 
-   Read [the commit report](references/commit-report.md) only for a proposed,
-   performed, failed or externally observed commit. Read
+   Apply [the commit report](references/commit-report.md) only for a proposed,
+   performed, failed or externally observed commit. Apply
    [the session report](references/session-report.md) only for planned session end,
    explicit wrap-up or recommended context transition. The common communication
    contract governs these checkpoints; combine overlapping reports without duplication.

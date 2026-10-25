@@ -1,5 +1,8 @@
 # Judgment independence and closure v1.0.0
 
+Contract ID: agentic-development/review-policy
+Contract version: 1.0.0
+
 ## Plan-time choice
 
 Before implementation, record required reviewer independence, acceptance scope,

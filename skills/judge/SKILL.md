@@ -16,41 +16,55 @@ Resolve approved scope, frozen candidate, evidence index, review mode and indepe
 | Score a candidate | Apply the review mode and rubric agreed before implementation | Evidence-derived weighted score/coverage, or N/A in predefined small-task mode |
 | Evidence or required independence is missing | Record the exact gap; use indeterminate unless a known defect already requires correction | Specific prerequisite, not self-approval or an invented pass |
 
-Execute the selected action through the workflow below. Read only the references
-required by that action, reuse unchanged guidance already loaded in this context, and verify
-the result before taking the next action. Loading this Skill is not authorization
+Execute the selected action through the workflow below and verify its result
+before taking the next action. Loading this Skill is not authorization
 for tracker writes, Git operations, installation or production effects.
 
 ## Workflow
 
-Read each reference when its local condition applies, before the governed action
-even if needed earlier than its numbered stage. Reuse unchanged loaded guidance.
-These stages do not authorize additional phases or side effects.
+A phase report is the result of this Skill, not a file to find before execution.
+Collect its facts during work; deliver them inline by default at the delivery step.
+Save a report only with an explicit destination and permission to write, following
+the common output contract loaded at that step. Required evidence inputs and tracker
+updates retain their own gates; an inline response does not replace task truth.
+
+Apply contracts before their governed actions, even before the nominal step
+containing the link when its condition arises earlier. Load a reference only when its
+applicable content is absent, incomplete or outdated in the active context; reuse
+identical available content from another Skill's contained copy. The same ID/version
+with different content is a conflict, not proof of identity: resolve it before the
+affected action. A previous read or loaded marker does not prove availability.
+After compaction, a new session or worker, recover required unavailable instructions;
+on workspace changes revalidate applicability. Reusing authorization guidance never renews
+a previous permission. This is an agent instruction, not a runtime cache.
 
 1. [ ] **Verify scope, authority and reviewer prerequisites**
 
-   Read [the requirements baseline](references/requirements-baseline.md) before
-   defining or changing scope, criteria or verification, and before implementation.
-   Reuse verified Goals/Non-goals, FR/GWT and applicable quantified NFRs; do not
-   invent targets. Investigation needs a bounded question, not a completed plan.
+   Apply [the requirements baseline](references/requirements-baseline.md) before
+   defining or changing scope, criteria or checks. Resolve the approved task baseline;
+   retain Goals/Non-goals, FR/GWT and relevant NFRs; keep missing requirements explicit.
 
-   Read [the authorization policy](references/authorization-policy.md) before
-   resuming artifact claims or executing consequential actions. Recorded permissions
-   are historical unless their current authoritative source and scope are verified.
+   Apply [the authorization policy](references/authorization-policy.md) before
+   resuming artifact claims or executing consequential actions; verify current
+   permission for the intended action, not historical approval.
 
-   If the repository uses Beads, read [the Beads integration](references/beads-integration.md)
+   Before creating or repairing task descriptions or acceptance criteria, apply
+   [ticket authoring](references/ticket-authoring.md); verify readable purpose,
+   criteria, ordered inputs and restart context without duplicating execution history.
+
+   If the repository uses Beads, apply [the Beads integration](references/beads-integration.md)
    before choosing work or mutating task state. Use fresh `bd prime` guidance;
    retain task ownership, readback and phase gates;
    evaluate commit suitability after each confirmed closure without inferring Git authority.
 
-   Read [the communication contract](references/communication-contract.md) before preparing
+   Apply [the communication contract](references/communication-contract.md) before preparing
    the first checkpoint or a Git/session transition, for ownership, transition, evidence
    and conditional UI reporting safeguards. Apply these safeguards in standalone use too.
    Respond in the user's language. Verify tools and permissions; unavailable
    capabilities produce an explicit blocker, never simulated execution evidence.
    Use the coordinator's verified slice state when available; do not fabricate execution or acceptance.
 
-   Before deriving a judgment, read [the judgment rubric](references/judgment-rubric.md) unless
+   Before deriving a judgment, apply [the judgment rubric](references/judgment-rubric.md) unless
    an explicitly approved replacement rubric is supplied. Record its version.
 
    Require approved acceptance scope, frozen candidate identity, diff/ownership
@@ -65,9 +79,9 @@ These stages do not authorize additional phases or side effects.
 
 2. [ ] **Bind the frozen candidate and review basis**
 
-   Read [candidate identity](references/candidate-identity.md) before planning checks,
+   Apply [candidate identity](references/candidate-identity.md) before planning checks,
    freezing inputs or reusing evidence; include staged, untracked and binary inputs
-   and explicitly defined output-only exclusions. Read [the review policy](references/review-policy.md)
+   and explicitly defined output-only exclusions. Apply [the review policy](references/review-policy.md)
    before agreeing acceptance, judging or closing a task/US. Independence and closure
    requirements are set before implementation, not waived by a missing capability.
    For exact-candidate proof, use the contained [capture/validate/compare CLI](scripts/candidate_identity.py) with the [scope example](references/candidate-scope.example.json); consult the [manifest schema](references/candidate-identity.schema.json) and [manifest example](references/candidate-identity.example.json) when preparing or validating its JSON. Follow the candidate procedure above; equality is not acceptance.
@@ -89,8 +103,8 @@ These stages do not authorize additional phases or side effects.
    manual findings. Use parallel read-only reviewers only when capabilities and
    independence requirements are satisfied; different sessions/models alone are not proof.
 
-   Within judgment.md, include Requirement findings and Standards findings under the
-   evidence section. Each finding needs criterion/source, location, observation,
+   Collect Requirement findings and Standards findings separately for the judgment
+   report evidence section. Each finding needs criterion/source, location, observation,
    impact and minimal corrective check. Preserve the existing evidence/verdict/score/
    insights separation; no invented numeric score or acceptance from builder assertions.
 
@@ -144,8 +158,8 @@ These stages do not authorize additional phases or side effects.
 
 5. [ ] **Collect judgment facts and the immediate prerequisite**
 
-   Collect judgment.md facts in the approved workspace, or return them inline
-   when persistence is unavailable. Keep evidence, scoped verdict, rubric mode/score,
+   Collect judgment report facts for inline delivery or an explicitly authorized
+   saved report. Keep evidence, scoped verdict, rubric mode/score,
    insights (observed/inferred/to-verify), risks and unknowns separate; format the
    delivery only at the output gate below.
    Use accepted, needs-correction or indeterminate with reasons. If no review ran,
@@ -159,7 +173,7 @@ These stages do not authorize additional phases or side effects.
 
 6. [ ] **Read delivery guidance and draft the phase response**
 
-   After investigation and immediately before drafting any user-facing phase response (including blocked or unchanged results), read [the common output contract](references/common-output.md) and [this phase's delivery contract](references/requirements-output.md); apply their checklists and five-section report. Keep the canonical phase artifact within that report. Before drafting a proposed, performed, failed or externally observed commit report, read [the commit report](references/commit-report.md). Before drafting a planned session end, explicit wrap-up or recommended context transition report, read [the session report](references/session-report.md). Reuse unchanged guidance already loaded; combine overlapping reports without duplication.
+   After investigation and immediately before drafting any user-facing phase response (including blocked or unchanged results), apply [the common output contract](references/common-output.md) and [this phase's delivery contract](references/requirements-output.md); apply their checklists and five-section report. Keep the canonical phase artifact within that report. Before drafting a proposed, performed, failed or externally observed commit report, apply [the commit report](references/commit-report.md). Before drafting a planned session end, explicit wrap-up or recommended context transition report, apply [the session report](references/session-report.md). Combine overlapping reports without duplication.
 
    After reading delivery guidance, draft the actual handoff fenced YAML state card and copy-ready restart prompt; distinguish proposed from performed actions.
 

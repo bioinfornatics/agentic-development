@@ -8,10 +8,15 @@ content, not another final report or permission to write artifacts.
 
 ### cycle
 
-Artifact: cycle state. Headings: Active outcome and task; Goals and Non-goals;
+Report content: cycle coordination report. Topics: Active outcome and task; Goals and Non-goals;
 FR/NFR baseline; Phase and gate; Evidence and blockers; Authorized next action;
 Restart point. Finalization links verified task updates, observed Git/Entire context
 and checked scope; parent/release gates remain separate.
+
+Optional filename: `cycle-state.md` — not a required input or automatic write.
+Deliver inline by default; save only through the common output contract’s explicit-destination,
+permission and conflict checks. These topics belong inside explanation or its linked
+report, not additional outer response headings.
 
 ## Phase delivery checklist
 

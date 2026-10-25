@@ -1,5 +1,8 @@
 # Candidate identity v1.2.0
 
+Contract ID: agentic-development/candidate-identity
+Contract version: 1.2.0
+
 Use before planning checks, freezing a candidate or reusing evidence. Choose one path.
 
 ## A. Run a preliminary check

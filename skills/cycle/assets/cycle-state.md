@@ -1,7 +1,9 @@
 # Cycle state — template v1.6.0
 
 Replace placeholders with facts, unknown, not-run or not-applicable. This is a
-plugin-defined Markdown artifact, not a Goose session configuration.
+content template for inline coordination or an explicitly authorized saved report,
+not a required file or a Goose session configuration. Do not create a default directory;
+check destination, permission and existing content before any optional write.
 
 ## Objective and roadmap
 - Slice ID / approved objective / acceptance scope:

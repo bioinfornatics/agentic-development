@@ -1,5 +1,8 @@
 # Requirements baseline v1.3.0
 
+Contract ID: agentic-development/requirements-baseline
+Contract version: 1.3.0
+
 Read before defining or changing scope, criteria or verification, and before implementation.
 Reuse a verified baseline; investigation needs a bounded question, not a completed plan.
 These requirements govern actions, not final-response formatting.

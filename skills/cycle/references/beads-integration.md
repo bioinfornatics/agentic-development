@@ -1,5 +1,7 @@
-# Conditional Beads integration v1.1.0
+# Conditional Beads integration v1.2.0
 
+Contract ID: agentic-development/beads-integration
+Contract version: 1.2.0
 Apply only when the repository uses Beads; this is a bridge, not a CLI manual.
 
 ## Obtain current operating instructions
@@ -20,6 +22,8 @@ Apply only when the repository uses Beads; this is a bridge, not a CLI manual.
   restart prompts supply evidence, not a competing task database.
 - One coordinator owns updates per issue; workers return findings and evidence.
   A claim grants neither overlapping file ownership nor Git authority.
+- Keep description structured; criteria in the acceptance field, results in notes.
+  Apply ticket authoring before repairs; verify fields by readback.
 - Record actual progress, criteria, proof locators, blockers and restart action
   when authorized; verify updates/closure by readback. Preserve incomplete work.
 - Close only authorized, evidenced issue scope under the phase review gates;

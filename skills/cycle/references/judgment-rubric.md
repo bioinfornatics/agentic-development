@@ -1,5 +1,8 @@
 # slice-acceptance — rubric v1.1.0
 
+Contract ID: agentic-development/judgment-rubric
+Contract version: 1.1.0
+
 Freeze this default rubric before implementation, or record the approved
 replacement identifier/version. Score is a structured assessment, not a
 probability of correctness. Assess only the explicitly agreed acceptance scope.

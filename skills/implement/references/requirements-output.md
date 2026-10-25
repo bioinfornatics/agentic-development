@@ -8,11 +8,16 @@ content, not another final report or permission to write artifacts.
 
 ### implement
 
-Artifact: changes.md. Headings: Task and behavior; Goals and Non-goals;
+Report content: implementation report. Topics: Task and behavior; Goals and Non-goals;
 FR/NFR baseline; Owned changes and preserved hunks; Tests/reproduction and results
 (red, green, refactor where applicable); Deviations and unresolved issues;
 Branch/commit receipt or proposal; Next verification. One vertical behavior slice
 per red/green loop; source-format checks do not prove agent behavior.
+
+Optional filename: `changes.md` — not a required input or automatic write.
+Deliver inline by default; save only through the common output contract’s explicit-destination,
+permission and conflict checks. These topics belong inside explanation or its linked
+report, not additional outer response headings.
 
 ## Phase delivery checklist
 

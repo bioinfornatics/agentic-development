@@ -1,5 +1,8 @@
 # Common delivery output contract v1.3.0
 
+Contract ID: agentic-development/common-output
+Contract version: 1.3.0
+
 Read after investigation and before drafting every user-facing phase delivery,
 including blocked, unchanged and standalone results. Reuse unchanged guidance
 already loaded in this context; verify it before delivery rather than rereading blindly.
@@ -36,6 +39,27 @@ OR
 <Pedagogical explanation: what was done, why, evidence and limits, actual versus
 proposed actions, and the next gate. Include applicable boundary facts below.>
 ~~~
+
+## Report delivery and optional saving
+
+A phase report is generated output, not an assumed existing input. Deliver its
+required content inline by default inside the five-section response; for longer
+facts use concise evidence-bound summaries and verified accessible locators.
+Beads remains task truth; report filenames suggested by a phase are optional.
+
+1. Save only when the task/user provides an explicit destination and permission to write.
+   Otherwise report not saved; do not create directories or files merely to satisfy
+   a report template. Lack of an optional file is not a phase blocker.
+2. Before saving, verify root, owned path, existing content and conflicts. Never overwrite
+   an earlier report or user work implicitly; reuse an authorized versioned destination
+   or ask for the conflicting-path decision. Do not publish secrets or raw sensitive logs.
+3. After a permitted write verify the actual file/content and report its real path,
+   saved status and accessibility/local-only limits. Without a write, use inline facts
+   and not saved, never an invented path or durable-persistence claim.
+4. Required evidence inputs, candidate manifests, raw verification artifacts, tracker
+   updates and an explicitly required durable handoff keep their separate contracts.
+   If one is unavailable, block that specific gate and name its recovery action;
+   an inline report cannot masquerade as missing raw proof or current tracker state.
 
 ## Phase, progress and roadmap semantics
 

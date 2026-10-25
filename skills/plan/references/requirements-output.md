@@ -8,12 +8,17 @@ content, not another final report or permission to write artifacts.
 
 ### plan
 
-Artifact: plan.md. Headings: Outcome and task graph; Goals and Non-goals;
+Report content: planning report. Topics: Outcome and task graph; Goals and Non-goals;
 Scope and exclusions; Functional requirements (Given/When/Then);
 Non-functional requirements (measurement matrix); Acceptance and verification matrix;
 Public seams; Ownership and permissions; Review/closure policy; Commit boundaries;
 Risks and stop budget; Next ready task and restart context. Map approved FR/NFR IDs
 to checks and capabilities before declaring ready.
+
+Optional filename: `plan.md` — not a required input or automatic write.
+Deliver inline by default; save only through the common output contract’s explicit-destination,
+permission and conflict checks. These topics belong inside explanation or its linked
+report, not additional outer response headings.
 
 ## Phase delivery checklist
 

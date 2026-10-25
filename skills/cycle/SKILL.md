@@ -33,15 +33,27 @@ alone is not acceptance. Repeated failures or an exhausted budget require a stop
 
 ## Workflow
 
-Read each reference before its governed action when its local condition first applies,
-even if that occurs earlier than the step containing its link. Reuse unchanged guidance
-already loaded; these internal steps are not additional development-cycle phases.
+A phase report is the result of this Skill, not a file to find before execution.
+Collect its facts during work; deliver them inline by default at the delivery step.
+Save a report only with an explicit destination and permission to write, following
+the common output contract loaded at that step. Required evidence inputs and tracker
+updates retain their own gates; an inline response does not replace task truth.
+
+Apply contracts before their governed actions, even before the nominal step
+containing the link when its condition arises earlier. Load a reference only when its
+applicable content is absent, incomplete or outdated in the active context; reuse
+identical available content from another Skill's contained copy. The same ID/version
+with different content is a conflict, not proof of identity: resolve it before the
+affected action. A previous read or loaded marker does not prove availability.
+After compaction, a new session or worker, recover required unavailable instructions;
+on workspace changes revalidate applicability. Reusing authorization guidance never renews
+a previous permission. This is an agent instruction, not a runtime cache.
 
 1. [ ] **Verify prerequisites and current authority**
 
-   Read [the communication contract](references/communication-contract.md) when preparing
+   Apply [the communication contract](references/communication-contract.md) when preparing
    the first checkpoint or a Git/session transition; it governs reporting safeguards,
-   not an up-front load of response templates. For a UI checkpoint read [the checkpoint example](assets/checkpoint-example.md).
+   not an up-front load of response templates. For a UI checkpoint apply [the checkpoint example](assets/checkpoint-example.md).
 
    Verify available filesystem, shell/test and delegation capabilities. Read the
    project's local instructions and inspect the repository without mutation first.
@@ -49,7 +61,11 @@ already loaded; these internal steps are not additional development-cycle phases
    assumptions. A request to implement this slice authorizes its scoped code changes,
    not Git commits, remote operations, production actions or unrelated work.
 
-   If the repository uses Beads, read [the Beads integration](references/beads-integration.md)
+   Before creating or repairing task descriptions or acceptance criteria, apply
+   [ticket authoring](references/ticket-authoring.md); verify readable purpose,
+   criteria, ordered inputs and restart context without duplicating execution history.
+
+   If the repository uses Beads, apply [the Beads integration](references/beads-integration.md)
    before choosing work or mutating task state. Use fresh `bd prime` guidance;
    retain task ownership, readback and phase gates;
    evaluate commit suitability after each confirmed closure without inferring Git authority.
@@ -60,24 +76,23 @@ already loaded; these internal steps are not additional development-cycle phases
    an existing workspace or treat this Skill load as setup permission. Phase workers
    report missing setup to the coordinator instead of initializing independently.
 
-   Read [the authorization policy](references/authorization-policy.md) before
-   resuming artifact claims or executing consequential actions. Recorded permissions
-   are historical unless their current authoritative source and scope are verified.
-   Read [the review policy](references/review-policy.md)
+   Apply [the authorization policy](references/authorization-policy.md) before
+   resuming artifact claims or executing consequential actions; verify current
+   permission for the intended action, not historical approval.
+   Apply [the review policy](references/review-policy.md)
    before agreeing acceptance, judging or closing a task/US. Independence and closure
    requirements are set before implementation, not waived by a missing capability.
 
 2. [ ] **Frame or recover the bounded slice**
 
-   Read [the requirements baseline](references/requirements-baseline.md) before
-   defining or changing scope, criteria or verification, and before implementation.
-   Reuse verified Goals/Non-goals, FR/GWT and applicable quantified NFRs; do not
-   invent targets. Investigation needs a bounded question, not a completed plan.
+   Apply [the requirements baseline](references/requirements-baseline.md) before
+   defining or changing scope, criteria or checks. Resolve the approved task baseline;
+   retain Goals/Non-goals, FR/GWT and relevant NFRs; keep missing requirements explicit.
 
-   Read [the judgment rubric](references/judgment-rubric.md) before selecting
+   Apply [the judgment rubric](references/judgment-rubric.md) before selecting
    acceptance criteria or review mode.
 
-   Read [candidate identity](references/candidate-identity.md) when planning checks,
+   Apply [candidate identity](references/candidate-identity.md) when planning checks,
    freezing inputs or reusing evidence; include staged, untracked and binary inputs
    and explicitly defined output-only exclusions.
    For exact-candidate proof, use the contained [capture/validate/compare CLI](scripts/candidate_identity.py) with the [scope example](references/candidate-scope.example.json); consult the [manifest schema](references/candidate-identity.schema.json) and [manifest example](references/candidate-identity.example.json) when preparing or validating its JSON. Follow the candidate procedure above; equality is not acceptance.
@@ -90,9 +105,9 @@ already loaded; these internal steps are not additional development-cycle phases
       reviewable slice. If there is no roadmap, propose one and mark it unapproved.
    - Inventory branch/status and pre-existing changes, capture candidate identity,
       permissions and evidence. Report the starting checkpoint before mutations.
-   - Keep durable state in an agreed project workspace, default
-      `evidence/runs/<slice-id>/`, only after checking conflicts and permission
-      to write. Do not persist private secrets, tokens, full sensitive tool outputs,
+   - Keep required durable state in the agreed tracker or explicitly authorized
+      workspace. Do not invent a default directory; verify the destination, conflicts
+      and permission before writes. Do not persist private secrets, tokens, full sensitive tool outputs,
       or unnecessary personal data. If persistence is unavailable, emit a copyable
       handoff and disclose that no durable state was written.
    - Resume at the first incomplete or invalidated phase, not from the beginning.
@@ -178,11 +193,11 @@ already loaded; these internal steps are not additional development-cycle phases
 6. [ ] **Verify readiness and draft the cycle response**
 
    - Verify the active objective/task, product-context coverage and freshness, current candidate, permissions and first incomplete or invalidated phase; retain the routing rationale and unmet prerequisites.
-   - Prepare the immediate next action and blockers within current scope/permissions; collect handoff inputs, distinguishing recommendations from performed actions; format them after the output-contract read below.
-   - After investigation and before drafting any user-facing phase response (including blocked or unchanged results), read [the common output contract](references/common-output.md) and [this phase's delivery contract](references/requirements-output.md); apply their checklists and five-section report. Reuse unchanged guidance already loaded.
+   - Prepare the immediate next action and blockers within current scope/permissions; collect handoff inputs, distinguishing recommendations from performed actions; format them after the output-contract application below.
+   - After investigation and before drafting any user-facing phase response (including blocked or unchanged results), apply [the common output contract](references/common-output.md) and [this phase's delivery contract](references/requirements-output.md); apply their checklists and five-section report.
 
-   Read [the commit report](references/commit-report.md) only for a proposed,
-   performed, failed or externally observed commit. Read
+   Apply [the commit report](references/commit-report.md) only for a proposed,
+   performed, failed or externally observed commit. Apply
    [the session report](references/session-report.md) only for planned session end,
    explicit wrap-up or recommended context transition. The common communication
    contract governs these checkpoints; combine overlapping reports without duplication.

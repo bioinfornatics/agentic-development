@@ -1,5 +1,8 @@
 ## Mandatory commit report
 
+Contract ID: agentic-development/commit-report
+Contract version: 1.0.0
+
 Before a permitted commit announce the problem/feature, intended outcome, exact
 owned files/hunks, known checks, limitations and proposed message. Immediately
 after each successful agent commit, before another task, emit the report below.

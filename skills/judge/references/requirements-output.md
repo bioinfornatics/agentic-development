@@ -8,16 +8,21 @@ content, not another final report or permission to write artifacts.
 
 ### judge
 
-Artifact: judgment.md. Headings: Task and candidate; Goals and Non-goals;
+Report content: judgment report. Topics: Task and candidate; Goals and Non-goals;
 Evidence (Requirement findings, Standards findings); Scoped verdict;
 Rubric mode and score/coverage; Insights, risks and unknowns; Next action.
 Assess FR/GWT and approved NFR bounds separately from coding standards; missing
 measurement/required independence stays explicit. No self-approval.
 
+Optional filename: `judgment.md` — not a required input or automatic write.
+Deliver inline by default; save only through the common output contract’s explicit-destination,
+permission and conflict checks. These topics belong inside explanation or its linked
+report, not additional outer response headings.
+
 ## Result block
 
 Keep the five outer headings. Put this fenced YAML block in explanation (or retain
-it in the linked judgment.md and show its verdict/score summary). It is a report
+it in the linked judgment report and show its verdict/score summary). It is a report
 contract, not a runtime schema or permission grant. Replace illustrative values.
 
 ~~~yaml
@@ -48,7 +53,7 @@ Use exact field names and values:
 | limitations | List concrete gaps or review limits; [] only when none were identified |
 
 No numerical acceptance threshold is defined. Derive verdict from mandatory gates,
-not score. Document criterion values, weights and calculation in judgment.md.
+not score. Document criterion values, weights and calculation in the judgment report.
 Keep unknown criteria null; never normalize a partial assessment. N/A is represented
 by score_status: not-applicable and null numeric fields, not a zero score.
 

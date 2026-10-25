@@ -8,11 +8,16 @@ content, not another final report or permission to write artifacts.
 
 ### test
 
-Artifact: evidence.md. Headings: Task and candidate; Goals and Non-goals;
+Report content: verification report. Topics: Task and candidate; Goals and Non-goals;
 Acceptance-to-check matrix (FR/GWT and NFR IDs); Commands and environment;
 Results and artifact locators; Coverage and limitations; Failures/reproduction;
 Judge handoff. For NFR record metric values/context or not-run/blocker; never
 replace an approved target with a convenient observation.
+
+Optional filename: `evidence.md` — not a required input or automatic write.
+Deliver inline by default; save only through the common output contract’s explicit-destination,
+permission and conflict checks. These topics belong inside explanation or its linked
+report, not additional outer response headings.
 
 ## Phase delivery checklist
 

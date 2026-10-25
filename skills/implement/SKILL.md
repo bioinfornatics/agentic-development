@@ -16,40 +16,55 @@ Select the implementation intent; verify inputs and gates through the workflow.
 | Change instructions or other non-executable source | Apply the authorized source change and run applicable static checks | Source diff and explicitly static evidence; agent behavior remains unverified |
 | Encounter conflicting hunks or a necessary scope expansion | Preserve the current diff and return the conflict or decision to the coordinator/user | Exact conflicting paths or scope decision; no overwrite or unauthorized expansion |
 
-Execute the selected action through the workflow below. Read only the references
-required by that action, reuse unchanged guidance already loaded in this context, and verify
-the result before taking the next action. Loading this Skill is not authorization
+Execute the selected action through the workflow below and verify its result
+before taking the next action. Loading this Skill is not authorization
 for tracker writes, Git operations, installation or production effects.
 
 ## Workflow
 
-Read references when their local conditions apply, before governed actions even if
-earlier than the nominal step. Reuse unchanged guidance already loaded.
+A phase report is the result of this Skill, not a file to find before execution.
+Collect its facts during work; deliver them inline by default at the delivery step.
+Save a report only with an explicit destination and permission to write, following
+the common output contract loaded at that step. Required evidence inputs and tracker
+updates retain their own gates; an inline response does not replace task truth.
+
+Apply contracts before their governed actions, even before the nominal step
+containing the link when its condition arises earlier. Load a reference only when its
+applicable content is absent, incomplete or outdated in the active context; reuse
+identical available content from another Skill's contained copy. The same ID/version
+with different content is a conflict, not proof of identity: resolve it before the
+affected action. A previous read or loaded marker does not prove availability.
+After compaction, a new session or worker, recover required unavailable instructions;
+on workspace changes revalidate applicability. Reusing authorization guidance never renews
+a previous permission. This is an agent instruction, not a runtime cache.
 
 1. [ ] **Verify implementation inputs and authority**
 
    Verify repository root, local instructions, tools and task goal.
 
-   If the repository uses Beads, read [the Beads integration](references/beads-integration.md)
+   Before creating or repairing task descriptions or acceptance criteria, apply
+   [ticket authoring](references/ticket-authoring.md); verify readable purpose,
+   criteria, ordered inputs and restart context without duplicating execution history.
+
+   If the repository uses Beads, apply [the Beads integration](references/beads-integration.md)
    before choosing work or mutating task state. Use fresh `bd prime` guidance;
    retain task ownership, readback and phase gates;
    evaluate commit suitability after each confirmed closure without inferring Git authority.
 
-   Read [the authorization policy](references/authorization-policy.md) before
-   resuming artifact claims or executing consequential actions. Recorded permissions
-   are historical unless their current authoritative source and scope are verified.
+   Apply [the authorization policy](references/authorization-policy.md) before
+   resuming artifact claims or executing consequential actions; verify current
+   permission for the intended action, not historical approval.
 
-   Read [the requirements baseline](references/requirements-baseline.md) before
-   defining or changing scope, criteria or verification, and before implementation.
-   Reuse verified Goals/Non-goals, FR/GWT and applicable quantified NFRs; do not
-   invent targets. Investigation needs a bounded question, not a completed plan.
+   Apply [the requirements baseline](references/requirements-baseline.md) before
+   defining or changing scope, criteria or checks. Resolve the approved task baseline;
+   retain Goals/Non-goals, FR/GWT and relevant NFRs; keep missing requirements explicit.
 
-   Read [the review policy](references/review-policy.md)
+   Apply [the review policy](references/review-policy.md)
    before implementation or setting review requirements, and before agreeing acceptance,
    judging or closing a task/US. Independence and closure
    requirements are set before implementation, not waived by a missing capability.
 
-   Read [the communication contract](references/communication-contract.md) before
+   Apply [the communication contract](references/communication-contract.md) before
    the first mutation, checkpoint or Git/session transition, for ownership, transition, evidence
    and conditional UI reporting safeguards. Apply these safeguards in standalone use too.
    Respond in the user's language. Verify tools and permissions; unavailable
@@ -62,12 +77,12 @@ earlier than the nominal step. Reuse unchanged guidance already loaded.
 
 2. [ ] **Prepare the owned slice and reproduction**
 
-   Read [candidate identity](references/candidate-identity.md) before planning checks,
+   Apply [candidate identity](references/candidate-identity.md) before planning checks,
    freezing inputs or reusing evidence; include staged, untracked and binary inputs
    and explicitly defined output-only exclusions. 
    For exact-candidate proof, use the contained [capture/validate/compare CLI](scripts/candidate_identity.py) with the [scope example](references/candidate-scope.example.json); consult the [manifest schema](references/candidate-identity.schema.json) and [manifest example](references/candidate-identity.example.json) when preparing or validating its JSON. Follow the candidate procedure above; equality is not acceptance.
 
-   Before committing or drafting a proposed, performed, failed or externally observed commit report, read [the commit report](references/commit-report.md). Before drafting a planned session end, explicit wrap-up or recommended context transition report, read [the session report](references/session-report.md).  These conditions govern earlier boundaries too.
+   Before committing or drafting a proposed, performed, failed or externally observed commit report, apply [the commit report](references/commit-report.md). Before drafting a planned session end, explicit wrap-up or recommended context transition report, apply [the session report](references/session-report.md).  These conditions govern earlier boundaries too.
 
    Confirm branch fit and announce impending branch action if needed. Check
    action-specific Git authorization before creation/switch. Non-Git work can
@@ -97,8 +112,8 @@ earlier than the nominal step. Reuse unchanged guidance already loaded.
 
 4. [ ] **Observe and integrate each coherent batch**
 
-   After each coherent change batch inspect the actual diff, update changes.md
-   with owned paths/hunks and reasons, and emit the short checkpoint. Run cheap
+   After each coherent change batch inspect the actual diff, maintain the implementation
+   change ledger with owned paths/hunks and reasons, and emit the short checkpoint. Run cheap
    focused tests/type checks near changes, then risk-relevant broader regressions
    before handoff; record commands and actual outputs. Full-suite execution depends
    on scope/capability, not a typo ritual.
@@ -152,7 +167,7 @@ earlier than the nominal step. Reuse unchanged guidance already loaded.
 
    Prepare the immediate next action and its exact prerequisites, owner when known and expected result; distinguish proposed from performed actions. Collect facts for the exact candidate, criterion IDs, reproduction/tests, change ledger and limits, and the inputs needed for a handoff; draft its state card and restart prompt only after reading the delivery guidance.
 
-   After investigation and before drafting any user-facing phase response (including blocked or unchanged results), read [the common output contract](references/common-output.md) and [this phase's delivery contract](references/requirements-output.md); apply their checklists and five-section report. Reuse unchanged guidance already loaded; combine overlapping reports without duplication. After reading delivery guidance, draft the response and, at an actual handoff, the fenced YAML state card and copy-ready restart prompt.
+   After investigation and before drafting any user-facing phase response (including blocked or unchanged results), apply [the common output contract](references/common-output.md) and [this phase's delivery contract](references/requirements-output.md); apply their checklists and five-section report. Combine overlapping reports without duplication. After reading delivery guidance, draft the response and, at an actual handoff, the fenced YAML state card and copy-ready restart prompt.
 
 7. [ ] **Execute the handoff or stop**
 

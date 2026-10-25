@@ -4,7 +4,6 @@ AI coding agents can lose context, drift beyond scope, and mistake passing tests
 **Agentic Development gives them a repeatable workflow: clear goals, bounded changes, verifiable evidence, and explicit handoffs.**
 
 ## Start with one change
-
 Read the [getting started guide](https://github.com/bioinfornatics/agentic-development/blob/develop/docs/getting-started.md), then give your agent a concrete outcome:
 
 > Use Agentic Development to deliver this change: [desired behavior].
@@ -12,7 +11,6 @@ Read the [getting started guide](https://github.com/bioinfornatics/agentic-devel
 > report remaining risks, and ask before actions that need my approval.
 
 ## What you get
-
 Seven reusable Skills guide the work: six phases and one coordinator.
 
 ```text
@@ -35,7 +33,6 @@ Goal / need → Research → Plan → Implement → Test → Judge → Scoped ac
 Keep requirements, decisions, and restart context explicit; make small, reviewable changes; separate test results from acceptance and report missing evidence. Use the whole cycle or the phase your task needs. These are agent instructions, not an enforcement engine or a guarantee of correct software.
 
 ## Dependencies and workflow tools
-
 The Skills are Markdown instructions: use an agent that can load them and your project's own development tools. No package installation or build is required for the Skills.
 
 | Tool | Why use it? | How it fits into the workflow |
@@ -52,7 +49,6 @@ Entire captures context, not task truth or acceptance; no tool grants permission
 See the [integration guide](https://github.com/bioinfornatics/agentic-development/blob/develop/docs/integrations.md) for setup checks and boundaries.
 
 ## Learn more
-
 - [Development cycle](https://github.com/bioinfornatics/agentic-development/blob/develop/docs/cycle.md): how the phases fit together.
 - [Integrations](https://github.com/bioinfornatics/agentic-development/blob/develop/docs/integrations.md): Beads, Git, Entire, and optional Goose observation hooks.
 - [Contributing](https://github.com/bioinfornatics/agentic-development/blob/develop/docs/contributing.md): improve the method on develop.

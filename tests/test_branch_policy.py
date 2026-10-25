@@ -34,9 +34,9 @@ class DevelopLinks(unittest.TestCase):
         self.assertIn('run: test "$BASE_BRANCH" = develop', text)
 
     def test_generated_readme_targets_develop(self):
-        text = (ROOT / "tools/production.py").read_text()
-        self.assertIn("/tree/develop", text)
-        self.assertNotIn("/tree/development", text)
+        text = (ROOT / "README.md").read_text()
+        self.assertIn("/blob/develop/", text)
+        self.assertNotIn("/blob/development/", text)
         self.assertIn("source branch is named **develop**", (ROOT / "CONTRIBUTING.md").read_text())
 
 if __name__ == "__main__":

@@ -18,6 +18,7 @@ class CommittedProjection(unittest.TestCase):
         for name in ("skills", "hooks", "scripts", "tools", "tests", ".github"):
             shutil.copytree(ROOT / name, self.root / name, ignore=shutil.ignore_patterns("__pycache__"))
         shutil.copyfile(ROOT / "plugin.json", self.root / "plugin.json")
+        shutil.copyfile(ROOT / "README.md", self.root / "README.md")
         self.git("init", "-q")
         self.git("config", "user.name", "Projection test")
         self.git("config", "user.email", "qa@example.invalid")
@@ -31,6 +32,7 @@ class CommittedProjection(unittest.TestCase):
     def test_clean_candidate_binds_commit_and_tree_and_is_deterministic(self):
         r = self.call()
         self.assertEqual(r.returncode, 0, r.stderr)
+        self.assertEqual((self.out / "README.md").read_bytes(), (self.root / "README.md").read_bytes())
         receipt = json.loads((self.out / "distribution.json").read_text())
         self.assertEqual(receipt["source_state"], "committed-source-candidate")
         self.assertEqual(receipt["source_head"], self.git("rev-parse", "HEAD"))

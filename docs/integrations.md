@@ -26,6 +26,17 @@ the result to the task. If the tracker cannot be updated, say so and
 retain the commit with a restart action. Do not claim that the handoff
 has been recorded. Do not push automatically.
 
+## GitHub CLI: review and check CI
+
+Use GitHub CLI (`gh`) when the project is hosted on GitHub and terminal-based
+PR management is useful. It is optional, not a dependency of the Skills.
+Check the authenticated account with `gh auth status` and confirm the intended
+repository before remote actions. Use `gh pr view` to inspect a PR and
+`gh pr checks` to inspect its CI results; a green CI result is evidence,
+not acceptance. Create a PR with `gh pr create` only with scoped authority,
+a reviewed diff, and the correct base branch. Do not automatically authenticate,
+push, merge, or change repository settings.
+
 ## Sessions and Entire: transfer context
 
 Keep implementation, tests and related corrections in the same session while

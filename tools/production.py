@@ -88,16 +88,11 @@ def build(output, committed=False):
             for action in rule["hooks"]:
                 action["command"] = action["command"].replace("scripts/observe.py", "scripts/observe.pyz")
     contents["hooks/hooks.json"] = encode(hooks)
-    contents["README.md"] = (
-        "# Agentic Development — installation preview\n\n"
-        "Seven evidence-driven development Skills and optional observation hooks.\n"
-        "Skills need no build. Hooks require Python 3.10+ and use the contained\n"
-        "scripts/observe.pyz standard-library runtime. No pip, npm, Bun, app build\n"
-        "or network dependency installation runs when the plugin is fetched.\n\n"
-        "This is an uncommitted working-tree preview, not a published release or\n"
-        "verified Goose installation. Review host support and permissions before\n"
-        "activation. Structure diagnostics do not approve coding outcomes.\n"
-    ).encode()
+    readme = plain(ROOT / "README.md").read_bytes()
+    if committed and readme != subprocess.check_output([
+            "git", "-C", str(ROOT), "show", source_head + ":README.md"]):
+        raise ValueError("uncommitted README")
+    contents["README.md"] = readme
     contents["runtime.json"] = encode({"format_version": 1, "language": "python",
         "interpreter": "Python >=3.10", "mode": "stdlib-zipapp", "dependencies": [],
         "entrypoint": "scripts/observe.pyz", "source_sha256": hashlib.sha256(handler).hexdigest(),
@@ -114,17 +109,6 @@ def build(output, committed=False):
         raise ValueError("uncommitted workflow")
     contents[".github/workflows/production-checks.yml"] = workflow
     if committed:
-        contents["README.md"] = (
-            "# Agentic Development\n\n"
-            "Seven evidence-driven development Skills with optional observation hooks.\n"
-            "Install this Git distribution using Goose. Skills need no build.\n"
-            "Hooks require Python 3.10+ and use contained scripts/observe.pyz;\n"
-            "no pip, npm or network dependency download runs during installation.\n\n"
-            "Author source and contribute on develop, not main:\n"
-            "https://github.com/bioinfornatics/agentic-development/tree/develop\n\n"
-            "This artifact binds committed source; installation and review evidence\n"
-            "remain separate. Instructions and diagnostics do not approve coding outcomes.\n"
-        ).encode()
         if source_head != subprocess.check_output(["git", "-C", str(ROOT), "rev-parse", "HEAD"], text=True).strip():
             raise ValueError("source changed")
         if subprocess.check_output(["git", "-C", str(ROOT), "status", "--porcelain", "--untracked-files=all"]):

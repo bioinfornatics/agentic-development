@@ -2,26 +2,26 @@
 
 ## Branch contract
 
-The source branch is named **development**, not develop.
+The source branch is named **develop** (formerly development).
 
 ```text
-feature/* -> reviewed source PR -> development
-development -> exact-source verification and independent approval
+feature/* -> reviewed source PR -> develop
+develop -> exact-source verification and independent approval
             -> generated installation projection -> main
 ```
 
-**Feature PRs target development. Never merge development into main.** A
+**Feature PRs target develop. Never merge develop into main.** A
 production PR contains only a generated installation tree based on previous main,
-not a development source merge. Squash that generated-only PR after verification;
-never merge or delete development as part of publication.
+not a develop source merge. Squash that generated-only PR after verification;
+never merge or delete develop as part of publication.
 
-- development owns editable instructions, tests, tools and build inputs.
+- develop owns editable instructions, tests, tools and build inputs.
 - main is reserved for the generated, ready-to-install distribution.
 - Production publication creates a generated-tree commit with previous main as its
   sole parent. With protected main, use a generated-only PR and a squash merge;
   the resulting commit has previous main as sole parent (a fast-forward update).
   Never force-push production or bypass required PR checks.
-- Feature branches start from development. Check the worktree and preserve existing
+- Feature branches start from develop. Check the worktree and preserve existing
   changes; Git operations, installation and promotion require current authority.
 
 ## Source verification
@@ -48,7 +48,7 @@ contained, locked dependency closure and explicit host prerequisites.
 
 ## Promotion gates
 
-1. Merge an independently reviewed feature PR into development.
+1. Merge an independently reviewed feature PR into develop.
 2. Freeze a clean exact source SHA and the expected current main SHA.
 3. Build the distribution deterministically, verify its inventory and contained
    runtimes, and test Git installation/update in an authorized isolated environment.
@@ -57,14 +57,14 @@ contained, locked dependency closure and explicit host prerequisites.
    authorized generated-tree publication. Changed inputs or stale approval stop it.
 6. Publish without force, then verify remote provenance and installation results.
 
-Do not use GitHub Merge on a development-to-main source request. Use squash
+Do not use GitHub Merge on a develop-to-main source request. Use squash
 only for an exact verified generated-tree PR based on previous main. Source changes enter main only
 through the generated projection. Approval and branch-protection enforcement are
 separate repository settings; this policy and read-only CI do not configure them.
 
 ## Generate and verify a distribution candidate
 
-From a clean committed development source checkout, use a new destination outside
+From a clean committed develop source checkout, use a new destination outside
 the repository:
 
 ```sh
@@ -81,7 +81,7 @@ publication. These commands never publish or mutate branches.
 
 ## Current migration limits
 
-The public development branch is established from the existing public main history.
+The public develop branch is established from the existing public main history.
 The current main is **not yet** a verified production-only projection: do not claim
 installation readiness from the branch name. Projection publication automation and
 isolated installation acceptance remain gates. No license grant is currently

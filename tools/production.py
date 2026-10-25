@@ -120,8 +120,8 @@ def build(output, committed=False):
             "Install this Git distribution using Goose. Skills need no build.\n"
             "Hooks require Python 3.10+ and use contained scripts/observe.pyz;\n"
             "no pip, npm or network dependency download runs during installation.\n\n"
-            "Author source and contribute on development, not main:\n"
-            "https://github.com/bioinfornatics/agentic-development/tree/development\n\n"
+            "Author source and contribute on develop, not main:\n"
+            "https://github.com/bioinfornatics/agentic-development/tree/develop\n\n"
             "This artifact binds committed source; installation and review evidence\n"
             "remain separate. Instructions and diagnostics do not approve coding outcomes.\n"
         ).encode()

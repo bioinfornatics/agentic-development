@@ -7,15 +7,17 @@ Do not create one task per file or per phase.
 
 | Stage | Action | Expected output |
 |---|---|---|
-| Research | Explore sources and test hypotheses | Question, facts, options and unknowns |
+| Research | Establish product context before planning, then explore relevant sources | Purpose, users/outcome, current behavior, constraints, facts and unknowns |
 | Plan | Define scope, criteria, ownership and verification | Executable plan, dependencies and permissions |
 | Implement | Make the smallest coherent change | Explained diff, preserved work and targeted tests |
 | Test | Run checks on the identified candidate | Commands, results, environment and limits |
 | Judge | Compare evidence, requirements and standards | Verdict, findings, applicable score and independence |
 | Iterate | Correct a defect or resolve a prerequisite | Bounded correction and evidence to rerun |
 
+Begin every new development objective with Research, even for a clear request or familiar code.
+Research → Plan → Implement (RPI) prevents plans from relying on unchecked product assumptions.
 The coordinator chooses the next step and finalizes traceability.
-Reuse research or a plan that is still valid. Do not restart the whole cycle
+Reuse research only after checking its context coverage and freshness; reuse a plan that is still valid. Do not restart the whole cycle
 on every resumption, but do not skip a necessary check.
 
 ## Develop with rapid feedback
@@ -32,18 +34,21 @@ A documentation-format check does not prove agent behavior.
 
 ## Read each stage's report
 
-The final report always uses these seven fields, in order:
-1. **step**: the phase actually performed.
-2. **modified files**: changed paths, or N/A when none changed.
-3. **next step**: the recommended phase, loop again, blocked or done.
-4. **current goal**: the short objective addressed.
-5. **next goal**: the next objective or missing prerequisite.
-6. **closed tasks**: confirmed closed task IDs, or N/A.
-7. **explanation**: what was done and why, evidence, limits and next gate.
+The final report uses five sections, in order:
+1. **current goal {step: …}**: the outcome addressed and actual phase, with the verified task ID.
+2. **roadmap position**: verified roadmap/epic/US references, a compact cycle visual, next action and blocker/status.
+3. **modified files**: changed paths, or N/A when none changed.
+4. **closed tasks**: confirmed closed task IDs, or N/A.
+5. **explanation**: what was done and why, evidence, limits and next gate.
 
-Labels remain fixed; values are written in the user's language. The explanation
-retains relevant Goals/Non-goals, criteria, checks, verdict and session details.
-A blocked result or unchanged phase still uses all seven fields.
+States such as blocked, done and loop again are not phases; keep them in roadmap position.
+Do not invent roadmap progress. If it is unavailable, say so and show known cycle progress only.
+For example: `Research [reused] → Plan [active] → Implement [pending] → Test [pending] → Judge [pending]`.
+The roadmap describes outcomes; the cycle describes phases. Explain nonstandard transitions with current proof or missing prerequisites.
+Labels remain fixed; values use the user's language. Preserve relevant Goals/Non-goals, criteria, checks and verdict in explanation.
+Blocked and unchanged results still use all five sections.
+
+Read requirements before the actions they govern. Read the common output and phase delivery contracts after investigation, before drafting the response.
 
 A proposed commit has no hash. A recommended session has not been launched.
 The report distinguishes modified files from files actually committed.

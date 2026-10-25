@@ -111,7 +111,7 @@ class GooseObserverBehavior(unittest.TestCase):
     def test_hook_guide_discloses_current_verification_limits(self):
         text = (ROOT / "hooks/README.md").read_text()
         self.assertEqual(text.splitlines()[0], "# Plugin Goose hooks")
-        self.assertIn("mandatory seven-field final report", text)
+        self.assertIn("mandatory five-section final report", text)
         self.assertIn("historical observation is not verification", text)
         self.assertIn("do not turn that failed validator", text)
 

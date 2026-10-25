@@ -1,8 +1,9 @@
-# Test output and handoff contract v1.2.0
+# Test output and handoff contract v1.3.0
 
-Apply this contract only to test. Before work read it with the common-output.md
-contract directly linked from SKILL.md. Before delivery check both. The common
-seven-heading Markdown envelope remains mandatory; this reference adds this phase's
+Apply this contract only to test. Read after investigation and before drafting the
+phase response, with common-output.md directly linked from SKILL.md. Check both
+before delivery. Operational requirements are separate in requirements-baseline.md.
+The common five-heading Markdown envelope remains mandatory; this reference adds this phase's
 content, not another final report or permission to write artifacts.
 
 ### test
@@ -23,7 +24,7 @@ Complete the common delivery checklist, then verify these test obligations:
 ## Worked handoff example
 
 Hypothetical missing-prerequisite example, not an executed run. Place this card
-inside the common report's explanation; retain all seven outer headings. Replace
+inside the common report's explanation; retain all five outer headings. Replace
 placeholders with verified values; use locators for long unchanged details.
 
 ~~~yaml
@@ -34,6 +35,7 @@ current_tasks:
   - id: "<verified Beads ID, or N/A if no tracker>"
     status: "<read-back status, or unknown>"
 phase: test
+roadmap_position: "Roadmap unavailable; resolve the named prerequisite before later phases"
 current_goal: "Establish a reviewable cancellation slice"
 success_criteria:
   - id: "AC-1 (illustrative)"

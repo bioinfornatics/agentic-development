@@ -1,6 +1,6 @@
 ---
 name: iterate
-description: Turns judge findings or failed verification into bounded corrective development while preserving accepted outcomes and invalidating stale proofs. Use for addressing rejected or indeterminate slices, repeated failures, or newly discovered scope risks.
+description: Coordinates bounded corrective development. Use for judge findings, failed verification, missing proof, repeated failures or newly discovered scope risks.
 ---
 
 # Iterate
@@ -17,149 +17,117 @@ Resolve the findings, candidate, retained proof, current permissions and correct
 | Budget is exhausted or repeated attempts make no progress | Stop corrective execution and preserve the candidate, evidence and restart context | Blocker, bounded options and required decision; no extra attempt |
 
 Execute the selected action through the workflow below. Read only the references
-required by that action, reuse guidance already loaded in this context, and verify
+required by that action, reuse unchanged guidance already loaded in this context, and verify
 the result before taking the next action. Loading this Skill is not authorization
 for tracker writes, Git operations, installation or production effects.
 
-## Structured requirements and output format
-
-Before starting work, read [the common requirements and output contract](references/common-output.md)
-and [this phase's requirements and output contract](references/requirements-output.md).
-The common contract defines Goals/Non-goals, FR/GWT, quantified NFRs and the seven-field
-final envelope; the phase contract supplies this step's deliverable, checklist and
-worked handoff example. Reuse verified criteria; do not invent results or permissions.
-
-## Shared requirements
-
-Read [the communication contract](references/communication-contract.md) before
-working, including repository ownership, early transitions, evidence, judgment
-and conditional UI reporting. Apply it even when this skill is used alone.
-Respond in the user's language. Verify tools and permissions; unavailable
-capabilities produce an explicit blocker, never simulated execution evidence.
-Use the coordinator's approved slice state when available. Return the seven-field final report
-and phase artifacts; report unchanged files explicitly.
-
-## Conditional durable tracking
-
-If the target repository uses Beads, read [the Beads integration](references/beads-integration.md)
-before choosing work or mutating shared task state. Recover context when stale,
-verify issue status and claim before implementation, and keep Beads as task
-truth. Artifact plans and handoffs are not a competing tracker. Follow the
-reference for missing tools, failed claims, durable follow-up and closure;
-evaluate commit suitability after each confirmed closure, without inferring Git authority.
-
-## Trust, candidate and review gates
-
-Read [the authorization policy](references/authorization-policy.md) before
-resuming artifact claims or executing consequential actions. Recorded permissions
-are historical unless their current authoritative source and scope are verified.
-Read [candidate identity](references/candidate-identity.md) when planning checks,
-freezing inputs or reusing evidence; include staged, untracked and binary inputs
-and explicitly defined output-only exclusions. Read [the review policy](references/review-policy.md)
-before agreeing acceptance, judging or closing a task/US. Independence and closure
-requirements are set before implementation, not waived by a missing capability.
-
 ## Workflow
 
-1. Read the available judgment or failed-check evidence, current candidate and
+Read each reference when its local condition applies, before the governed action
+even if needed earlier than its numbered stage. Reuse unchanged loaded guidance.
+These stages do not authorize additional phases or side effects.
+
+1. [ ] **Recover scope and current authority**
+
+   Read [the requirements baseline](references/requirements-baseline.md) before
+   defining or changing scope, criteria or verification, and before implementation.
+   Reuse verified Goals/Non-goals, FR/GWT and applicable quantified NFRs; do not
+   invent targets. Investigation needs a bounded question, not a completed plan.
+
+   Read [the authorization policy](references/authorization-policy.md) before
+   resuming artifact claims or executing consequential actions. Recorded permissions
+   are historical unless their current authoritative source and scope are verified.
+
+   If the target repository uses Beads, read [the Beads integration](references/beads-integration.md)
+   before choosing work or mutating shared task state. Recover context when stale,
+   verify issue status and claim before implementation, and keep Beads as task
+   truth. Artifact plans and handoffs are not a competing tracker. Follow the
+   reference for missing tools, failed claims, durable follow-up and closure;
+   evaluate commit suitability after each confirmed closure, without inferring Git authority.
+
+   Read [the communication contract](references/communication-contract.md) before preparing
+   the first checkpoint or a Git/session transition, for ownership, transition, evidence
+   and conditional UI reporting safeguards. Apply these safeguards in standalone use too.
+   Respond in the user's language. Verify tools and permissions; unavailable
+   capabilities produce an explicit blocker, never simulated execution evidence.
+   Use the coordinator's verified slice state when available; do not fabricate execution or acceptance.
+
+2. [ ] **Bind evidence and classify the gap**
+
+   Read [candidate identity](references/candidate-identity.md) before planning checks,
+   freezing inputs or reusing evidence; include staged, untracked and binary inputs
+   and explicitly defined output-only exclusions. Read [the review policy](references/review-policy.md)
+   before agreeing acceptance, judging or closing a task/US. Independence and closure
+   requirements are set before implementation, not waived by a missing capability.
+
+   Read the available judgment or failed-check evidence, current candidate and
    verified task scope. Consult the roadmap when it exists; a missing roadmap or
    not-run Judge does not prevent diagnosis of an evidenced failed check. Verify
    the diff has not drifted. Preserve accepted outcomes and initial user work.
-2. Classify each open item as implementation defect, missing proof/capability,
+
+   Classify each open item as implementation defect, missing proof/capability,
    research gap or scope/acceptance decision. Link it to evidence and criterion.
-3. Before starting a correction, check required capabilities and remaining budget.
+
+3. [ ] **Check capability and remaining budget**
+
+   Before starting a correction, check required capabilities and remaining budget.
    If a required capability is unavailable, stop and report the blocker, preserved
    state and prerequisite. A capability-only stop is not a correction attempt:
    do not increment the round counter. Preserve unchanged, still-current proofs;
    invalidate only evidence whose inputs changed or whose freshness failed.
    Do not fabricate a test or waive its gate because a capability is missing.
-4. Prioritize blocking findings and define the smallest corrective task, its
+
+   An attempt begins only with authorized corrective execution, not diagnosis, planning or waiting. Default maximum: three authorized attempts unless the user explicitly approves another bound. Zero-budget diagnosis/waiting remains allowed and consumes zero attempts; it never resets the counter. Stop corrective execution on exhaustion or repeated no-progress.
+
+4. [ ] **Define the smallest corrective task before dispatch**
+
+   Prioritize blocking findings and define the smallest corrective task, its
    owned scope and expected verification before dispatch. Never delete tests or
    weaken criteria to manufacture a pass. Scope expansion and destructive changes
    require current authorization. Missing proof alone does not justify a code repair.
-5. Recheck capability, permission and remaining budget for the selected action.
-   For a phase-only request, return the proposed handoff without starting an attempt.
-   Increment the round counter only when an authorized correction attempt begins,
-   immediately before executing or dispatching that correction, not during diagnosis,
-   planning or waiting. Record the before/after counter in the permitted state.
-   Never start a correction after its budget is exhausted.
-6. Load Implement then Test for implementation defects, Test for missing proof,
-   Research for unknown causes, or Plan for changed scope/criteria; request unresolved
-   user decisions instead of dispatching unauthorized work. Stay in the same
-   branch/session for related repairs unless an actual transition trigger applies.
-   Invalidate only proofs/judgment affected by changed inputs or freshness failures;
-   preserve other current candidate-bound evidence with explicit justification.
-   Re-test repaired paths and relevant regressions, then return the frozen candidate
-   to Judge. Acceptance never transfers automatically to changed code.
-7. Record the outcome or capability-only stop in iteration.md and the agreed
-   tracker/artifacts; emit the common checkpoint. If the correction budget
-   (default three rounds) is exhausted or failures repeat, stop and present
-   blocker, options, preserved artifacts and a decision or prerequisite.
-   Never start a correction after its budget is exhausted.
+   For an implementation defect, require a symptom-specific red reproduction before
+   repair; a missing public seam, fixture or access is a prerequisite, not repair proof.
 
-## Session and completion boundaries
+   Reuse a matching tracker task rather than one per hunk; link its US/spec and
+   precise corrective check. Changed scope/domain assumptions require Research/Plan,
+   not speculative functionality or unrelated rewrites.
 
-Objective change or judge role may justify a fresh context, but never implies a
-commit. Include dirty/staged/untracked state and exact resume conditions in the
-handoff. Close only after the scoped acceptance gate passes; leave unmet real
-validation work open. No automatic push, merge or production promotion.
+5. [ ] **Verify available outcomes and preserve restart state**
 
-## Conditional reporting details
+   Record diagnosis, waiting and corrections actually performed, not merely proposed, and actual counter before/after. If delegated, verify actual invocation/completion status, source/candidate identity and result locators; incomplete results remain provisional.
 
-Read [the commit report](references/commit-report.md) only for a proposed,
-performed, failed or externally observed commit. Read
-[the session report](references/session-report.md) only for planned session end,
-explicit wrap-up or recommended context transition. The common communication
-contract remains mandatory; do not reload identical content already present in
-the current context. Combine overlapping reports without dropping required fields.
+   For returned repairs, re-run the original symptom and relevant regressions, remove temporary instrumentation and verify candidate freshness. Invalidate only proofs/judgment affected by changed inputs or freshness failures; preserve current candidate-bound evidence with explicit justification. Acceptance never transfers to changed code; prepare the frozen candidate for Judge.
 
-## Corrective task and output contract
+   Collect iteration.md facts in approved tracker/artifacts or inline if persistence is unavailable: classification, actions/results, retained/invalidated proof, counter and limits. Keep unmet real validation open; this phase grants no closure permission. Related repairs stay in the branch/session unless an actual transition trigger applies; objective change or Judge role may justify fresh context, never an implicit commit. Preserve dirty/staged/untracked state and exact resume conditions. Prepare immediate action, owner and prerequisite separately from conditional later phases.
 
-Turn each blocking finding into the smallest evidence-producing correction or
-prerequisite. Reuse a matching tracker task rather than create a task per hunk;
-record its relation to the US/spec and the precise check that can disprove success.
-If a diagnosis changes scope or a domain assumption, return to Research/Plan.
-Do not add speculative functionality or rewrite unrelated accepted outcomes.
+6. [ ] **Read delivery guidance and draft the phase response**
 
-Produce the phase artifact with the canonical headings in
-[the requirements and output contract](references/requirements-output.md).
-Record the counter before/after: waiting or diagnosis is not an attempt, while an
-authorized correction consumes one. Preserve still-current proof; invalidate actual
-input/freshness drift only. Re-run the original symptom and relevant regressions,
-remove temporary instrumentation and return the changed frozen candidate to Judge.
+   After investigation and immediately before drafting any user-facing phase response (including blocked or unchanged results), read [the common output contract](references/common-output.md) and [this phase's delivery contract](references/requirements-output.md); apply their checklists and five-section report. Before drafting a proposed, performed, failed or externally observed commit report, read [the commit report](references/commit-report.md). Before drafting a planned session end, explicit wrap-up or recommended context transition report, read [the session report](references/session-report.md). Reuse unchanged guidance already loaded; combine overlapping reports without duplication.
 
-## Before delivery or handoff
+   After reading delivery guidance, draft the actual handoff fenced YAML state card and copy-ready restart prompt; distinguish proposed from performed actions.
 
-- [ ] Verify [the common output checklist](references/common-output.md): seven headings,
-  verified tasks/goals/criteria, actual files, truthful Git/session status and next action.
-- [ ] Verify [this phase's delivery checklist](references/requirements-output.md) and
-  include its specific evidence, remaining criteria and recommended review order.
-- [ ] At a handoff boundary render one fenced YAML state card inside explanation and a
-  copy-ready restart prompt; distinguish recommendations from performed actions.
-- [ ] Keep missing proof/independence open; report source-only checks as static.
+7. [ ] **Execute the handoff or stop**
 
-## Execute the handoff or stop
+   Execute the next phase only when it belongs to the user's requested workflow and
+   current scope/permissions cover its actions. For a phase-only request, return the
+   phase result and proposed handoff, then stop; do not expand the request by loading
+   or executing a new phase. If continuing is authorized, apply the routes below.
 
-Execute the next phase only when it belongs to the user's requested workflow and
-current scope/permissions cover its actions. For a phase-only request, return the
-phase result and proposed handoff, then stop; do not expand the request by loading
-or executing a new phase. If continuing is authorized, apply the routes below.
+   Immediately before executing or dispatching an authorized correction, recheck capability, current permission, red-before-repair and remaining budget. For phase-only requests return the proposal without starting an attempt. Increment and record the before/after counter in permitted state BEFORE dispatch; stop if required recording is unavailable. Diagnosis, planning and waiting never increment it. Never start after exhaustion or repeated no-progress.
 
-For an authorized implementation correction, Load `agentic-development:implement`
-with its task, reproduction, owned paths and remaining budget, then route the changed
-candidate through Test and Judge. For proof-only work, Load
-`agentic-development:test` with the missing criterion and unchanged candidate.
-Load `agentic-development:research` for unknown causes, or
-`agentic-development:plan` for changed scope/criteria; request the real
-permission or scope decision rather than inventing it.
+   For an authorized implementation correction, Load `agentic-development:implement`
+   with its task, reproduction, owned paths and remaining budget, then route the changed
+   candidate through Test and Judge. For proof-only work, Load
+   `agentic-development:test` with the missing criterion and unchanged candidate.
+   Load `agentic-development:research` for unknown causes, or
+   `agentic-development:plan` for changed scope/criteria; request the real
+   permission or scope decision rather than inventing it.
 
-Use the host's available Skill-loading mechanism; these identifiers are not shell
-commands. If loading is unavailable, read the selected bundled SKILL.md and its
-required contained references, and report direct reading rather than activation.
-Pass a copy-ready handoff if execution cannot continue in this context. State the
-specific missing input, permission or capability, who can supply it when known,
-and the next executable action. Do not merely say "blocked" or "continue later".
+   Use the host's available Skill-loading mechanism; these identifiers are not shell
+   commands. If loading is unavailable, read the selected bundled SKILL.md and its
+   required contained references, and report direct reading rather than activation.
+   Pass a copy-ready handoff if execution cannot continue in this context. State the
+   specific missing input, permission or capability, who can supply it when known,
+   and the next executable action. Do not merely say "blocked" or "continue later".
 
-End every phase delivery with the mandatory seven-field final report from
-[the common requirements and output contract](references/common-output.md), including
-blocked or unchanged results. Keep the ordered fields and explain the next gate.
+   On return verify outcomes through the evidence steps before any new dispatch. No automatic extra attempt, closure, push, merge or production promotion.

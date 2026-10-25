@@ -1,4 +1,4 @@
-# Communication contract v1.6.0
+# Communication contract v1.7.0
 
 Mandatory for every phase. This is an instruction contract, not a tool firewall.
 Respond in the user's language. Keep evidence and decisions inspectable; do not
@@ -21,16 +21,18 @@ Use a full checkpoint at commit boundaries, judgment, session handoff, US closur
 session start, objective change, and slice completion. Do not repeat an unchanged
 full report after every tool call. Report discoveries that affect scope or safety
 immediately. When no files changed, say so; never invent a diff for a phase.
-At phase delivery and handoff use the seven-field final report in common-output.md;
+At phase delivery and handoff use the five-section final report in common-output.md;
 this supersedes the six-field envelope for final messages, not its evidence safeguards.
 
 ## Required structure and notification fields
 
-Apply common-output.md and this phase's requirements-output.md, both linked directly from this Skill, for
-explicit Goals/Non-goals, systematic functional Given/When/Then, relevant quantified
-NFR measurement matrices and the exact ordered seven-field final report. It is the sole final envelope;
-the six checkpoint detail groups above belong inside its explanation, not a second report. Notify modified files,
-actual branches/commits and next-session recommendations with explicit action status.
+Read requirements-baseline.md before defining or changing requirements or verification,
+and before implementation, for Goals/Non-goals, FR/GWT and applicable quantified NFRs.
+After investigation and before drafting the phase response, read common-output.md
+and this phase's requirements-output.md, directly linked from SKILL.md, for the
+five-section final report. Its roadmap position contains progress and the immediate
+next action; explanation carries evidence, limits and applicable checkpoint details.
+Notify actual files, branches/commits and session recommendations truthfully.
 Do not repeat unchanged detailed tables; use verified locators and concise summaries.
 
 ## Roadmap and working tree

@@ -1,4 +1,4 @@
-# Cycle state — template v1.5.0
+# Cycle state — template v1.6.0
 
 Replace placeholders with facts, unknown, not-run or not-applicable. This is a
 plugin-defined Markdown artifact, not a Goose session configuration.
@@ -7,7 +7,8 @@ plugin-defined Markdown artifact, not a Goose session configuration.
 - Slice ID / approved objective / acceptance scope:
 - Roadmap source / milestone / epic / US:
 - Accepted outcomes / remaining work:
-- Phase / correction round / stop budget:
+- Actual phase / grounded cycle visual / status separate from phase:
+- Immediate next action / owner / prerequisite / correction round / stop budget:
 - Historical permission claims / authoritative source / currently valid scope:
 - Verified current grants / prohibitions / decisions pending:
 - Required reviewer independence / closure authority / waiver source if any:

@@ -26,7 +26,7 @@ These hooks block nothing: they create no commit,
 branch, task, session or Entire checkpoint. They do not validate acceptance.
 
 The Stop diagnostic still checks legacy six numbered checkpoint headings. It does
-not recognize or validate the Skills' mandatory seven-field final report. A missing
+not recognize or validate the Skills' mandatory five-section final report. A missing
 legacy shape is not a failed Skill delivery, a blocking decision or an acceptance
 verdict. Updating this diagnostic is separate runtime work.
 

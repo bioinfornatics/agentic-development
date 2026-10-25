@@ -1,111 +1,70 @@
-# Common requirements and output contract v1.2.0
+# Common delivery output contract v1.3.0
 
-Mandatory for all seven phases, including standalone use. These are Markdown formats,
-not a runtime schema or automatic notification hook. Keep candidate/permission/review
-gates. Respond in the user's language; retain the exact final labels and order
-and translate their values. Reuse verified task records, not a second task database.
+Read after investigation and before drafting every user-facing phase delivery,
+including blocked, unchanged and standalone results. Reuse unchanged guidance
+already loaded in this context; verify it before delivery rather than rereading blindly.
+This document governs response formatting, not permission to act. Requirements
+must already have been resolved before the actions they govern.
 
-## Requirements baseline
+## Mandatory five-section final report
 
-Before implementation, state Goals and Non-goals explicitly with stable IDs and the
-requirement/task source. Goals describe observable outcomes; Non-goals name excluded
-behavior, environments and operations. Distinguish approved goals from proposals.
-Each phase carries the same baseline or a verified locator and a short summary.
-Research records a research question and deliverable, not invented product acceptance.
-
-### Functional requirements (FR)
-
-Use Given/When/Then systematically for every functional acceptance criterion,
-including relevant error, cancellation and boundary paths. One observable behavior
-per scenario; And adds related conditions/outcomes only. Assign an ID, source and
-public verification seam. Then must be independently observable, not a private
-implementation detail or copied algorithm logic. Do not force a research question,
-source-hash check or pure documentation criterion into fake user behavior; mark FR
-N/A with a reason and use a verifiable deliverable criterion instead.
-
-| ID / source | Given (state/data/preconditions) | When (action/event) | Then (observable result) | Check / seam | Status / evidence |
-|---|---|---|---|---|---|
-| FR-<id> / <verified source> | <precondition> | <single action> | <expected value/invariant> | <test/observation> | <approval and check status> |
-
-### Non-functional requirements (NFR)
-
-NFR means non-functional requirements. For each relevant quality constraint, record
-Metric, Target (comparator included), Unit, Workload/data size and duration,
-Environment, Measurement method/sample window, and Approval/source. Quantify latency,
-throughput, resource use, reliability and other measurable constraints when relevant.
-Record a known baseline separately from an approved target. For security/accessibility
-also identify standard/version and an observable pass/fail check; quantify meaningful
-limits, not fake numbers.
-
-| ID / source | Metric | Target | Unit | Workload / window | Environment | Measurement / check | Approval | Status / evidence |
-|---|---|---|---|---|---|---|---|---|
-| NFR-<id> | <metric or standard/version> | <approved bound or unresolved> | <unit or N/A reason> | <load/data/duration/sample> | <scope/config> | <method/tool/pass rule> | <source or pending> | <not-run/PASS/FAIL/BLOCKED/UNKNOWN> |
-
-Do not invent targets, approval, sample sizes or measured results. Label suggestions
-proposed and obtain the responsible decision before using them as acceptance limits.
-Missing mandatory bounds or measurement capability leave the criterion unresolved/
-blocked, not passed. If none applies, write NFR: N/A — <scope-based reason>, retaining
-existing project-wide constraints. Avoid vague "fast" or "secure" requirements.
-A measurement proves only its workload/environment/window. GWT may reference an NFR
-ID; retain its numerical measurement definition in the NFR matrix.
-
-## Mandatory seven-field final report
-
-End every phase delivery with this report, including standalone use, blocked work,
-no-change results and explicit wrap-up. Keep these exact English labels and order;
-write values and the explanation in the user's language. Use Markdown headings,
-not JSON. This is the sole final envelope, not an additional summary after another
-report. In-progress updates may remain concise. The current phase may vary; fields
-must not be omitted. No blank values or fabricated execution.
+Keep these English labels and order; translate values into the user's language.
+The current-goal heading includes the actual phase, not a proposed future phase.
+Use Markdown, not JSON. In-progress updates may stay concise.
 
 ~~~markdown
-## step
-<cycle|research|plan|implement|test|judge|iterate>
+## current goal {step: <cycle|research|plan|implement|test|judge|iterate>}
+<Outcome addressed, verified task ID and criterion/baseline locator when available>
+
+## roadmap position
+<Roadmap / epic / US references and accepted/remaining outcomes, or unavailable>
+<Compact visual of verified phase progress; distinguish the roadmap from the cycle>
+Next action: <one concrete action, owner and prerequisite, or none if done>
+Status: <active|blocked|done|loop again>; <blocker, correction and retained criteria when applicable>
 
 ## modified files
 N/A — <no files changed in this delivery, with reason>
 OR
 - <+ added / ~ modified / - removed / renamed old -> new path — purpose>
 
-## next step
-<cycle|research|plan|implement|test|judge|iterate|loop again|blocked|done>
-
-## current goal
-<short description of the objective addressed, with verified task ID if available>
-
-## next goal
-<short description of the next objective or missing prerequisite; N/A if done>
-
 ## closed tasks
-N/A — <no confirmed closures in this delivery, or tracker unavailable>
+N/A — <no confirmed closed tasks in this delivery, or tracker unavailable>
 OR
-- <verified ID — title and confirmed closed status; performed or externally observed>
+- <verified ID — title and read-back closed status; performed or externally observed>
 
 ## explanation
-<Pedagogical explanation: what was done, why, what the evidence establishes and
-what remains. Include the applicable details below and the commit evaluation for
-each confirmed closed task. Distinguish proposed, performed, failed and observed.>
+<Pedagogical explanation: what was done, why, evidence and limits, actual versus
+proposed actions, and the next gate. Include applicable boundary facts below.>
 ~~~
 
-Report only files actually changed by this delivery; separate preserved user hunks
-in the explanation, never attribute the entire initial dirty tree to the agent.
-List repository-relative paths, including removed paths and both sides of renames.
-A modified file is not necessarily committed. Read back tracker status before
-listing confirmed closed tasks; failed/proposed closures stay out of that list and
-are explained as failed/proposed. Do not invent tasks on non-Beads work.
+## Phase, progress and roadmap semantics
 
 For cycle, step is the last substantive phase actually performed when identifiable,
-otherwise cycle for coordination-only work. next step is a recommendation unless
-explicitly reported as already performed. loop again means repeat the current phase;
-name the correction and retained criteria. blocked names the missing prerequisite,
-not an executable phase. done means the requested scope is complete, not that its
-parent, release or deployment is accepted. Do not launch a new phase by reporting it.
+otherwise cycle for coordination-only work. States are not phases: blocked, done
+and loop again belong in roadmap position, never in the step attribute.
+Done covers only the requested scope, not parent, release or deployment acceptance.
+A recommended transition does not execute or authorize it.
 
-Retain phase-specific artifacts and the existing evidence/permission/acceptance
-requirements. Put their essential facts or verified locators under explanation.
-Use the boundary facts below inside explanation when relevant to a full boundary;
-they are supporting content, not a competing final envelope. For a small
-phase delivery, concise prose or bullets can cover the same applicable facts.
+Show at least a compact cycle visual, using only evidence-backed state:
+
+~~~text
+Research [reused] → Plan [active] → Implement [pending] → Test [pending] → Judge [pending]
+Correction loop: Iterate → affected phase
+~~~
+
+This example is hypothetical. Use active, verified, reused, pending, blocked or
+unknown as justified; loading a Skill does not verify a phase. Do not fabricate
+a roadmap, task, milestone or acceptance. If roadmap identity is unavailable,
+say so and show known cycle progress only, with unknowns explicit. Keep distant
+roadmap detail coarse; link verified task records instead of duplicating a tracker.
+Explain a nonstandard transition with its reason, reused/current proof and missing
+prerequisites. The next action names the immediate executable step, not a later
+phase whose gate is still blocked.
+
+Report only files actually changed by this delivery; separate preserved user hunks
+in explanation. List repository-relative paths, both sides of renames and deletions.
+Modified is not committed. Read back tracker status before listing confirmed closed
+tasks; failed/proposed closures stay out of that list. Never invent tasks.
 
 ## Boundary facts and preservation
 
@@ -122,10 +81,10 @@ A new artifact format is not permission to create files or a competing task data
 
 ## Common delivery checklist
 
-Read this contract before work; before delivery verify it together with the current
-phase contract. Reuse already loaded unchanged guidance rather than reload blindly.
+Read this contract after investigation and before drafting the response; before
+delivery verify it together with the current phase delivery contract. Reuse already loaded unchanged guidance rather than reload blindly.
 
-- [ ] Keep the seven exact final headings in order, including blocked/no-change work.
+- [ ] Keep the five final headings in order, with the actual step in current goal, including blocked/no-change work.
 - [ ] Identify the actual phase, verified task/status, goal and success criteria.
 - [ ] Separate observations from proposals, unknowns and hypothetical examples.
 - [ ] Report owned files separately from preserved user work; give review order and reasons.

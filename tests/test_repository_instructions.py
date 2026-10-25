@@ -29,7 +29,7 @@ class RepositoryInstructions(unittest.TestCase):
         for item in ['Beads is mandatory', 'claim', 'readback', 'blocker',
                      'task ID alone', 'Do not initialize', 'Dolt sync',
                      'current scoped authority', 'No self-approval', 'three authorized attempts',
-                     'Given/When/Then', 'NFR', 'English', 'Entire', 'seven-field']:
+                     'Given/When/Then', 'NFR', 'English', 'Entire', 'five-section']:
             self.assertIn(item, self.text)
         self.assertNotIn('currently 0.5.0', self.text)
         self.assertNotIn('See .beads/README.md', self.text)

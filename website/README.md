@@ -105,7 +105,7 @@ are not fully locked. Never upload or serve the repository itself.
 ## Integration boundary
 
 Standalone source 0.5.0 uses the seven short Skill names and the current
-seven-field final report, conditional commit evaluation and correction policy.
+five-section final report, conditional commit evaluation and correction policy.
 English guides in ../docs/ remain canonical; the builder does not create duplicate
 English guide sources. This checkout has no configured remote. The delivered
 integration website supplied the pinned builder and selector, not its older core

@@ -11,13 +11,16 @@ development -> exact-source verification and independent approval
 ```
 
 **Feature PRs target development. Never merge development into main.** A
-development-to-main PR is a promotion review request, not a source merge.
-Successful publication closes that request without merging or deleting development.
+production PR contains only a generated installation tree based on previous main,
+not a development source merge. Squash that generated-only PR after verification;
+never merge or delete development as part of publication.
 
 - development owns editable instructions, tests, tools and build inputs.
 - main is reserved for the generated, ready-to-install distribution.
 - Production publication creates a generated-tree commit with previous main as its
-  sole parent, then uses a normal fast-forward push. Never force-push production.
+  sole parent. With protected main, use a generated-only PR and a squash merge;
+  the resulting commit has previous main as sole parent (a fast-forward update).
+  Never force-push production or bypass required PR checks.
 - Feature branches start from development. Check the worktree and preserve existing
   changes; Git operations, installation and promotion require current authority.
 
@@ -32,7 +35,9 @@ Passing static checks does not prove agent behavior or installed-host compatibil
 ## Production boundary
 
 Generate only the manifest, self-contained Skills and their required resources,
-user-facing prerequisite documentation, provenance and verified optional hook runtimes.
+user-facing prerequisite documentation, provenance, read-only verification workflows
+and verified optional hook runtimes. Runtime metadata uses a distributor-owned
+manifest extension; it does not install dependencies or promise portable execution.
 Exclude tests, evaluations, research, tracker state, repository instructions and
 build tools from the installation payload. Hash the projected paths, modes and bytes.
 
@@ -52,7 +57,8 @@ contained, locked dependency closure and explicit host prerequisites.
    authorized generated-tree publication. Changed inputs or stale approval stop it.
 6. Publish without force, then verify remote provenance and installation results.
 
-Do not use GitHub Merge for the promotion request. Source changes enter main only
+Do not use GitHub Merge on a development-to-main source request. Use squash
+only for an exact verified generated-tree PR based on previous main. Source changes enter main only
 through the generated projection. Approval and branch-protection enforcement are
 separate repository settings; this policy and read-only CI do not configure them.
 
@@ -78,6 +84,8 @@ publication. These commands never publish or mutate branches.
 The public development branch is established from the existing public main history.
 The current main is **not yet** a verified production-only projection: do not claim
 installation readiness from the branch name. Projection publication automation and
-isolated installation acceptance remain prerequisites, not capabilities provided
+isolated installation acceptance remain gates. No license grant is currently
+present in source; do not invent one or copy another project license. These gates
+are not capabilities provided
 by this policy change. Keep main unchanged until those gates and publication
 authority are satisfied. Existing source history and local work stay preserved.

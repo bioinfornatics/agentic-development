@@ -102,6 +102,17 @@ def build(output, committed=False):
         "interpreter": "Python >=3.10", "mode": "stdlib-zipapp", "dependencies": [],
         "entrypoint": "scripts/observe.pyz", "source_sha256": hashlib.sha256(handler).hexdigest(),
         "native": "not-promised", "install_build": False})
+    runtime_extension = {"version": 1, "language": "python", "mode": "stdlib-zipapp",
+        "interpreter": "Python >=3.10", "manifest": "runtime.json",
+        "entrypoint": "scripts/observe.pyz", "dependencies": [], "install_build": False}
+    plugin = json.loads(contents["plugin.json"])
+    plugin.setdefault("extensions", {})["io.github.bioinfornatics.agentic-development.runtime"] = runtime_extension
+    contents["plugin.json"] = encode(plugin)
+    workflow = plain(ROOT / ".github/workflows/production-checks.yml").read_bytes()
+    if committed and workflow != subprocess.check_output([
+            "git", "-C", str(ROOT), "show", source_head + ":.github/workflows/production-checks.yml"]):
+        raise ValueError("uncommitted workflow")
+    contents[".github/workflows/production-checks.yml"] = workflow
     if committed:
         contents["README.md"] = (
             "# Agentic Development\n\n"
@@ -145,7 +156,8 @@ def verify(output):
     if receipt["files"] != records(output):
         raise ValueError("payload mismatch")
     paths = {entry["path"] for entry in receipt["files"]}
-    required = {"plugin.json", "hooks/hooks.json", "scripts/observe.pyz", "README.md", "runtime.json"}
+    required = {"plugin.json", "hooks/hooks.json", "scripts/observe.pyz", "README.md", "runtime.json",
+                ".github/workflows/production-checks.yml"}
     if not required <= paths:
         raise ValueError("missing runtime")
     for name in paths:

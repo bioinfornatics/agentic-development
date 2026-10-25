@@ -15,7 +15,7 @@ class CommittedProjection(unittest.TestCase):
         self.addCleanup(self.tmp.cleanup)
         self.root = Path(self.tmp.name) / "source"
         self.root.mkdir()
-        for name in ("skills", "hooks", "scripts", "tools", "tests"):
+        for name in ("skills", "hooks", "scripts", "tools", "tests", ".github"):
             shutil.copytree(ROOT / name, self.root / name, ignore=shutil.ignore_patterns("__pycache__"))
         shutil.copyfile(ROOT / "plugin.json", self.root / "plugin.json")
         self.git("init", "-q")

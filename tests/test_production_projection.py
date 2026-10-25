@@ -72,6 +72,19 @@ class ProductionProjection(unittest.TestCase):
                 extra.rmdir()
         self.assertEqual(self.call("verify").returncode, 0)
 
+    def test_runtime_metadata_and_verified_workflow_are_distributed(self):
+        self.assertEqual(self.call("project").returncode, 0)
+        plugin = json.loads((self.out / "plugin.json").read_text())
+        runtime = plugin["extensions"]["io.github.bioinfornatics.agentic-development.runtime"]
+        self.assertEqual(runtime["mode"], "stdlib-zipapp")
+        self.assertEqual(runtime["manifest"], "runtime.json")
+        self.assertEqual(runtime["dependencies"], [])
+        workflow = self.out / ".github/workflows/production-checks.yml"
+        self.assertTrue(workflow.is_file())
+        self.assertIn("contents: read", workflow.read_text())
+        self.assertNotIn("contents: write", workflow.read_text())
+        self.assertEqual(self.call("verify").returncode, 0)
+
     def test_unsafe_destination_is_rejected_before_write(self):
         target = Path(self.temp.name) / "target"
         target.mkdir()

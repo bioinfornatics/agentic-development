@@ -1,0 +1,40 @@
+{
+  "fixture_kind": "hypothetical-input-not-execution-evidence",
+  "case_id": "local-streaming-cycle",
+  "scope": "Local streaming-stop mocked slice; real transport validation excluded",
+  "current_authority": "Explain supplied records only; no edits, commands, commit, push or tracker updates",
+  "research_findings": {
+    "R1": "Cancellation must propagate to the mocked transport",
+    "R2": "Controller owns request lifecycle"
+  },
+  "approved_plan": {
+    "paths": [
+      "src/controller.ts",
+      "tests/controller.test.ts"
+    ],
+    "acceptance": {
+      "STOP-1": "Pending mocked request receives cancellation once"
+    },
+    "steps": [
+      "Add failing mocked cancellation reproduction",
+      "Implement signal propagation",
+      "Rerun scoped checks"
+    ]
+  },
+  "test_record": {
+    "candidate": "hypothetical-candidate-A",
+    "result": "STOP-1 pass in mocked environment"
+  },
+  "judge_finding": {
+    "id": "J1",
+    "requirement": "Handle a stop request when no request is pending",
+    "status": "unresolved"
+  },
+  "repair_proposal": {
+    "paths": [
+      "src/controller.ts",
+      "tests/controller.test.ts"
+    ],
+    "candidate_after_repair": "hypothetical-candidate-B"
+  }
+}

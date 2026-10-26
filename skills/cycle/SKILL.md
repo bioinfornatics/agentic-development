@@ -55,6 +55,11 @@ a previous permission. This is an agent instruction, not a runtime cache.
    the first checkpoint or a Git/session transition; it governs reporting safeguards,
    not an up-front load of response templates. For a UI checkpoint apply [the checkpoint example](assets/checkpoint-example.md).
 
+   For an explicitly requested Skill evaluation in a source checkout, read
+   [evaluation piloting](references/session-evaluation.md) before launching runs.
+   Pilot the official Skill Creator CLI from the session; use its Goose runner
+   by default. Keep native delegation optional and evaluation separate from product acceptance.
+
    Verify available filesystem, shell/test and delegation capabilities. Read the
    project's local instructions and inspect the repository without mutation first.
    Ask only for missing information that blocks safe progress; list nonblocking

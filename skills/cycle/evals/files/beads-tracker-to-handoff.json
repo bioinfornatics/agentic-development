@@ -1,0 +1,44 @@
+{
+  "fixture_kind": "hypothetical-input-not-execution-evidence",
+  "case_id": "beads-tracker-to-handoff",
+  "scope": "Resume a hypothetical local cancellation slice",
+  "current_authority": "Explanation only; no live tracker or repository mutations",
+  "stale_handoff": {
+    "status": "Closed",
+    "owner": "previous-worker",
+    "task": "TASK-17"
+  },
+  "tracker_readback": {
+    "TASK-17": {
+      "status": "in_progress",
+      "owner": "worker-a",
+      "scope": [
+        "src/controller.ts",
+        "tests/controller.test.ts"
+      ]
+    },
+    "TASK-18": {
+      "status": "open",
+      "requirement": "Real transport validation"
+    }
+  },
+  "claim_readback": {
+    "task": "TASK-17",
+    "success": true,
+    "owner": "worker-a",
+    "status": "in_progress",
+    "hypothetical": true
+  },
+  "dependencies": {
+    "TASK-17": [],
+    "TASK-18": [
+      "TASK-17"
+    ]
+  },
+  "validation_record": {
+    "candidate": "hypothetical-candidate-C",
+    "mock_check": "pass",
+    "real_transport": "not run"
+  },
+  "persistence_record": "Local tracker notes only; no sync or closure authority"
+}

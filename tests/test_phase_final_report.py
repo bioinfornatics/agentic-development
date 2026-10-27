@@ -10,7 +10,7 @@ class PhaseFinalReport(unittest.TestCase):
     def test_every_entrypoint_requires_final_report(self):
         for name in NAMES:
             text = (ROOT / "skills" / name / "SKILL.md").read_text()
-            self.assertIn("apply their checklists and five-section report", text, name)
+            self.assertIn("apply their checklists and selected delivery form", text, name)
             self.assertIn("evaluate commit suitability after each confirmed closure", text, name)
 
     def test_final_fields_are_ordered_and_truthful(self):

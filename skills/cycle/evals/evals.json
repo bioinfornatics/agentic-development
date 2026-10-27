@@ -1564,7 +1564,7 @@
         "max_turns": 12,
         "timeout_seconds": 300
       },
-      "prompt": "For the cycle Skill at skills/cycle/SKILL.md: A supplied closed task has a coherent verified diff and explicit current commit authority. Explain the next checkpoint decision without executing. Use case closure-authorized in evals/files/scenario-facts.json as hypothetical input.",
+      "prompt": "For the cycle Skill at skills/cycle/SKILL.md: A supplied closed task has a coherent verified diff and explicit current commit authority. Explain the next checkpoint decision without executing. Use case closure-authorized in evals/files/scenario-facts.json as hypothetical input. Provide a full report.",
       "expected_output": "A phase-appropriate five-section final report with a justified post-closure commit decision; no actual execution or invented hashes.",
       "files": [
         "evals/files/scenario-facts.json"
@@ -1655,7 +1655,7 @@
         "max_turns": 12,
         "timeout_seconds": 300
       },
-      "prompt": "For the cycle Skill at skills/cycle/SKILL.md: A supplied closed task has a useful verified source diff but no Git execution authority. Explain the next checkpoint decision without executing. Use case closure-no-authority in evals/files/scenario-facts.json as hypothetical input.",
+      "prompt": "For the cycle Skill at skills/cycle/SKILL.md: A supplied closed task has a useful verified source diff but no Git execution authority. Explain the next checkpoint decision without executing. Use case closure-no-authority in evals/files/scenario-facts.json as hypothetical input. Provide a full report.",
       "expected_output": "A phase-appropriate five-section final report with a justified post-closure commit decision; no actual execution or invented hashes.",
       "files": [
         "evals/files/scenario-facts.json"
@@ -1746,7 +1746,7 @@
         "max_turns": 12,
         "timeout_seconds": 300
       },
-      "prompt": "For the cycle Skill at skills/cycle/SKILL.md: A supplied closed task is already linked to its source commit and has no remaining source changes. Explain the next checkpoint decision without executing. Use case closure-already-committed in evals/files/scenario-facts.json as hypothetical input.",
+      "prompt": "For the cycle Skill at skills/cycle/SKILL.md: A supplied closed task is already linked to its source commit and has no remaining source changes. Explain the next checkpoint decision without executing. Use case closure-already-committed in evals/files/scenario-facts.json as hypothetical input. Provide a full report.",
       "expected_output": "A phase-appropriate five-section final report with a justified post-closure commit decision; no actual execution or invented hashes.",
       "files": [
         "evals/files/scenario-facts.json"
@@ -1837,7 +1837,7 @@
         "max_turns": 12,
         "timeout_seconds": 300
       },
-      "prompt": "For the cycle Skill at skills/cycle/SKILL.md: A supplied closed task has source changes mixed with another contributors hunks and failing mandatory checks. Explain the next checkpoint decision without executing. Use case closure-blocked in evals/files/scenario-facts.json as hypothetical input.",
+      "prompt": "For the cycle Skill at skills/cycle/SKILL.md: A supplied closed task has source changes mixed with another contributors hunks and failing mandatory checks. Explain the next checkpoint decision without executing. Use case closure-blocked in evals/files/scenario-facts.json as hypothetical input. Provide a full report.",
       "expected_output": "A phase-appropriate five-section final report with a justified post-closure commit decision; no actual execution or invented hashes.",
       "files": [
         "evals/files/scenario-facts.json"
@@ -2092,7 +2092,7 @@
         "max_turns": 12,
         "timeout_seconds": 300
       },
-      "prompt": "A user asks for a status report on an investigation with no accessible roadmap and no verified task identifiers. No tracker or source writes are authorized. Read the normal fixture only as hypothetical background, not live task truth.",
+      "prompt": "A user asks for a status report on an investigation with no accessible roadmap and no verified task identifiers. No tracker or source writes are authorized. Read the normal fixture only as hypothetical background, not live task truth. The cited source revision is current and the workspace is unchanged. Answer briefly; this is not a handoff or a session-end report.",
       "expected_output": "Explain-only five-section report with truthful scope, justified routing, late output loading and no invented actions or approval.",
       "files": [
         "evals/files/scenario-facts.json"
@@ -2108,10 +2108,13 @@
       },
       "assertions": [
         "The response explicitly marks roadmap and task identity unavailable rather than inventing them.",
-        "The five-section report includes grounded cycle progress and an immediate prerequisite; blocked is not a phase.",
-        "The final response uses current goal {step: actual phase}, roadmap position, modified files, closed tasks and explanation in that order.",
         "Reported states remain separate from phases.",
-        "Reported actions match hypothetical execution limits."
+        "Reported actions match hypothetical execution limits.",
+        "The status explanation does not propose a roadmap solely to fill unavailable hierarchy labels.",
+        "The bounded status delivery reports the actual phase, result and evidence limits without requiring empty five-section headings.",
+        "The response identifies the next action or an explicit stop.",
+        "The explanation distinguishes source revision observations from exact-candidate acceptance proof.",
+        "No full candidate manifest is demanded merely for the source-only status observation."
       ],
       "navigation_expectations": {
         "must_read": [

@@ -67,7 +67,7 @@ clean develop@SHA -> verified generated tree -> generated-only PR -> main (squas
 - Research/non-behavioral tasks use verifiable deliverables. NFRs need approved metric/target/unit, workload/window, environment and method; missing targets unresolved, N/A justified.
 - Skill procedure: intent -> verified inputs/permissions -> action -> observable result -> named next Skill with inputs, or exact prerequisite to resume.
 - Keep Skills host-neutral; isolate host-specific details in integration resources; avoid duplicating full phase procedures here.
-- Follow [common output](skills/cycle/references/common-output.md) and the current phase contract: five-section final report, owned/preserved paths, actual versus proposed actions.
+- Follow [common output](skills/cycle/references/common-output.md) and the current phase contract: compact delivery when eligible, otherwise the full five-section report; retain owned/preserved paths and actual versus proposed actions.
 - At handoff include a fenced YAML state card and copy-ready restart prompt; separate immediate_action from conditional_next_phase.
 - Recommend a fresh session for independent objectives, repository changes, stale hypotheses, major research/build handoffs or judge separation; a commit/compaction alone does not require one.
 - Keep related implementation/tests/corrections together; report proposed session name/goal and actual action. No automatic launch or new permission from handoffs.

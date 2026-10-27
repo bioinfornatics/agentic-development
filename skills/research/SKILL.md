@@ -72,12 +72,17 @@ a previous permission. This is an agent instruction, not a runtime cache.
 2. [ ] **Select and dispatch bounded investigations**
 
    Establish the bounded product objective from verified inputs, then select the next
-   question. Delegate each selected investigation mode to a separate worker context.
+   question. The coordinator may directly verify a cited baseline's coverage/freshness
+   or answer a bounded question from sufficient available sources; record sources,
+   gaps and reuse rationale, not a fictional worker. Delegate deeper selected investigations
+   to separate worker contexts when discovery, traversal or comparison is needed
+   beyond those inputs. This direct path never waives mandatory isolation or independence.
    Before dispatch, read [the internal investigation contract](references/delegated-investigation.md).
    These are intent labels, not required tool names: workers map them to available tools.
-   Do not inject the full session or concatenate raw reports. If delegation is unavailable,
-   identify the blocker and obtain explicit permission for direct investigation; no silent
-   fallback. Select adaptively, not a mandatory four-worker batch.
+   Do not inject the full session or concatenate raw reports. If a deeper selected
+   investigation requires delegation and it is unavailable, identify the blocker and
+   obtain explicit permission for direct investigation; no silent fallback or waiver
+   of mandatory isolation/independence. Select adaptively, not a mandatory four-worker batch.
 
    | Mode | Question | Action and observable result |
    |---|---|---|
@@ -127,9 +132,11 @@ a previous permission. This is an agent instruction, not a runtime cache.
 
 4. [ ] **Integrate evidence and prepare the decision**
 
-   - Verify actual worker invocation and completion status, source identity and result
-     locator for each selected mode; mark unneeded modes N/A with reason. Missing
-     delegation requires a blocker or explicit direct-investigation waiver. Deduplicate
+   - For delegated modes, verify actual worker invocation and completion status,
+     source identity and result locator. For direct work, record the coordinator's
+     sources, result and bounded-path rationale; mark unneeded modes N/A with reason.
+     Required unavailable delegation needs a blocker or explicit direct-investigation
+     waiver, never invented completion or waived independence. Deduplicate
      findings, resolve or expose conflicts, and mark insights observed, inferred or
      to-verify. Failed or partial results remain provisional. Compare the smallest viable
      alternatives, dependencies, risks and unknowns without premature design.
@@ -156,7 +163,7 @@ a previous permission. This is an agent instruction, not a runtime cache.
    Verify product-context sufficiency, unresolved gaps and the immediate next action,
    owner and prerequisite; distinguish proposed from performed actions. Collect
    handoff inputs now; format them after the output-contract application below.
-   After investigation and before drafting any user-facing phase response (including blocked or unchanged results), apply [the common output contract](references/common-output.md) and [this phase's delivery contract](references/requirements-output.md); apply their checklists and five-section report. Before drafting a proposed, performed, failed or externally observed commit report, apply [the commit report](references/commit-report.md). Before drafting a planned session end, explicit wrap-up or recommended context transition report, apply [the session report](references/session-report.md). Combine overlapping reports without duplication.
+   After investigation and before drafting any user-facing phase response (including blocked or unchanged results), apply [the common output contract](references/common-output.md) and [this phase's delivery contract](references/requirements-output.md); apply their checklists and selected delivery form (compact when eligible, otherwise five-section report). Before drafting a proposed, performed, failed or externally observed commit report, apply [the commit report](references/commit-report.md). Before drafting a planned session end, explicit wrap-up or recommended context transition report, apply [the session report](references/session-report.md). Combine overlapping reports without duplication.
 
    After reading delivery guidance, draft the response and, at an actual handoff,
    the fenced YAML state card and copy-ready restart prompt.

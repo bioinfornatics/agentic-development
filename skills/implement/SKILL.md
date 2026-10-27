@@ -167,7 +167,7 @@ a previous permission. This is an agent instruction, not a runtime cache.
 
    Prepare the immediate next action and its exact prerequisites, owner when known and expected result; distinguish proposed from performed actions. Collect facts for the exact candidate, criterion IDs, reproduction/tests, change ledger and limits, and the inputs needed for a handoff; draft its state card and restart prompt only after reading the delivery guidance.
 
-   After investigation and before drafting any user-facing phase response (including blocked or unchanged results), apply [the common output contract](references/common-output.md) and [this phase's delivery contract](references/requirements-output.md); apply their checklists and five-section report. Combine overlapping reports without duplication. After reading delivery guidance, draft the response and, at an actual handoff, the fenced YAML state card and copy-ready restart prompt.
+   After investigation and before drafting any user-facing phase response (including blocked or unchanged results), apply [the common output contract](references/common-output.md) and [this phase's delivery contract](references/requirements-output.md); apply their checklists and selected delivery form (compact when eligible, otherwise five-section report). Combine overlapping reports without duplication. After reading delivery guidance, draft the response and, at an actual handoff, the fenced YAML state card and copy-ready restart prompt.
 
 7. [ ] **Execute the handoff or stop**
 

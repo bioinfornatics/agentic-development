@@ -137,7 +137,7 @@ a previous permission. This is an agent instruction, not a runtime cache.
 
    Prepare the immediate next action and exact prerequisites, owner when known and expected result. Preserve the candidate and artifacts; supply the criterion/check matrix, actual results, failures/repro steps, replay commands and limits, and the inputs needed for a handoff; draft its state card and restart prompt only after reading the delivery guidance.
 
-   After investigation and before drafting any user-facing phase response (including blocked or unchanged results), apply [the common output contract](references/common-output.md) and [this phase's delivery contract](references/requirements-output.md); apply their checklists and five-section report. Combine overlapping reports without duplication. After reading delivery guidance, draft the response and, at an actual handoff, the fenced YAML state card and copy-ready restart prompt.
+   After investigation and before drafting any user-facing phase response (including blocked or unchanged results), apply [the common output contract](references/common-output.md) and [this phase's delivery contract](references/requirements-output.md); apply their checklists and selected delivery form (compact when eligible, otherwise five-section report). Combine overlapping reports without duplication. After reading delivery guidance, draft the response and, at an actual handoff, the fenced YAML state card and copy-ready restart prompt.
 
    Announce the Judge context transition when applicable; Test reports evidence, not acceptance.
 

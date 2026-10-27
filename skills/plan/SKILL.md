@@ -166,7 +166,7 @@ a previous permission. This is an agent instruction, not a runtime cache.
    - Verify the cited product-context baseline, requested planning level, scope and approval status; expose decision-critical gaps and carry nonblocking assumptions explicitly.
    - Check the planning artifact's criteria, verification matrix, review policy and next executable frontier; when tasks or tickets are in scope, verify inputs, outputs, dependencies, ownership, permissions and restart context. Read back actual tracker writes when applicable; distinguish proposed tickets from created ones.
    - Prepare the immediate next action and blockers; collect verified reading pointers and permissions for any proposed handoff; format them after the output-contract application below.
-   - After investigation and before drafting any user-facing phase response (including blocked or unchanged results), apply [the common output contract](references/common-output.md) and [this phase's delivery contract](references/requirements-output.md); apply their checklists and five-section report.
+   - After investigation and before drafting any user-facing phase response (including blocked or unchanged results), apply [the common output contract](references/common-output.md) and [this phase's delivery contract](references/requirements-output.md); apply their checklists and selected delivery form (compact when eligible, otherwise five-section report).
 
    Apply [the commit report](references/commit-report.md) only for a proposed,
    performed, failed or externally observed commit. Apply

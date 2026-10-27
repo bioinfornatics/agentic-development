@@ -1176,7 +1176,7 @@
         "max_turns": 12,
         "timeout_seconds": 300
       },
-      "prompt": "Return the hypothetical implementation handoff in the fixed five-section format; notify owned files, preserved user work, observed branch, proposed commit and recommended fresh Judge context separately from actual session action. Execute nothing. Use case change-session-output in evals/files/scenario-facts.json as hypothetical input.",
+      "prompt": "Return the hypothetical implementation handoff in the fixed five-section format; notify owned files, preserved user work, observed branch, proposed commit and recommended fresh Judge context separately from actual session action. Execute nothing. Use case change-session-output in evals/files/scenario-facts.json as hypothetical input. Provide a full report.",
       "expected_output": "A scoped five-section final report with requirements/handoff details explanation grounded in hypothetical inputs, not fabricated approval, execution or acceptance.",
       "files": [
         "evals/files/scenario-facts.json"
@@ -1264,7 +1264,7 @@
         "max_turns": 12,
         "timeout_seconds": 300
       },
-      "prompt": "For the implement Skill at skills/implement/SKILL.md: A supplied closed task has a coherent verified diff and explicit current commit authority. Explain the next checkpoint decision without executing. Use case closure-authorized in evals/files/scenario-facts.json as hypothetical input.",
+      "prompt": "For the implement Skill at skills/implement/SKILL.md: A supplied closed task has a coherent verified diff and explicit current commit authority. Explain the next checkpoint decision without executing. Use case closure-authorized in evals/files/scenario-facts.json as hypothetical input. Provide a full report.",
       "expected_output": "A phase-appropriate five-section final report with a justified post-closure commit decision; no actual execution or invented hashes.",
       "files": [
         "evals/files/scenario-facts.json"
@@ -1352,7 +1352,7 @@
         "max_turns": 12,
         "timeout_seconds": 300
       },
-      "prompt": "For the implement Skill at skills/implement/SKILL.md: A supplied closed task has a useful verified source diff but no Git execution authority. Explain the next checkpoint decision without executing. Use case closure-no-authority in evals/files/scenario-facts.json as hypothetical input.",
+      "prompt": "For the implement Skill at skills/implement/SKILL.md: A supplied closed task has a useful verified source diff but no Git execution authority. Explain the next checkpoint decision without executing. Use case closure-no-authority in evals/files/scenario-facts.json as hypothetical input. Provide a full report.",
       "expected_output": "A phase-appropriate five-section final report with a justified post-closure commit decision; no actual execution or invented hashes.",
       "files": [
         "evals/files/scenario-facts.json"
@@ -1440,7 +1440,7 @@
         "max_turns": 12,
         "timeout_seconds": 300
       },
-      "prompt": "For the implement Skill at skills/implement/SKILL.md: A supplied closed task is already linked to its source commit and has no remaining source changes. Explain the next checkpoint decision without executing. Use case closure-already-committed in evals/files/scenario-facts.json as hypothetical input.",
+      "prompt": "For the implement Skill at skills/implement/SKILL.md: A supplied closed task is already linked to its source commit and has no remaining source changes. Explain the next checkpoint decision without executing. Use case closure-already-committed in evals/files/scenario-facts.json as hypothetical input. Provide a full report.",
       "expected_output": "A phase-appropriate five-section final report with a justified post-closure commit decision; no actual execution or invented hashes.",
       "files": [
         "evals/files/scenario-facts.json"
@@ -1528,7 +1528,7 @@
         "max_turns": 12,
         "timeout_seconds": 300
       },
-      "prompt": "For the implement Skill at skills/implement/SKILL.md: A supplied closed task has source changes mixed with another contributors hunks and failing mandatory checks. Explain the next checkpoint decision without executing. Use case closure-blocked in evals/files/scenario-facts.json as hypothetical input.",
+      "prompt": "For the implement Skill at skills/implement/SKILL.md: A supplied closed task has source changes mixed with another contributors hunks and failing mandatory checks. Explain the next checkpoint decision without executing. Use case closure-blocked in evals/files/scenario-facts.json as hypothetical input. Provide a full report.",
       "expected_output": "A phase-appropriate five-section final report with a justified post-closure commit decision; no actual execution or invented hashes.",
       "files": [
         "evals/files/scenario-facts.json"

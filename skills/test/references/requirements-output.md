@@ -1,9 +1,9 @@
-# Test output and handoff contract v1.3.0
+# Test output and handoff contract v1.4.0
 
 Apply this contract only to test. Read after investigation and before drafting the
 phase response, with common-output.md directly linked from SKILL.md. Check both
 before delivery. Operational requirements are separate in requirements-baseline.md.
-The common five-heading Markdown envelope remains mandatory; this reference adds this phase's
+The common contract selects compact delivery or the full five-heading Markdown envelope; this reference adds this phase's
 content, not another final report or permission to write artifacts.
 
 ### test
@@ -16,8 +16,8 @@ replace an approved target with a convenient observation.
 
 Optional filename: `evidence.md` — not a required input or automatic write.
 Deliver inline by default; save only through the common output contract’s explicit-destination,
-permission and conflict checks. These topics belong inside explanation or its linked
-report, not additional outer response headings.
+permission and conflict checks. These topics belong in the selected delivery form or its linked
+report; the full report places them in explanation, not additional outer headings.
 
 ## Phase delivery checklist
 

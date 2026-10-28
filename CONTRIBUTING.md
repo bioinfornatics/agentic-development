@@ -105,3 +105,91 @@ remain contained and available. These commands never publish or mutate branches.
 - The generator and read-only CI do not publish, approve, configure protection or bypass promotion gates.
 - No license grant is present in source; do not invent one or copy another project's license.
 - Preserve local tracker/evidence and source history; do not infer publication authority from prior runs.
+
+## Evaluate the cycle coordinator with Skill Creator
+
+Every Skill already has a canonical evals/evals.json source suite. The cycle
+suite now includes five adapted integration cases with distinct immutable
+hypothetical fixtures under skills/cycle/evals/files/. The original integration/
+inventory is retained, but is not the direct Skill Creator input. These
+explain-level cases assess proposed coordination and handoffs, not live
+implementation, tracker operations or acceptance of all seven Skills.
+
+Explanation assertions cover observable final-output properties. Actual read/order
+and prerequisite requirements remain in canonical execution_assertions metadata;
+they require instrumented execution evidence, not self-reports. Official normalized
+sets may omit this metadata. Preserve it separately and never retrofit old grades
+onto changed cases. For a real disposable cancellation fixture and independent
+checker, see [the execution pilot](integration/execution-pilot/README.md). Its default
+isolation gate is BLOCKED: copied directories and fresh sessions do not prove that
+ambient Skills/hints or sibling/coordinator inputs are excluded. Preserve normal
+authentication and verify host exclusion before any clean-baseline model campaign.
+
+Pilot the installed agent-plugins Skill Creator CLI from the active session.
+Use full-eval --execute and its Goose subprocess runner by default; keep native
+delegation optional. Follow skills/cycle/references/session-evaluation.md.
+Do not copy its runtime here or install dependencies as part of evaluation.
+From the repository root:
+
+~~~sh
+skill-creator validate skills/cycle
+skill-creator design-evals skills/cycle/evals/evals.json --skill-path skills/cycle --format json
+skill-creator full-eval skills/cycle --workspace evidence/runs/<campaign>/iteration-1 --dry-run --format json
+~~~
+
+For a source installation, replace skill-creator with the installed launcher:
+node /absolute/agent-plugins/skills/skill-creator/scripts/skill-creator.mjs.
+That launcher requires Node.js 22 or newer; native packages use their executable.
+
+Before live comparison, agree current/baseline snapshots, executor and independent
+grader models, equivalent fixture/resource access, run profile and spending caps.
+The suite's aggregate budget covers the standard profile's three paired
+repetitions per scenario. It is schedule capacity, not authorization to spend.
+Declared developer access enables fixture/reference reads; correct use still
+requires evidence. These declarations are not an OS sandbox. Non-cycle suites
+remain separate and are not automatically executed by this campaign.
+
+For an old-versus-current comparison, use a separately frozen baseline Skill:
+
+~~~sh
+skill-creator full-eval skills/cycle --workspace evidence/runs/<campaign>/iteration-1 --execute --baseline old_skill --baseline-skill /absolute/frozen/cycle --model <executor-model> --grader review-a=<grader-model> --run-profile standard --format json
+~~~
+
+Confirm installed CLI help before execution. Keep both variants' fixture and
+resource access equivalent. An older snapshot lacking the new fixtures requires
+an isolated staging decision before dispatch. Do not inject grades into prompts.
+After each output has bound independent blinded grading, aggregate and generate
+the official viewer:
+
+~~~sh
+skill-creator aggregate evidence/runs/<campaign>/iteration-1 --skill-name cycle
+skill-creator review evidence/runs/<campaign>/iteration-1 --skill-name cycle --benchmark evidence/runs/<campaign>/iteration-1/benchmark.json --static evidence/runs/<campaign>/iteration-1/review.html
+~~~
+
+Let official tools produce outputs, grades, benchmarks and receipts. Preserve
+incomplete work and resume at its first incomplete phase. One exploratory pair
+does not establish stable improvement; completed artifacts do not grant release
+approval. Results remain local evidence; all evals/ directories stay excluded
+from the installation projection. No model, Git publication or closure permission
+is implied by these examples.
+
+### Optional native session loop (no Goose subprocess)
+
+Select this alternative explicitly; do not use it to relabel failed official runs.
+Use tools/session_eval.py for explain-level text scenarios. The active session
+performs native candidate and grader delegation; the script makes no model calls.
+Follow skills/cycle/references/session-evaluation.md. Pass the explicit scenario
+model and turn budget to each delegate. Observe completion before recording bytes.
+
+~~~sh
+python3 -B tools/session_eval.py prepare skills/cycle evidence/runs/<campaign>/session --eval-set skills/cycle/evals/evals.json --model <model> --ids 25
+python3 -B tools/session_eval.py status evidence/runs/<campaign>/session
+~~~
+
+Delegate each request.json. Save returned responses outside frozen inputs.
+Import them with record. Delegate each grading-request.json to a separate grader.
+Import its array with grade. Run report with the installed generate_review.js.
+This reuses official rendering functions, not full-eval receipt acceptance.
+Session records are coordinator-observed. No authenticated usage, sandbox,
+natural activation or ambient baseline exclusion is implied. Never relabel this
+workspace as full-eval or sign an invented governed-import receipt.

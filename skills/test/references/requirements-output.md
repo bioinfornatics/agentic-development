@@ -1,9 +1,9 @@
-# Test output and handoff contract v1.3.0
+# Test output and handoff contract v1.5.0
 
 Apply this contract only to test. Read after investigation and before drafting the
 phase response, with common-output.md directly linked from SKILL.md. Check both
 before delivery. Operational requirements are separate in requirements-baseline.md.
-The common five-heading Markdown envelope remains mandatory; this reference adds this phase's
+The common contract selects compact delivery or the full five-heading Markdown envelope; this reference adds this phase's
 content, not another final report or permission to write artifacts.
 
 ### test
@@ -11,13 +11,20 @@ content, not another final report or permission to write artifacts.
 Report content: verification report. Topics: Task and candidate; Goals and Non-goals;
 Acceptance-to-check matrix (FR/GWT and NFR IDs); Commands and environment;
 Results and artifact locators; Coverage and limitations; Failures/reproduction;
-Judge handoff. For NFR record metric values/context or not-run/blocker; never
+Judge handoff. For application-test selection/rationalization include guarantee,
+incorrect behavior, independent oracle, marginal detection and retain/merge/remove/replace
+decisions with actual/proposed status and lost/preserved coverage. Separate defects
+actually detected (reproduction evidence) from hypothetical faults and unverified gaps.
+Report required end-to-end CI wall time/environment/window separately from summed test
+or aggregate compute durations; unavailable CI measurements stay UNKNOWN/NOT RUN.
+Do not substitute test-count changes or parallel local timing for value or CI proof.
+For NFR record metric values/context or not-run/blocker; never
 replace an approved target with a convenient observation.
 
 Optional filename: `evidence.md` — not a required input or automatic write.
 Deliver inline by default; save only through the common output contract’s explicit-destination,
-permission and conflict checks. These topics belong inside explanation or its linked
-report, not additional outer response headings.
+permission and conflict checks. These topics belong in the selected delivery form or its linked
+report; the full report places them in explanation, not additional outer headings.
 
 ## Phase delivery checklist
 

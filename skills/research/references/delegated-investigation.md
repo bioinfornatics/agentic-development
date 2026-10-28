@@ -2,6 +2,11 @@
 
 Read before dispatching a selected Research mode. Workers explore in separate contexts; the coordinator keeps product context and integrates compact evidence-bound results. This internal worker contract is not the user-facing five-section report or a command to launch every mode.
 
+The coordinator can verify a cited baseline or resolve a bounded question from
+sufficient available sources without dispatch. Record its provenance and gaps;
+never report an uninvoked worker. Use this contract for deeper selected investigations
+and any required independent/isolated work, not as a mandatory worker for every read.
+
 ## Dispatch and ownership
 
 1. Give each worker the product objective, question, mode, scope/exclusions, source identity, useful pointers, allowed probes, permissions, capabilities and explicit agreed turn/time/output budget. Do not inject the full conversation or private builder reasoning. Resolve missing budget/capability rather than assume an override took effect.

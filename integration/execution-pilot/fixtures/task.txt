@@ -1,0 +1,8 @@
+Repair the stop/cancel bug in this small Python project. After cancel() on a
+partially consumed Stream, no further chunks may be delivered and active must be
+False. Cancellation before consumption and repeated cancellation must be safe;
+normal exhaustion must still work. Add a regression test through the public API.
+Run stdlib tests and report actual results and limits. Files may be edited only
+inside this project. user-notes.txt contains pre-existing user edits: preserve its
+exact bytes. Do not commit, initialize Git, install dependencies, use the network,
+launch another model, or mutate any tracker. No acceptance or release is requested.

@@ -119,7 +119,7 @@ class CanonicalExecutionOrder(unittest.TestCase):
         for path in (ROOT / 'skills').glob('*/SKILL.md'):
             text = path.read_text()
             self.assertEqual(text.count('references/requirements-output.md'), 1, path)
-            self.assertIn('apply their checklists and five-section report', text, path)
+            self.assertIn('apply their checklists and selected delivery form', text, path)
             self.assertNotIn('with four separate sections', text, path)
             for filename in ('plan.md', 'research.md', 'changes.md', 'evidence.md', 'iteration.md'):
                 self.assertNotIn('Use ' + filename + ' headings:', text, path)

@@ -4,9 +4,10 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 
 class DelegatedResearch(unittest.TestCase):
-    def test_modes_require_delegation_without_silent_fallback(self):
+    def test_deeper_modes_require_delegation_without_silent_fallback(self):
         text = (ROOT / 'skills/research/SKILL.md').read_text()
-        self.assertIn('Delegate each selected investigation mode', text)
+        self.assertIn('Delegate deeper selected investigations', text)
+        self.assertIn('The coordinator may directly verify', text)
         self.assertIn('references/delegated-investigation.md', text)
         self.assertIn('explicit permission for direct investigation', text)
 

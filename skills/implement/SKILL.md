@@ -99,7 +99,19 @@ a previous permission. This is an agent instruction, not a runtime cache.
    Read relevant glossary/ADRs and preserve public contracts. Expected values come from
    specification, worked example or independent oracle, not copied production logic.
    Reuse suitable tests; finish one vertical behavior slice before the next rather than
-   writing all speculative tests then all code.
+   writing all speculative tests then all code. Before adding a test, name its product guarantee,
+   concrete incorrect behavior and marginal detection beyond existing checks; select
+   the cheapest valid oracle, not a test-count or coverage-percentage target.
+   Testability means a minimal meaningful public seam with controlled external inputs
+   and observable outputs/effects. Do not add speculative abstractions, exports of
+   private helpers, injection layers or production-only switches solely to multiply
+   tests. If the required seam is absent, report the specific gap and obtain scope for
+   the smallest justified change; do not bypass the required reproduction gate.
+   Within authorized rationalization, retain/merge/remove/replace tests with the
+   guarantee and discrimination evidence recorded; preserving every legacy test is
+   not required. Never delete a meaningful regression or weaken acceptance to get green.
+   Mock only dependencies: assert the subject's contract, exact known outcomes and
+   important errors, not the mock's setup or copied expected calculations.
 
 3. [ ] **Implement minimal green and refactor**
 
@@ -167,7 +179,7 @@ a previous permission. This is an agent instruction, not a runtime cache.
 
    Prepare the immediate next action and its exact prerequisites, owner when known and expected result; distinguish proposed from performed actions. Collect facts for the exact candidate, criterion IDs, reproduction/tests, change ledger and limits, and the inputs needed for a handoff; draft its state card and restart prompt only after reading the delivery guidance.
 
-   After investigation and before drafting any user-facing phase response (including blocked or unchanged results), apply [the common output contract](references/common-output.md) and [this phase's delivery contract](references/requirements-output.md); apply their checklists and five-section report. Combine overlapping reports without duplication. After reading delivery guidance, draft the response and, at an actual handoff, the fenced YAML state card and copy-ready restart prompt.
+   After investigation and before drafting any user-facing phase response (including blocked or unchanged results), apply [the common output contract](references/common-output.md) and [this phase's delivery contract](references/requirements-output.md); apply their checklists and selected delivery form (compact when eligible, otherwise five-section report). Combine overlapping reports without duplication. After reading delivery guidance, draft the response and, at an actual handoff, the fenced YAML state card and copy-ready restart prompt.
 
 7. [ ] **Execute the handoff or stop**
 

@@ -55,6 +55,11 @@ a previous permission. This is an agent instruction, not a runtime cache.
    the first checkpoint or a Git/session transition; it governs reporting safeguards,
    not an up-front load of response templates. For a UI checkpoint apply [the checkpoint example](assets/checkpoint-example.md).
 
+   For an explicitly requested Skill evaluation in a source checkout, read
+   [evaluation piloting](references/session-evaluation.md) before launching runs.
+   Pilot the official Skill Creator CLI from the session; use its Goose runner
+   by default. Keep native delegation optional and evaluation separate from product acceptance.
+
    Verify available filesystem, shell/test and delegation capabilities. Read the
    project's local instructions and inspect the repository without mutation first.
    Ask only for missing information that blocks safe progress; list nonblocking
@@ -101,10 +106,14 @@ a previous permission. This is an agent instruction, not a runtime cache.
    when persisting or recovering a slice artifact or preparing a handoff, not for ordinary
    investigation.
 
-   - Identify the approved objective, roadmap source, milestone/epic/US and smallest
-      reviewable slice. If there is no roadmap, propose one and mark it unapproved.
-   - Inventory branch/status and pre-existing changes, capture candidate identity,
-      permissions and evidence. Report the starting checkpoint before mutations.
+   - Identify the approved objective, available roadmap/parent context and smallest
+      reviewable slice. Propose a missing roadmap only for requested planning or a
+      decision-blocking need; mark it unapproved. Otherwise report unavailable context;
+      do not expand a bounded investigation merely to fill hierarchy labels.
+   - Inventory branch/status, pre-existing changes, permissions and evidence. For
+      source-only observations record inspected revision/paths, dirty state and limits;
+      use preliminary or exact-candidate provenance only when the check's purpose
+      requires it. Report the starting checkpoint before mutations.
    - Keep required durable state in the agreed tracker or explicitly authorized
       workspace. Do not invent a default directory; verify the destination, conflicts
       and permission before writes. Do not persist private secrets, tokens, full sensitive tool outputs,
@@ -136,7 +145,11 @@ a previous permission. This is an agent instruction, not a runtime cache.
    safe actions without repeatedly asking. Request a real decision for unresolved
    trade-offs. A branch covers a US or slice, not necessarily a single task.
 
-   Use delegation only if available and useful. Give each worker the objective,
+   Use delegation only if available and useful, subject to required isolation or
+   independence. Coordinator baseline verification and bounded questions from
+   sufficient available sources need no worker; deeper Research investigations
+   follow that phase's dispatch policy.
+   Give each worker the objective,
    acceptance criteria, contract, approved scope, input artifacts and exclusive
    writable paths. Workers cannot coordinate implicitly. Parallel writers must
    never share a file. Workers return result, exact changes, evidence, limitations
@@ -194,7 +207,7 @@ a previous permission. This is an agent instruction, not a runtime cache.
 
    - Verify the active objective/task, product-context coverage and freshness, current candidate, permissions and first incomplete or invalidated phase; retain the routing rationale and unmet prerequisites.
    - Prepare the immediate next action and blockers within current scope/permissions; collect handoff inputs, distinguishing recommendations from performed actions; format them after the output-contract application below.
-   - After investigation and before drafting any user-facing phase response (including blocked or unchanged results), apply [the common output contract](references/common-output.md) and [this phase's delivery contract](references/requirements-output.md); apply their checklists and five-section report.
+   - After investigation and before drafting any user-facing phase response (including blocked or unchanged results), apply [the common output contract](references/common-output.md) and [this phase's delivery contract](references/requirements-output.md); apply their checklists and selected delivery form (compact when eligible, otherwise five-section report).
 
    Apply [the commit report](references/commit-report.md) only for a proposed,
    performed, failed or externally observed commit. Apply

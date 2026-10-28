@@ -1,0 +1,24 @@
+{
+  "fixture_kind": "hypothetical-input-not-execution-evidence",
+  "case_id": "dirty-ui-handoff",
+  "scope": "History panel UI continuation",
+  "current_authority": "Explanation only; no edits, commands, commit, push or tracker updates",
+  "dirty_user_hunks": {
+    "src/history-panel.tsx": "User added a loading indicator before this slice",
+    "src/history-panel.css": "User adjusted panel spacing before this slice"
+  },
+  "agent_change_record": {
+    "src/history-panel.tsx": "Proposed stop control, not applied"
+  },
+  "browser_available": false,
+  "independent_reviewer_available": false,
+  "review_policy": "Independent US acceptance required",
+  "visual_artifact": {
+    "kind": "ASCII sketch",
+    "status": "Proposed layout, not a browser capture"
+  },
+  "validation_tasks": {
+    "UI-17": "Browser check open",
+    "UI-18": "Independent review open"
+  }
+}

@@ -99,7 +99,19 @@ a previous permission. This is an agent instruction, not a runtime cache.
    Read relevant glossary/ADRs and preserve public contracts. Expected values come from
    specification, worked example or independent oracle, not copied production logic.
    Reuse suitable tests; finish one vertical behavior slice before the next rather than
-   writing all speculative tests then all code.
+   writing all speculative tests then all code. Before adding a test, name its product guarantee,
+   concrete incorrect behavior and marginal detection beyond existing checks; select
+   the cheapest valid oracle, not a test-count or coverage-percentage target.
+   Testability means a minimal meaningful public seam with controlled external inputs
+   and observable outputs/effects. Do not add speculative abstractions, exports of
+   private helpers, injection layers or production-only switches solely to multiply
+   tests. If the required seam is absent, report the specific gap and obtain scope for
+   the smallest justified change; do not bypass the required reproduction gate.
+   Within authorized rationalization, retain/merge/remove/replace tests with the
+   guarantee and discrimination evidence recorded; preserving every legacy test is
+   not required. Never delete a meaningful regression or weaken acceptance to get green.
+   Mock only dependencies: assert the subject's contract, exact known outcomes and
+   important errors, not the mock's setup or copied expected calculations.
 
 3. [ ] **Implement minimal green and refactor**
 

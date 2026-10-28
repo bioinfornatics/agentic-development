@@ -40,5 +40,20 @@
     "mock_check": "pass",
     "real_transport": "not run"
   },
-  "persistence_record": "Local tracker notes only; no sync or closure authority"
+  "persistence_record": "Local tracker notes only; no sync or closure authority",
+  "blocked_readiness_variant": {
+    "hypothetical": true,
+    "depends_on": {
+      "TASK-17": [
+        "TASK-18"
+      ]
+    },
+    "states": {
+      "TASK-17": "open",
+      "TASK-18": "open"
+    },
+    "claim": "not attempted; readiness unresolved",
+    "requirement": "TASK-18 provides the prerequisite before TASK-17 implementation",
+    "authority": "explanation only; do not update tracker"
+  }
 }

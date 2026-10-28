@@ -110,6 +110,16 @@ a previous permission. This is an agent instruction, not a runtime cache.
 
    Review each mandatory acceptance criterion, risk-based security/regression,
    maintainability and operability. Missing evidence is unknown, not zero defects.
+   For application-test evidence, challenge marginal detection value and independent
+   oracles: mock self-validation, copied expected calculations, vague assertions for
+   exact outcomes, success/error ambiguity and missing important error paths cannot
+   support the claimed guarantee. Review rationalization decisions against preserved
+   product coverage, not legacy volume; a green test count is not quality or acceptance.
+   Check observed failing counterexamples versus hypothetical faults and required
+   end-to-end CI wall time versus aggregate/local durations. Missing measurements or
+   discrimination stay explicit; do not infer CI acceptance from parallel local runs.
+   Keep this review risk-scoped; no exhaustive new test/mutation campaign or candidate
+   edits during Judge.
    Reproduce checks only when capabilities and permissions allow; do not mutate
    the candidate or repair code while judging.
 

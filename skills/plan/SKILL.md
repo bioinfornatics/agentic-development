@@ -121,7 +121,16 @@ a previous permission. This is an agent instruction, not a runtime cache.
    to recover what, why, boundaries and checks. Fill gaps before declaring ready.
 
    Agree meaningful behavior seams before tests; reuse an already authorized seam
-   without repetitive confirmation. Record what each seam catches and misses.
+   without repetitive confirmation. For each product guarantee, identify a concrete
+   incorrect behavior, independent oracle and cheapest valid check; record what the
+   seam catches and misses. Plan distinct risk coverage, not one test per function,
+   file or implementation variation. Existing suite size is neither a preservation
+   obligation nor a target; authorized rationalization may retain, merge, remove or
+   replace checks without weakening acceptance. Prefer representative integration
+   journeys plus cheap direct rule cases; justify expensive repetitions by a distinct
+   risk/confidence question, budget and stop rule. Define required CI jobs and any
+   approved time/cost target separately from local summed test durations; unknown
+   end-to-end CI measurements remain unresolved, not inferred from parallel runs.
 
    For the near-term implementation frontier, break work into coherent tasks with
    exact target paths, exclusive ownership, prerequisites and expected outputs.

@@ -12,6 +12,7 @@ Select the verification intent; bind criteria, candidate and environment through
 | Intent / condition | Execute | Required result |
 |---|---|---|
 | Verify an implementation or regression repair | Bind criteria to the candidate, run available checks and record actual results | Reproducible criterion-to-check evidence, failures and coverage limits |
+| Review test value or rationalization evidence | Inspect product guarantees, oracles, marginal detection and cost; propose scoped decisions without editing | Justified retain/merge/remove/replace matrix, detected faults and mandatory-CI measurement or explicit gaps |
 | Reuse previous proof after a change | Compare the proof's inputs/environment with current ones; rerun affected checks | Justified retained proof and new evidence for changed inputs |
 | Verify an installed package, real provider or rendered UI | Use the exact required artifact/environment and inspect actual behavior | Environment-specific observations, or explicit missing capability; mock proof is not substituted |
 
@@ -87,9 +88,14 @@ a previous permission. This is an agent instruction, not a runtime cache.
    Read the project test instructions and verify commands, environment, tooling
    and side effects. Isolate data; production tests need explicit authorization.
 
-   Map mandatory criteria to checks: unit, integration, negative paths,
-   regression, build/install and real-provider behavior as required by scope.
-   Do not invent a command or assume a tool exists; inspect project scripts.
+   Map each product guarantee to a concrete incorrect behavior, independent oracle
+   and cheapest valid check; add tests for distinct risks, not each implementation detail.
+   Include unit, integration, negative paths, regression, build/install and real-provider
+   behavior only as required by scope. Do not invent commands; inspect project scripts.
+   When selecting/reviewing application tests or rationalizing a suite, apply
+   [test value and CI cost](references/test-value.md) before choosing checks or
+   proposing changes. Existing test volume is not a requirement to preserve it;
+   Test records decisions and evidence, never silently repairs the frozen suite.
 
    Deterministic checks must discriminate the requested symptom, not just show a command
    ran. Prefer public seams and independent expected values. For nondeterminism record

@@ -5,8 +5,7 @@ import re
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
-COUNTS = {"cycle": 29, "research": 24, "plan": 18, "implement": 18,
-          "test": 17, "judge": 16, "iterate": 17}
+SKILLS = ("cycle", "research", "plan", "implement", "test", "judge", "iterate")
 # Requirements from the authorized defect report, not generated suite output.
 ORDER_REQUIREMENTS = (
     "The common output contract is read after investigation before drafting delivery.",
@@ -32,20 +31,23 @@ class EvalEvidenceLevels(unittest.TestCase):
     def test_section_contract_has_no_six_heading_instruction(self):
         contract = (ROOT / "skills/implement/references/requirements-output.md").read_text()
         self.assertIn("five-heading", contract)
-        for skill in COUNTS:
+        for skill in SKILLS:
             for case in suite(skill)["evals"]:
                 with self.subTest(skill=skill, case=case["id"]):
                     text = "\n".join([case["prompt"], case["expected_output"], *case["assertions"]])
                     self.assertIsNone(re.search(r"six[- ](?:ordered[- ]?)?section", text, re.I))
-        case = suite("implement")["evals"][13]
+        case = next(c for c in suite("implement")["evals"]
+                    if c["name"] == "implement-change-session-output")
         self.assertRegex(case["prompt"], r"five-section")
         self.assertTrue(any("five ordered sections" in a for a in case["assertions"]))
 
     def test_execution_requirements_are_retained_not_semantically_graded(self):
-        for skill, count in COUNTS.items():
+        for skill in SKILLS:
             cases = suite(skill)["evals"]
-            self.assertEqual(len(cases), count)
-            self.assertEqual([c["id"] for c in cases], list(range(1, count + 1)))
+            # Stable source IDs may have gaps after value-based rationalization.
+            ids = [c["id"] for c in cases]
+            self.assertEqual(ids, sorted(set(ids)))
+            self.assertTrue(all(type(i) is int and i > 0 for i in ids))
             for case in cases:
                 with self.subTest(skill=skill, case=case["id"]):
                     self.assertEqual(case["target"]["execution"], "explain")
@@ -70,7 +72,7 @@ class EvalEvidenceLevels(unittest.TestCase):
                 record = facts(skill)[key]
                 self.assertIn("history" if key == "boundary" or skill == "cycle" else "save", record["original_scenario"].lower())
                 self.assertNotRegex(record["result"].lower(), r"cancellation|transport|ui stop")
-        for skill in COUNTS:
+        for skill in SKILLS:
             with self.subTest(skill=skill, case="commit-report"):
                 record = facts(skill)["commit-report"]
                 self.assertIn("history", record["result"].lower())
@@ -80,7 +82,7 @@ class EvalEvidenceLevels(unittest.TestCase):
                 self.assertEqual(record["remaining_user_edit"], "src/view.ts")
 
     def test_blocking_fixtures_do_not_assert_success_or_ready_execution(self):
-        for skill in COUNTS:
+        for skill in SKILLS:
             records = facts(skill)
             with self.subTest(skill=skill, case="beads-claim-boundary"):
                 record = records["beads-claim-boundary"]

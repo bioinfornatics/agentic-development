@@ -42,10 +42,9 @@ class CycleEvalSets(unittest.TestCase):
                 self.assertEqual(fact["case_id"], case["name"])
                 facts.append(json.dumps(fact, sort_keys=True))
         self.assertEqual(len(set(facts)), 5)
-        budget = data["aggregate_budget"]
-        self.assertGreaterEqual(budget["max_runs"], 30)
-        self.assertGreaterEqual(budget["max_turns"], sum(c["budget"]["max_turns"] for c in cases) * 6)
-        self.assertGreaterEqual(budget["timeout_seconds"], sum(c["budget"]["timeout_seconds"] for c in cases) * 6)
+        # Per-case ceilings do not authorize six blanket repetitions. A future
+        # campaign must freeze its own question, selection and repetition budget.
+        self.assertNotIn("aggregate_budget", data)
 
     def test_scenario_specific_records(self):
         fixtures = {c["name"]: json.loads((SKILL / c["files"][0]).read_text()) for c in self.load()["evals"] if c["name"] in NAMES}

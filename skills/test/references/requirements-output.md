@@ -1,4 +1,4 @@
-# Test output and handoff contract v1.4.0
+# Test output and handoff contract v1.5.0
 
 Apply this contract only to test. Read after investigation and before drafting the
 phase response, with common-output.md directly linked from SKILL.md. Check both
@@ -11,7 +11,14 @@ content, not another final report or permission to write artifacts.
 Report content: verification report. Topics: Task and candidate; Goals and Non-goals;
 Acceptance-to-check matrix (FR/GWT and NFR IDs); Commands and environment;
 Results and artifact locators; Coverage and limitations; Failures/reproduction;
-Judge handoff. For NFR record metric values/context or not-run/blocker; never
+Judge handoff. For application-test selection/rationalization include guarantee,
+incorrect behavior, independent oracle, marginal detection and retain/merge/remove/replace
+decisions with actual/proposed status and lost/preserved coverage. Separate defects
+actually detected (reproduction evidence) from hypothetical faults and unverified gaps.
+Report required end-to-end CI wall time/environment/window separately from summed test
+or aggregate compute durations; unavailable CI measurements stay UNKNOWN/NOT RUN.
+Do not substitute test-count changes or parallel local timing for value or CI proof.
+For NFR record metric values/context or not-run/blocker; never
 replace an approved target with a convenient observation.
 
 Optional filename: `evidence.md` — not a required input or automatic write.

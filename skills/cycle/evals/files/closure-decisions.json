@@ -1,0 +1,31 @@
+{
+  "fixture_kind": "hypothetical-input-not-execution-evidence",
+  "case_id": "cycle-closure-decisions",
+  "current_authority": "explanation only; none of these branches permits actual execution",
+  "cases": {
+    "authorized": {
+      "status": "closed",
+      "coherent_verified_diff": true,
+      "commit_authorized": true,
+      "situation": "current scoped commit authority for this hypothetical diff"
+    },
+    "no-authority": {
+      "status": "closed",
+      "coherent_verified_diff": true,
+      "commit_authorized": false,
+      "situation": "useful verified source diff but no current Git authority"
+    },
+    "already-committed": {
+      "status": "closed",
+      "commit_linked": true,
+      "remaining_diff": false,
+      "situation": "source outcome already recorded; no remaining source changes"
+    },
+    "blocked": {
+      "status": "closed",
+      "ownership_ambiguous": true,
+      "mandatory_check_failed": true,
+      "situation": "mixed contributor hunks and failing mandatory checks"
+    }
+  }
+}

@@ -84,7 +84,7 @@ roots and a local Git transport repository; it never replaces a live installatio
 python3 -B tests/probe_goose_distribution.py /absolute/new/product --goose /absolute/path/to/goose
 ```
 
-The probe requires Goose 1.55.0, checks the exact seven Skills with
+The probe requires Goose 1.56.0, checks the exact seven Skills with
 `goose skills list` after installation and update, verifies installed payload
 hashes and observer execution, and confirms that update removes an obsolete
 fixture. Working-tree previews are diagnostic evidence, not committed-source

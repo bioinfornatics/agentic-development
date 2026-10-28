@@ -39,8 +39,8 @@ class DistributionProbeVersionTests(unittest.TestCase):
                 return error, calls
         self.fail("Probe unexpectedly completed without installation")
 
-    def test_selected_155_reaches_isolated_install(self):
-        error, calls = self.run_until_install("1.55.0")
+    def test_selected_156_reaches_isolated_install(self):
+        error, calls = self.run_until_install("1.56.0")
         self.assertEqual(str(error), "installation boundary reached")
         command, kwargs = calls[-1]
         self.assertEqual(command[:4], ["/verified/goose", "plugin", "install", "--auto-update"])
@@ -52,16 +52,16 @@ class DistributionProbeVersionTests(unittest.TestCase):
         self.assertFalse(home.exists(), "Disposable root should be cleaned after failure")
 
     def test_unverified_versions_refused_before_git_or_install(self):
-        for version in ("1.47.0", "1.56.0", "1.55.1", "", "goose 1.55.0"):
+        for version in ("1.47.0", "1.55.0", "1.56.1", "", "goose 1.56.0"):
             with self.subTest(version=version):
                 error, calls = self.run_until_install(version)
                 self.assertIsInstance(error, ValueError)
-                self.assertIn("requires verified Goose 1.55.0", str(error))
+                self.assertIn("requires verified Goose 1.56.0", str(error))
                 self.assertEqual(len(calls), 1)
 
     def test_documented_runtime_and_explicit_executable(self):
         text = (ROOT / "CONTRIBUTING.md").read_text()
-        self.assertIn("The probe requires Goose 1.55.0", text)
+        self.assertIn("The probe requires Goose 1.56.0", text)
         self.assertIn("--goose /absolute/path/to/goose", text)
 
 

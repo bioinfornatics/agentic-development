@@ -30,13 +30,24 @@ def load(path):
     return json.loads(text(path))
 
 
-def write(path, value):
-    path = Path(path)
-    if path.exists() or path.is_symlink():
+def new_output(path):
+    """Reject existing outputs and symlinks before creating any parent directories."""
+    path = Path(path).absolute()
+    for ancestor in (path, *path.parents):
+        if ancestor.is_symlink():
+            raise ValueError("Symlink output refused: " + str(ancestor))
+    if path.exists():
         raise ValueError("Overwrite refused: " + str(path))
+    return path
+
+
+def write(path, value):
+    path = new_output(path)
+    content = json.dumps(value, indent=2, ensure_ascii=False)
     path.parent.mkdir(parents=True, exist_ok=True)
+    new_output(path)
     with path.open("x", encoding="utf-8") as stream:
-        stream.write(json.dumps(value, indent=2, ensure_ascii=False))
+        stream.write(content)
 
 
 def identifier(value):
@@ -57,8 +68,33 @@ def inside(root, relative):
 
 
 def inventory(root):
-    return {str(p.relative_to(root)): digest(text(p).encode())
-            for p in sorted(root.rglob("*")) if not p.is_dir()}
+    root = Path(root).absolute()
+    for ancestor in (root, *root.parents):
+        if ancestor.is_symlink():
+            raise ValueError("Symlink inventory root refused: " + str(ancestor))
+    if not root.is_dir():
+        raise ValueError("Missing inventory directory: " + str(root))
+    entries = {}
+    for path in sorted(root.rglob("*")):
+        if path.is_symlink():
+            raise ValueError("Symlink input refused: " + str(path))
+        if not path.is_dir():
+            entries[str(path.relative_to(root))] = digest(text(path).encode())
+    return entries
+
+
+def campaign_roles(root, plan):
+    """Validate observed campaign roles regardless of recording order."""
+    candidates, graders = set(), set()
+    for run in plan["runs"]:
+        base = inside(root, run)
+        for filename, identities in (("execution.json", candidates), ("grading.json", graders)):
+            path = inside(base, filename)
+            if path.exists():
+                identities.add(identifier(load(path)["delegate_id"]))
+    if candidates & graders:
+        raise ValueError("Candidate and grader campaign roles overlap")
+    return candidates, graders
 
 
 def manifest(workspace):
@@ -75,6 +111,7 @@ def manifest(workspace):
         current["request.json"] = digest(text(base / "request.json").encode())
         if current != hashes:
             raise ValueError("Stale or tampered task input: " + run)
+    campaign_roles(root, data)
     return root, data
 
 
@@ -153,6 +190,9 @@ def record(workspace, run, output, delegate, model):
     identifier(delegate); identifier(model)
     if run not in plan["runs"] or model != plan["model"]:
         raise ValueError("Unplanned run or model")
+    _, graders = campaign_roles(root, plan)
+    if delegate in graders:
+        raise ValueError("Grader cannot become a campaign candidate")
     base = inside(root, run)
     if (base / "execution.json").exists() or (base / "outputs").exists():
         raise ValueError("Output already recorded")
@@ -189,7 +229,7 @@ def grade(workspace, run, results, delegate, model):
     if run not in plan["runs"] or model != plan["model"]:
         raise ValueError("Unplanned grading model or run")
     base, receipt, answer, packet = observed(root, run)
-    candidate_ids = {load(inside(root, r) / "execution.json")["delegate_id"] for r in plan["runs"] if (inside(root, r) / "execution.json").exists()}
+    candidate_ids, _ = campaign_roles(root, plan)
     if delegate in candidate_ids:
         raise ValueError("Candidate cannot grade a campaign output")
     raw = load(results)
@@ -237,6 +277,8 @@ def status(workspace):
 def report(workspace, viewer):
     root, plan = manifest(workspace)
     summary = status(workspace)
+    destination = new_output(root / "review.html")
+    summary_destination = new_output(root / "session-summary.json")
     # Reuse official rendering, but explicitly override its legacy receipt defaults.
     module = Path(viewer).absolute()
     text(module)
@@ -246,10 +288,11 @@ def report(workspace, viewer):
         raise ValueError("Official viewer failed: " + result.stderr.decode(errors="replace")[:500])
     if len(result.stdout) > 8*1024*1024:
         raise ValueError("Viewer output budget exceeded")
-    destination = root / "review.html"
-    if destination.exists(): raise ValueError("Report already exists")
-    destination.write_bytes(result.stdout)
-    write(root / "session-summary.json",summary)
+    new_output(destination)
+    new_output(summary_destination)
+    with destination.open("xb") as stream:
+        stream.write(result.stdout)
+    write(summary_destination, summary)
     return {"report":str(destination), **summary}
 
 

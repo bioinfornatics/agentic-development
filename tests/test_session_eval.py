@@ -3,6 +3,8 @@ import importlib.util
 import json
 from pathlib import Path
 import tempfile
+from unittest.mock import patch
+import subprocess
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -88,6 +90,165 @@ class SessionEvaluation(unittest.TestCase):
         self.api.grade(self.ws,"eval-1/with_skill/run-1",grade,"grader-a","model-a")
         self.assertEqual(self.api.status(self.ws)["graded"], 1)
         self.assertFalse(self.api.status(self.ws)["official_full_eval_accepted"])
+
+    def test_write_rejects_symlink_ancestors_before_mkdir(self):
+        outside = self.root / "outside"
+        outside.mkdir()
+        link = self.root / "linked-output"
+        link.symlink_to(outside, target_is_directory=True)
+        for relative in ("result.json", "new/nested/result.json"):
+            with self.subTest(relative=relative):
+                with self.assertRaises(ValueError):
+                    self.api.write(link / relative, {"value": 42})
+                self.assertEqual(list(outside.iterdir()), [])
+                self.assertTrue(link.is_symlink())
+
+    def test_write_refuses_leaf_links_and_preserves_existing_bytes(self):
+        for exists in (False, True):
+            with self.subTest(target_exists=exists):
+                target = self.root / ("existing.json" if exists else "missing.json")
+                if exists:
+                    target.write_bytes(b"user bytes")
+                link = self.root / ("live-link.json" if exists else "dangling-link.json")
+                link.symlink_to(target)
+                with self.assertRaises(ValueError):
+                    self.api.write(link, {"value": 42})
+                self.assertTrue(link.is_symlink())
+                if exists:
+                    self.assertEqual(target.read_bytes(), b"user bytes")
+                else:
+                    self.assertFalse(target.exists())
+        ordinary = self.root / "ordinary.json"
+        self.api.write(ordinary, {"value": 42})
+        before = ordinary.read_bytes()
+        with self.assertRaises(ValueError):
+            self.api.write(ordinary, {"value": 99})
+        self.assertEqual(ordinary.read_bytes(), before)
+        self.assertEqual(json.loads(before), {"value": 42})
+
+    def test_report_preflights_outputs_and_creates_exclusively(self):
+        self.prepare()
+        viewer = self.root / "viewer.mjs"
+        viewer.write_text("// mocked external renderer; no Node or model invocation")
+        rendered = b"<!doctype html><title>Fixture report</title>"
+        result = subprocess.CompletedProcess([], 0, stdout=rendered, stderr=b"")
+        for name in ("review.html", "session-summary.json"):
+            for exists in (False, True):
+                with self.subTest(destination=name, target_exists=exists):
+                    target = self.root / ("external-" + name)
+                    if exists:
+                        target.write_bytes(b"user bytes")
+                    link = self.ws / name
+                    link.symlink_to(target)
+                    with patch.object(self.api.subprocess, "run", return_value=result) as renderer:
+                        with self.assertRaises(ValueError):
+                            self.api.report(self.ws, viewer)
+                        renderer.assert_not_called()
+                    self.assertTrue(link.is_symlink())
+                    if exists:
+                        self.assertEqual(target.read_bytes(), b"user bytes")
+                        target.unlink()
+                    else:
+                        self.assertFalse(target.exists())
+                    other = "session-summary.json" if name == "review.html" else "review.html"
+                    self.assertFalse((self.ws / other).exists())
+                    link.unlink()
+        with patch.object(self.api.subprocess, "run", return_value=result) as renderer:
+            report = self.api.report(self.ws, viewer)
+            renderer.assert_called_once()
+            self.assertEqual((self.ws / "review.html").read_bytes(), rendered)
+            summary = json.loads((self.ws / "session-summary.json").read_text())
+            self.assertEqual(summary["status"], "pending")
+            self.assertFalse(summary["official_full_eval_accepted"])
+            self.assertEqual(report["report"], str(self.ws / "review.html"))
+            with self.assertRaises(ValueError):
+                self.api.report(self.ws, viewer)
+            renderer.assert_called_once()
+            self.assertEqual((self.ws / "review.html").read_bytes(), rendered)
+
+    def grade_fixture(self, run, delegate):
+        results = self.root / "grade-results.json"
+        results.write_text(json.dumps([{"id": 1, "verdict": "pass",
+                                       "evidence_quote": "forty-two",
+                                       "rationale": "Matches the independent fixture."}]))
+        return self.api.grade(self.ws, run, results, delegate, "model-a")
+
+    def test_added_directory_link_invalidates_all_campaign_operations(self):
+        self.prepare()
+        first = "eval-1/with_skill/run-1"
+        second = "eval-1/without_skill/run-1"
+        self.record(first)
+        external = self.root / "external-inputs"
+        external.mkdir()
+        (external / "user.txt").write_bytes(b"preserve external bytes")
+        link = self.ws / second / "inputs/unexpected-directory"
+        link.symlink_to(external, target_is_directory=True)
+        before = {str(p.relative_to(self.ws)): p.read_bytes()
+                  for p in self.ws.rglob("*") if p.is_file() and not p.is_symlink()}
+        for operation in (lambda: self.api.status(self.ws),
+                          lambda: self.record(second, "candidate-b"),
+                          lambda: self.grade_fixture(first, "grader-a")):
+            with self.subTest(operation=operation):
+                with self.assertRaises(ValueError):
+                    operation()
+                after = {str(p.relative_to(self.ws)): p.read_bytes()
+                         for p in self.ws.rglob("*") if p.is_file() and not p.is_symlink()}
+                self.assertEqual(after, before)
+                self.assertEqual((external / "user.txt").read_bytes(), b"preserve external bytes")
+                self.assertTrue(link.is_symlink())
+
+    def test_inventory_refuses_linked_root_or_ancestor(self):
+        external = self.root / "empty-target"
+        external.mkdir()
+        link = self.root / "inventory-link"
+        link.symlink_to(external, target_is_directory=True)
+        with self.assertRaises(ValueError):
+            self.api.inventory(link)
+        child = external / "child"
+        child.mkdir()
+        with self.assertRaises(ValueError):
+            self.api.inventory(link / "child")
+        self.assertEqual(self.api.inventory(child), {})
+
+    def test_role_collisions_rejected_in_both_orders_before_writes(self):
+        self.prepare()
+        first = "eval-1/with_skill/run-1"
+        second = "eval-1/without_skill/run-1"
+        self.record(first, "candidate-a")
+        with self.assertRaises(ValueError):
+            self.grade_fixture(first, "candidate-a")
+        self.assertFalse((self.ws / first / "grading.json").exists())
+        self.grade_fixture(first, "grader-a")
+        with self.assertRaises(ValueError):
+            self.record(second, "grader-a")
+        self.assertFalse((self.ws / second / "execution.json").exists())
+        self.assertFalse((self.ws / second / "grading-request.json").exists())
+        self.record(second, "candidate-b")
+        with self.assertRaises(ValueError):
+            self.grade_fixture(second, "candidate-a")
+        self.grade_fixture(second, "grader-b")
+        self.assertEqual(self.api.status(self.ws)["status"], "complete-local")
+        self.assertFalse(self.api.status(self.ws)["official_full_eval_accepted"])
+
+    def test_readback_rejects_rebound_cross_role_campaign(self):
+        self.prepare()
+        first = "eval-1/with_skill/run-1"
+        second = "eval-1/without_skill/run-1"
+        self.record(first, "candidate-a")
+        self.grade_fixture(first, "grader-a")
+        self.record(second, "candidate-b")
+        self.grade_fixture(second, "grader-b")
+        grade = self.ws / first / "grading.json"
+        document = json.loads(grade.read_text())
+        document["delegate_id"] = "candidate-b"
+        grade.write_text(json.dumps(document))
+        import hashlib
+        binding = self.ws / first / "grade-binding.json"
+        binding.write_text(json.dumps({"grading_sha256": hashlib.sha256(grade.read_bytes()).hexdigest()}))
+        with self.assertRaises(ValueError):
+            self.api.status(self.ws)
+        with self.assertRaises(ValueError):
+            self.grade_fixture(second, "grader-c")
 
     def test_snapshot_tamper_blocks_status(self):
         self.prepare()

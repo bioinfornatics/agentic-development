@@ -112,6 +112,10 @@ a previous permission. This is an agent instruction, not a runtime cache.
    A task is small when its result can be reviewed and resumed independently, not
    because it edits few files. Do not split by function/file or phase mechanically.
 
+   Present the problem, expected user change, observable success and open decisions
+   before technical detail. Do not copy general work instructions into each ticket;
+   keep task-specific execution inputs below the product explanation and use native
+   tracker fields/shared-policy references for common metadata and procedures.
    For each task record: Goal; Parent outcome/specification; Scope and exclusions;
    Inputs and expected output; Observable acceptance/error paths; Blocking dependencies;
    Verification and public seams; Ownership and permissions; Durable context and restart.

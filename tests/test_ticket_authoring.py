@@ -19,9 +19,10 @@ class TicketAuthoring(unittest.TestCase):
 
     def test_readable_template_and_readiness(self):
         text = (ROOT / 'skills/plan/references/ticket-authoring.md').read_text()
-        for section in ('## Why', '## What', '## How', '## Scope and non-goals',
-                        '## Acceptance criteria', '## Reading references',
-                        '## Verification', '## Ownership and dependencies', '## Restart'):
+        for section in ('## Why', '## Expected outcome', '## Scope and non-goals',
+                        '## Acceptance criteria', '## Open decisions',
+                        '## Technical starting point', '## Reading references',
+                        '## Verification', '## Restart'):
             self.assertIn(section, text)
         for rule in ('Given:', 'When:', 'Then:', 'one observable outcome',
                      'non-behavioral', 'required/supporting', 'source identity',
@@ -43,6 +44,27 @@ class TicketAuthoring(unittest.TestCase):
         self.assertIn('When:', example)
         self.assertIn('Then:', example)
         self.assertIn('Hypothetical', example)
+
+    def test_product_questions_precede_technical_details(self):
+        text = (ROOT / 'skills/plan/references/ticket-authoring.md').read_text()
+        template = text.split('## Description template', 1)[1].split('~~~markdown', 1)[1].split('~~~', 1)[0]
+        headings = [line for line in template.splitlines() if line.startswith('## ')]
+        self.assertEqual(headings[:6], [
+            '## Why', '## Expected outcome', '## Scope and non-goals',
+            '## Acceptance criteria', '## Open decisions', '## Technical starting point'])
+        self.assertNotIn('current permission scope/prohibitions', template)
+        self.assertNotIn('verify workspace, ownership, candidate and permissions', template)
+
+    def test_no_generic_policy_copies_or_hidden_product_choices(self):
+        text = (ROOT / 'skills/plan/references/ticket-authoring.md').read_text()
+        for rule in ('Do not copy general work instructions', 'task-specific restrictions',
+                     'Do not invent an end user', 'Verify current facts',
+                     'A commit or prior decision is context, not the problem',
+                     'without technical vocabulary', 'scope change, not a wording repair'):
+            self.assertIn(rule, text)
+        entry = (ROOT / 'skills/plan/SKILL.md').read_text()
+        self.assertIn('problem, expected user change, observable success and open decisions', entry)
+        self.assertIn('Do not copy general work instructions', entry)
 
     def test_beads_bridge_preserves_separate_fields(self):
         copies = []

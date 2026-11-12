@@ -157,6 +157,29 @@
       "status_source": "supplied hypothetical readback, not a live tracker",
       "situation": "ambiguous ownership and failing mandatory checks",
       "execution": "explain only; no commands or writes"
+    },
+    "readable-ticket-repair": {
+      "result": "A proposed wording repair is requested. Product scope changes have not been approved. No live tracker or implementation access is available.",
+      "user_problem": "After several evaluations, a CLI user must find campaigns without searching files manually or opening SQLite and must understand evaluated profile/revision, progress and evidence locations.",
+      "current_facts": [
+        "Campaign records now live in an existing shared registry, not per-campaign databases.",
+        "Listing and inspection are consultation only. Scoring/grading is not delivered.",
+        "Different profile identities may share the same display name.",
+        "Evidence paths may refer to missing files."
+      ],
+      "old_ticket": {
+        "title": "Expose campaign read-model capabilities",
+        "why": "Follow decision D-7 and commit abc123.",
+        "scope": "Use per-campaign SQLite fixtures; expose identities/context/states/paths and available scores.",
+        "work_instructions": "Verify authorization, run independent review, recheck workspace and session restart policy in every ticket."
+      },
+      "open_choices": [
+        "CLI command names",
+        "Default displayed information",
+        "Human and JSON output contract"
+      ],
+      "ownership": "Decision owners and task owner unknown; no verified task IDs.",
+      "next": "Propose readable ticket content; separate stale-fact correction and unapproved scope change, with next resolution action for open choices."
     }
   }
 }

@@ -543,6 +543,116 @@
           "grading": "instrumented-execution-only"
         }
       ]
+    },
+    {
+      "id": 20,
+      "name": "plan-readable-ticket-repair",
+      "subject": "agentic-development",
+      "language": "en",
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "preconditions": [
+        "Scenario input is a read-only hypothetical fixture, not real test or tracker output.",
+        "Execute explanation only in an isolated context with equal artifact access for paired variants.",
+        "Behavioral comparison requires an immutable old_skill baseline and frozen current sources; historical hashes alone are insufficient."
+      ],
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "prompt": "Use Plan to propose a clearer replacement for the campaign-history ticket in case readable-ticket-repair of evals/files/scenario-facts.json. Use only the hypothetical facts supplied; do not modify a tracker or run implementation. Identify any decisions needed before dependent work can start.",
+      "expected_output": "A proposed readable, bounded ticket and explicit decisions, grounded in the supplied hypothetical facts; no tracker writes or execution claims.",
+      "files": [
+        "evals/files/scenario-facts.json"
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": []
+      },
+      "assertions": [
+        "The why explains the manual search burden of finding past campaigns.",
+        "The expected result describes campaign consultation before technical architecture.",
+        "The acceptance criteria specify the observable response to an empty registry.",
+        "The acceptance criteria specify the observable error for an unknown campaign.",
+        "The acceptance criteria preserve distinct profile identities despite equal display names.",
+        "The acceptance criteria specify how missing evidence is reported.",
+        "The proposed consultation is read-only.",
+        "The proposal does not promise unavailable scoring.",
+        "The proposal keeps agent execution outside consultation scope.",
+        "The proposal keeps resume outside consultation scope.",
+        "Command naming is an explicit unresolved decision.",
+        "Output choices are explicit unresolved decisions.",
+        "Each open decision identifies the work blocked by its answer.",
+        "Each open decision names a next resolution action.",
+        "Unknown decision owners are not invented.",
+        "The technical starting point uses the stated current shared registry.",
+        "The old per-campaign storage statement is flagged as stale.",
+        "Removing the old scoring promise is identified as an unapproved scope change.",
+        "General work procedures are not copied into the proposed ticket.",
+        "Task-specific restart inputs remain recoverable.",
+        "The output claims no tracker mutation.",
+        "The output claims no executed tests.",
+        "The output claims no implementation.",
+        "The output claims no acceptance."
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md",
+          "references/communication-contract.md",
+          "evals/files/scenario-facts.json",
+          "references/requirements-output.md",
+          "references/common-output.md",
+          "references/ticket-authoring.md"
+        ],
+        "read_when_relevant": [
+          "references/authorization-policy.md",
+          "references/candidate-identity.md",
+          "references/review-policy.md",
+          "references/judgment-rubric.md",
+          "references/commit-report.md",
+          "references/session-report.md",
+          "references/requirements-baseline.md"
+        ],
+        "must_not_read": [
+          "evals/files/unrelated-private-notes.txt"
+        ]
+      },
+      "coverage_tags": [
+        "language:en",
+        "category:ticket-quality",
+        "phase:plan",
+        "rule:product-first",
+        "rule:stale-ticket",
+        "rule:scope-preservation"
+      ],
+      "execution_assertions": [
+        {
+          "criterion": "The common output contract is read after investigation before drafting delivery.",
+          "evidence_requirement": "tool-events/order",
+          "grading": "instrumented-execution-only"
+        },
+        {
+          "criterion": "The phase delivery contract is read before drafting delivery.",
+          "evidence_requirement": "tool-events/order",
+          "grading": "instrumented-execution-only"
+        },
+        {
+          "criterion": "Operational requirements are resolved before governed actions.",
+          "evidence_requirement": "tool-events/order",
+          "grading": "instrumented-execution-only"
+        },
+        {
+          "criterion": "Permission prerequisites are resolved before governed actions.",
+          "evidence_requirement": "tool-events/order",
+          "grading": "instrumented-execution-only"
+        }
+      ]
     }
   ]
 }

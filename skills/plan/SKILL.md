@@ -136,7 +136,11 @@ a previous permission. This is an agent instruction, not a runtime cache.
    approved time/cost target separately from local summed test durations; unknown
    end-to-end CI measurements remain unresolved, not inferred from parallel runs.
 
-   For the near-term implementation frontier, break work into coherent tasks with
+   For the near-term implementation frontier, name the delivery mechanism (service,
+   managed/self-hosted, runtime) and data/credential flow in the technical second
+   layer, then ordered steps and a verified Read/Create/Modify/Preserve/Exclude
+   file or asset map. Link common policies instead of repeating them; unknown
+   architecture blocks execution readiness. Break work into coherent tasks with
    exact target paths, exclusive ownership, prerequisites and expected outputs.
    For distant roadmap outcomes, record needs, risks and dependencies instead;
    do not invent file paths, numeric targets, owners or approval. Multiple tasks/commits may share one
@@ -156,6 +160,10 @@ a previous permission. This is an agent instruction, not a runtime cache.
    Create or update issues only when requested/authorized in the agreed tracker.
    Inspect existing issues first, reuse matching work, verify supported fields and
    write goals, exclusions, criteria, dependencies, ownership and restart context.
+   On updates, consolidate current solution/steps/files rather than append competing
+   designs; move dated findings to notes, preserve criterion IDs/history, reconcile
+   native edges and check cycles. Readback must pass the human readability gate in
+   ticket-authoring.md, not merely confirm nonempty fields.
    Include Research's verified task-specific reading references: files or authorized
    local web captures, entrypoints/sections, reasons, order, source identity and
    freshness/accessibility limits. Do not copy full research into tickets or invent

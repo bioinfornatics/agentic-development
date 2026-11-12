@@ -1,7 +1,7 @@
-# Readable and restartable task tickets v1.2.0
+# Readable and restartable task tickets v1.3.0
 
 Contract ID: agentic-development/ticket-authoring
-Contract version: 1.2.0
+Contract version: 1.3.0
 
 Apply before creating or repairing task descriptions or acceptance criteria in any
 agreed tracker; apply the Beads bridge when relevant. This is authoring guidance,
@@ -58,6 +58,79 @@ not an enforcement engine or permission to mutate tickets.
 8. Read back the rendered ticket and fields after authorized writes. Use the
    readiness checklist below. Readiness does not establish acceptance or closure.
 
+## Concrete execution frontier
+
+For implementation work, explain the delivery mechanism in the technical second
+layer: named service or technology, managed versus self-hosted, execution environment,
+and what code creates/configures versus what an operator/runtime injects or executes.
+Spell out necessary domain abbreviations. For credentials or data, show the
+producer → transport → consumer path and bootstrap/recovery boundary without values.
+"Inject externally" or "configure securely" is not a complete How. Unknown provider
+capabilities need a decision/probe, not an invented implementation; use a small
+text diagram only when it clarifies the flow.
+
+Detail ready implementation tickets, not every distant roadmap item. Before
+calling an implementation ticket ready, provide a verified file/asset map:
+
+| Action | Required content |
+|---|---|
+| Read | Repository-relative existing path, relevant symbol/section, why, reading order |
+| Create | Exact proposed path, responsibility, expected inputs/outputs; confirm no equivalent exists |
+| Modify | Existing path and bounded change; identify shared-file coordination |
+| Preserve | User changes, shared infrastructure/state, credentials and compatibility contracts |
+| Exclude | Adjacent work owned by another ticket, with the relevant dependency |
+
+Existing inputs must be inspected; distinguish inspected paths from suggested or
+unavailable references. Proposed files are not existing assets or automatically
+approved architecture. Resolve architecture/ownership prerequisites before fixing
+new paths; use a bounded decision/research ticket when they are unknown. Non-code
+or provider-side tasks name the exact documents/resources/operations instead of
+inventing source files to satisfy the table. A broad folder list and "read the
+repository" are not a restart plan.
+
+Use ordered steps with an observable intermediate result and dependencies, not
+an exhaustive script or generic phase boilerplate. The first restart action must
+name its input, operation and expected result; "inspect inputs then implement" is
+insufficient. Scope and estimated size follow one reviewable outcome; split when
+bootstrap, runtime integration and production rollout require different inputs,
+authority or acceptance. Do not duplicate all consumer implementations in a
+foundation ticket. Choose task names that expose the delivered capability.
+
+## Consolidate updates, do not append competing specifications
+
+Read the current description, criteria and native dependency edges before editing.
+When a decision or audit changes the design, rewrite the affected current sections
+into one consistent specification. Put dated findings, previous decisions and
+execution history in notes/comments or a linked evidence artifact. Do not append
+successive "architecture update" blocks that contradict How, exclusions or criteria.
+Preserve prior history and stable criterion IDs; explain supersession, deduplicate
+checks and obtain authority for substantive scope/target changes. Never silently
+weaken acceptance or archive away evidence still needed to prove it.
+
+Recompute prerequisite edges when scope changes. Keep native edges and text
+consistent, reject cycles, and do not make architecture selection depend on the
+implementation whose design it must select. Parent/epic hierarchy is not a blocker
+edge. Record actual owner/claim in native fields; do not retain "owner unassigned"
+boilerplate that contradicts the tracker. A new current user authorization may
+supersede a ticket's historical planning-only grant for the bounded action;
+verify and record it, without inferring deployment, rotation or Git permission.
+
+## Readability gate before writing and after readback
+
+A human unfamiliar with this conversation must be able to answer in a quick scan:
+why, what replaces what, which service runs where, how data/credentials flow,
+which files/assets change, what stays untouched, the first step and the success check.
+Prefer a short summary, ordered implementation steps and a file table over repeated
+policy paragraphs. Link common security/review contracts and specialize only the
+risks of this task; never use a word limit to omit decision-critical facts.
+Follow the project's content-language policy; otherwise author in the user's
+language while keeping identifiers/API names exact.
+
+If these answers are missing, repair the ticket before implementation or clearly
+mark the exact unresolved input and its decision owner. Do not declare a roadmap
+item execution-ready merely because it has no native blockers. Readback checks
+meaning and contradictions, not only nonempty fields or a passing JSON schema.
+
 ## Description template
 
 Preserve the required facts; combine headings for small tasks. Omit non-applicable
@@ -88,8 +161,14 @@ unavailable, add a compact task-specific ownership/dependencies section below.
 <Which work depends on this answer? Unknown decision owners stay explicit.>
 
 ## Technical starting point
+<Named service/technology, managed/self-hosted, runtime and data/credential flow>
+<Ordered approach with inputs, prerequisites and observable intermediate results>
 <Short verified approach, relevant paths/constraints and parent/specification locator>
 <Proposal versus existing facts; task-specific restrictions or shared-policy pointer>
+
+## File / asset map
+<Read → Create → Modify → Preserve → Exclude; inspected inputs and proposed outputs>
+<Decision-only/distant work: unresolved assets and exact resolving probe instead>
 
 ## Reading references
 1. <required/supporting; root-relative file or canonical URL; section/symbol;
@@ -191,6 +270,11 @@ capabilities into a read-only/preservation result.
       from hypotheses when applicable.
 - [ ] Criterion IDs/sources map to independent checks; relevant errors/boundaries
       and approved NFR definitions are present, without implementation-only acceptance.
+- [ ] File/asset map separates inspected inputs, proposed outputs, modifications,
+      preserved work and exclusions; service/runtime and delivery flow are explicit
+      where relevant, with ordered steps or an exact design prerequisite.
+- [ ] Current sections are consolidated, criteria/history preserved, native owner
+      and prerequisites consistent and cycle-free; no unblocked-but-undesigned readiness.
 - [ ] Required inputs resolve; owner, parent/prerequisite direction, permissions
       and blocking decisions are explicit. Missing mandatory facts block readiness.
 - [ ] Readback confirms fields/links, preserved history and unchanged criteria;

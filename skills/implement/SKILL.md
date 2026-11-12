@@ -71,6 +71,13 @@ a previous permission. This is an agent instruction, not a runtime cache.
    capabilities produce an explicit blocker, never simulated execution evidence.
    Use the coordinator's verified slice state when available; do not fabricate execution or acceptance.
 
+   Before implementation, verify that the ticket names its service/runtime mechanism,
+   ordered approach, inspected inputs, proposed outputs, preserved assets and exact
+   restart action. Missing delivery design is a readiness gap: repair it under
+   authorized planning scope or request its specific decision, not guess paths or
+   substitute generic safety prose. Compare native dependencies/owner with text and
+   verify current user authority instead of treating stale planning-only text as law.
+
    Read the approved plan, acceptance criteria, local instructions and ownership
    ledger. Reinspect branch/status/diff and compare pre-existing hunks. Block
    conflicting ownership; do not overwrite another contributor's work. Recover missing context or return to Plan before edits.

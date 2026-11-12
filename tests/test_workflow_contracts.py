@@ -52,6 +52,10 @@ class WorkflowSourceContracts(unittest.TestCase):
     def test_boundary_scenarios_require_their_reporting_dependencies(self):
         for p in SKILLS.glob("*/evals/evals.json"):
             for case in json.loads(p.read_text())["evals"]:
+                # Navigation requirements apply to these legacy boundary cases,
+                # not unrelated current-subset ticket scenarios.
+                if not case["name"].endswith(("-commit-report", "-session-end")):
+                    continue
                 reads = case["navigation_expectations"]["must_read"]
                 if case["name"].endswith("-commit-report"):
                     self.assertIn("references/commit-report.md", reads)

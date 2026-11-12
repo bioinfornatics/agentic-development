@@ -69,6 +69,9 @@ a previous permission. This is an agent instruction, not a runtime cache.
    Before creating or repairing task descriptions or acceptance criteria, apply
    [ticket authoring](references/ticket-authoring.md); verify readable purpose,
    criteria, ordered inputs and restart context without duplicating execution history.
+   Require explicit delivery mechanisms and asset maps for ready implementation work.
+   Route changed scope through consolidated ticket sections and reconciled dependency
+   edges; a populated tracker record alone does not prove execution readiness.
 
    If the repository uses Beads, apply [the Beads integration](references/beads-integration.md)
    before choosing work or mutating task state. Use fresh `bd prime` guidance;

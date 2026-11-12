@@ -50,6 +50,17 @@ class EvalEvidenceLevels(unittest.TestCase):
             self.assertTrue(all(type(i) is int and i > 0 for i in ids))
             for case in cases:
                 with self.subTest(skill=skill, case=case["id"]):
+                    # New ticket scenarios use the creator's current closed subset.
+                    # Legacy instrumented-order contracts remain frozen below;
+                    # current subset/fixture checks live in test_ticket_authoring.py.
+                    if skill == "plan" and case["name"] in {
+                            "concrete-managed-service-ticket", "consolidate-updated-ticket",
+                            "changed-scope-dependency-readiness"}:
+                        self.assertNotIn("navigation_expectations", case)
+                        self.assertNotIn("execution_assertions", case)
+                        for requirement in ORDER_REQUIREMENTS + OTHER_ORDER_REQUIREMENTS:
+                            self.assertNotIn(requirement, case["assertions"])
+                        continue
                     self.assertEqual(case["target"]["execution"], "explain")
                     self.assertIn("navigation_expectations", case)
                     for requirement in ORDER_REQUIREMENTS + OTHER_ORDER_REQUIREMENTS:

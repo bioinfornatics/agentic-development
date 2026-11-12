@@ -653,6 +653,81 @@
           "grading": "instrumented-execution-only"
         }
       ]
+    },
+    {
+      "id": 21,
+      "name": "concrete-managed-service-ticket",
+      "subject": "ticket-authoring",
+      "language": "en",
+      "prompt": "Using evals/inputs/context.md, propose an implementation task for identities and secrets. I need to understand the selected solution, how it works and which files are involved.",
+      "files": [
+        "evals/inputs/context.md"
+      ],
+      "assertions": [
+        "The ticket explicitly names managed service delivery rather than implying a self-hosted vault.",
+        "Read/create/modify/preserve/exclude assets distinguish existing supplied paths from proposed output paths.",
+        "Bootstrap delivery remains an unresolved decision with a concrete resolving step; execution-ready status is not fabricated.",
+        "The ticket is understandable without repeated generic policy boilerplate and does not authorize cloud operations."
+      ],
+      "expected_output": "A bounded readable implementation ticket or blocked design task with concrete mechanism, assets and checks.",
+      "coverage_tags": [
+        "journey:author",
+        "risk:concrete-delivery"
+      ]
+    },
+    {
+      "id": 22,
+      "name": "consolidate-updated-ticket",
+      "subject": "ticket-repair",
+      "language": "en",
+      "prompt": "The task in evals/inputs/ticket.md has become contradictory after our changes. Rewrite its current specification while keeping traceability and the existing criteria.",
+      "files": [
+        "evals/inputs/ticket.md"
+      ],
+      "assertions": [
+        "One coherent current description uses managed secrets; no contradictory architecture blocks remain in it.",
+        "Prior proposal and findings are retained in history/notes rather than silently discarded.",
+        "IAM-7-AC1 and IAM-7-AC2 identities and intent are preserved.",
+        "Actual assignee alex and unresolved bootstrap are represented accurately, with no secret values or operations."
+      ],
+      "expected_output": "Consolidated current specification and preserved history, not another appended update.",
+      "coverage_tags": [
+        "journey:update",
+        "risk:history"
+      ]
+    },
+    {
+      "id": 23,
+      "name": "changed-scope-dependency-readiness",
+      "subject": "ticket-dependencies",
+      "language": "en",
+      "prompt": "Review the plan in evals/inputs/dependencies.md before starting the redesign and explain what we can actually execute now.",
+      "files": [
+        "evals/inputs/dependencies.md"
+      ],
+      "assertions": [
+        "The plan detects that architecture selection incorrectly waits on its implementation.",
+        "Proposed dependency changes are cycle-free and implementation does not precede its unresolved design.",
+        "Missing exact paths are resolved through architecture investigation, not invented as verified files.",
+        "Current request is distinguished from recorded permissions and no cloud mutation is inferred."
+      ],
+      "expected_output": "Corrected dependency proposal and an exact safe next step with remaining decisions.",
+      "coverage_tags": [
+        "journey:readiness",
+        "risk:dependency-order"
+      ]
     }
-  ]
+  ],
+  "coverage_dimensions": {
+    "journey": [
+      "author",
+      "update",
+      "readiness"
+    ],
+    "risk": [
+      "concrete-delivery",
+      "history",
+      "dependency-order"
+    ]
+  }
 }

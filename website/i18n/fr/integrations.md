@@ -26,6 +26,18 @@ le résultat à la tâche. Si le tracker ne peut pas être mis à jour, dites-le
 conservez le commit avec une action de reprise. Ne prétendez pas que la transmission
 a été enregistrée. Ne poussez pas automatiquement.
 
+## GitHub CLI : examiner une PR et vérifier la CI
+
+Utilisez GitHub CLI (`gh`) lorsque le projet est hébergé sur GitHub et que la
+gestion des PR depuis le terminal est utile. Cet outil est facultatif ; les Skills
+n'en dépendent pas. Vérifiez le compte authentifié avec `gh auth status` et
+confirmez le dépôt visé avant toute action distante. Utilisez `gh pr view` pour
+examiner une PR et `gh pr checks` pour consulter ses résultats de CI ; une CI
+verte constitue une preuve, pas une acceptation. Créez une PR avec `gh pr create`
+uniquement avec une autorisation couvrant cette action, un diff revu et la bonne
+branche cible. Ne vous authentifiez pas, ne poussez pas, ne fusionnez pas et ne
+modifiez pas les paramètres du dépôt automatiquement.
+
 ## Sessions et Entire : transmettre le contexte
 
 Gardez l'implémentation, les tests et les corrections liées dans la même session tant que

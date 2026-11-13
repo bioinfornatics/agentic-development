@@ -37,9 +37,29 @@ class PagesWorkflow(unittest.TestCase):
                       'separately authorized'):
             self.assertIn(token, text)
 
-    def test_publication_intent_excludes_pr_and_includes_main_push(self):
-        intent = "github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.publish)"
-        self.assertEqual(self.text.count(intent), 4)
-        self.assertIn('branches: [main]', self.text)
+    def test_ci3_source_triggers_and_bilingual_verification(self):
+        trigger = self.text.split('permissions:', 1)[0]
+        for event in ('push', 'pull_request'):
+            block = trigger.split('  ' + event + ':', 1)[1].split('\n  pull_request:', 1)[0].split('\n  workflow_dispatch:', 1)[0]
+            self.assertIn('branches: [main, develop]', block)
+        verify = self.text.split('      - name: Verify source contracts', 1)[1].split('      - name:', 1)[0]
+        self.assertIn('python -m unittest discover -s website/tests -v', verify)
+        self.assertIn('Build both locales', self.text)
+        self.assertIn('python website/build.py --output .site', self.text)
+
+    def test_ci3_develop_push_cannot_request_publication(self):
+        # Source contract only: not a GitHub expression evaluator or hosted CI run.
+        intent = "(github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && inputs.publish)"
+        for name in ('Check publication prerequisites', 'Read existing Pages configuration'):
+            block = self.text.split('      - name: ' + name, 1)[1].split('      - name:', 1)[0]
+            self.assertIn('if: ' + intent, block)
+        resolve = self.text.split('      - name: Resolve site and source URLs', 1)[1].split('      - name:', 1)[0]
+        self.assertIn('PUBLISH: ${{ ' + intent + ' }}', resolve)
+        deploy = self.text.split('  deploy:', 1)[1]
+        self.assertIn('(' + intent + ') &&', deploy)
+        for guard in ("vars.PAGES_DEPLOY_ENABLED == 'true'",
+                      'vars.PAGES_REPOSITORY == github.repository',
+                      "github.ref == format('refs/heads/{0}', github.event.repository.default_branch)"):
+            self.assertIn(guard, deploy)
         self.assertNotIn('pull_request_target', self.text)
         self.assertIn('group: documentation-pages-', self.text)

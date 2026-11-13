@@ -63,8 +63,10 @@ links; optional non-guide references become GitHub source links, not public copi
 Only the two homes and four guides in each language are published. AGENTS.md, Skill fixtures, evidence and task data are never copied.
 This documentation builder does not install the agent plugin or activate Goose hooks.
 
-The workflow is in .github/workflows/pages.yml. PRs run tests and builds only;
-pushes to main automatically build and publish after repository guards pass.
+The workflow is in .github/workflows/pages.yml. Pushes to develop and PRs targeting
+develop or main verify source contracts and build both English and French locales
+without checking publication prerequisites, reading Pages configuration or deploying.
+Pushes to main automatically build and publish after repository guards pass.
 This workflow is adapted from the delivered integration repository. It has not
 executed from this standalone candidate; no publication is performed by preparation.
 Browser verification remains separate from a successful build.
@@ -82,8 +84,9 @@ Browser verification remains separate from a successful build.
 7. After explicit publication approval, dispatch on the default branch with
    publish true; verify the resulting public URL and both locales.
 
-Pushes to main request publication automatically. PRs never publish and have no
-Pages/OIDC write permissions. Manual publish defaults to false. Publication fails
+Only pushes to main request publication automatically; develop pushes and PRs
+never publish and have no Pages/OIDC write permissions. Manual publish defaults
+to false. Publication fails
 unless both variables match the guards and the default branch is used. To pause
 automatic publication, set PAGES_DEPLOY_ENABLED to false; main builds fail closed.
 PR runs are isolated per ref; publication runs serialize on the main ref.

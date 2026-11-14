@@ -3,7 +3,7 @@ import re
 import unittest
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
-EXPECTED = {'cycle', 'research', 'plan', 'implement', 'test', 'judge', 'iterate'}
+EXPECTED = {'cycle', 'research', 'plan', 'implement', 'test', 'judge', 'iterate', 'task-authoring'}
 class SkillDiscovery(unittest.TestCase):
     def test_exact_names_and_matching_frontmatter(self):
         skills = ROOT / 'skills'

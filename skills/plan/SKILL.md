@@ -155,6 +155,10 @@ a previous permission. This is an agent instruction, not a runtime cache.
    branch. If an independent review slice needs a different branch, announce
    current branch fit, proposed base/name and permission before any Git action.
 
+   Before declaring an individual ticket ready, apply the ticket questions in
+   [the Plan readiness review](references/plan-readiness-review.md). Reuse
+   task-authoring mechanics; this review challenges usability, not field count.
+
    For UI work describe objects and CRUD (or N/A), changed zones using +/~/-/=,
    an ASCII sketch and the real visual verification planned. A drawing is not
    a rendered proof. Resolve product/UX choices rather than invent approval.
@@ -174,6 +178,11 @@ a previous permission. This is an agent instruction, not a runtime cache.
    Retain planning scope, review requirements and verification proof. Distinguish
    parent hierarchy from prerequisites; report actual IDs and errors, or proposed
    tickets when writes are unavailable. Task authoring does not approve this plan.
+
+   Before approving the complete current plan for execution, apply the global
+   delegated challenge in the Plan readiness review already read above. Review
+   the whole graph, including implicit prerequisites; do not substitute ticket
+   readback or self-review for this gate.
 
    Verify actual delegated planning completion, source identity and result locator
    before integration. Reconcile conflicts and retain unresolved decisions and missing

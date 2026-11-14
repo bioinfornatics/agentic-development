@@ -1,0 +1,14 @@
+{
+  "id": "cancel-exhausted",
+  "goal": "Stop cancels the active transport exactly once",
+  "owner": "local-worker",
+  "status": "in_progress",
+  "mechanism": "controlled-local-json-v1",
+  "attempts_started": 3,
+  "maximum": 3,
+  "repair_authorized": false,
+  "writable_paths": [],
+  "verification": "python3 -B test_controller.py",
+  "finding": "Stop leaves the active transport uncancelled",
+  "review": "Independent review is still required; do not close the task"
+}

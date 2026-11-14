@@ -1,0 +1,80 @@
+{
+  "correction": {
+    "files": {
+      "README.md": "2f799e189c3e8fc4d5eca4e18e9ed4e93b2243df44a13b1f5d8d1bd4dee222d7",
+      "controller.py": "c0e81cf96c48733b4828daa6d13badd0422ae96156e21ee1e26c84bbca6dce5c",
+      "notes.txt": "ff1494828d4f8dda543208c0f292b6761daa5aa4dfcf8f35d0d77f2922f7f360",
+      "task.json": "33e48f1d5ec9aecf401c31e7ca76d0187e329974507f1ece22a3e1c3eadac639",
+      "task_state.py": "b498767988e8fa3a3ebf7aec562e1c45673b007554816c2e29a3fc3aa9a1173a",
+      "test_controller.py": "299547ea1afbe46f9cb98be25309551d43bb8dd549f949f9f34a5e67f004a66b",
+      "view.py": "c43cd7d79c5e1e84264bf2eafb72ad64e6511cca1201e3e2a1780772749b330c"
+    },
+    "task": {
+      "attempts_started": 1,
+      "finding": "Stop leaves the active transport uncancelled",
+      "goal": "Stop cancels the active transport exactly once",
+      "id": "cancel-correction",
+      "maximum": 3,
+      "mechanism": "controlled-local-json-v1",
+      "owner": "local-worker",
+      "repair_authorized": true,
+      "review": "Independent review is still required; do not close the task",
+      "status": "in_progress",
+      "verification": "python3 -B test_controller.py",
+      "writable_paths": [
+        "controller.py",
+        "task.json"
+      ]
+    }
+  },
+  "exhausted": {
+    "files": {
+      "README.md": "2f799e189c3e8fc4d5eca4e18e9ed4e93b2243df44a13b1f5d8d1bd4dee222d7",
+      "controller.py": "c0e81cf96c48733b4828daa6d13badd0422ae96156e21ee1e26c84bbca6dce5c",
+      "notes.txt": "ff1494828d4f8dda543208c0f292b6761daa5aa4dfcf8f35d0d77f2922f7f360",
+      "task.json": "9342a0d25aa0c1389160a742d12a971599c00275bd797123e1d3901c1be3388c",
+      "task_state.py": "b498767988e8fa3a3ebf7aec562e1c45673b007554816c2e29a3fc3aa9a1173a",
+      "test_controller.py": "299547ea1afbe46f9cb98be25309551d43bb8dd549f949f9f34a5e67f004a66b",
+      "view.py": "c43cd7d79c5e1e84264bf2eafb72ad64e6511cca1201e3e2a1780772749b330c"
+    },
+    "task": {
+      "attempts_started": 3,
+      "finding": "Stop leaves the active transport uncancelled",
+      "goal": "Stop cancels the active transport exactly once",
+      "id": "cancel-exhausted",
+      "maximum": 3,
+      "mechanism": "controlled-local-json-v1",
+      "owner": "local-worker",
+      "repair_authorized": false,
+      "review": "Independent review is still required; do not close the task",
+      "status": "in_progress",
+      "verification": "python3 -B test_controller.py",
+      "writable_paths": []
+    }
+  },
+  "proof-only": {
+    "files": {
+      "README.md": "2f799e189c3e8fc4d5eca4e18e9ed4e93b2243df44a13b1f5d8d1bd4dee222d7",
+      "controller.py": "f5784fe133f1464070722137f96913131f04dda5c469d1ce6fadbf6e11ececa3",
+      "notes.txt": "ff1494828d4f8dda543208c0f292b6761daa5aa4dfcf8f35d0d77f2922f7f360",
+      "task.json": "5c2077f29c1cfa3495c278d040634e71f40bd841abe39a5370b112f32594b3e6",
+      "task_state.py": "b498767988e8fa3a3ebf7aec562e1c45673b007554816c2e29a3fc3aa9a1173a",
+      "test_controller.py": "299547ea1afbe46f9cb98be25309551d43bb8dd549f949f9f34a5e67f004a66b",
+      "view.py": "c43cd7d79c5e1e84264bf2eafb72ad64e6511cca1201e3e2a1780772749b330c"
+    },
+    "task": {
+      "attempts_started": 1,
+      "finding": "Verification has not been run on this candidate",
+      "goal": "Stop cancels the active transport exactly once",
+      "id": "cancel-proof-only",
+      "maximum": 3,
+      "mechanism": "controlled-local-json-v1",
+      "owner": "local-worker",
+      "repair_authorized": false,
+      "review": "Independent review is still required; do not close the task",
+      "status": "in_progress",
+      "verification": "python3 -B test_controller.py",
+      "writable_paths": []
+    }
+  }
+}

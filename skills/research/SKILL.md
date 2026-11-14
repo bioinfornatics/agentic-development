@@ -47,7 +47,9 @@ a previous permission. This is an agent instruction, not a runtime cache.
 1. [ ] **Frame the objective and verify authority**
 
    - Verify root and local instructions, requested outcome, available roadmap/task and
-     sources. Missing roadmap information is explicit, not permission to invent goals.
+     sources. Missing roadmap information is explicit; do not invent goals or expand
+     bounded research to fill hierarchy labels. Resolve decision-blocking context
+     only; roadmap proposals belong to requested planning or a decision-blocking need.
    - Before creating or repairing task descriptions or acceptance criteria, apply
      [ticket authoring](references/ticket-authoring.md); verify readable purpose,
      criteria, ordered inputs and restart context without duplicating execution history.
@@ -109,9 +111,13 @@ a previous permission. This is an agent instruction, not a runtime cache.
      request is not research evidence. Missing facts remain unknown; ask when they block
      a coherent next decision. Read glossary/ADRs when domain terms or irreversible decisions matter.
    - When planning checks, freezing inputs or reusing evidence, apply
-     [candidate identity](references/candidate-identity.md). Include staged, untracked,
-     binary and relevant environment inputs; define output-only exclusions. Verify source
-     identity and freshness before accepting a worker's evidence as reusable.
+     [candidate identity](references/candidate-identity.md) and select the provenance path:
+     source-only observation records inspected revision/paths, dirty state and limits;
+     a preliminary check records command, inputs, environment and observed result with
+     limited provenance. Exact-candidate acceptance or proof reuse requires capture,
+     rerun and comparison under that contract, including staged, untracked, binary and
+     relevant environment inputs with output-only exclusions. Verify source identity
+     and freshness before accepting a worker's evidence as reusable.
    - Retrieve likely entry points, traverse callers/data flow, explore based on findings
      and verify hypotheses with concrete files, documentation or reproducible probes.
      Tie technical findings to the product outcome; cite paths, symbols and versions

@@ -123,8 +123,9 @@ a previous permission. This is an agent instruction, not a runtime cache.
       or unnecessary personal data. If persistence is unavailable, emit a copyable
       handoff and disclose that no durable state was written.
    - Resume at the first incomplete or invalidated phase, not from the beginning.
-      Reinspect the working tree and compare candidate identity; treat old evidence
-      as stale if related files or environment changed.
+      Reinspect the working tree and select source-only observation, preliminary
+      check or exact-candidate proof under candidate identity; compare exact inputs
+      before proof reuse. Treat old evidence as stale if related files or environment changed.
 
    Treat roadmap outcomes, epic capabilities, user-story behavior and executable tasks
    as different levels. Keep distant work coarse and detail the ready frontier only.

@@ -139,9 +139,24 @@ a previous permission. This is an agent instruction, not a runtime cache.
    as different levels. Keep distant work coarse and detail the ready frontier only.
    One run stays within one active epic; an epic may need multiple runs/sessions.
    One agent/session has one main verifiable task, not necessarily one phase or commit.
+   Select one primary deliverable and its exit criteria; each action or contribution
+   must serve it or follow an explicit authorized objective switch. Do not start
+   several main tasks sequentially and leave them in progress: multiple active tasks
+   require actual active workers with distinct assignments, not intended delegation.
+   Distinguish planned/selected work, verified claims and observed execution in the
+   existing tracker/checkpoint; a claim alone proves neither a running delegate nor
+   permission. Keep contributions under the main task unless independently resumable
+   outcomes require separate authorized tickets; no ticket per file or phase.
    Before writes, verify that the task ID leads to goal, requirement, scope, dependencies,
    checks and restart context. In Beads, parents express hierarchy, blocking edges express
    prerequisites; claim is not a file lock. Repair missing task context, not a second tracker.
+
+   Before switching an unfinished primary deliverable, record its result, blocked or
+   suspended disposition, candidate/diff, evidence, owner, worker dispositions and
+   exact resume prerequisite. Verify replacement scope and authority before starting
+   it. A switch grants no implicit closure, cancellation, reset or discard of work;
+   use only authorized supported tracker/worker operations and read back their results.
+   If required persistence fails, stop the affected transition, not unrelated work.
 
    Keep related build/test/corrections in one session. Recommend a fresh context for an
    independent US, repository/worktree change, major research handoff, stale assumptions
@@ -160,12 +175,22 @@ a previous permission. This is an agent instruction, not a runtime cache.
    Use delegation only if available and useful, subject to required isolation or
    independence. Coordinator baseline verification and bounded questions from
    sufficient available sources need no worker; deeper Research investigations
-   follow that phase's dispatch policy.
+   follow that phase's dispatch policy. For useful independent contributions with
+   ready inputs, available capability and exclusive writable paths, launch the ready
+   workers before awaiting their results. Record the dependency, capability, isolation
+   or proportionality reason when serialization is necessary; do not manufacture
+   parallelism by adding trivial work or splitting one coherent outcome.
+   Record actual invocation handles/worker identifiers and observed status separately
+   from proposed assignments; unavailable lifecycle evidence remains unknown, never
+   simulated. One coordinator updates each issue; workers return evidence unless a
+   distinct, currently authorized tracker responsibility was explicitly assigned.
    Give each worker the objective,
    acceptance criteria, contract, approved scope, input artifacts and exclusive
    writable paths. Workers cannot coordinate implicitly. Parallel writers must
    never share a file. Workers return result, exact changes, evidence, limitations
    and next action; the coordinator integrates these, not their unsupported claims.
+   Name each contribution's required output and integration/join responsibility;
+   do not write a live worker's owned paths or begin work depending on its return.
 
    Before Judge, freeze the candidate, checklist and evidence index; recommend a
    fresh context and prepare the handoff. Do not auto-commit. If no independent
@@ -184,6 +209,11 @@ a previous permission. This is an agent instruction, not a runtime cache.
    and result locator before integration. Reconcile conflicts; failed or partial results
    remain provisional, not accepted gates. Preserve valid proof and expose invalidated
    evidence; source-only checks remain static.
+   Before dependent edits, checks or dispatch, join and verify the required worker
+   contributions, candidate identity and integration compatibility. A required live,
+   failed or incomplete worker leaves that dependent action pending; independent
+   authorized work may continue. Partial returns are not accepted inputs. Record
+   remaining worker dispositions rather than assuming completion or cancellation.
 
    Default to at most three correction rounds for the same slice unless the user
    sets another budget. After repeated failures, changed scope, exhausted budget,

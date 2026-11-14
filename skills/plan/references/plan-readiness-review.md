@@ -40,6 +40,10 @@ The reviewer must not have participated in candidate construction; disclose inhe
 context and exposure limits. No source, tracker, Git or candidate writes.
 
 Ask the reviewer:
+- What is the primary deliverable and its exit criteria? Does the selected ready
+  frontier suffice, distinct from the complete roadmap and authorized backlog?
+  Are planned tickets, verified claims and actual execution distinguished without
+  treating backlog size or intended delegation as active work?
 - What is the least viable ordering that delivers the requested usable outcome?
   Are outcomes covered without speculative capabilities or missing integration?
 - Which implicit semantic dependencies are missing from native edges: a foundation
@@ -48,6 +52,9 @@ Ask the reviewer:
   Check only relevant boundaries; do not dump a generic security checklist.
 - Do native edges and described prerequisites agree? Are there cycles (including
   implicit cycles), reverse prerequisites, false parallelism or shared-file conflicts?
+  For a concurrent group, are its inputs actually ready, outputs independently
+  verifiable and writer paths exclusive? Who owns the verified join, and which
+  dependent actions wait for required worker completion rather than partial returns?
 - Which research gaps can change ordering, scope or observable criteria? Which nodes
   are actually ready now, which must wait, and what single resolving probe is needed?
 - Is decomposition by independently usable result, not a microticket per file,

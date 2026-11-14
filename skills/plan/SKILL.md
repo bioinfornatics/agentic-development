@@ -119,6 +119,20 @@ a previous permission. This is an agent instruction, not a runtime cache.
    next executable frontier; retain distant needs, risks and major dependencies.
    A task is small when its result can be reviewed and resumed independently, not
    because it edits few files. Do not split by function/file or phase mechanically.
+   Identify the primary deliverable and exit criteria, then select the bounded ready
+   execution frontier sufficient to produce it. Distinguish that selection from the
+   complete roadmap, ticket creation, claims and actual execution: planning grants
+   none of these actions. Keep future needs coarse; do not turn a bounded delivery
+   request into speculative detailed tickets. Explicitly requested/authorized backlog
+   authoring remains legitimate, but its tickets are not active execution merely
+   because they exist or have no native blockers.
+
+   For useful parallel contributions to this deliverable, name available inputs,
+   separately verifiable outputs, dependencies, exclusive paths, proposed owners
+   and the coordinator's integration/join. Only independently ready contributions
+   belong in the concurrent group; dependent work waits for verified mandatory
+   results. An assignment is not an observed delegate. Keep distant work coarse
+   and avoid fixed task/concurrency quotas or delegation of trivial work.
 
    Present the problem, expected user change, observable success and open decisions
    before technical detail. Do not copy general work instructions into each ticket;

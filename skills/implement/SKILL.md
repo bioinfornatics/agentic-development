@@ -42,9 +42,17 @@ a previous permission. This is an agent instruction, not a runtime cache.
 
    Verify repository root, local instructions, tools and task goal.
 
-   Before creating or repairing task descriptions or acceptance criteria, apply
-   [ticket authoring](references/ticket-authoring.md); verify readable purpose,
-   criteria, ordered inputs and restart context without duplicating execution history.
+   Before creating or repairing task descriptions or acceptance criteria, verify
+   current scope and write authority. Conditionally Load `agentic-development:task-authoring`
+   using the host's available Skill-loading mechanism (not a shell command), with
+   established goal, scope, criteria, native tracker context and current authority.
+   Reuse its guidance when already available and current; do not load both routes
+   normally. If the optional capability is unavailable, apply contained
+   [ticket authoring](references/ticket-authoring.md) directly and report direct
+   reading, not activation; do not retry loading or block routine work on its absence.
+   For routine reads, claims, progress updates or closure, do not load task-authoring.
+   Resume this caller after verified ticket readback or an explicit proposal/error;
+   retain this phase's scope, ownership, review and evidence gates.
 
    If the repository uses Beads, apply [the Beads integration](references/beads-integration.md)
    before choosing work or mutating task state. Use fresh `bd prime` guidance;

@@ -50,9 +50,17 @@ a previous permission. This is an agent instruction, not a runtime cache.
      sources. Missing roadmap information is explicit; do not invent goals or expand
      bounded research to fill hierarchy labels. Resolve decision-blocking context
      only; roadmap proposals belong to requested planning or a decision-blocking need.
-   - Before creating or repairing task descriptions or acceptance criteria, apply
-     [ticket authoring](references/ticket-authoring.md); verify readable purpose,
-     criteria, ordered inputs and restart context without duplicating execution history.
+   - Before creating or repairing task descriptions or acceptance criteria, verify
+     current scope and write authority. Conditionally Load `agentic-development:task-authoring`
+     using the host's available Skill-loading mechanism (not a shell command), with
+     established goal, scope, criteria, native tracker context and current authority.
+     Reuse its guidance when already available and current; do not load both routes
+     normally. If the optional capability is unavailable, apply contained
+     [ticket authoring](references/ticket-authoring.md) directly and report direct
+     reading, not activation; do not retry loading or block routine work on its absence.
+     For routine reads, claims, progress updates or closure, do not load task-authoring.
+     Resume this caller after verified ticket readback or an explicit proposal/error;
+     retain this phase's scope, ownership, review and evidence gates.
 
    - If the repository uses Beads, apply [the Beads integration](references/beads-integration.md)
      before choosing work or mutating task state. Use fresh `bd prime` guidance;
@@ -156,6 +164,10 @@ a previous permission. This is an agent instruction, not a runtime cache.
      [the communication contract](references/communication-contract.md). Preserve ownership,
      evidence and conditional UI safeguards in standalone use too. Respond in the user's
      language; unavailable capabilities are explicit, never simulated execution evidence.
+   - Before declaring research sufficient for the planning decision, apply
+     [the Research readiness review](references/research-readiness-review.md).
+     Resolve only decision-material gaps; retain supported premises, targeted
+     impact paths and the next discriminating probe, not a blanket catalog.
    - Collect research report facts for inline delivery or an explicitly authorized
      saved report: product context, outcome, evidence, affected seams,
      assumptions, options, unknowns and next decision/probe. This is not a competing tracker.

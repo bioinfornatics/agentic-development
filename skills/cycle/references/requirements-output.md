@@ -1,9 +1,9 @@
-# Cycle output and handoff contract v1.3.0
+# Cycle output and handoff contract v1.4.0
 
 Apply this contract only to cycle. Read after investigation and before drafting the
 phase response, with common-output.md directly linked from SKILL.md. Check both
 before delivery. Operational requirements are separate in requirements-baseline.md.
-The common five-heading Markdown envelope remains mandatory; this reference adds this phase's
+The common contract selects compact delivery or the full five-heading Markdown envelope; this reference adds this phase's
 content, not another final report or permission to write artifacts.
 
 ### cycle
@@ -15,8 +15,8 @@ and checked scope; parent/release gates remain separate.
 
 Optional filename: `cycle-state.md` — not a required input or automatic write.
 Deliver inline by default; save only through the common output contract’s explicit-destination,
-permission and conflict checks. These topics belong inside explanation or its linked
-report, not additional outer response headings.
+permission and conflict checks. These topics belong in the selected delivery form or its linked
+report; the full report places them in explanation, not additional outer headings.
 
 ## Phase delivery checklist
 

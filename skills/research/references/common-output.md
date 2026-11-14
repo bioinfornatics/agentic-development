@@ -1,7 +1,7 @@
-# Common delivery output contract v1.3.0
+# Common delivery output contract v1.4.0
 
 Contract ID: agentic-development/common-output
-Contract version: 1.3.0
+Contract version: 1.4.0
 
 Read after investigation and before drafting every user-facing phase delivery,
 including blocked, unchanged and standalone results. Reuse unchanged guidance
@@ -9,7 +9,24 @@ already loaded in this context; verify it before delivery rather than rereading 
 This document governs response formatting, not permission to act. Requirements
 must already have been resolved before the actions they govern.
 
-## Mandatory five-section final report
+## Compact bounded delivery
+
+For a bounded read-only or no-change phase result with no actual handoff, commit,
+judgment or session-end boundary, a concise Markdown response may replace the full
+five-section report. Retain goal and task (or unavailable identity), actual phase,
+result, evidence and limits, preservation and current authority, and next action
+with its prerequisite (or an explicit stop). State actual changes or their absence;
+never omit a material blocker, failure, ownership conflict or unmet criterion.
+A blocked result can use this path only when the same boundary conditions hold.
+No cycle visual, empty headings or YAML card is required on this path. Do not turn
+an ordinary answer into a handoff/session end merely to satisfy a template.
+
+Use the full five-section report for changed-source delivery, actual handoff,
+commit, judgment or session-end boundaries, or an explicit full-report request.
+An actual handoff retains the state card/restart prompt and boundary facts below;
+compact delivery never waives provenance, permissions, review or tracker gates.
+
+## Mandatory five-section final report at full-delivery boundaries
 
 Keep these English labels and order; translate values into the user's language.
 The current-goal heading includes the actual phase, not a proposed future phase.
@@ -43,7 +60,7 @@ proposed actions, and the next gate. Include applicable boundary facts below.>
 ## Report delivery and optional saving
 
 A phase report is generated output, not an assumed existing input. Deliver its
-required content inline by default inside the five-section response; for longer
+required content inline by default in the selected delivery form; for longer
 facts use concise evidence-bound summaries and verified accessible locators.
 Beads remains task truth; report filenames suggested by a phase are optional.
 
@@ -69,7 +86,7 @@ and loop again belong in roadmap position, never in the step attribute.
 Done covers only the requested scope, not parent, release or deployment acceptance.
 A recommended transition does not execute or authorize it.
 
-Show at least a compact cycle visual, using only evidence-backed state:
+For the full report show at least a compact cycle visual, using only evidence-backed state:
 
 ~~~text
 Research [reused] → Plan [active] → Implement [pending] → Test [pending] → Judge [pending]
@@ -79,7 +96,7 @@ Correction loop: Iterate → affected phase
 This example is hypothetical. Use active, verified, reused, pending, blocked or
 unknown as justified; loading a Skill does not verify a phase. Do not fabricate
 a roadmap, task, milestone or acceptance. If roadmap identity is unavailable,
-say so and show known cycle progress only, with unknowns explicit. Keep distant
+say so; in the full report show known cycle progress only, with unknowns explicit. Keep distant
 roadmap detail coarse; link verified task records instead of duplicating a tracker.
 Explain a nonstandard transition with its reason, reused/current proof and missing
 prerequisites. The next action names the immediate executable step, not a later
@@ -108,7 +125,7 @@ A new artifact format is not permission to create files or a competing task data
 Read this contract after investigation and before drafting the response; before
 delivery verify it together with the current phase delivery contract. Reuse already loaded unchanged guidance rather than reload blindly.
 
-- [ ] Keep the five final headings in order, with the actual step in current goal, including blocked/no-change work.
+- [ ] Select compact delivery only under its conditions; otherwise keep the five final headings in order with the actual step in current goal. Blocked/no-change alone does not waive a full boundary report.
 - [ ] Identify the actual phase, verified task/status, goal and success criteria.
 - [ ] Separate observations from proposals, unknowns and hypothetical examples.
 - [ ] Report owned files separately from preserved user work; give review order and reasons.

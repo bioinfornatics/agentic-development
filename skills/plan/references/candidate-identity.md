@@ -1,9 +1,19 @@
-# Candidate identity v1.2.0
+# Candidate identity v1.3.0
 
 Contract ID: agentic-development/candidate-identity
-Contract version: 1.2.0
+Contract version: 1.3.0
 
-Use before planning checks, freezing a candidate or reusing evidence. Choose one path.
+Use before planning checks, freezing a candidate or reusing evidence. Choose the
+path matching the purpose; source reading alone is not an acceptance check.
+
+## Source-only observation
+
+Record inspected paths/sections, revision or file identity, current dirty state and
+provenance limits. For bounded source reading, no capture CLI or full manifest is
+required. Do not imply executed behavior, complete input coverage or exact-candidate
+acceptance from a revision/hash. Refresh affected conclusions when inputs change.
+Preliminary executed checks use A; exact-candidate acceptance or proof reuse uses B.
+Reusing a cited observation with verified freshness does not turn it into B proof.
 
 ## A. Run a preliminary check
 

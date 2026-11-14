@@ -110,6 +110,16 @@ a previous permission. This is an agent instruction, not a runtime cache.
 
    Review each mandatory acceptance criterion, risk-based security/regression,
    maintainability and operability. Missing evidence is unknown, not zero defects.
+   For application-test evidence, challenge marginal detection value and independent
+   oracles: mock self-validation, copied expected calculations, vague assertions for
+   exact outcomes, success/error ambiguity and missing important error paths cannot
+   support the claimed guarantee. Review rationalization decisions against preserved
+   product coverage, not legacy volume; a green test count is not quality or acceptance.
+   Check observed failing counterexamples versus hypothetical faults and required
+   end-to-end CI wall time versus aggregate/local durations. Missing measurements or
+   discrimination stay explicit; do not infer CI acceptance from parallel local runs.
+   Keep this review risk-scoped; no exhaustive new test/mutation campaign or candidate
+   edits during Judge.
    Reproduce checks only when capabilities and permissions allow; do not mutate
    the candidate or repair code while judging.
 
@@ -173,7 +183,7 @@ a previous permission. This is an agent instruction, not a runtime cache.
 
 6. [ ] **Read delivery guidance and draft the phase response**
 
-   After investigation and immediately before drafting any user-facing phase response (including blocked or unchanged results), apply [the common output contract](references/common-output.md) and [this phase's delivery contract](references/requirements-output.md); apply their checklists and five-section report. Keep the canonical phase artifact within that report. Before drafting a proposed, performed, failed or externally observed commit report, apply [the commit report](references/commit-report.md). Before drafting a planned session end, explicit wrap-up or recommended context transition report, apply [the session report](references/session-report.md). Combine overlapping reports without duplication.
+   After investigation and immediately before drafting any user-facing phase response (including blocked or unchanged results), apply [the common output contract](references/common-output.md) and [this phase's delivery contract](references/requirements-output.md); apply their checklists and selected delivery form (compact when eligible, otherwise five-section report). Keep the canonical phase artifact within that report. Before drafting a proposed, performed, failed or externally observed commit report, apply [the commit report](references/commit-report.md). Before drafting a planned session end, explicit wrap-up or recommended context transition report, apply [the session report](references/session-report.md). Combine overlapping reports without duplication.
 
    After reading delivery guidance, draft the actual handoff fenced YAML state card and copy-ready restart prompt; distinguish proposed from performed actions.
 

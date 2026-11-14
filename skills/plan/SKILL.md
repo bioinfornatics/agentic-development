@@ -112,6 +112,10 @@ a previous permission. This is an agent instruction, not a runtime cache.
    A task is small when its result can be reviewed and resumed independently, not
    because it edits few files. Do not split by function/file or phase mechanically.
 
+   Present the problem, expected user change, observable success and open decisions
+   before technical detail. Do not copy general work instructions into each ticket;
+   keep task-specific execution inputs below the product explanation and use native
+   tracker fields/shared-policy references for common metadata and procedures.
    For each task record: Goal; Parent outcome/specification; Scope and exclusions;
    Inputs and expected output; Observable acceptance/error paths; Blocking dependencies;
    Verification and public seams; Ownership and permissions; Durable context and restart.
@@ -121,9 +125,22 @@ a previous permission. This is an agent instruction, not a runtime cache.
    to recover what, why, boundaries and checks. Fill gaps before declaring ready.
 
    Agree meaningful behavior seams before tests; reuse an already authorized seam
-   without repetitive confirmation. Record what each seam catches and misses.
+   without repetitive confirmation. For each product guarantee, identify a concrete
+   incorrect behavior, independent oracle and cheapest valid check; record what the
+   seam catches and misses. Plan distinct risk coverage, not one test per function,
+   file or implementation variation. Existing suite size is neither a preservation
+   obligation nor a target; authorized rationalization may retain, merge, remove or
+   replace checks without weakening acceptance. Prefer representative integration
+   journeys plus cheap direct rule cases; justify expensive repetitions by a distinct
+   risk/confidence question, budget and stop rule. Define required CI jobs and any
+   approved time/cost target separately from local summed test durations; unknown
+   end-to-end CI measurements remain unresolved, not inferred from parallel runs.
 
-   For the near-term implementation frontier, break work into coherent tasks with
+   For the near-term implementation frontier, name the delivery mechanism (service,
+   managed/self-hosted, runtime) and data/credential flow in the technical second
+   layer, then ordered steps and a verified Read/Create/Modify/Preserve/Exclude
+   file or asset map. Link common policies instead of repeating them; unknown
+   architecture blocks execution readiness. Break work into coherent tasks with
    exact target paths, exclusive ownership, prerequisites and expected outputs.
    For distant roadmap outcomes, record needs, risks and dependencies instead;
    do not invent file paths, numeric targets, owners or approval. Multiple tasks/commits may share one
@@ -143,6 +160,10 @@ a previous permission. This is an agent instruction, not a runtime cache.
    Create or update issues only when requested/authorized in the agreed tracker.
    Inspect existing issues first, reuse matching work, verify supported fields and
    write goals, exclusions, criteria, dependencies, ownership and restart context.
+   On updates, consolidate current solution/steps/files rather than append competing
+   designs; move dated findings to notes, preserve criterion IDs/history, reconcile
+   native edges and check cycles. Readback must pass the human readability gate in
+   ticket-authoring.md, not merely confirm nonempty fields.
    Include Research's verified task-specific reading references: files or authorized
    local web captures, entrypoints/sections, reasons, order, source identity and
    freshness/accessibility limits. Do not copy full research into tickets or invent
@@ -166,7 +187,7 @@ a previous permission. This is an agent instruction, not a runtime cache.
    - Verify the cited product-context baseline, requested planning level, scope and approval status; expose decision-critical gaps and carry nonblocking assumptions explicitly.
    - Check the planning artifact's criteria, verification matrix, review policy and next executable frontier; when tasks or tickets are in scope, verify inputs, outputs, dependencies, ownership, permissions and restart context. Read back actual tracker writes when applicable; distinguish proposed tickets from created ones.
    - Prepare the immediate next action and blockers; collect verified reading pointers and permissions for any proposed handoff; format them after the output-contract application below.
-   - After investigation and before drafting any user-facing phase response (including blocked or unchanged results), apply [the common output contract](references/common-output.md) and [this phase's delivery contract](references/requirements-output.md); apply their checklists and five-section report.
+   - After investigation and before drafting any user-facing phase response (including blocked or unchanged results), apply [the common output contract](references/common-output.md) and [this phase's delivery contract](references/requirements-output.md); apply their checklists and selected delivery form (compact when eligible, otherwise five-section report).
 
    Apply [the commit report](references/commit-report.md) only for a proposed,
    performed, failed or externally observed commit. Apply

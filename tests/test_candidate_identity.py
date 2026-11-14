@@ -175,7 +175,8 @@ class CandidateIdentity(unittest.TestCase):
                 "references/candidate-identity.schema.json", "references/candidate-identity.example.json",
                 "references/candidate-scope.example.json"):
             baseline = (ROOT / "skills/cycle" / relative).read_bytes()
-            for skill in (ROOT / "skills").iterdir():
+            for phase in ("cycle", "research", "plan", "implement", "test", "judge", "iterate"):
+                skill = ROOT / "skills" / phase
                 self.assertEqual(baseline, (skill / relative).read_bytes(), str(skill))
         self.cli("validate", ROOT / "skills/cycle/references/candidate-identity.example.json")
 

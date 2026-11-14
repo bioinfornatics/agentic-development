@@ -4,6 +4,7 @@ from pathlib import Path
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
+PHASE_NAMES = ('cycle', 'research', 'plan', 'implement', 'test', 'judge', 'iterate')
 SKILLS = ROOT / "skills"
 
 
@@ -13,7 +14,7 @@ class WorkflowSourceContracts(unittest.TestCase):
             paths = sorted(SKILLS.glob("*/references/" + name))
             self.assertEqual(len(paths), 7, name)
             self.assertEqual(len({p.read_bytes() for p in paths}), 1, name)
-        for p in SKILLS.glob("*/SKILL.md"):
+        for p in (SKILLS / name / "SKILL.md" for name in PHASE_NAMES):
             with self.subTest(skill=p.parent.name):
                 self.assertIn("references/commit-report.md", p.read_text())
                 self.assertIn("references/session-report.md", p.read_text())
@@ -84,7 +85,7 @@ class WorkflowSourceContracts(unittest.TestCase):
         refs = list(SKILLS.glob("*/references/common-output.md"))
         self.assertEqual(len(refs), 7)
         self.assertEqual(len({p.read_bytes() for p in refs}), 1)
-        for p in SKILLS.glob("*/SKILL.md"):
+        for p in (SKILLS / name / "SKILL.md" for name in PHASE_NAMES):
             self.assertIn("references/requirements-output.md", p.read_text())
             self.assertIn("references/common-output.md", p.read_text())
 
@@ -131,7 +132,9 @@ class WorkflowSourceContracts(unittest.TestCase):
 
     def test_shared_safety_policies_and_budget_guard_remain(self):
         for name in ("authorization-policy.md", "review-policy.md"):
-            paths = list(SKILLS.glob("*/references/" + name))
+            # These shared phase policies stay identical across the seven phases;
+            # task-authoring has separately scoped minimal authorization limits.
+            paths = [SKILLS / phase / "references" / name for phase in PHASE_NAMES]
             self.assertEqual(len(paths), 7)
             self.assertEqual(len({p.read_bytes() for p in paths}), 1)
         text = (SKILLS / "iterate/SKILL.md").read_text()

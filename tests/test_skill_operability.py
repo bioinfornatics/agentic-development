@@ -3,10 +3,11 @@ from pathlib import Path
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
+PHASE_NAMES = ('cycle', 'research', 'plan', 'implement', 'test', 'judge', 'iterate')
 
 class SkillOperability(unittest.TestCase):
     def test_every_entrypoint_selects_actions_and_explicit_transitions(self):
-        entries = list((ROOT / 'skills').glob('*/SKILL.md'))
+        entries = [ROOT / 'skills' / name / 'SKILL.md' for name in PHASE_NAMES]
         self.assertEqual(len(entries), 7)
         for path in entries:
             text = path.read_text()
@@ -52,8 +53,8 @@ class ProgressiveCommits(unittest.TestCase):
             self.assertIn(rule, text)
 
 class ShortSkillNames(unittest.TestCase):
-    def test_exact_seven_short_entrypoints(self):
-        names = {'cycle', 'research', 'plan', 'implement', 'test', 'judge', 'iterate'}
+    def test_exact_seven_phases_plus_optional_capability(self):
+        names = set(PHASE_NAMES) | {'task-authoring'}
         self.assertEqual({p.parent.name for p in (ROOT / 'skills').glob('*/SKILL.md')}, names)
         for name in names:
             path = ROOT / 'skills' / name / 'SKILL.md'
@@ -85,13 +86,13 @@ class ShortSkillNames(unittest.TestCase):
 
 class PhaseScope(unittest.TestCase):
     def test_phase_only_request_returns_instead_of_auto_executing_handoff(self):
-        for path in (ROOT / 'skills').glob('*/SKILL.md'):
+        for path in (ROOT / 'skills' / name / 'SKILL.md' for name in PHASE_NAMES):
             with self.subTest(skill=path.parent.name):
                 self.assertIn('For a phase-only request', path.read_text())
                 self.assertIn('proposed handoff, then stop', path.read_text())
 
     def test_safety_gates_precede_execution(self):
-        for path in (ROOT / 'skills').glob('*/SKILL.md'):
+        for path in (ROOT / 'skills' / name / 'SKILL.md' for name in PHASE_NAMES):
             text = path.read_text()
             from test_cycle_disclosure import workflow_steps
             steps = workflow_steps(text)
@@ -116,7 +117,7 @@ class PhaseScope(unittest.TestCase):
 
 class CanonicalExecutionOrder(unittest.TestCase):
     def test_entrypoints_reference_one_artifact_format(self):
-        for path in (ROOT / 'skills').glob('*/SKILL.md'):
+        for path in (ROOT / 'skills' / name / 'SKILL.md' for name in PHASE_NAMES):
             text = path.read_text()
             self.assertEqual(text.count('references/requirements-output.md'), 1, path)
             self.assertIn('apply their checklists and selected delivery form', text, path)
@@ -125,7 +126,7 @@ class CanonicalExecutionOrder(unittest.TestCase):
                 self.assertNotIn('Use ' + filename + ' headings:', text, path)
 
     def test_handoff_is_last_after_lifecycle_safeguards(self):
-        for path in (ROOT / 'skills').glob('*/SKILL.md'):
+        for path in (ROOT / 'skills' / name / 'SKILL.md' for name in PHASE_NAMES):
             from test_cycle_disclosure import workflow_steps
             steps = workflow_steps(path.read_text())
             self.assertEqual(steps[-1][1], 'Execute the handoff or stop', path)

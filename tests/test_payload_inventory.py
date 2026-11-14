@@ -169,7 +169,14 @@ class PayloadInventory(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stderr)
         files = [x["path"] for x in json.loads(result.stdout)["files"]]
         self.assertIn("scripts/observe.py", files)
-        self.assertEqual(sum(p.endswith("/SKILL.md") for p in files), 7)
+        expected_skills = {
+            "skills/cycle/SKILL.md", "skills/research/SKILL.md", "skills/plan/SKILL.md",
+            "skills/implement/SKILL.md", "skills/test/SKILL.md", "skills/judge/SKILL.md",
+            "skills/iterate/SKILL.md", "skills/task-authoring/SKILL.md",
+        }
+        skill_files = [p for p in files if p.endswith("/SKILL.md")]
+        self.assertEqual(len(skill_files), 8)
+        self.assertEqual(set(skill_files), expected_skills)
         for path in files:
             parts = path.split("/")
             self.assertNotIn(parts[0], ("tests", "integration", "research", "evidence"), path)

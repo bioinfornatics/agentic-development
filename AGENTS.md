@@ -3,7 +3,7 @@
 ## Product
 
 - Goal: prevent scope drift, context loss and unsupported completion claims in AI-assisted software changes.
-- Product: agentic-development, seven portable Skills: cycle, research, plan, implement, test, judge, iterate.
+- Product: agentic-development, seven portable phase Skills: cycle, research, plan, implement, test, judge, iterate; plus optional task-authoring for ticket creation/repair.
 - Optional Goose hooks observe events/report structure; they are not an enforcement or acceptance engine.
 - Non-goals: automatic authorization, protected task closure, session launching or release acceptance.
 - Manifest/schema/version truth: plugin.json; do not repeat a hard-coded version here.
@@ -12,7 +12,7 @@
 
 | Path / location | Role / boundary |
 |---|---|
-| plugin.json, skills/*/SKILL.md | Source manifest and seven Skill entrypoints; required resources stay contained. |
+| plugin.json, skills/*/SKILL.md | Source manifest, seven phase entrypoints and optional task-authoring; required resources stay contained. |
 | hooks/hooks.json, scripts/observe.py | Goose-specific rules/handler in this plugin, not a second adapter. |
 | tools/production.py | Deterministic projection CLI; stdlib observer packaged as scripts/observe.pyz. |
 | tests/, integration/ | Source/handler checks and evaluation scenarios; integration/ is not an executable harness. |

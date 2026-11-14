@@ -57,9 +57,17 @@ a previous permission. This is an agent instruction, not a runtime cache.
    capabilities produce an explicit blocker, never simulated execution evidence.
    Use the coordinator's verified slice state when available; do not fabricate execution or acceptance.
 
-   Before creating or repairing task descriptions or acceptance criteria, apply
-   [ticket authoring](references/ticket-authoring.md); verify readable purpose,
-   criteria, ordered inputs and restart context without duplicating execution history.
+   Before creating or repairing task descriptions or acceptance criteria, verify
+   current scope and write authority. Conditionally Load `agentic-development:task-authoring`
+   using the host's available Skill-loading mechanism (not a shell command), with
+   established goal, scope, criteria, native tracker context and current authority.
+   Reuse its guidance when already available and current; do not load both routes
+   normally. If the optional capability is unavailable, apply contained
+   [ticket authoring](references/ticket-authoring.md) directly and report direct
+   reading, not activation; do not retry loading or block routine work on its absence.
+   For routine reads, claims, progress updates or closure, do not load task-authoring.
+   Resume this caller after verified ticket readback or an explicit proposal/error;
+   retain this phase's scope, ownership, review and evidence gates.
 
    If the repository uses Beads, apply [the Beads integration](references/beads-integration.md)
    before choosing work or mutating task state. Use fresh `bd prime` guidance;
@@ -158,19 +166,14 @@ a previous permission. This is an agent instruction, not a runtime cache.
    them inline by default; save only at an explicitly authorized destination.
 
    Create or update issues only when requested/authorized in the agreed tracker.
-   Inspect existing issues first, reuse matching work, verify supported fields and
-   write goals, exclusions, criteria, dependencies, ownership and restart context.
-   On updates, consolidate current solution/steps/files rather than append competing
-   designs; move dated findings to notes, preserve criterion IDs/history, reconcile
-   native edges and check cycles. Readback must pass the human readability gate in
-   ticket-authoring.md, not merely confirm nonempty fields.
-   Include Research's verified task-specific reading references: files or authorized
-   local web captures, entrypoints/sections, reasons, order, source identity and
-   freshness/accessibility limits. Do not copy full research into tickets or invent
-   saved resources; record local-only pointers honestly.
-   Distinguish parent hierarchy from prerequisites. After each write, read back
-   the issue and verify fields/edges; report actual IDs and errors. If writes are
-   not authorized, return proposed tickets without claiming they were created.
+   Use the conditional task-authoring route above with the established planning
+   baseline; do not repeat its procedure here. It must consolidate current solution/steps/files,
+   preserve criteria/history and native ownership/edges, and read back actual writes.
+   Supply Research's verified task-specific reading references, source identity,
+   order and freshness/accessibility limits; do not invent saved resources.
+   Retain planning scope, review requirements and verification proof. Distinguish
+   parent hierarchy from prerequisites; report actual IDs and errors, or proposed
+   tickets when writes are unavailable. Task authoring does not approve this plan.
 
    Verify actual delegated planning completion, source identity and result locator
    before integration. Reconcile conflicts and retain unresolved decisions and missing

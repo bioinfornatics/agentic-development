@@ -12,7 +12,7 @@ import sys
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
-SKILLS = frozenset(("cycle", "research", "plan", "implement", "test", "judge", "iterate"))
+SKILLS = frozenset(("cycle", "research", "plan", "implement", "test", "judge", "iterate", "task-authoring"))
 DEVELOPMENT_COMPONENTS = frozenset(("AGENTS.md", "evals", "evaluations", "tests",
     "__pycache__", "evidence", "research", "integration", "evaluation-fixtures",
     "conformance-fixtures", "fixtures"))

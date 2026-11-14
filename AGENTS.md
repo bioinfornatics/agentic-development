@@ -39,7 +39,7 @@ clean develop@SHA -> verified generated tree -> generated-only PR -> main (squas
 - Copy README.md unchanged from source; use documentation links that work on both branches.
 - Skills need no build; observer requires Python >=3.10, standard library only, no install-time dependency download.
 - distribution.json binds source and inventory, not authenticity/acceptance; release_ready=false is not release approval.
-- Full workflow, installation probes and promotion gates: [CONTRIBUTING.md](CONTRIBUTING.md). No source license grant: never invent/copy one.
+- Full workflow, distribution verification and promotion gates: [CONTRIBUTING.md](CONTRIBUTING.md). No source license grant: never invent/copy one.
 
 ## Task truth and restart
 

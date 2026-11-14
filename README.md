@@ -33,8 +33,20 @@ Goal / need → Research → Plan → Implement → Test → Judge → Scoped ac
 Keep requirements, decisions, and restart context explicit; make small, reviewable changes; separate test results from acceptance and report missing evidence. Use the whole cycle or the phase your task needs. These are agent instructions, not an enforcement engine or a guarantee of correct software.
 
 Install: `goose plugin install https://github.com/bioinfornatics/agentic-development.git`.
-Check: `goose skills list` — only this plugin’s seven Skills, no evaluation fixtures.
+Check: `goose skills list` — the generated candidate should expose exactly eight Skills: seven phases plus optional task-authoring, no evaluation fixtures.
 Update: `goose plugin update agentic-development`. See [Goose Plugins](https://goose-docs.ai/docs/guides/context-engineering/plugins) and [Agent Skills](https://goose-docs.ai/docs/guides/context-engineering/using-skills).
+
+### Optional task-authoring capability
+
+The seven development phases remain Cycle, Research, Plan, Implement, Test, Judge
+and Iterate. `agentic-development:task-authoring` creates or repairs readable tickets
+from established scope and returns verified tracker readback or an explicit proposal.
+Load it conditionally through the host's Skill loader only for creation/repair, not
+routine reads, claims, updates or closure. It stops and returns to its caller.
+Individual phases retain full contained ticket guidance as a direct-reading fallback
+when this optional capability is absent; normal use does not load both routes.
+Eight physical guidance copies preserve contained portability; this extraction does
+not claim elimination of all duplication or measured context/behavior improvement.
 
 ## Dependencies and workflow tools
 The Skills are Markdown instructions: use an agent that can load them and your project's own development tools. No package installation or build is required for the Skills.

@@ -103,7 +103,7 @@ suite now includes five adapted integration cases with distinct immutable
 hypothetical fixtures under skills/cycle/evals/files/. The original integration/
 inventory is retained, but is not the direct Skill Creator input. These
 explain-level cases assess proposed coordination and handoffs, not live
-implementation, tracker operations or acceptance of all seven Skills.
+implementation, tracker operations or acceptance of the seven phase Skills or optional task-authoring capability.
 
 Explanation assertions cover observable final-output properties. Actual read/order
 and prerequisite requirements remain in canonical execution_assertions metadata;

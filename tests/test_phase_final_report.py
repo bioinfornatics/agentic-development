@@ -58,7 +58,7 @@ class PhaseFinalReport(unittest.TestCase):
                 self.assertIn(required, text, name)
             self.assertNotIn("bd create --", text)
             self.assertNotIn("bd close <", text)
-        refs = list((ROOT / "skills").glob("*/references/beads-integration.md"))
+        refs = [ROOT / "skills" / name / "references/beads-integration.md" for name in NAMES]
         self.assertEqual(len({p.read_bytes() for p in refs}), 1)
 
 if __name__ == "__main__":

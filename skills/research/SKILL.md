@@ -164,6 +164,10 @@ a previous permission. This is an agent instruction, not a runtime cache.
      [the communication contract](references/communication-contract.md). Preserve ownership,
      evidence and conditional UI safeguards in standalone use too. Respond in the user's
      language; unavailable capabilities are explicit, never simulated execution evidence.
+   - Before declaring research sufficient for the planning decision, apply
+     [the Research readiness review](references/research-readiness-review.md).
+     Resolve only decision-material gaps; retain supported premises, targeted
+     impact paths and the next discriminating probe, not a blanket catalog.
    - Collect research report facts for inline delivery or an explicitly authorized
      saved report: product context, outcome, evidence, affected seams,
      assumptions, options, unknowns and next decision/probe. This is not a competing tracker.

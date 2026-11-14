@@ -51,11 +51,11 @@ contained, locked dependency closure and explicit host prerequisites.
 1. Merge an independently reviewed feature PR into develop.
 2. Freeze a clean exact source SHA and the expected current main SHA.
 3. Build the distribution deterministically, verify its inventory and contained
-   runtimes, and test Git installation/update in an authorized isolated environment.
+   runtimes.
 4. Obtain independent maintainer approval for that exact source and evidence.
 5. Recheck approval, source SHA and current main immediately before a separately
    authorized generated-tree publication. Changed inputs or stale approval stop it.
-6. Publish without force, then verify remote provenance and installation results.
+6. Publish without force, then verify remote provenance and the published inventory.
 
 Do not use GitHub Merge on a develop-to-main source request. Use squash
 only for an exact verified generated-tree PR based on previous main. Source changes enter main only
@@ -75,20 +75,10 @@ python3 -B tools/production.py smoke /absolute/new/product
 
 The candidate binds the exact source commit/tree and rejects dirty or untracked
 source and uncommitted operational resources. `project` remains a working-tree
-preview. Both keep `release_ready=false`: integrity is not review or installation
-approval. Verify candidate hashes after isolated Git install/update and before
-publication. The opt-in real-host probe uses disposable HOME, XDG and Goose
-roots and a local Git transport repository; it never replaces a live installation:
-
-```sh
-python3 -B tests/probe_goose_distribution.py /absolute/new/product --goose /absolute/path/to/goose
-```
-
-The probe requires Goose 1.56.0, checks the exact seven Skills with
-`goose skills list` after installation and update, verifies installed payload
-hashes and observer execution, and confirms that update removes an obsolete
-fixture. Working-tree previews are diagnostic evidence, not committed-source
-or release approval. This probe is not part of the automatic unit suite.
+preview. Both keep `release_ready=false`: integrity is not independent review
+or release approval. Verify candidate hashes before publication. Candidate,
+inventory and runtime checks do not require a Goose executable or installation
+into a host environment, and do not establish installed-host compatibility.
 
 Production excludes creator eval sets, evaluation/conformance fixtures and
 synthetic study inputs, including those nested under Skill resources. Unknown

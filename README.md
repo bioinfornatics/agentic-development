@@ -7,8 +7,7 @@ AI coding agents can lose context, drift beyond scope, and mistake passing tests
 Read the [getting started guide](https://github.com/bioinfornatics/agentic-development/blob/develop/docs/getting-started.md), then give your agent a concrete outcome:
 
 > Use Agentic Development to deliver this change: [desired behavior].
-> Clarify scope and acceptance criteria before editing. Verify the result,
-> report remaining risks, and ask before actions that need my approval.
+> Clarify scope and acceptance criteria before editing. Verify the result, report remaining risks, and ask before actions that need my approval.
 
 ## What you get
 Seven reusable Skills guide the work: six phases and one coordinator.
@@ -19,7 +18,6 @@ Goal / need → Research → Plan → Implement → Test → Judge → Scoped ac
                                   └── Iterate ←─────┘
                                       if correction is needed
 ```
-
 | Phase | Question to resolve | Expected output |
 | --- | --- | --- |
 | **Research** | What must we understand before deciding? | Cited findings, risks, unknowns, and constraints. |
@@ -35,18 +33,11 @@ Keep requirements, decisions, and restart context explicit; make small, reviewab
 Install: `goose plugin install https://github.com/bioinfornatics/agentic-development.git`.
 Check: `goose skills list` — the generated candidate should expose exactly eight Skills: seven phases plus optional task-authoring, no evaluation fixtures.
 Update: `goose plugin update agentic-development`. See [Goose Plugins](https://goose-docs.ai/docs/guides/context-engineering/plugins) and [Agent Skills](https://goose-docs.ai/docs/guides/context-engineering/using-skills).
-
 ### Optional task-authoring capability
-
-The seven development phases remain Cycle, Research, Plan, Implement, Test, Judge
-and Iterate. `agentic-development:task-authoring` creates or repairs readable tickets
-from established scope and returns verified tracker readback or an explicit proposal.
-Load it conditionally through the host's Skill loader only for creation/repair, not
-routine reads, claims, updates or closure. It stops and returns to its caller.
-Individual phases retain full contained ticket guidance as a direct-reading fallback
-when this optional capability is absent; normal use does not load both routes.
-Eight physical guidance copies preserve contained portability; this extraction does
-not claim elimination of all duplication or measured context/behavior improvement.
+The seven development phases remain Cycle, Research, Plan, Implement, Test, Judge and Iterate. `agentic-development:task-authoring` creates or repairs readable tickets from established scope and returns verified tracker readback or an explicit proposal.
+Load it conditionally through the host's Skill loader only for creation/repair, not routine reads, claims, updates or closure. It stops and returns to its caller.
+Individual phases retain full contained ticket guidance as a direct-reading fallback when this optional capability is absent; normal use does not load both routes.
+Eight physical guidance copies preserve contained portability; this extraction does not claim elimination of all duplication or measured context/behavior improvement.
 
 ## Dependencies and workflow tools
 The Skills are Markdown instructions: use an agent that can load them and your project's own development tools. No package installation or build is required for the Skills.
@@ -59,14 +50,11 @@ The Skills are Markdown instructions: use an agent that can load them and your p
 | Entire, optional | Capture session context and connect it to checkpoints. | Verify support for your agent and worktree; link only observed session/checkpoint IDs to the task. |
 
 **Handoff:** user prompt → task with scope and acceptance criteria → execution → evidence, status, and next action recorded in Beads → restart prompt with task ID.
-The next session rereads the task: Beads is task truth, not the prompt or a notebook.
-Beads adoption is conditional; once chosen, missing access or a failed claim blocks implementation, not permission to continue untracked. Without Beads, agree another tracking approach.
+The next session rereads the task: Beads is task truth, not the prompt or a notebook. Beads adoption is conditional; once chosen, missing access or a failed claim blocks implementation, not permission to continue untracked. Without Beads, agree another tracking approach.
 Entire captures context, not task truth or acceptance; no tool grants permission to commit, push, or close tasks.
 See the [integration guide](https://github.com/bioinfornatics/agentic-development/blob/develop/docs/integrations.md) for setup checks and boundaries.
-
 ## Learn more
 - [Development cycle](https://github.com/bioinfornatics/agentic-development/blob/develop/docs/cycle.md): how the phases fit together.
 - [Integrations](https://github.com/bioinfornatics/agentic-development/blob/develop/docs/integrations.md): Beads, Git, Entire, and optional Goose observation hooks.
 - [Contributing](https://github.com/bioinfornatics/agentic-development/blob/develop/docs/contributing.md): improve the method on develop.
-
 The main branch contains the generated installation package; develop contains its source and documentation. Both use this same README. Skills need no build; optional observation hooks require Python 3.10+ and use only the standard library.

@@ -156,9 +156,12 @@ This is an agent instruction, not a runtime cache.
    without repetitive confirmation. For each product guarantee, identify a concrete
    incorrect behavior, independent oracle and cheapest valid check; record what the
    seam catches and misses. Plan distinct risk coverage, not one test per function,
-   file or implementation variation. Existing suite size is neither a preservation
-   obligation nor a target; authorized rationalization may retain, merge, remove or
-   replace checks without weakening acceptance. Prefer representative integration
+   file or implementation variation. For each rule plan an allowed and a refused example,
+   then only the cases the specification distinguishes; choose the seam level by the
+   guarantee, a domain outcome for a rule or status and error code for a public API
+   contract. Existing suite size is neither a preservation obligation nor a target;
+   authorized rationalization may retain, merge, remove or replace checks without
+   weakening acceptance. Prefer representative integration
    journeys plus cheap direct rule cases; justify expensive repetitions by a distinct
    risk/confidence question, budget and stop rule. Define required CI jobs and any
    approved time/cost target separately from local summed test durations; unknown

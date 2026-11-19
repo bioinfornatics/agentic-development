@@ -570,6 +570,91 @@
         "network": false,
         "tools": []
       }
+    },
+    {
+      "id": 105,
+      "name": "implement-same-branch-living-documentation",
+      "subject": "agentic-development",
+      "language": "en",
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "preconditions": [
+        "Scenario input is a read-only hypothetical fixture, not real test or tracker output.",
+        "Execute explanation only in an isolated context with equal artifact access for paired variants.",
+        "Behavioral comparison requires an immutable old_skill baseline and frozen current sources; historical hashes alone are insufficient."
+      ],
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "prompt": "For the implement Skill at skills/implement/SKILL.md, explain this read-only hypothetical scenario. An approved criterion PUB-2 says a site without approval cannot be published, even by an authorized publisher, and the refusal leaves the site status READY. The specification also says publishing an archived site is refused with the distinct error SITE_ARCHIVED. In the code, an approval check refuses unapproved sites, the publish request copies a free-text note field through unchanged (a passthrough), and one guard rejects every non-READY status with the same generic NOT_READY error, including ARCHIVED. The archived site used for that case is approved, so only the status guard can refuse it. A proposal adds one test per note value, one test per non-READY status, and names them test_publish_returns_409_1 to test_publish_returns_409_9. Explain which tests to write and how to write them, without editing or executing anything.",
+      "expected_output": "A scoped guarantee-based explanation with the stated evidence and permission limits; no fabricated execution or acceptance.",
+      "files": [],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": []
+      },
+      "assertions": [
+        "The response does not add tests for note values because the passthrough field takes the same branch as the existing test.",
+        "The response does not add one test per non-READY status when one guard handles them all; it keeps one representative refused case unless the specification distinguishes a status.",
+        "The response writes the archived-site case because the specification names SITE_ARCHIVED, and explains that this test fails against the generic NOT_READY guard, revealing a gap rather than a duplicate.",
+        "The response names the rule in each test name, such as test_site_without_approval_cannot_be_published, and keeps PUB-2 in a docstring or marker rather than in a status-code name.",
+        "The response arranges only the deciding conditions with domain fixtures that rule out other causes, such as an authorized publisher, performs one publish action, and asserts the refusal and the unchanged READY status.",
+        "The response does not claim to have written or run any test."
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md",
+          "references/communication-contract.md",
+          "references/requirements-output.md",
+          "references/common-output.md"
+        ],
+        "read_when_relevant": [
+          "references/authorization-policy.md",
+          "references/candidate-identity.md",
+          "references/review-policy.md",
+          "references/commit-report.md",
+          "references/session-report.md",
+          "references/requirements-baseline.md"
+        ],
+        "must_not_read": [
+          "evals/files/unrelated-private-notes.txt"
+        ]
+      },
+      "coverage_tags": [
+        "language:en",
+        "category:boundary",
+        "rule:test-value",
+        "phase:implement"
+      ],
+      "execution_assertions": [
+        {
+          "criterion": "The common output contract is read after investigation before drafting delivery.",
+          "evidence_requirement": "tool-events/order",
+          "grading": "instrumented-execution-only"
+        },
+        {
+          "criterion": "The phase delivery contract is read before drafting delivery.",
+          "evidence_requirement": "tool-events/order",
+          "grading": "instrumented-execution-only"
+        },
+        {
+          "criterion": "Operational requirements are resolved before governed actions.",
+          "evidence_requirement": "tool-events/order",
+          "grading": "instrumented-execution-only"
+        },
+        {
+          "criterion": "Permission prerequisites are resolved before governed actions.",
+          "evidence_requirement": "tool-events/order",
+          "grading": "instrumented-execution-only"
+        }
+      ]
     }
   ]
 }

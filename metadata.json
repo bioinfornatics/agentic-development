@@ -3,7 +3,7 @@
   "checkpoint_id": "01M7TB6QXCC456BK5TE6XTDB2A",
   "strategy": "manual-commit",
   "branch": "develop",
-  "checkpoints_count": 2,
+  "checkpoints_count": 3,
   "files_touched": [
     "AGENTS.md",
     "docs/cycle.md",
@@ -46,6 +46,13 @@
       "compact_transcript": "/1/transcript.jsonl",
       "content_hash": "/1/content_hash.txt",
       "prompt": "/1/prompt.txt"
+    },
+    {
+      "metadata": "/2/metadata.json",
+      "transcript": "/2/full.jsonl",
+      "compact_transcript": "/2/transcript.jsonl",
+      "content_hash": "/2/content_hash.txt",
+      "prompt": "/2/prompt.txt"
     }
   ],
   "token_usage": {
@@ -53,7 +60,7 @@
     "cache_creation_tokens": 0,
     "cache_read_tokens": 0,
     "output_tokens": 0,
-    "api_call_count": 27
+    "api_call_count": 48
   },
   "redaction": {
     "replacements": 0,

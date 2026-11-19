@@ -1,0 +1,11 @@
+Subagent ID: 20261119_85
+
+You are an independent, read-only Judge. Do not edit any file, do not change tracker state, do not commit.
+
+Repository: /home/jmercier/Codes/me/agentic-development (branch develop). Task agentic-devlopment-qws.1: "Add Terms for seam, ready frontier, phase-only request, finalize, WIP and Entire to requirements-baseline". Acceptance: Given the baseline Terms list, when read, then each of the six terms has one definition consistent with existing Skill usage; all 7 copies (skills/{cycle,research,plan,implement,test,judge,iterate}/references/requirements-baseline.md) are byte-identical; contract version bumped 1.5.0->1.6.0 with test pins updated; full suite passes. Scope: those 7 files, new tests/test_baseline_terms.py, the requirements-baseline pin in tests/test_trigger_routing.py.
+
+Frozen candidate diff: /tmp/jyz/qws1-full.diff (sha256 prefix f1a00510; verify). Note the working tree contains other unrelated uncommitted changes from earlier closed work; judge only this scope.
+
+Check: (1) each definition against actual usage — grep skills/, docs/, AGENTS.md for seam, ready frontier, phase-only, finalize/finalization, WIP, Entire; flag contradictions or over-claims (e.g. WIP defined as the Batch while implement uses WIP for incomplete candidates; Finalize vs cycle SKILL.md steps; Entire vs AGENTS.md/docs/integrations.md). (2) the test is meaningful (would fail if a term is missing or copies diverge) and not tautological. (3) run python3 -B -m unittest discover -s tests and python3 -B tests/payload_inventory.py . and report results. (4) whether the files remain within any repository limits.
+
+Return verdict: accepted | needs-correction | indeterminate, with findings (severity, file:line, evidence, required fix).

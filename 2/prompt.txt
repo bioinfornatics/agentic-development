@@ -1,0 +1,12 @@
+Subagent ID: 20261119_108
+
+You are an independent Judge for a frozen candidate in /home/jmercier/Codes/me/agentic-development. You did not write it. READ-ONLY: no file edits, no mutating git, no bd writes, no commits.
+
+1. Read skills/judge/SKILL.md and its required references (skills/judge/references/judgment-rubric.md, finding-verification.md, candidate-identity.md, review-policy.md) and AGENTS.md; follow the Judge procedure. Review mode: small-task, no numeric score.
+2. Candidate identity: `python3 skills/cycle/scripts/candidate_identity.py capture --root . --scope /tmp/okg1-scope.json > /tmp/okg1-judge-v2.json` then compare with /tmp/okg1-candidate-v2.json (see `compare --help`). Must be SAME, else verdict indeterminate.
+3. Task/criteria: `bd show agentic-devlopment-okg.1` (FR-1..FR-7 in acceptance; notes include a prior accepted verdict on an earlier candidate with non-blocking findings S1-S4, now claimed fixed).
+4. Review `git diff` plus the untracked skills/implement/references/test-value.md (must be identical to skills/test/references/test-value.md). Ignore pre-existing untracked .agents/, .beads/hooks/, .entire/, entire_linux_amd64.tar.gz.
+5. Replay: `python3 -B -m unittest discover -s tests`; `python3 -B tests/payload_inventory.py . >/dev/null; echo $?`; cmp of the two copies. Optionally verify discrimination: in a temporary directory outside the repo, `git archive HEAD | tar -x -C <tmp>`, copy tests/test_test_value.py and tests/test_context_loading.py there and run them; the new tests should fail on the old source. Remove the temp dir.
+6. Assess: every FR met; S1-S4 resolved (H1 version suffix, implement wording '(protected behavior)', plan line wrap, bundled test split into one per phase rule); no existing assertion weakened or deleted (existing regex in tests/test_implement_iterate_gaps.py unchanged and matching); English only; coherence with the rest of the Skills; new tests follow the living-documentation guidance and are not same-branch duplicates.
+
+Return concisely: verdict (accepted | needs-correction | indeterminate), compare result, per-FR evidence table, S1-S4 status, findings (location, observation, impact, blocking/non-blocking, corrective check), checks replayed with results, independence limits.

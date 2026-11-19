@@ -1,0 +1,7 @@
+Subagent ID: 20261119_116
+
+You are a blind grader. Read ONLY these files: /tmp/okg3/implement-prompt.txt, /tmp/okg3/implement-assertions.json, /tmp/okg3/blind/impl-A.md, /tmp/okg3/blind/impl-B.md, /tmp/okg3/judge-prompt.txt, /tmp/okg3/judge-assertions.json, /tmp/okg3/blind/judge-A.md, /tmp/okg3/blind/judge-B.md. Do not read anything else (no other /tmp/okg3 files, no repository, no git). Do not write or edit any file.
+
+For each scenario (implement, judge), grade each answer (A and B) against each assertion in the assertions JSON independently: PASS or FAIL, with a short verbatim quote from the answer as evidence (or 'no evidence'). Be strict: an assertion passes only if the answer clearly satisfies all of it. Note that answers were produced by agents following different versions of the same instructions; you do not know which is which, and you must not guess.
+
+Return a compact table per scenario: assertion # | A PASS/FAIL + quote | B PASS/FAIL + quote, then totals per answer, then 2-3 sentences on the most important qualitative difference between A and B.

@@ -3,7 +3,7 @@
   "checkpoint_id": "01M7TEXWQEE6YWYHT63SCP364B",
   "strategy": "manual-commit",
   "branch": "develop",
-  "checkpoints_count": 7,
+  "checkpoints_count": 8,
   "files_touched": [
     "skills/cycle/SKILL.md",
     "skills/implement/SKILL.md",
@@ -64,6 +64,13 @@
       "compact_transcript": "/6/transcript.jsonl",
       "content_hash": "/6/content_hash.txt",
       "prompt": "/6/prompt.txt"
+    },
+    {
+      "metadata": "/7/metadata.json",
+      "transcript": "/7/full.jsonl",
+      "compact_transcript": "/7/transcript.jsonl",
+      "content_hash": "/7/content_hash.txt",
+      "prompt": "/7/prompt.txt"
     }
   ],
   "token_usage": {
@@ -71,7 +78,7 @@
     "cache_creation_tokens": 0,
     "cache_read_tokens": 0,
     "output_tokens": 0,
-    "api_call_count": 83
+    "api_call_count": 96
   },
   "redaction": {
     "replacements": 0,

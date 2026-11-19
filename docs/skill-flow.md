@@ -65,9 +65,9 @@ All phases share the delivery contracts and carry identical reference copies to 
 - **Beads:** `bd prime` only when context is missing or stale; check `bd where`
   if it prints nothing. `bd dep add A B` means A waits on B. `bd init` and
   `bd hooks` run only for authorized, controlled initialization.
-- **Git:** `candidate_identity.py` reads `git rev-parse` and `git ls-files --stage`
-  to freeze a candidate; `compare` returns 0 same, 1 different, 2 invalid.
-  Commits need current authority; nothing pushes automatically.
+- **Git:** `candidate_identity.py` reads `git rev-parse` and `git ls-files --stage` (`compare`:
+  0 same, 1 different, 2 invalid). Research runs `git bisect` only in a separate authorized
+  worktree or clean checkout. Commits need current authority; nothing pushes automatically.
 - **Forge:** Skills never call `gh` or `glab`. Pull requests and publication follow
   [the contributor workflow](../CONTRIBUTING.md), outside the Skills.
 - **Evaluation:** Skill Creator runs `node "$CREATOR" full-eval` only for a requested Skill evaluation.

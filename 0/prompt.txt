@@ -1,0 +1,55 @@
+First, You goal is to list SKILLS within this plugins map phase/skills/intent and associated agentic loop in order to perform agentic devlopment
+Secondly you have to get an understanding of some external skills and think how to include related instructions (adding into a skills or create a skills) :
+- tdd (test driven devlopement): ~/Codes/third-parties/mattpocock_skills/skills/engineering/tdd/
+- sdd (spec driven devlopement): /home/jmercier/Codes/third-parties/mattpocock_skills/skills/engineering/to-spec , /home/jmercier/Codes/third-parties/mattpocock_skills/skills/engineering/implement-spec
+- ddd (domain driven devlopement): /home/jmercier/Codes/third-parties/mattpocock_skills/skills/engineering/domain-modeling
+- /home/jmercier/Codes/third-parties/mattpocock_skills/skills/engineering/grill-with-docs
+
+---
+
+/grind  Part 3 — Recommended changes, as a Beads epic
+
+1. **New optional Skill `domain-modeling`** (adapted from Pocock's skill): `SKILL.md` + `references/glossary-format.md` + `references/adr-format.md`. Wire research and plan to load it, the way they load `task-authoring`.
+2. **Research grill mode:** a new intent row, the clarification-interview changes above, and grill-related wording in the research description so it gets triggered.
+3. **Plan specification work:** `specification-template.md`, expand–contract for wide refactors, "highest test point, fewest test points".
+4. **Implement / test-value TDD additions:** system-boundary mocking rules, tracer-bullet wording, the refactor-stays-in-slice guard.
+5. **Cycle integration-branch batch mode** (optional, permission-gated).
+6. **Required alongside:** update `docs/skill-flow.md`, `tests/test_skill_flow.py` (it currently expects only `task-authoring` as the optional extra) and `tests/payload_inventory.py`, then run the full test suite.
+
+**License:** Pocock's repository is MIT (commit `abeeaf9`). The plan is to rewrite the ideas in our own wording rather than copy text. If any wording is copied substantially, it needs MIT attribution, and that decision should be recorded, so use our term
+
+## Decisions I need from you
+
+1. **Create `domain-modeling` as a new optional Skill?** Recommended: yes, as above.
+2. **Keep refactor inside `implement`** rather than Pocock's "refactor only at review"? Recommended: yes.
+3. **Grill as a research mode rather than a separate Skill?** Recommended: yes, it avoids a second interview procedure.
+4. **Should I create the epic and tasks in Beads now?** That writes to the tracker, so I need your go-ahead.
+
+---
+
+1. **Create `domain-modeling` as a new optional Skill?: yes, by optional what did you means ? a skills is called either by its description or deteminatically as an other skills explicitely call it
+2. Research grill mode: a new intent row, the clarification-interview changes above, and grill-related wording in the research description so it gets triggered. -> yes
+3. **Plan specification work:** `specification-template.md`, expand–contract for wide refactors, "highest test point, fewest test points". -> yes
+4. **Implement / test-value TDD additions:** system-boundary mocking rules, tracer-bullet wording, the refactor-stays-in-slice guard. -> yes
+5. **Cycle integration-branch batch mode** (optional, permission-gated). -> yes
+6. **Required alongside:** update `docs/skill-flow.md`, `tests/test_skill_flow.py` (it currently expects only `task-authoring` as the optional extra) and `tests/payload_inventory.py`, then run the full test suite. -> yes
+also sdd imply that spec are written before implement and tdd imply test are written before implement
+
+So think about the workflow and enhance it
+
+---
+
+comit and push
+
+---
+
+Change your objective to grind,, with those decision below
+1. **Create `domain-modeling` as a new optional Skill?: yes, by optional what did you means ? a skills is called either by its description or deteminatically as an other skills explicitely call it
+2. Research grill mode: a new intent row, the clarification-interview changes above, and grill-related wording in the research description so it gets triggered. -> yes
+3. **Plan specification work:** `specification-template.md`, expand–contract for wide refactors, "highest test point, fewest test points". -> yes
+4. **Implement / test-value TDD additions:** system-boundary mocking rules, tracer-bullet wording, the refactor-stays-in-slice guard. -> yes
+5. **Cycle integration-branch batch mode** (optional, permission-gated). -> yes
+6. **Required alongside:** update `docs/skill-flow.md`, `tests/test_skill_flow.py` (it currently expects only `task-authoring` as the optional extra) and `tests/payload_inventory.py`, then run the full test suite. -> yes
+also sdd imply that spec are written before implement and tdd imply test are written before implement
+
+So think about the workflow and enhance it

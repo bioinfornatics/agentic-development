@@ -3,7 +3,7 @@
   "checkpoint_id": "01M7V3QR59PS8VW7EKQED2HN1Y",
   "strategy": "manual-commit",
   "branch": "feature/pocock-method-integration",
-  "checkpoints_count": 5,
+  "checkpoints_count": 6,
   "files_touched": [
     "AGENTS.md",
     "CONTRIBUTING.md",
@@ -70,6 +70,13 @@
       "compact_transcript": "/4/transcript.jsonl",
       "content_hash": "/4/content_hash.txt",
       "prompt": "/4/prompt.txt"
+    },
+    {
+      "metadata": "/5/metadata.json",
+      "transcript": "/5/full.jsonl",
+      "compact_transcript": "/5/transcript.jsonl",
+      "content_hash": "/5/content_hash.txt",
+      "prompt": "/5/prompt.txt"
     }
   ],
   "token_usage": {
@@ -77,7 +84,7 @@
     "cache_creation_tokens": 0,
     "cache_read_tokens": 0,
     "output_tokens": 0,
-    "api_call_count": 278
+    "api_call_count": 284
   },
   "redaction": {
     "replacements": 26,

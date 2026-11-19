@@ -75,6 +75,9 @@ Ask the reviewer:
 - Is decomposition by independently usable result, not a microticket per file,
   phase or SOURCE marker? Keep distant work coarse; task count is not quality.
 
+The goal-trace question checks, in both directions, the same criterion -> task ->
+check trace that the Plan workflow delivers.
+
 Return source-linked findings, blocking/nonblocking classification, affected node
 IDs, missing or incorrect edges with rationale, a proposed least viable ordering,
 ready frontier, research prerequisites and completion/provenance limits. The

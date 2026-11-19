@@ -19,6 +19,20 @@ OTHER_ORDER_REQUIREMENTS = (
 )
 
 
+# Scenarios written in the creator's current closed subset, keyed by owning skill.
+CURRENT_SUBSET = {
+    ("plan", "concrete-managed-service-ticket"), ("plan", "consolidate-updated-ticket"),
+    ("plan", "changed-scope-dependency-readiness"),
+    ("research", "documented-components-unproven-deployment"),
+    ("plan", "producer-consumer-and-goal-coverage"), ("plan", "low-risk-existing-evidence"),
+    ("implement", "failed-transition-local-pause"), ("iterate", "local-replan-no-progress"),
+}
+
+
+def is_current_subset(skill, name):
+    return (skill, name) in CURRENT_SUBSET
+
+
 def suite(skill):
     return json.loads((ROOT / f"skills/{skill}/evals/evals.json").read_text())
 
@@ -28,6 +42,11 @@ def facts(skill):
 
 
 class EvalEvidenceLevels(unittest.TestCase):
+    def test_current_subset_exemption_is_keyed_by_skill(self):
+        self.assertTrue(is_current_subset('iterate', 'local-replan-no-progress'))
+        self.assertFalse(is_current_subset('research', 'local-replan-no-progress'))
+        self.assertFalse(is_current_subset('implement', 'concrete-managed-service-ticket'))
+
     def test_section_contract_has_no_six_heading_instruction(self):
         contract = (ROOT / "skills/implement/references/requirements-output.md").read_text()
         self.assertIn("five-heading", contract)
@@ -53,16 +72,7 @@ class EvalEvidenceLevels(unittest.TestCase):
                     # New ticket scenarios use the creator's current closed subset.
                     # Legacy instrumented-order contracts remain frozen below;
                     # current subset/fixture checks live in test_ticket_authoring.py.
-                    current_subset_cases = {
-                        "concrete-managed-service-ticket", "consolidate-updated-ticket",
-                        "changed-scope-dependency-readiness",
-                        "documented-components-unproven-deployment",
-                        "producer-consumer-and-goal-coverage",
-                        "low-risk-existing-evidence",
-                        "failed-transition-local-pause",
-                        "local-replan-no-progress",
-                    }
-                    if case["name"] in current_subset_cases:
+                    if is_current_subset(skill, case["name"]):
                         self.assertNotIn("navigation_expectations", case)
                         self.assertNotIn("execution_assertions", case)
                         for requirement in ORDER_REQUIREMENTS + OTHER_ORDER_REQUIREMENTS:

@@ -28,6 +28,10 @@ def scenario_problems(phase, case):
     for key in ('prompt', 'assertions', 'expected_output', 'files'):
         if not case.get(key):
             problems.append(f'empty {key}')
+    target = case.get('target')
+    if (not isinstance(target, dict) or target.get('execution') != 'explain'
+            or target.get('path') not in case.get('files', [])):
+        problems.append('bad target')
     tags = case.get('coverage_tags', [])
     for tag in tags:
         dimension, _, value = tag.partition(':')
@@ -188,6 +192,21 @@ class FeasibilityScenarioSubset(unittest.TestCase):
                          'missing phase tag', 'bad input SKILL.md',
                          'bad input ../research/evals/evals.json', 'bad input evals/inputs/missing.md'):
             self.assertIn(expected, problems)
+
+    def test_subset_check_requires_explain_target_on_a_case_input(self):
+        case = {'id': 1, 'name': 'x', 'language': 'en',
+                'coverage_tags': ['phase:plan', 'language:en'],
+                'prompt': 'read evals/inputs/ticket.md', 'assertions': ['a'],
+                'expected_output': 'e', 'files': ['evals/inputs/ticket.md'],
+                'target': {'path': 'evals/inputs/ticket.md', 'execution': 'explain'}}
+        self.assertEqual(scenario_problems('plan', case), [])
+        for target in (None, {'path': 'evals/inputs/ticket.md', 'execution': 'run'},
+                       {'path': 'evals/inputs/other.md', 'execution': 'explain'}):
+            with self.subTest(target=target):
+                broken = {k: v for k, v in case.items() if k != 'target'}
+                if target is not None:
+                    broken['target'] = target
+                self.assertIn('bad target', scenario_problems('plan', broken))
 
     def test_subset_check_rejects_empty_fields_and_unnamed_inputs(self):
         case = {'id': 1, 'name': 'x', 'language': 'en',

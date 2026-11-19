@@ -1,0 +1,46 @@
+{
+  "cli_version": "0.13.4",
+  "checkpoint_id": "01M7TEXVS1T6TQ1EV5C1S02ZEJ",
+  "session_id": "20261119_87",
+  "strategy": "manual-commit",
+  "created_at": "2026-11-19T17:51:02.858539756Z",
+  "branch": "develop",
+  "checkpoints_count": 1,
+  "save_step_count": 1,
+  "files_touched": [
+    "skills/implement/evals/evals.json",
+    "skills/iterate/evals/evals.json",
+    "skills/plan/evals/evals.json",
+    "skills/research/evals/evals.json",
+    "tests/test_plan_research_readiness.py",
+    "tests/test_ticket_authoring.py"
+  ],
+  "agent": "Goose",
+  "model": "claude-opus-5-5",
+  "turn_id": "c368895d9bee",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 13
+  },
+  "redaction": {
+    "replacements": 0,
+    "layers": {
+      "betterleaks": 0,
+      "connection_string": 0,
+      "credential_key": 0,
+      "credential_value": 0,
+      "credentialed_uri": 0,
+      "entropy": 0,
+      "key_context": 0,
+      "provider_token": 0,
+      "shell_stdin": 0
+    }
+  },
+  "session_metrics": {
+    "turn_count": 1
+  }
+}

@@ -1,0 +1,13 @@
+Subagent ID: 20261119_87
+
+Independent read-only Judge (no edits, no commits, no tracker changes). Repo /home/jmercier/Codes/me/agentic-development.
+
+Task agentic-devlopment-jyz: "Run trigger evaluation before adding a debug Skill or PR-review intent in judge" (read: bd show agentic-devlopment-jyz). Deliverable: (a) trigger evidence for the 8 Skills on integration/trigger-routing.json extended with debug-only and PR-review cases; (b) a decision on whether a debug Skill or judge PR-review intent is warranted; (c) follow-ups for open questions.
+
+Candidate repo change: /tmp/jyz/jyz.diff (sha256 prefix 4b0501f8; verify it matches the working tree for integration/trigger-routing.json): 4 new cases + rewritten "run" note.
+Evidence (local, git-excluded): evidence/qws-trigger-routing-20261119/ (harness.py, matrix.json, results.jsonl 84 runs, harness.log, README.txt). Also /tmp/jyz/raw.jsonl shows the Goose 1.57 stream for an unisolated run (tool name 'load', argument 'source', and the installed plugin 'agentic-development:implement' was loaded); skill-creator detector at /home/jmercier/.cache/agent-plugins-patch-proof/repo/skills/skill-creator/runtime/dist/scripts/runners/goose.js lines ~272-290 (eventLoadedSkill matches 'load_skill' and args.name) and /tmp/jyz/smoke.out (not-triggered).
+
+Coordinator's claimed results (recompute from results.jsonl yourself): precision 1.00 for all 8 Skills, 0 false positives on 5 negatives; recall: plan/test/iterate/task-authoring 1.00, judge 0.75, implement 0.67, research 0.33, cycle 0.21. Debug-only cases 19,20: research loaded 1/6. Formal PR review 21: judge 3/3; casual 22: 0/3. Claim/close cases 7,18: no Skill 0/6. Claimed limits: first-hop routing only (empty workspace, harness stops after 4 non-load tool calls or 150s, so chained loads unobservable); 3 runs/query; single model; global user skills present as distractors.
+Coordinator's decision: do NOT create a debug Skill or add a judge PR-review intent now — misses are "no skill loaded", with no evidence a new Skill would trigger better; follow-ups qws.2 (cycle co-loading design decision) and qws.3 (description variant test with held-out split) created (bd show them).
+
+Judge: is the evidence valid for the claims made (harness correctness — read harness.py; isolation — README; recomputed metrics)? Are claims overstated? Is the decision supported by the evidence and consistent with the jyz description? Is the run note accurate and not overclaiming? Does test suite pass (python3 -B -m unittest discover -s tests)? Return verdict accepted | needs-correction | indeterminate with findings (severity, location, evidence, fix). Concise.

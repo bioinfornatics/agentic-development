@@ -1,0 +1,28 @@
+your goal is to enhance and fix the SKILLS written into this plugins, thus you have to run pro-actively both web search to be and dedicated subagent for audit, analysis and review
+0. list every skills written in this plugins under skills directory
+1. Use an effective style dedicated to SKILL.md file which are files dedicated for AI agent
+2. load best practice to write a skill and perform a check list on each skills to asses theircompliance
+3. identify Skills granularity, duplication, and gaps and if needed create,delete, upadte skills after the audit/adversarial challenge
+4. keep in memory the graph of the chaining workflow, phase, skills files loaded, skills called, tools called and so on in order to help to understanding how the plugin works, identify pitfall, granularity, duplication, and gaps
+5. do both web search and skills flow analysis to identify the efficient way to develop with AI (agentic developement: git, beads cli, entire, tdd, grill-me, specification, writing test effectively as a living documentation, and so on
+
+---
+
+ok aloso I would like taht the agentic loop for devlopment works by batch  and open tasks only for task it will workd and close succsefully (DOD) my current esperience with the plugins it tend to open multiple tasks from multiple epics, so agents is not focus, never fine=ish ans pread is effort everywhere. I would like that opened tasks are thus that are currently in implementation, multiple task can be open during a session and use delegate task into subagent to work on it in parrallel.
+Also agent plan is not really good to be right a meidum long term so I suggest taht the agentic loop define tasks from epics only if we are close to works on them, long terme feature are defined only by epic without tasks a refinement will be triggered automatically.  So firstly rephrase this as best of the domain would do
+
+---
+
+1. Batch size: do not cap, this is define as max subagent directly into goose do not try to override
+2. I confirm
+3. I confirm
+4. I confirm
+5. ok
+
+---
+
+/grind agentic-devlopment-gx9  bd show agentic-devlopment-j62
+
+---
+
+commit

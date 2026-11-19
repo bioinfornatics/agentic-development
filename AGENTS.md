@@ -72,6 +72,14 @@ clean develop@SHA -> verified generated tree -> generated-only PR -> main (squas
 - Recommend a fresh session for independent objectives, repository changes, stale hypotheses, major research/build handoffs or judge separation; a commit/compaction alone does not require one.
 - Keep related implementation/tests/corrections together; report proposed session name/goal and actual action. No automatic launch or new permission from handoffs.
 
+## Skill workflow graph
+
+- Route: cycle -> research -> plan -> implement -> test -> judge; iterate is the only correction loop. Map: [skill flow](docs/skill-flow.md).
+- Bounds: 3 correction attempts per slice, counted before dispatch; one Judge indeterminate retry via Test; replans stop at a named deciding prerequisite.
+- task-authoring returns to its caller; never chain it into a phase. A phase-only request stops at its proposed handoff.
+- Skills call bd, candidate_identity.py (read-only Git) and, on request, Skill Creator; never add gh/glab calls to Skills.
+- Change a handoff route, loop bound or tool call together with docs/skill-flow.md and tests/test_skill_flow.py.
+
 ## Permissions and preservation
 
 - Commit, push, merge, install, hook changes, deployment, tracker closure and Dolt sync require current scoped authority.

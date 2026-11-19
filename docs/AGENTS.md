@@ -9,3 +9,4 @@ Link to source references only for optional depth.
 Do not put execution logs, JSON, task IDs, historical decisions, receipts or handoffs
 here. Store run evidence outside this directory; Beads owns task status. Avoid a JSON
 navigation index and repeated catalogs. Check changed links, not a blanket build.
+skill-flow.md mirrors SKILL.md handoffs, loop bounds and tool gates; tests/test_skill_flow.py guards it.

@@ -1,53 +1,85 @@
 # How the Skills chain together
 
-Use this map to understand which Skill runs when, what it reads and which tools it
-touches, so you can spot a broken handoff, a duplicated rule or a missing step.
+Use this map to see which Skill runs when, where each loop ends and which tools it may touch.
 
 ## Phase routing
 
 ```mermaid
 flowchart TD
-  U([User intent]) --> C[cycle: route and coordinate]
-  C -->|new or resumed objective| R[research]
-  R -->|cited product context + readiness review| P[plan]
-  R -->|decision still blocked| R
-  P -->|ready task and implementation authorized| I[implement]
-  P -->|technical prerequisite unknown| R
-  I -->|scoped change + focused checks| T[test]
-  I -->|defect needs a correction decision| IT[iterate]
-  T -->|criterion-bound evidence| J[judge]
-  T -->|confirmed repair need| IT
-  J -->|accepted| F([cycle finalizes: persist, authorized closure or Git only])
-  J -->|needs-correction| IT
-  J -->|indeterminate: missing checks, once| T
-  IT -->|implementation defect, budget left| I
-  IT -->|proof only| T
-  IT -->|unknown cause or feasibility| R
-  IT -->|changed scope or criteria| P
-  IT -->|budget exhausted or no progress| S([Stop: blocker, options, decision owner])
+  user([User intent]) --> cycle[cycle: route and coordinate]
+  cycle -->|new or resumed objective| research
+  cycle -.->|resume at first incomplete phase| plan & implement & test & judge & iterate
+  research -->|bounded probe still needed| research
+  research -->|cited context grounds the decision| plan
+  plan -->|unresolved technical prerequisite| research
+  plan -->|ready task, implementation authorized| implement
+  plan -->|roadmap-only request| halt
+  implement -->|red, green, refactor| implement
+  implement -->|scoped change + focused checks| test
+  implement -->|defect needs a correction decision| iterate
+  test -->|evidence recorded| judge
+  test -->|confirmed repair need| iterate
+  judge -->|accepted| finalize
+  judge -->|needs-correction| iterate
+  judge -->|indeterminate: missing checks, once| test
+  judge -->|second indeterminate, same gap| halt
+  iterate -->|implementation defect, attempt +1| implement
+  iterate -->|proof only, unchanged candidate| test
+  iterate -->|unknown cause| research
+  iterate -->|changed scope or criteria| plan
+  iterate -->|budget exhausted or no progress| halt
+  finalize([cycle: persist, authorized closure or Git only])
+  halt([Stop: blocker, state card, restart prompt])
 ```
 
-Every phase ends in the same gate: if the request was phase-only, or the next action
-is outside current scope or permissions, return the result, a YAML state card and a
-restart prompt, then stop. `task-authoring` is loaded from any phase only to create or
-repair ticket text; it returns to its caller after readback and never chains further.
+Every phase verifies inputs and authority, works, integrates observations, then hands off
+or stops. A phase-only request or an unpermitted next action ends with the result, a YAML
+state card and a restart prompt. `task-authoring` edits ticket text, then returns to its caller.
+
+## Loops and their bounds
+
+| Loop | Bound | Counts as an attempt? |
+|---|---|---|
+| iterate → implement → test → judge | 3 authorized correction attempts per slice, unless the user sets another budget | Yes, recorded before dispatch; never reset |
+| judge → test → judge (indeterminate) | One retry; a second indeterminate verdict on the same gap stops | No |
+| iterate → research or plan (local replan) | Stops at a named deciding prerequisite; repeated speculation is not progress | No |
+| research → research | One bounded probe at a time, within permissions | No |
+| implement red → green → refactor | Internal to one slice; scope growth returns to the coordinator | No |
 
 ## What each Skill reads and uses
 
 | Skill | Notable conditional reads | Tools it may use |
 |---|---|---|
-| cycle | Beads integration or initialization, authorization and review policy, requirements baseline, judgment rubric, candidate identity, state template | `bd`, `git status`, Entire if integrated, delegation |
-| research | Delegated investigation, clarification interview, root-cause investigation, state of the art, reuse decision, knowledge pointers, readiness review | Search and code analysis workers, authorized web research, reproduction probes |
-| plan | Requirements baseline, review policy, judgment rubric, plan readiness review | task-authoring for ticket writes (when authorized), `bd dep add`, readback |
-| implement | Candidate identity, commit report | Project test runners, `git` (commit only if authorized) |
-| test | Test value, candidate identity | Project test commands, browser capture for UI |
+| cycle | Beads integration or initialization, authorization and review policy, requirements baseline, judgment rubric, candidate identity, state template | `bd`, branch/status inventory, delegation, observed session/checkpoint links if Entire is integrated |
+| research | Delegated investigation, clarification interview, root-cause investigation, state of the art, reuse decision, knowledge pointers, readiness review | Workers: find files, analyze code, find patterns, optional state of the art; reproduction probes |
+| plan | Requirements baseline, review policy, judgment rubric, plan readiness review | `task-authoring` for authorized ticket writes, `bd dep add`, readback |
+| implement | Candidate identity, commit report | Project test runners; commit only with current authority |
+| test | Test value, candidate identity | Project checks, `candidate_identity.py` capture/compare, browser capture for UI |
 | judge | Judgment rubric, finding verification, candidate identity | Read-only reviewers, check replay |
-| iterate | Candidate identity, review policy | Correction counter in tracker state |
+| iterate | Candidate identity, review policy | Correction counter in tracker state; never edits code |
 
-Every phase also applies the requirements baseline, authorization policy and review
-policy before the actions they govern. All phases share the same delivery contracts
-(common output, communication contract, phase output) and the optional `candidate_identity.py` CLI for exact-candidate proof.
-Each Skill carries its own copy so it stays portable; copies must stay identical.
+All phases share the delivery contracts and carry identical reference copies to stay portable.
+
+## Tool calls and their gates
+
+- **Beads:** `bd prime` only when context is missing or stale; check `bd where`
+  if it prints nothing. `bd dep add A B` means A waits on B. `bd init` and
+  `bd hooks` run only for authorized, controlled initialization.
+- **Git:** `candidate_identity.py` reads `git rev-parse` and `git ls-files --stage`
+  to freeze a candidate; `compare` returns 0 same, 1 different, 2 invalid.
+  Commits need current authority; nothing pushes automatically.
+- **Forge:** Skills never call `gh` or `glab`. Pull requests and publication follow
+  [the contributor workflow](../CONTRIBUTING.md), outside the Skills.
+- **Evaluation:** Skill Creator runs `node "$CREATOR" full-eval` only for a requested Skill evaluation.
+- **Hooks:** Goose hooks run `observe.py` to report events; they never enforce or accept.
+
+## Example: a review that lacks proof
+
+1. Test records results but cannot run the browser check for one criterion.
+2. Judge returns `indeterminate` and names the missing check and who can supply it.
+3. Test runs that check once on the same frozen candidate; Judge reviews again.
+4. A confirmed defect gives `needs-correction`: Iterate spends attempt 1 of 3 via Implement, Test, Judge.
+5. If the check is still unavailable, the run stops with a restart prompt, not a loop.
 
 ## Questions that keep a run on track
 
@@ -61,12 +93,7 @@ Each Skill carries its own copy so it stays portable; copies must stay identical
 
 ## Pitfalls to watch
 
-- A run started directly at Research or Plan never reaches finalization; resume
-  `cycle` to persist results and perform authorized closure.
-- Diagnosis, planning and waiting never increment the correction budget; Judge stops
-  a repeated indeterminate verdict instead of looping through Test.
-- Loading a Skill grants no permission: commits, pushes, closure and installs still
-  need current, scoped authority.
+- A run started at Research or Plan never finalizes; resume `cycle` to persist results.
+- Loading a Skill grants no permission: commits, pushes, closure and installs need current authority.
 
-For optional depth, read the [cycle entrypoint](../skills/cycle/SKILL.md) and the
-[development cycle guide](cycle.md).
+For depth, read the [cycle entrypoint](../skills/cycle/SKILL.md) and the [cycle guide](cycle.md).

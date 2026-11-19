@@ -20,6 +20,15 @@ Le coordinateur choisit la prochaine étape et finalise la traçabilité.
 Réutilisez une recherche après vérification de sa couverture du contexte et de sa fraîcheur ; conservez un plan encore valide. Ne recommencez pas tout le cycle
 à chaque reprise, mais ne sautez pas une vérification nécessaire.
 
+## Travailler un epic par lots
+
+1. Gardez un seul epic actif d'une session à l'autre ; vous seul décidez d'en changer.
+2. Prenez le travail prêt uniquement dans cet epic, par exemple `bd ready --parent <epic>`.
+3. Formez le lot avec toutes les tâches prêtes et indépendantes ; la limite de sous-agents de l'hôte fixe sa taille.
+4. Donnez à chaque worker une tâche et ses propres fichiers ; le coordinateur possède le lot.
+5. Fermez ou libérez chaque tâche du lot avant de prendre le lot suivant.
+6. Quand aucune tâche n'est prête, affinez le lot suivant par Research → Plan (une proposition ; l'écriture dans le tracker exige votre autorisation).
+
 ## Développer avec un retour rapide
 
 Pour un comportement exécutable :
@@ -31,6 +40,19 @@ Pour un comportement exécutable :
 
 Les résultats attendus proviennent de l'exigence ou d'un oracle indépendant, pas du code testé.
 Une vérification du format documentaire ne prouve pas le comportement d'un agent.
+
+Écrivez les tests comme une documentation vivante : un lecteur qui n'ouvre jamais
+l'implémentation doit y apprendre la règle. Le nom énonce la règle, la mise en place ne
+contient que les conditions qui décident du résultat, une seule action s'exécute, et les
+assertions montrent le résultat et ses effets. Par exemple,
+`test_site_without_approval_cannot_be_published` utilise un éditeur habilité, si bien que
+le refus ne peut venir que de l'approbation manquante, et vérifie que le site reste prêt.
+
+Un même chemin n'est pas un nouveau test. Avant d'ajouter un cas qui ne diffère d'un autre
+que par une valeur d'entrée, vérifiez que le code ou la spécification traite cette valeur
+différemment. Un cas que la spécification nomme mais que le code ignore vaut la peine
+d'être écrit : son échec révèle un manque. Voir la [valeur des tests](../../../skills/test/references/test-value.md)
+(en anglais) pour les règles complètes.
 
 ## Lire le bilan de chaque étape
 

@@ -41,6 +41,18 @@ For executable behavior:
 Expected results come from the requirement or an independent oracle, not the tested code.
 A documentation-format check does not prove agent behavior.
 
+Write tests as living documentation: a reader who never opens the implementation should
+learn the rule from them. The name states the rule, the setup holds only the conditions
+that decide the outcome, one action runs, and the assertions show the result and its
+effects. For example, `test_site_without_approval_cannot_be_published` uses an authorized
+publisher, so the refusal can only come from the missing approval, and checks that the
+site stays ready.
+
+Same branch is not a new test. Before adding a case that differs from another only in an
+input value, check that the code or the specification treats that value differently. A
+case the specification names but the code ignores is worth writing: its failure reveals
+a gap. See [test value](../skills/test/references/test-value.md) for the full rules.
+
 ## Read each stage's report
 
 The final report uses five sections, in order:

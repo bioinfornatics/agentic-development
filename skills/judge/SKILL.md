@@ -128,6 +128,10 @@ This is an agent instruction, not a runtime cache.
    exact outcomes, success/error ambiguity and missing important error paths cannot
    support the claimed guarantee. Review rationalization decisions against preserved
    product coverage, not legacy volume; a green test count is not quality or acceptance.
+   Ask whether a reader, without opening the implementation, can explain the rule each
+   new test protects and give a concrete example; an unreadable test or a same-branch
+   duplicate (an input-only variant that neither the code nor the specification
+   distinguishes) is a non-blocking finding unless a criterion requires otherwise.
    Check observed failing counterexamples versus hypothetical faults and required
    end-to-end CI wall time versus aggregate/local durations. Missing measurements or
    discrimination stay explicit; do not infer CI acceptance from parallel local runs.

@@ -1,13 +1,19 @@
-# Product guarantees and test value
+# Product guarantees and test value v1.0.0
 
-Apply when selecting or reviewing application tests, or analyzing a suite for
-rationalization. This is not permission to edit tests or the frozen candidate.
-Test diagnoses and proposes changes; authorized corrections go through Iterate
-and Implement, then Test checks the changed candidate.
+Contract ID: agentic-development/test-value
+Contract version: 1.0.0
+
+Apply when writing, selecting or reviewing application tests, or analyzing a suite
+for rationalization. This is not permission to edit tests or the frozen candidate.
+Implement writes tests within an authorized task; Test diagnoses and proposes
+changes; authorized corrections go through Iterate and Implement, then Test checks
+the changed candidate.
 
 ## Contents
 
 - [Select evidence, not volume](#select-evidence-not-volume)
+- [Same branch is not a new test](#same-branch-is-not-a-new-test)
+- [Write tests as living documentation](#write-tests-as-living-documentation)
 - [Challenge the oracle before counting a pass](#challenge-the-oracle-before-counting-a-pass)
 - [Rationalize within authority](#rationalize-within-authority)
 - [Measure the mandatory path honestly](#measure-the-mandatory-path-honestly)
@@ -41,6 +47,66 @@ account for every test/family; an uninspected subset stays unknown, not useless.
 | Guarantee / source | Incorrect behavior | Oracle / seam / level | Marginal detection value | Cost / required lane |
 |---|---|---|---|---|
 | Approved criterion ID | Concrete externally wrong result | Independent expected result, actual subject | Distinct fault or justified overlap | Measured or unknown; local/required CI/optional |
+
+## Same branch is not a new test
+
+Before adding a test that differs from a neighbour only in an input value, confirm
+that the production code or the specification distinguishes that value. A
+passthrough field, or one guard rejecting every disallowed enum value, means the
+existing test already covers it: add the value to that test's example data only
+when it documents the rule, not as another test.
+
+Add the case when the code branches on the value, when the specification names it
+as a distinct boundary, error or incident, or when a distinct environment can
+expose a different fault. If the specification distinguishes a value that the code
+does not, write that test: its failure reveals a gap, not a duplicate.
+
+Every redundant test costs CI time and the tokens an agent spends reading it later.
+During an authorized rationalization, look for same-branch variants and
+cross-file duplicates of the same guarantee, then apply the merge or remove
+decision below with the retained check named.
+
+## Write tests as living documentation
+
+A reader who does not know the code should learn from the tests what the software
+must do, by reading concrete examples that run.
+
+| Part | What it must tell the reader |
+|---|---|
+| Name | The name states the rule: `test_site_without_approval_cannot_be_published`, not `test_publish_returns_409`. |
+| Given | Only the conditions that matter. Name fixtures in domain terms; add those that rule out other causes, so the reader sees which condition decides the outcome. |
+| When | Perform one action, by a user or the system. |
+| Then | The expected outcome and, when the rule depends on them, its effects, including state left unchanged by a refusal. |
+| Set of cases | The set of cases bounds the rule: at least one allowed and one refused example, plus each case the specification distinguishes. |
+
+~~~python
+def test_site_without_approval_cannot_be_published(
+    ready_site_without_approval,
+    authorized_publisher,
+):
+    site = ready_site_without_approval
+
+    with pytest.raises(ApprovalRequired):
+        site.publish(by=authorized_publisher)
+
+    assert site.status == SiteStatus.READY
+~~~
+
+`authorized_publisher` establishes that permissions suffice, so the refusal can
+only come from the missing approval. The last assertion states a second guarantee
+of the same scenario: the refusal leaves the site unchanged.
+
+- Choose the level by the guarantee. A domain rule is asserted on domain outcomes.
+  A public API contract can assert the HTTP status and error code clients rely on,
+  for example `409` with an approval-required code.
+- Keep the criterion ID in a docstring or marker unless the project convention puts
+  it elsewhere; the name stays readable as the rule.
+- A green test confirms that the written scenario works. Review still checks that
+  the scenario still expresses the intended rule; when a rule changes on purpose,
+  review the behavior change and its examples together.
+- Review question: **without opening the implementation, can I explain the rule
+  this test protects and give a concrete example of what must happen?** A no is a
+  readability finding.
 
 ## Challenge the oracle before counting a pass
 
@@ -131,3 +197,9 @@ Its large suite and reported review findings are the author's observations, not
 benchmarks or efficacy evidence for this Skill. The selection, rationalization
 and CI-cost procedure above also incorporates the user's disproportionate-suite
 feedback; historical counts and timings are not portable acceptance targets.
+
+Ido Shamun, "Reducing redundant test bloat generated by AI coding agents", daily.dev
+(text supplied by the user, consulted 19 November 2026), describes agents adding
+repetitive coverage-driven tests and proposes the same-branch rule above; its
+reported removals are the author's observations, not benchmarks. The living
+documentation section incorporates the user's feedback of the same date.

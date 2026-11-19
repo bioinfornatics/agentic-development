@@ -117,9 +117,11 @@ This is an agent instruction, not a runtime cache.
    Read relevant glossary/ADRs and preserve public contracts. Expected values come from
    specification, worked example or independent oracle, not copied production logic.
    Reuse suitable tests; finish one vertical behavior slice before the next rather than
-   writing all speculative tests then all code. Before adding a test, name its product guarantee,
-   concrete incorrect behavior and marginal detection beyond existing checks; select
-   the cheapest valid oracle, not a test-count or coverage-percentage target.
+   writing all speculative tests then all code. Apply [test value](references/test-value.md)
+   before adding a test: name its product guarantee, concrete incorrect behavior and
+   marginal detection beyond existing checks; select the cheapest valid oracle, not a
+   test-count or coverage-percentage target. A variant that changes only an input value
+   needs a distinct branch in the code or a case the specification distinguishes.
    Testability means a minimal meaningful public seam with controlled external inputs
    and observable outputs/effects. Do not add speculative abstractions, exports of
    private helpers, injection layers or production-only switches solely to multiply
@@ -130,8 +132,10 @@ This is an agent instruction, not a runtime cache.
    not required. Never delete a meaningful regression or weaken acceptance to get green.
    Mock only dependencies: assert the subject's contract, exact known outcomes and
    important errors, not the mock's setup or copied expected calculations.
-   Name each new test after the protected behavior and cite its criterion ID, unless
-   project conventions forbid it, so the suite reads as living documentation.
+   Name each new test after the rule (protected behavior) it protects and keep its
+   criterion ID in a docstring or marker unless project conventions differ; arrange only
+   the conditions that matter, perform one action and assert the outcome and its relevant
+   effects, so the suite reads as living documentation.
 
    If code you must refactor or modify has no discriminating test at its public seam,
    first add a characterization test of its current behavior and observe it green before

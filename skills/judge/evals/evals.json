@@ -455,6 +455,92 @@
           "grading": "instrumented-execution-only"
         }
       ]
+    },
+    {
+      "id": 18,
+      "name": "judge-readable-non-redundant-tests",
+      "subject": "agentic-development",
+      "language": "en",
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "preconditions": [
+        "Scenario input is a read-only hypothetical fixture, not real test or tracker output.",
+        "Execute explanation only in an isolated context with equal artifact access for paired variants.",
+        "Behavioral comparison requires an immutable old_skill baseline and frozen current sources; historical hashes alone are insufficient."
+      ],
+      "budget": {
+        "max_turns": 12,
+        "timeout_seconds": 300
+      },
+      "prompt": "For the judge Skill at skills/judge/SKILL.md, explain this read-only hypothetical scenario. Review a frozen candidate for criterion PUB-2: a site without approval cannot be published and keeps status READY. All 42 tests pass. The exact refusal and the unchanged status are asserted at the public publish seam with an independent expected value. However the tests are named test_publish_returns_409_1 to test_publish_returns_409_12, and nine of them differ only in a note field that the code passes through unchanged. No criterion requires test naming or suite size. Reviewer independence is established by the scenario. Explain findings and scoped verdict, without running tools or changing the candidate.",
+      "expected_output": "A scoped guarantee-based explanation with the stated evidence and permission limits; no fabricated execution or acceptance.",
+      "files": [],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": []
+      },
+      "assertions": [
+        "The response asks whether a reader, without opening the implementation, can explain the rule each test protects, and finds that the status-code names do not reveal it.",
+        "The response identifies the nine note-field variants as same-branch duplicates that add no distinct fault.",
+        "The response classifies both readability and redundancy as non-blocking findings because no criterion requires them, and does not reject the candidate for them.",
+        "The response bases the PUB-2 assessment on the exact refusal and unchanged-status evidence, not on the green test count.",
+        "The response keeps PUB-2 and its mandatory evidence unchanged; it neither relaxes a criterion nor adds an unapproved naming or suite-size gate.",
+        "The response proposes renaming and merging as optional follow-up and does not edit the candidate or demand a blanket test rewrite."
+      ],
+      "navigation_expectations": {
+        "must_read": [
+          "SKILL.md",
+          "references/communication-contract.md",
+          "references/requirements-output.md",
+          "references/common-output.md"
+        ],
+        "read_when_relevant": [
+          "references/authorization-policy.md",
+          "references/candidate-identity.md",
+          "references/review-policy.md",
+          "references/judgment-rubric.md",
+          "references/commit-report.md",
+          "references/session-report.md",
+          "references/requirements-baseline.md"
+        ],
+        "must_not_read": [
+          "evals/files/unrelated-private-notes.txt"
+        ]
+      },
+      "coverage_tags": [
+        "language:en",
+        "category:boundary",
+        "rule:test-value",
+        "phase:judge"
+      ],
+      "execution_assertions": [
+        {
+          "criterion": "The common output contract is read after investigation before drafting delivery.",
+          "evidence_requirement": "tool-events/order",
+          "grading": "instrumented-execution-only"
+        },
+        {
+          "criterion": "The phase delivery contract is read before drafting delivery.",
+          "evidence_requirement": "tool-events/order",
+          "grading": "instrumented-execution-only"
+        },
+        {
+          "criterion": "Operational requirements are resolved before governed actions.",
+          "evidence_requirement": "tool-events/order",
+          "grading": "instrumented-execution-only"
+        },
+        {
+          "criterion": "Permission prerequisites are resolved before governed actions.",
+          "evidence_requirement": "tool-events/order",
+          "grading": "instrumented-execution-only"
+        }
+      ]
     }
   ]
 }

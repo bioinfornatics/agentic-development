@@ -142,7 +142,8 @@ This is an agent instruction, not a runtime cache.
 
    Report each check by the behavior and criterion ID it proves, so the matrix reads
    as living documentation. Flag a test whose name or assertion does not reveal the
-   protected behavior as a readability finding, not a failure.
+   protected behavior, or a same-branch duplicate that adds no distinct fault, as a
+   readability or redundancy finding, not a failure.
 
 4. [ ] **Integrate observations and coverage limits**
 

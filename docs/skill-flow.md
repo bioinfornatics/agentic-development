@@ -57,7 +57,7 @@ state card and a restart prompt. `task-authoring` edits ticket text, then return
 | cycle | Beads integration or initialization, authorization and review policy, requirements baseline, judgment rubric, candidate identity, state template | `bd`, branch/status inventory, delegation, observed session/checkpoint links if Entire is integrated |
 | research | Delegated investigation, clarification interview, root-cause investigation, state of the art, reuse decision, knowledge pointers, readiness review | Workers: find files, analyze code, find patterns, optional state of the art; reproduction probes |
 | plan | Requirements baseline, review policy, judgment rubric, plan readiness review | `task-authoring` for authorized ticket writes, `bd dep add`, readback |
-| implement | Candidate identity, commit report | Project test runners, `candidate_identity.py`; branch, worktree or commit only with current authority |
+| implement | Candidate identity, test value, commit report | Project test runners, `candidate_identity.py`; branch, worktree or commit only with current authority |
 | test | Test value, candidate identity | Project checks, `candidate_identity.py` capture/compare, browser capture for UI |
 | judge | Judgment rubric, finding verification, candidate identity | Read-only reviewers, check replay, `candidate_identity.py` compare |
 | iterate | Candidate identity, review policy | Correction counter in the tracker task, else a non-durable state card; never edits code |

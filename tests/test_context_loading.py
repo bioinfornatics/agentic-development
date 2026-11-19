@@ -4,7 +4,8 @@ from pathlib import Path
 import unittest
 ROOT=Path(__file__).resolve().parents[1]
 NAMES=('cycle','research','plan','implement','test','judge','iterate')
-CONTRACTS=('requirements-baseline','authorization-policy','communication-contract','review-policy','judgment-rubric','common-output','candidate-identity','beads-integration','commit-report','session-report')
+CONTRACTS=('requirements-baseline','authorization-policy','communication-contract','review-policy','judgment-rubric','common-output','candidate-identity','beads-integration','commit-report','session-report','test-value')
+CONSUMERS={'judgment-rubric':('cycle','plan','judge'),'test-value':('implement','test')}
 
 class ContextLoading(unittest.TestCase):
     def test_protocol_identical_and_recovers_unavailable_context(self):
@@ -23,7 +24,7 @@ class ContextLoading(unittest.TestCase):
     def test_contracts_have_identity_and_identical_copies(self):
         for contract in CONTRACTS:
             copies=[]
-            consumers=('cycle','plan','judge') if contract=='judgment-rubric' else NAMES
+            consumers=CONSUMERS.get(contract,NAMES)
             for name in consumers:
                 p=ROOT/'skills'/name/'references'/(contract+'.md')
                 text=p.read_text()

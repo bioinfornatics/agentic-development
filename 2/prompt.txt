@@ -1,0 +1,14 @@
+Subagent ID: 20261119_48
+
+READ-ONLY research. Do not modify any file or tracker state (no bd create/update/close). Repository /home/jmercier/Codes/me/agentic-development. Build a gap matrix for these requirements against the CURRENT text of skills/*/SKILL.md, skills/cycle/references/{beads-integration.md,cycle-state.md,ticket-authoring.md,communication-contract.md}, skills/plan/references/plan-readiness-review.md, skills/cycle/assets/cycle-state.md, AGENTS.md, docs/skill-flow.md, docs/cycle.md:
+FR-1 single active epic (only its tasks pulled; switching needs explicit user decision).
+FR-2 WIP = active batch (only batch tasks in_progress; nothing else claimed/half-open).
+FR-3 batch = all ready unblocked independent tasks of the active epic, bounded only by host subagent concurrency limit, never a plugin cap; parallel subagents with disjoint writable paths.
+FR-4 finish before pull (no pull outside batch until batch closed or blocker reported).
+FR-5 DoD-gated closure (Test evidence + Judge accepted + closure authority; else stay open with named blocker + restart action).
+FR-6 no speculative tasks for epics not next in line (epic only: goal, outcomes, rough scope).
+FR-7 just-in-time refinement: when active epic lacks ready tasks for next batch, automatically propose Research->Plan refinement for it or next epic; horizon one batch ahead; tracker writes need authority.
+FR-8 discovered work -> open follow-up linked discovered-from, never claimed nor added to batch.
+Decision D4: a blocked task is unclaimed back to open with named blocker; rest of batch continues.
+For each FR give: current state (SUPPORTED / PARTIAL / MISSING / CONTRADICTED) with exact file:line quotes; the gap; the single owning file where the rule should live (prefer one place: cycle SKILL.md for loop rules, plan SKILL.md for planning horizon, beads-integration.md (7 byte-identical copies, tests enforce identity) for tracker mechanics) and a proposed minimal wording (1-3 sentences, imperative, English). Explicitly list text that CONTRADICTS the requirements (e.g. rules that encourage creating backlogs, multiple active tasks, 'one main task/agent', claiming without batch) with quotes.
+Also verify Beads CLI support by running ONLY help/read commands: `bd --help`, `bd ready --help`, `bd update --help`, `bd list --help`, `bd create --help`, `bd dep --help`, `bd children --help` or equivalent (find how to: list ready tasks under a parent epic, claim, unclaim/return to open, set status blocked, link discovered-from, list in_progress). Report exact flags that exist. Also list which tests in tests/ assert text you propose to change (grep), quoting the asserted strings. Output concise structured report (max ~1500 words).

@@ -3,10 +3,11 @@
   "checkpoint_id": "01M7TFMRXNKQCPRS1DVY12TE4T",
   "strategy": "manual-commit",
   "branch": "develop",
-  "checkpoints_count": 1,
+  "checkpoints_count": 2,
   "files_touched": [
     "integration/trigger-routing.json",
     "skills/cycle/SKILL.md",
+    "skills/cycle/evals/evals.json",
     "tests/test_cycle_disclosure.py",
     "tests/test_trigger_routing.py"
   ],
@@ -17,6 +18,13 @@
       "compact_transcript": "/0/transcript.jsonl",
       "content_hash": "/0/content_hash.txt",
       "prompt": "/0/prompt.txt"
+    },
+    {
+      "metadata": "/1/metadata.json",
+      "transcript": "/1/full.jsonl",
+      "compact_transcript": "/1/transcript.jsonl",
+      "content_hash": "/1/content_hash.txt",
+      "prompt": "/1/prompt.txt"
     }
   ],
   "token_usage": {
@@ -24,7 +32,7 @@
     "cache_creation_tokens": 0,
     "cache_read_tokens": 0,
     "output_tokens": 0,
-    "api_call_count": 10
+    "api_call_count": 18
   },
   "redaction": {
     "replacements": 0,

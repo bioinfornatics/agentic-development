@@ -1,6 +1,6 @@
 ---
 name: plan
-description: Defines software roadmaps, user stories and executable task graphs with criteria, dependencies and verification gates. Use for planning from established research or creating and updating project tickets.
+description: Defines software roadmaps, user stories and executable task graphs with criteria, dependencies and verification gates. Use for planning from established research, decomposing user stories into ready tasks, or recording a plan as tracker tickets; single-ticket wording repair belongs to task-authoring.
 ---
 
 # Plan
@@ -33,15 +33,14 @@ Save a report only with an explicit destination and permission to write, followi
 the common output contract loaded at that step. Required evidence inputs and tracker
 updates retain their own gates; an inline response does not replace task truth.
 
-Apply contracts before their governed actions, even before the nominal step
-containing the link when its condition arises earlier. Load a reference only when its
-applicable content is absent, incomplete or outdated in the active context; reuse
-identical available content from another Skill's contained copy. The same ID/version
-with different content is a conflict, not proof of identity: resolve it before the
-affected action. A previous read or loaded marker does not prove availability.
-After compaction, a new session or worker, recover required unavailable instructions;
-on workspace changes revalidate applicability. Reusing authorization guidance never renews
-a previous permission. This is an agent instruction, not a runtime cache.
+Apply contracts before their governed actions, even before the step that links them.
+Read a reference only when it is absent, incomplete or outdated in the active context.
+Reuse identical copies from another Skill. The same ID/version with different content
+is a conflict, not proof of identity; resolve it before the affected action.
+A loaded marker or earlier read does not prove availability. After compaction, a new
+session or worker, reload missing required instructions. After workspace changes,
+recheck applicability. Reused authorization guidance never renews a permission.
+This is an agent instruction, not a runtime cache.
 
 1. [ ] **Verify planning inputs and authority**
 
@@ -57,12 +56,20 @@ a previous permission. This is an agent instruction, not a runtime cache.
    capabilities produce an explicit blocker, never simulated execution evidence.
    Use the coordinator's verified slice state when available; do not fabricate execution or acceptance.
 
-   Before creating or repairing task descriptions or acceptance criteria, apply
-   [ticket authoring](references/ticket-authoring.md); verify readable purpose,
-   criteria, ordered inputs and restart context without duplicating execution history.
+   Before creating or repairing task descriptions or acceptance criteria, verify
+   current scope and write authority. Conditionally Load `agentic-development:task-authoring`
+   using the host's available Skill-loading mechanism (not a shell command), with
+   established goal, scope, criteria, native tracker context and current authority.
+   Reuse its guidance when already available and current; do not load both routes
+   normally. If the optional capability is unavailable, apply contained
+   [ticket authoring](references/ticket-authoring.md) directly and report direct
+   reading, not activation; do not retry loading or block routine work on its absence.
+   For routine reads, claims, progress updates or closure, do not load task-authoring.
+   Resume this caller after verified ticket readback or an explicit proposal/error;
+   retain this phase's scope, ownership, review and evidence gates.
 
    If the repository uses Beads, apply [the Beads integration](references/beads-integration.md)
-   before choosing work or mutating task state. Use fresh `bd prime` guidance;
+   before choosing work or mutating task state. Run `bd prime` only when Beads context is missing or stale;
    retain task ownership, readback and phase gates;
    evaluate commit suitability after each confirmed closure without inferring Git authority.
 
@@ -111,6 +118,19 @@ a previous permission. This is an agent instruction, not a runtime cache.
    next executable frontier; retain distant needs, risks and major dependencies.
    A task is small when its result can be reviewed and resumed independently, not
    because it edits few files. Do not split by function/file or phase mechanically.
+   Identify the primary deliverable and exit criteria, then select the bounded ready
+   execution frontier sufficient to produce it. Planning selects that frontier only;
+   it grants no permission to create tickets, claim tasks or start work. A ticket is not
+   active merely because it exists or has no blockers. Keep future needs coarse; do not
+   turn a bounded delivery request into speculative detailed tickets. Explicitly
+   requested/authorized backlog authoring remains legitimate.
+
+   For useful parallel contributions to this deliverable, name available inputs,
+   separately verifiable outputs, dependencies, exclusive paths, proposed owners
+   and the coordinator's integration/join. Only independently ready contributions
+   belong in the concurrent group; dependent work waits for verified mandatory
+   results. An assignment is not an observed delegate. Keep distant work coarse
+   and avoid fixed task/concurrency quotas or delegation of trivial work.
 
    Present the problem, expected user change, observable success and open decisions
    before technical detail. Do not copy general work instructions into each ticket;
@@ -136,6 +156,13 @@ a previous permission. This is an agent instruction, not a runtime cache.
    approved time/cost target separately from local summed test durations; unknown
    end-to-end CI measurements remain unresolved, not inferred from parallel runs.
 
+   Make each behavioral task test-first: its first step names the failing check
+   (new or existing) for every criterion ID it owns, and its exit requires that check
+   green. Deliver a criterion -> task -> check trace so every criterion has an owner
+   and a check, and every task serves a criterion or a named verifiable deliverable. When a choice is hard to reverse
+   (data model, public API, dependency, deployment shape), propose a short ADR
+   (context, decision, consequences) as a planning output; skip it for reversible choices.
+
    For the near-term implementation frontier, name the delivery mechanism (service,
    managed/self-hosted, runtime) and data/credential flow in the technical second
    layer, then ordered steps and a verified Read/Create/Modify/Preserve/Exclude
@@ -146,6 +173,11 @@ a previous permission. This is an agent instruction, not a runtime cache.
    do not invent file paths, numeric targets, owners or approval. Multiple tasks/commits may share one
    branch. If an independent review slice needs a different branch, announce
    current branch fit, proposed base/name and permission before any Git action.
+
+   Before declaring an individual ticket ready or approving a complete plan
+   (including a roadmap-only plan), read [the Plan readiness review](references/plan-readiness-review.md)
+   and apply its ticket questions to each ready ticket. Reuse
+   task-authoring mechanics; this review challenges usability, not field count.
 
    For UI work describe objects and CRUD (or N/A), changed zones using +/~/-/=,
    an ASCII sketch and the real visual verification planned. A drawing is not
@@ -158,19 +190,19 @@ a previous permission. This is an agent instruction, not a runtime cache.
    them inline by default; save only at an explicitly authorized destination.
 
    Create or update issues only when requested/authorized in the agreed tracker.
-   Inspect existing issues first, reuse matching work, verify supported fields and
-   write goals, exclusions, criteria, dependencies, ownership and restart context.
-   On updates, consolidate current solution/steps/files rather than append competing
-   designs; move dated findings to notes, preserve criterion IDs/history, reconcile
-   native edges and check cycles. Readback must pass the human readability gate in
-   ticket-authoring.md, not merely confirm nonempty fields.
-   Include Research's verified task-specific reading references: files or authorized
-   local web captures, entrypoints/sections, reasons, order, source identity and
-   freshness/accessibility limits. Do not copy full research into tickets or invent
-   saved resources; record local-only pointers honestly.
-   Distinguish parent hierarchy from prerequisites. After each write, read back
-   the issue and verify fields/edges; report actual IDs and errors. If writes are
-   not authorized, return proposed tickets without claiming they were created.
+   Use the conditional task-authoring route above with the established planning
+   baseline; do not repeat its procedure here. It must consolidate current solution/steps/files,
+   preserve criteria/history and native ownership/edges, and read back actual writes.
+   Supply Research's verified task-specific reading references, source identity,
+   order and freshness/accessibility limits; do not invent saved resources.
+   Retain planning scope, review requirements and verification proof. Distinguish
+   parent hierarchy from prerequisites; report actual IDs and errors, or proposed
+   tickets when writes are unavailable. Task authoring does not approve this plan.
+
+   Before approving the complete current plan for execution, apply the global
+   delegated challenge from the Plan readiness review linked in step 4. Review
+   the whole graph, including implicit prerequisites; do not substitute ticket
+   readback or self-review for this gate.
 
    Verify actual delegated planning completion, source identity and result locator
    before integration. Reconcile conflicts and retain unresolved decisions and missing

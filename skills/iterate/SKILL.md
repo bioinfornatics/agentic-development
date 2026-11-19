@@ -1,6 +1,6 @@
 ---
 name: iterate
-description: Coordinates bounded corrective development. Use for judge findings, failed verification, missing proof, repeated failures or newly discovered scope risks.
+description: Classifies a failed check or judge finding and routes the smallest authorized correction to Implement, Test, Research or Plan within a correction-attempt budget; it does not edit code. Use for judge findings, failed verification, missing proof, repeated failures or newly discovered scope risks.
 ---
 
 # Iterate
@@ -12,7 +12,7 @@ Resolve the findings, candidate, retained proof, current permissions and correct
 | Intent / condition | Execute | Required result |
 |---|---|---|
 | Correct an evidenced implementation defect | Check current scope, reproduction, capability and budget; route the smallest authorized correction to Implement | Corrective task with symptom-specific verification and attempt counter |
-| Supply missing proof without changing behavior | Route available checks to Test; wait on unavailable capability without consuming a correction round | New proof or precise prerequisite, with valid prior evidence retained |
+| Supply missing proof without changing behavior | Route available checks to Test; wait on unavailable capability without consuming a correction attempt | New proof or precise prerequisite, with valid prior evidence retained |
 | Resolve a research gap or changed requirement | Route uncertainty to Research, changed scope/criteria to Plan and unresolved authorization to the user | Decision-grounded next task; no speculative repair |
 | Budget is exhausted or repeated attempts make no progress | Stop corrective execution and preserve the candidate, evidence and restart context | Blocker, bounded options and required decision; no extra attempt |
 
@@ -28,15 +28,14 @@ Save a report only with an explicit destination and permission to write, followi
 the common output contract loaded at that step. Required evidence inputs and tracker
 updates retain their own gates; an inline response does not replace task truth.
 
-Apply contracts before their governed actions, even before the nominal step
-containing the link when its condition arises earlier. Load a reference only when its
-applicable content is absent, incomplete or outdated in the active context; reuse
-identical available content from another Skill's contained copy. The same ID/version
-with different content is a conflict, not proof of identity: resolve it before the
-affected action. A previous read or loaded marker does not prove availability.
-After compaction, a new session or worker, recover required unavailable instructions;
-on workspace changes revalidate applicability. Reusing authorization guidance never renews
-a previous permission. This is an agent instruction, not a runtime cache.
+Apply contracts before their governed actions, even before the step that links them.
+Read a reference only when it is absent, incomplete or outdated in the active context.
+Reuse identical copies from another Skill. The same ID/version with different content
+is a conflict, not proof of identity; resolve it before the affected action.
+A loaded marker or earlier read does not prove availability. After compaction, a new
+session or worker, reload missing required instructions. After workspace changes,
+recheck applicability. Reused authorization guidance never renews a permission.
+This is an agent instruction, not a runtime cache.
 
 1. [ ] **Recover scope and current authority**
 
@@ -48,12 +47,20 @@ a previous permission. This is an agent instruction, not a runtime cache.
    resuming artifact claims or executing consequential actions; verify current
    permission for the intended action, not historical approval.
 
-   Before creating or repairing task descriptions or acceptance criteria, apply
-   [ticket authoring](references/ticket-authoring.md); verify readable purpose,
-   criteria, ordered inputs and restart context without duplicating execution history.
+   Before creating or repairing task descriptions or acceptance criteria, verify
+   current scope and write authority. Conditionally Load `agentic-development:task-authoring`
+   using the host's available Skill-loading mechanism (not a shell command), with
+   established goal, scope, criteria, native tracker context and current authority.
+   Reuse its guidance when already available and current; do not load both routes
+   normally. If the optional capability is unavailable, apply contained
+   [ticket authoring](references/ticket-authoring.md) directly and report direct
+   reading, not activation; do not retry loading or block routine work on its absence.
+   For routine reads, claims, progress updates or closure, do not load task-authoring.
+   Resume this caller after verified ticket readback or an explicit proposal/error;
+   retain this phase's scope, ownership, review and evidence gates.
 
    If the repository uses Beads, apply [the Beads integration](references/beads-integration.md)
-   before choosing work or mutating task state. Use fresh `bd prime` guidance;
+   before choosing work or mutating task state. Run `bd prime` only when Beads context is missing or stale;
    retain task ownership, readback and phase gates;
    evaluate commit suitability after each confirmed closure without inferring Git authority.
 
@@ -80,13 +87,17 @@ a previous permission. This is an agent instruction, not a runtime cache.
 
    Classify each open item as implementation defect, missing proof/capability,
    research gap or scope/acceptance decision. Link it to evidence and criterion.
+   Distinguish failed feasibility (an indispensable operation is unsupported or
+   refuted) from a failed transition (producer output does not satisfy a consumer's
+   input/precondition). Name affected nodes and deciding evidence rather than
+   treating every mismatch as an implementation defect.
 
 3. [ ] **Check capability and remaining budget**
 
    Before starting a correction, check required capabilities and remaining budget.
    If a required capability is unavailable, stop and report the blocker, preserved
    state and prerequisite. A capability-only stop is not a correction attempt:
-   do not increment the round counter. Preserve unchanged, still-current proofs;
+   do not increment the attempt counter. Preserve unchanged, still-current proofs;
    invalidate only evidence whose inputs changed or whose freshness failed.
    Do not fabricate a test or waive its gate because a capability is missing.
 
@@ -104,6 +115,15 @@ a previous permission. This is an agent instruction, not a runtime cache.
    Reuse a matching tracker task rather than one per hunk; link its US/spec and
    precise corrective check. Changed scope/domain assumptions require Research/Plan,
    not speculative functionality or unrelated rewrites.
+   For failed feasibility or transition, propose a local replan through Research
+   for the deciding unknown and Plan for an affected bridge/order/design. Preserve
+   the goal, valid proofs and independent ready nodes; pause only affected nodes.
+   Do not weaken criteria or widen authority. Diagnosis and planning consume zero
+   attempts and never reset the existing attempt counter. Bound this
+   planning to the named deciding question and available evidence; bounded
+   no-progress planning stops at a named deciding prerequisite, its owner (or
+   unknown), affected consumer and observable result needed to resume. Repeating
+   speculative plans without new deciding evidence is not progress.
 
 5. [ ] **Verify available outcomes and preserve restart state**
 
@@ -132,7 +152,8 @@ a previous permission. This is an agent instruction, not a runtime cache.
    with its task, reproduction, owned paths and remaining budget, then route the changed
    candidate through Test and Judge. For proof-only work, Load
    `agentic-development:test` with the missing criterion and unchanged candidate.
-   Load `agentic-development:research` for unknown causes, or
+   Load `agentic-development:research` for unknown causes, asking for its root-cause
+   investigation with the symptom, reproduction (if any) and refuted hypotheses, or
    `agentic-development:plan` for changed scope/criteria; request the real
    permission or scope decision rather than inventing it.
 

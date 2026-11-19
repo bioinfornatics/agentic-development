@@ -1,11 +1,22 @@
-# Readable and restartable task tickets v1.3.0
+# Readable and restartable task tickets v1.4.0
 
 Contract ID: agentic-development/ticket-authoring
-Contract version: 1.3.0
+Contract version: 1.4.0
 
 Apply before creating or repairing task descriptions or acceptance criteria in any
 agreed tracker; apply the Beads bridge when relevant. This is authoring guidance,
 not an enforcement engine or permission to mutate tickets.
+
+## Contents
+
+- [Author and verify](#author-and-verify)
+- [Concrete execution frontier](#concrete-execution-frontier)
+- [Consolidate updates](#consolidate-updates-do-not-append-competing-specifications)
+- [Readability gate](#readability-gate-before-writing-and-after-readback)
+- [Description template](#description-template)
+- [Acceptance scenario template](#acceptance-scenario-template)
+- [Filled example](#filled-example)
+- [Readiness checklist](#readiness-checklist)
 
 ## Author and verify
 
@@ -20,7 +31,10 @@ not an enforcement engine or permission to mutate tickets.
    Do not paste operational preambles, transcripts or circular justification.
    Do not invent an end user for technical/non-behavioral work: identify the
    affected maintainer/system, concrete difficulty and verifiable deliverable.
-3. Bound one independently reviewable result. Split when outcomes need different
+3. Bound one independently reviewable result. Identify its primary outcome and exit
+   criteria, or its bounded contribution to the current primary deliverable. Several
+   ready tickets are choices, not simultaneous execution by one agent; selection
+   alone does not start them. Split when outcomes need different
    prerequisites or acceptance decisions, not by file or phase mechanically.
    Technical detail comes after the problem, expected outcome, limits, success
    criteria and open decisions. How describes the approach; acceptance criteria describe results, not
@@ -45,6 +59,10 @@ not an enforcement engine or permission to mutate tickets.
    notes/comments, and status/owner/prerequisite edges in native fields. Never
    maintain divergent criteria copies. Dated notes contain criterion IDs, candidate,
    checks/results, limits and next action; use locators, not full logs or secrets.
+   Distinguish planned work, selection, native claim and observed execution. A claim
+   does not prove activity or a delegate launch. Reference actual delegate identity
+   and observed status only when verified; do not invent workers or native states,
+   or treat selection/claim as ownership-change permission.
    Do not copy general work instructions (authorization, review, Git or session
    procedure) into every ticket. Reference the applicable shared policy instead;
    retain only task-specific restrictions, review/evidence needs and exceptions.
@@ -69,8 +87,12 @@ producer → transport → consumer path and bootstrap/recovery boundary without
 capabilities need a decision/probe, not an invented implementation; use a small
 text diagram only when it clarifies the flow.
 
-Detail ready implementation tickets, not every distant roadmap item. Before
-calling an implementation ticket ready, provide a verified file/asset map:
+Detail the bounded ready frontier serving the selected primary deliverable, not
+every distant roadmap item. Keep future ideas coarse unless current scope authorizes
+backlog authoring; an authorized backlog is legitimate planning, not active work.
+Do not expand a bounded request into speculative detailed tickets merely to populate
+a roadmap. Before calling an implementation ticket ready, provide a verified
+file/asset map:
 
 | Action | Required content |
 |---|---|
@@ -95,6 +117,14 @@ insufficient. Scope and estimated size follow one reviewable outcome; split when
 bootstrap, runtime integration and production rollout require different inputs,
 authority or acceptance. Do not duplicate all consumer implementations in a
 foundation ticket. Choose task names that expose the delivered capability.
+
+When useful independent contributions are relevant, keep their names, required
+inputs, expected outputs, actual owners and integration/join prerequisites
+recoverable through native fields or small resolvable references. Distinguish
+proposed assignments from actual delegates; required live, failed or partial
+contributions leave dependent work unready until their verified join, without
+blocking unrelated permitted work. Do not force delegation or add a universal
+metadata block; the caller retains dispatch and integration procedures.
 
 ## Consolidate updates, do not append competing specifications
 
@@ -277,5 +307,8 @@ capabilities into a read-only/preservation result.
       and prerequisites consistent and cycle-free; no unblocked-but-undesigned readiness.
 - [ ] Required inputs resolve; owner, parent/prerequisite direction, permissions
       and blocking decisions are explicit. Missing mandatory facts block readiness.
+- [ ] The primary outcome or contribution and exit criteria are clear; the bounded
+      ready frontier is distinct from distant backlog. Selection, claim and observed
+      execution are not conflated; applicable contribution/join references resolve.
 - [ ] Readback confirms fields/links, preserved history and unchanged criteria;
       first restart action is executable or names its exact prerequisite.

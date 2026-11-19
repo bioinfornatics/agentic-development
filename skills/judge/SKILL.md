@@ -28,15 +28,14 @@ Save a report only with an explicit destination and permission to write, followi
 the common output contract loaded at that step. Required evidence inputs and tracker
 updates retain their own gates; an inline response does not replace task truth.
 
-Apply contracts before their governed actions, even before the nominal step
-containing the link when its condition arises earlier. Load a reference only when its
-applicable content is absent, incomplete or outdated in the active context; reuse
-identical available content from another Skill's contained copy. The same ID/version
-with different content is a conflict, not proof of identity: resolve it before the
-affected action. A previous read or loaded marker does not prove availability.
-After compaction, a new session or worker, recover required unavailable instructions;
-on workspace changes revalidate applicability. Reusing authorization guidance never renews
-a previous permission. This is an agent instruction, not a runtime cache.
+Apply contracts before their governed actions, even before the step that links them.
+Read a reference only when it is absent, incomplete or outdated in the active context.
+Reuse identical copies from another Skill. The same ID/version with different content
+is a conflict, not proof of identity; resolve it before the affected action.
+A loaded marker or earlier read does not prove availability. After compaction, a new
+session or worker, reload missing required instructions. After workspace changes,
+recheck applicability. Reused authorization guidance never renews a permission.
+This is an agent instruction, not a runtime cache.
 
 1. [ ] **Verify scope, authority and reviewer prerequisites**
 
@@ -48,12 +47,20 @@ a previous permission. This is an agent instruction, not a runtime cache.
    resuming artifact claims or executing consequential actions; verify current
    permission for the intended action, not historical approval.
 
-   Before creating or repairing task descriptions or acceptance criteria, apply
-   [ticket authoring](references/ticket-authoring.md); verify readable purpose,
-   criteria, ordered inputs and restart context without duplicating execution history.
+   Before creating or repairing task descriptions or acceptance criteria, verify
+   current scope and write authority. Conditionally Load `agentic-development:task-authoring`
+   using the host's available Skill-loading mechanism (not a shell command), with
+   established goal, scope, criteria, native tracker context and current authority.
+   Reuse its guidance when already available and current; do not load both routes
+   normally. If the optional capability is unavailable, apply contained
+   [ticket authoring](references/ticket-authoring.md) directly and report direct
+   reading, not activation; do not retry loading or block routine work on its absence.
+   For routine reads, claims, progress updates or closure, do not load task-authoring.
+   Resume this caller after verified ticket readback or an explicit proposal/error;
+   retain this phase's scope, ownership, review and evidence gates.
 
    If the repository uses Beads, apply [the Beads integration](references/beads-integration.md)
-   before choosing work or mutating task state. Use fresh `bd prime` guidance;
+   before choosing work or mutating task state. Run `bd prime` only when Beads context is missing or stale;
    retain task ownership, readback and phase gates;
    evaluate commit suitability after each confirmed closure without inferring Git authority.
 
@@ -79,11 +86,11 @@ a previous permission. This is an agent instruction, not a runtime cache.
 
 2. [ ] **Bind the frozen candidate and review basis**
 
-   Apply [candidate identity](references/candidate-identity.md) before planning checks,
-   freezing inputs or reusing evidence; include staged, untracked and binary inputs
+   Apply [candidate identity](references/candidate-identity.md) before freezing or comparing inputs
+   or reusing evidence; include staged, untracked and binary inputs
    and explicitly defined output-only exclusions. Apply [the review policy](references/review-policy.md)
    before agreeing acceptance, judging or closing a task/US. Independence and closure
-   requirements are set before implementation, not waived by a missing capability.
+   requirements were set at plan time; a missing capability does not waive them.
    For exact-candidate proof, use the contained [capture/validate/compare CLI](scripts/candidate_identity.py) with the [scope example](references/candidate-scope.example.json); consult the [manifest schema](references/candidate-identity.schema.json) and [manifest example](references/candidate-identity.example.json) when preparing or validating its JSON. Follow the candidate procedure above; equality is not acceptance.
 
    Match proofs to candidate/environment and scope. Inspect relevant code and
@@ -200,7 +207,7 @@ a previous permission. This is an agent instruction, not a runtime cache.
    |---|---|---|
    | `accepted` | Return the exact accepted scope to the coordinator/user; no implicit closure, commit, push, merge or release | Candidate ID, criterion evidence, score state and limits; any publication/closure needs separate authority |
    | `needs-correction` | If continuation is authorized, Load `agentic-development:iterate`; otherwise return the proposed correction handoff and stop | Confirmed finding IDs, scoped verdict, candidate, evidence, minimal corrective checks and current correction budget; repair then Test and Judge the changed candidate |
-   | `indeterminate` | Resolve the named proof/capability/provenance/independence gap; no speculative code repair | Name missing input and supplier; route missing checks to Test only when authorized, or request the required reviewer/access. Re-run Judge when prerequisites are satisfied; a newly confirmed defect changes the route to needs-correction |
+   | `indeterminate` | Resolve the named proof/capability/provenance/independence gap; no speculative code repair | Name missing input and supplier; route missing checks to Test only when authorized, or request the required reviewer/access. Re-run Judge when prerequisites are satisfied; a newly confirmed defect changes the route to needs-correction. A second indeterminate verdict on the same candidate for the same gap stops and returns the blocker to the user instead of another Test round |
    | `not-run` | Execute Judge only if requested and its prerequisites are available; otherwise return its prerequisite checklist and stop | Approved scope, frozen candidate, evidence index, plan-time mode and reviewer/independence; first review produces a verdict, not an assumed failure or acceptance |
 
    needs-correction means change a confirmed defective candidate; indeterminate means

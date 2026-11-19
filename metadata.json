@@ -3,7 +3,7 @@
   "checkpoint_id": "01M7TB6QXCC456BK5TE6XTDB2A",
   "strategy": "manual-commit",
   "branch": "develop",
-  "checkpoints_count": 7,
+  "checkpoints_count": 8,
   "files_touched": [
     "AGENTS.md",
     "docs/cycle.md",
@@ -38,6 +38,7 @@
     "tests/test_batch_tracker.py",
     "tests/test_deliverable_focus.py",
     "tests/test_planning_horizon.py",
+    "tests/test_ticket_authoring.py",
     "tests/test_trigger_routing.py"
   ],
   "sessions": [
@@ -89,6 +90,13 @@
       "compact_transcript": "/6/transcript.jsonl",
       "content_hash": "/6/content_hash.txt",
       "prompt": "/6/prompt.txt"
+    },
+    {
+      "metadata": "/7/metadata.json",
+      "transcript": "/7/full.jsonl",
+      "compact_transcript": "/7/transcript.jsonl",
+      "content_hash": "/7/content_hash.txt",
+      "prompt": "/7/prompt.txt"
     }
   ],
   "token_usage": {
@@ -96,7 +104,7 @@
     "cache_creation_tokens": 0,
     "cache_read_tokens": 0,
     "output_tokens": 0,
-    "api_call_count": 99
+    "api_call_count": 104
   },
   "redaction": {
     "replacements": 0,

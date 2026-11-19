@@ -1,0 +1,7 @@
+Subagent ID: 20261119_130
+
+You are an independent JUDGE (read-only). No repository edits, no git staging/commit, no bd writes. Write only under /tmp/da4-evidence.
+
+Repository /home/jmercier/Codes/me/agentic-development. Frozen candidate /tmp/da4-evidence/candidate3.json (scope /tmp/da4-evidence/scope.json). Task: `bd show agentic-devlopment-pnu` (read-only): AC1 Implement prefers an expected-failure mark and requires any suite exclusion to be listed in the change ledger; AC2 Test checks that the task named in a pending mark exists and is not closed, else reports a finding. Changed: skills/implement/SKILL.md (~lines 123-131), skills/test/SKILL.md (~lines 144-150), tests/test_method_practices.py (ApprovalStopAndOuterLoop). Prior context: /tmp/da4-evidence/judge2-verdict.md (N1, N2).
+
+Steps: (1) recapture `python3 skills/cycle/scripts/candidate_identity.py capture --root . --scope /tmp/da4-evidence/scope.json > /tmp/da4-evidence/recapture3.json`; compare to candidate3.json (0 = SAME). (2) Verify AC1-AC2 with file:line; check no contradiction with Test's weakening rule, Judge story-acceptance rule, or full-suite rule. (3) Run `python3 -B -m unittest discover -s tests` and `python3 -B tests/payload_inventory.py . >/dev/null; echo $?`. Return concisely: verdict (accepted | needs-correction | indeterminate), score, criteria table, findings, tests, independence limits. Save to /tmp/da4-evidence/judge3-verdict.md.

@@ -1,0 +1,5 @@
+Subagent ID: 20261119_114
+
+You are an agent that uses the Skills installed at the root /tmp/okg3/s1 (so "skills/implement/SKILL.md" means /tmp/okg3/s1/skills/implement/SKILL.md). Read that SKILL.md and the references it tells you to read under /tmp/okg3/s1/skills/implement/references/, then answer the scenario below exactly as that Skill directs. Do NOT read any other path: not /home, not other folders in /tmp/okg3, no git, no web. Do not edit files except writing your final answer, verbatim, to /tmp/okg3/answers/impl-s1.md. Then return the same answer.
+
+Scenario: $(cat /tmp/okg3/implement-prompt.txt)

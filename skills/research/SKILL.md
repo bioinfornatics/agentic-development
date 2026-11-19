@@ -89,8 +89,10 @@ This is an agent instruction, not a runtime cache.
    Before dispatch, read [the internal investigation contract](references/delegated-investigation.md).
    These are intent labels, not required tool names: workers map them to available tools.
    Do not inject the full session or concatenate raw reports. If a deeper investigation
-   needs a worker and none is available, report the blocker and obtain
-   explicit permission for direct investigation; never fall back silently or waive required
+   needs a worker and the host has no worker capability (verified, not merely unused),
+   investigate directly, record `direct, reduced independence` in report limits and
+   proceed; ask the user only for a missing permission. Absence means the host's available tool list has no subagent or delegation tool; record that observation in report limits. If dispatch fails despite
+   capability, report the blocker. Never fall back silently or waive required
    isolation or independence. Select workers adaptively, not as a mandatory four-worker batch.
 
    | Mode | Question | Action and observable result |
@@ -155,8 +157,8 @@ This is an agent instruction, not a runtime cache.
    - For delegated modes, verify actual worker invocation and completion status,
      source identity and result locator. For direct work, record the coordinator's
      sources, result and bounded-path rationale; mark unneeded modes N/A with reason.
-     Required unavailable delegation needs a blocker or explicit direct-investigation
-     waiver, never invented completion or waived independence. Deduplicate
+     Without worker capability, apply the disclosed direct fallback from step 2;
+     never invent completion or claim independence. Deduplicate
      findings, resolve or expose conflicts, and mark insights observed, inferred or
      to-verify. Failed or partial results remain provisional. Compare the smallest viable
      alternatives, dependencies, risks and unknowns without premature design.

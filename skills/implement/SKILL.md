@@ -194,7 +194,7 @@ This is an agent instruction, not a runtime cache.
 
    Check recorded observations: requirement-derived observed red before executable production changes, the smallest green change and same-check refactor reruns; for instruction-only work, label checks static. Retain actual commands/results, relevant regressions and any UI journey/capture limits.
 
-   Keep missing evidence, public-seam access, tools, permissions and required review/independence explicit; passing focused checks is not acceptance. Verify candidate/check provenance and identify what remains unverified. Freeze exact handoff candidate.
+   Keep missing evidence, public-seam access, tools, permissions and required review/independence explicit; passing focused checks is not acceptance. Verify candidate/check provenance and identify what remains unverified. Freeze exact handoff candidate, after any commit below.
 
    Describe the actual outcome and scope using the project message convention,
    with verified task IDs when the tracker applies. Use Gitmoji only when the project convention approves it;
@@ -211,8 +211,9 @@ This is an agent instruction, not a runtime cache.
    verified committed files, problem/feature, actual metadata and remaining state.
 
    Verify identity, actual message and committed paths. Link results in Beads only when
-   permitted and read back updates. After HEAD/index changes retain original provenance;
-   rebind documented equality or rerun rather than invent proof on the new commit.
+   permitted and read back updates. After a performed commit, capture the handoff candidate again
+   and freeze its new candidate_id; reuse pre-commit evidence only through the
+   commit rebind in candidate identity, otherwise rerun. Never claim checks ran on the new commit.
    Failed mandatory checks leave a documented WIP candidate, not acceptance.
 
 6. [ ] **Verify readiness and draft the phase response**

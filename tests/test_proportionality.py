@@ -34,7 +34,7 @@ class Proportionality(unittest.TestCase):
         self.assertIn('The coordinator may directly verify', text)
         self.assertIn('Delegate deeper selected investigations', text)
         self.assertIn('mandatory isolation or independence', text)
-        self.assertIn('explicit permission for direct investigation', text)
+        self.assertIn('ask the user only for a missing permission', text)
         self.assertNotIn('Missing\n     delegation requires a blocker', text)
 
 if __name__ == '__main__': unittest.main()

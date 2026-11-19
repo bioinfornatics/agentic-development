@@ -206,8 +206,11 @@ This is an agent instruction, not a runtime cache.
 
    Before approving the complete current plan for execution, apply the global
    delegated challenge from the Plan readiness review linked in step 4. Review
-   the whole graph, including implicit prerequisites; do not substitute ticket
-   readback or self-review for this gate.
+   the whole graph, including implicit prerequisites; ticket readback never
+   substitutes for this gate. With no worker capability (verified, not merely
+   unused), run the challenge directly, record `direct, reduced independence`
+   in report limits and proceed; ask the user only for a missing permission.
+   Absence means the host's available tool list has no subagent or delegation tool; record that observation in report limits.
 
    Verify actual delegated planning completion, source identity and result locator
    before integration. Reconcile conflicts and retain unresolved decisions and missing

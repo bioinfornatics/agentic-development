@@ -663,7 +663,7 @@
         "max_turns": 12,
         "timeout_seconds": 300
       },
-      "prompt": "Explain Research when a local code investigation is needed but no delegation capability is available. Read normal fixture as hypothetical background. Direct investigation has not been authorized. No live work. The question needs deeper repository discovery beyond the supplied sources; separate worker contexts are unavailable and no direct fallback has been approved.",
+      "prompt": "Explain Research when a local code investigation is needed but no delegation capability is available. Read normal fixture as hypothetical background. No live work. The question needs deeper repository discovery beyond the supplied sources; the host is verified to have no separate worker capability. Also explain the variant where worker capability exists but dispatch fails.",
       "expected_output": "Explain-only compact delegation output and task reading references with honest execution/persistence limits; five-section coordinator response.",
       "files": [
         "evals/files/scenario-facts.json"
@@ -676,8 +676,9 @@
         "tools": []
       },
       "assertions": [
-        "Missing delegation is disclosed as a precise prerequisite.",
-        "Direct investigation requires explicit user permission.",
+        "With worker capability verified absent, Research investigates directly and discloses `direct, reduced independence` as a report limit, never a silent fallback or claimed independence.",
+        "The user is asked only for a missing permission, not for approval of the direct fallback.",
+        "When worker capability exists but dispatch fails, the failure is reported as a blocker instead of falling back directly.",
         "A completed worker is not invented.",
         "The output identifies the scenario intent and selects the corresponding concrete action rather than only describing the phase.",
         "The output identifies required inputs, the verifiable phase result and the next named Skill or a specific missing prerequisite without fabricating activation.",

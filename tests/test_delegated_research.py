@@ -9,7 +9,8 @@ class DelegatedResearch(unittest.TestCase):
         self.assertIn('Delegate deeper selected investigations', text)
         self.assertIn('The coordinator may directly verify', text)
         self.assertIn('references/delegated-investigation.md', text)
-        self.assertIn('explicit permission for direct investigation', text)
+        self.assertIn('ask the user only for a missing permission', text)
+        self.assertIn('fall back silently', text)
 
     def test_worker_contract_retains_proof_and_task_reading_pointers(self):
         p = ROOT / 'skills/research/references/delegated-investigation.md'
@@ -38,7 +39,7 @@ class OrderedChecklist(unittest.TestCase):
         self.assertIn('references/common-output.md', delivery)
         self.assertLess(block.index('completion status'), block.index('references/common-output.md'))
         self.assertLess(block.index('find_files'), block.index('analyze_code'))
-        for term in ('worker invocation', 'completion status', 'in parallel', 'state_of_the_art', 'waiver'):
+        for term in ('worker invocation', 'completion status', 'in parallel', 'state_of_the_art', 'direct, reduced independence'):
             self.assertIn(term, block)
         self.assertIn('   - [ ]', block)
 

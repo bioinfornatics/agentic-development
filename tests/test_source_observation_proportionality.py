@@ -37,7 +37,7 @@ class SourceObservationProportionality(unittest.TestCase):
                 self.assertIn(safeguard, text)
         research = (ROOT / 'skills/research/SKILL.md').read_text()
         self.assertIn('The coordinator may directly verify', research)
-        self.assertIn('explicit permission for direct investigation', research)
+        self.assertIn('ask the user only for a missing permission', research)
         self.assertIn('product purpose, users and desired outcome', research)
 
 

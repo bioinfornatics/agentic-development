@@ -1,7 +1,7 @@
-# Candidate identity v1.3.0
+# Candidate identity v1.4.0
 
 Contract ID: agentic-development/candidate-identity
-Contract version: 1.3.0
+Contract version: 1.4.0
 
 Use before planning checks, freezing a candidate or reusing evidence. Choose the
 path matching the purpose; source reading alone is not an acceptance check.
@@ -63,8 +63,25 @@ python3 -B "$SKILL_DIR/scripts/candidate_identity.py" compare \
    Validate a saved manifest with `validate "$EVIDENCE_DIR/before.json"` after the script path.
 8. Link reports to input candidate_id and hash output artifacts separately. Do not
    hash a manifest into itself or commit reports automatically. After a commit,
-   retain the precommit ID: HEAD/index changes require documented content/environment
-   equality or reruns, never an invented claim that tests ran on the new commit.
+   retain the precommit ID and apply C; never claim tests ran on the new commit.
+
+## C. Rebind evidence across a commit
+
+A commit or staging changes HEAD/index, so compare reports DIFFERENT even when
+scoped bytes are identical. Keep the pre-commit manifest as before.json, capture
+again after the commit with the same root and scope into after.json, validate both,
+then compare them excluding only candidate_id and git (HEAD and index):
+
+~~~sh
+python3 -B -c 'import json,sys;a,b=(json.load(open(p)) for p in sys.argv[1:]);d=lambda m:{k:v for k,v in m.items() if k not in ("candidate_id","git")};sys.exit(d(a)!=d(b))' "$EVIDENCE_DIR/before.json" "$EVIDENCE_DIR/after.json"
+~~~
+
+Exit 0: pre-commit evidence binds to the after.json candidate_id; freeze that ID
+and record both IDs, old/new HEAD and this command. Otherwise rerun the affected
+checks on the new candidate. If a check consumes Git state (index, HEAD, history),
+rerun it. The rebind covers scoped working-tree bytes, not the commit object: claim
+the commit holds the tested bytes only if `git diff --quiet HEAD -- <include paths>`
+also exits 0.
 
 ## Format and limits
 

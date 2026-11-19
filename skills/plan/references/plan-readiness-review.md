@@ -91,12 +91,18 @@ coordinator verifies invocation, completion, source identity and result locator,
 reconciles findings under existing permissions and retains unresolved contradictions.
 A worker summary is not plan approval or independent acceptance of implementation.
 
-If delegation is unavailable, name the exact prerequisite: coordinator/user supplies
-a separate non-builder read-only reviewer with access to this complete plan and
-criteria. Keep the global approval gate pending; no silent direct fallback or
-self-acceptance. This blocks approval of the affected plan, not unrelated authorized
-work. Run this challenge once before approval; rerun only when changes affect the
-graph, criteria or material inputs, not for every minor wording edit.
+If the host has no worker capability (verified, not merely unused), the coordinator
+asks these questions directly after construction, records `direct, reduced
+independence` in report limits and may proceed to approval. Ask the user only for
+a missing permission. This is not independent review or acceptance.
+Absence means the host's available tool list has no subagent or delegation tool; record that observation in report limits.
+
+If delegation is unavailable although capability exists, name the exact prerequisite:
+coordinator/user supplies a separate non-builder read-only reviewer with access to
+this complete plan and criteria. Keep the global approval gate pending;
+no silent direct fallback or self-acceptance. This blocks approval of the affected
+plan, not unrelated authorized work. Run this challenge once before approval; rerun only when
+changes affect the graph, criteria or material inputs, not for every minor wording edit.
 
 ## 3. Stop with an executable frontier
 

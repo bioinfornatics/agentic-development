@@ -67,4 +67,6 @@ The default budget is three authorized attempts; waiting and diagnosis
 do not consume an attempt. When blocked or out of attempts, stop and prepare
 the handoff. Close only the scope actually verified and authorized.
 
+See [how the Skills chain together](skill-flow.md) for the routing map.
+
 Next: [manage tasks, commits and sessions](integrations.md).

@@ -1,6 +1,6 @@
 ---
 name: plan
-description: Defines software roadmaps, user stories and executable task graphs with criteria, dependencies and verification gates. Use for planning from established research or creating and updating project tickets.
+description: Defines software roadmaps, user stories and executable task graphs with criteria, dependencies and verification gates. Use for planning from established research, decomposing user stories into ready tasks, or recording a plan as tracker tickets; single-ticket wording repair belongs to task-authoring.
 ---
 
 # Plan
@@ -120,12 +120,11 @@ a previous permission. This is an agent instruction, not a runtime cache.
    A task is small when its result can be reviewed and resumed independently, not
    because it edits few files. Do not split by function/file or phase mechanically.
    Identify the primary deliverable and exit criteria, then select the bounded ready
-   execution frontier sufficient to produce it. Distinguish that selection from the
-   complete roadmap, ticket creation, claims and actual execution: planning grants
-   none of these actions. Keep future needs coarse; do not turn a bounded delivery
-   request into speculative detailed tickets. Explicitly requested/authorized backlog
-   authoring remains legitimate, but its tickets are not active execution merely
-   because they exist or have no native blockers.
+   execution frontier sufficient to produce it. Planning selects that frontier only;
+   it grants no permission to create tickets, claim tasks or start work. A ticket is not
+   active merely because it exists or has no blockers. Keep future needs coarse; do not
+   turn a bounded delivery request into speculative detailed tickets. Explicitly
+   requested/authorized backlog authoring remains legitimate.
 
    For useful parallel contributions to this deliverable, name available inputs,
    separately verifiable outputs, dependencies, exclusive paths, proposed owners
@@ -158,6 +157,13 @@ a previous permission. This is an agent instruction, not a runtime cache.
    approved time/cost target separately from local summed test durations; unknown
    end-to-end CI measurements remain unresolved, not inferred from parallel runs.
 
+   Make each behavioral task test-first: its first step names the failing check
+   (new or existing) for every criterion ID it owns, and its exit requires that check
+   green. Deliver a criterion -> task -> check trace so every criterion has an owner
+   and a check, and every task serves a criterion or a named verifiable deliverable. When a choice is hard to reverse
+   (data model, public API, dependency, deployment shape), propose a short ADR
+   (context, decision, consequences) as a planning output; skip it for reversible choices.
+
    For the near-term implementation frontier, name the delivery mechanism (service,
    managed/self-hosted, runtime) and data/credential flow in the technical second
    layer, then ordered steps and a verified Read/Create/Modify/Preserve/Exclude
@@ -169,8 +175,9 @@ a previous permission. This is an agent instruction, not a runtime cache.
    branch. If an independent review slice needs a different branch, announce
    current branch fit, proposed base/name and permission before any Git action.
 
-   Before declaring an individual ticket ready, apply the ticket questions in
-   [the Plan readiness review](references/plan-readiness-review.md). Reuse
+   Before declaring an individual ticket ready or approving a complete plan
+   (including a roadmap-only plan), read [the Plan readiness review](references/plan-readiness-review.md)
+   and apply its ticket questions to each ready ticket. Reuse
    task-authoring mechanics; this review challenges usability, not field count.
 
    For UI work describe objects and CRUD (or N/A), changed zones using +/~/-/=,
@@ -194,7 +201,7 @@ a previous permission. This is an agent instruction, not a runtime cache.
    tickets when writes are unavailable. Task authoring does not approve this plan.
 
    Before approving the complete current plan for execution, apply the global
-   delegated challenge in the Plan readiness review already read above. Review
+   delegated challenge from the Plan readiness review linked in step 4. Review
    the whole graph, including implicit prerequisites; do not substitute ticket
    readback or self-review for this gate.
 

@@ -1,6 +1,6 @@
 ---
 name: test
-description: Verifies software candidates against acceptance criteria. Use for testing implementations or regression repairs, or rechecking evidence after candidate changes.
+description: Verifies a software candidate against its acceptance criteria and records criterion-bound evidence, not acceptance. Use for testing implementations or regression repairs, or rechecking evidence after candidate changes.
 ---
 
 # Test
@@ -66,12 +66,12 @@ a previous permission. This is an agent instruction, not a runtime cache.
    Apply [the requirements baseline](references/requirements-baseline.md) before
    defining or changing scope, criteria or verification, and before running checks.
    Reuse verified Goals/Non-goals, FR/GWT and applicable quantified NFRs; do not
-   invent targets. Investigation needs a bounded question, not a completed plan.
+   invent targets. A check needs a named criterion or risk, not a complete test plan.
 
    Apply [the review policy](references/review-policy.md)
-   before implementation or setting review requirements, and before agreeing acceptance,
-   judging or closing a task/US. Independence and closure
-   requirements are set before implementation, not waived by a missing capability.
+   before reporting review requirements or proposing acceptance, judging or closure.
+   Independence and closure requirements were set at plan time; a missing capability
+   does not waive them.
 
    Apply [the communication contract](references/communication-contract.md) before
    the first mutation, checkpoint or Git/session transition, for ownership, transition, evidence
@@ -131,6 +131,16 @@ a previous permission. This is an agent instruction, not a runtime cache.
    checks do not establish functional quality. Do not repair the frozen candidate or
    weaken criteria. If checks mutate inputs, record before/after identities and rerun on
    a stable candidate or disclose that proof does not match the final candidate.
+
+   Inspect the candidate diff for test changes before counting a pass. List each
+   deleted, skipped, renamed or loosened test, assertion, fixture or expected value
+   with its criterion; a weakening not justified by an approved criterion change is a
+   FAIL of that criterion, not a pass. For a regression repair, prefer evidence that the new test fails without
+   the fix (observed red or revert-the-fix) over a green run alone.
+
+   Report each check by the behavior and criterion ID it proves, so the matrix reads
+   as living documentation. Flag a test whose name or assertion does not reveal the
+   protected behavior as a readability finding, not a failure.
 
 4. [ ] **Integrate observations and coverage limits**
 

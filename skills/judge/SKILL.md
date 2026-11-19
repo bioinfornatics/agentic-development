@@ -87,11 +87,11 @@ a previous permission. This is an agent instruction, not a runtime cache.
 
 2. [ ] **Bind the frozen candidate and review basis**
 
-   Apply [candidate identity](references/candidate-identity.md) before planning checks,
-   freezing inputs or reusing evidence; include staged, untracked and binary inputs
+   Apply [candidate identity](references/candidate-identity.md) before freezing or comparing inputs
+   or reusing evidence; include staged, untracked and binary inputs
    and explicitly defined output-only exclusions. Apply [the review policy](references/review-policy.md)
    before agreeing acceptance, judging or closing a task/US. Independence and closure
-   requirements are set before implementation, not waived by a missing capability.
+   requirements were set at plan time; a missing capability does not waive them.
    For exact-candidate proof, use the contained [capture/validate/compare CLI](scripts/candidate_identity.py) with the [scope example](references/candidate-scope.example.json); consult the [manifest schema](references/candidate-identity.schema.json) and [manifest example](references/candidate-identity.example.json) when preparing or validating its JSON. Follow the candidate procedure above; equality is not acceptance.
 
    Match proofs to candidate/environment and scope. Inspect relevant code and
@@ -208,7 +208,7 @@ a previous permission. This is an agent instruction, not a runtime cache.
    |---|---|---|
    | `accepted` | Return the exact accepted scope to the coordinator/user; no implicit closure, commit, push, merge or release | Candidate ID, criterion evidence, score state and limits; any publication/closure needs separate authority |
    | `needs-correction` | If continuation is authorized, Load `agentic-development:iterate`; otherwise return the proposed correction handoff and stop | Confirmed finding IDs, scoped verdict, candidate, evidence, minimal corrective checks and current correction budget; repair then Test and Judge the changed candidate |
-   | `indeterminate` | Resolve the named proof/capability/provenance/independence gap; no speculative code repair | Name missing input and supplier; route missing checks to Test only when authorized, or request the required reviewer/access. Re-run Judge when prerequisites are satisfied; a newly confirmed defect changes the route to needs-correction |
+   | `indeterminate` | Resolve the named proof/capability/provenance/independence gap; no speculative code repair | Name missing input and supplier; route missing checks to Test only when authorized, or request the required reviewer/access. Re-run Judge when prerequisites are satisfied; a newly confirmed defect changes the route to needs-correction. A second indeterminate verdict on the same candidate for the same gap stops and returns the blocker to the user instead of another Test round |
    | `not-run` | Execute Judge only if requested and its prerequisites are available; otherwise return its prerequisite checklist and stop | Approved scope, frozen candidate, evidence index, plan-time mode and reviewer/independence; first review produces a verdict, not an assumed failure or acceptance |
 
    needs-correction means change a confirmed defective candidate; indeterminate means

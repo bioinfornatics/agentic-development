@@ -89,10 +89,10 @@ a previous permission. This is an agent instruction, not a runtime cache.
    beyond those inputs. This direct path never waives mandatory isolation or independence.
    Before dispatch, read [the internal investigation contract](references/delegated-investigation.md).
    These are intent labels, not required tool names: workers map them to available tools.
-   Do not inject the full session or concatenate raw reports. If a deeper selected
-   investigation requires delegation and it is unavailable, identify the blocker and
-   obtain explicit permission for direct investigation; no silent fallback or waiver
-   of mandatory isolation/independence. Select adaptively, not a mandatory four-worker batch.
+   Do not inject the full session or concatenate raw reports. If a deeper investigation
+   needs a worker and none is available, report the blocker and obtain
+   explicit permission for direct investigation; never fall back silently or waive required
+   isolation or independence. Select workers adaptively, not as a mandatory four-worker batch.
 
    | Mode | Question | Action and observable result |
    |---|---|---|
@@ -118,6 +118,10 @@ a previous permission. This is an agent instruction, not a runtime cache.
      Reuse existing context after coverage and freshness checks; a clear or familiar
      request is not research evidence. Missing facts remain unknown; ask when they block
      a coherent next decision. Read glossary/ADRs when domain terms or irreversible decisions matter.
+   - When a decision-critical requirement, scope boundary or trade-off stays unresolved
+     after reading the evidence, apply [the clarification interview](references/clarification-interview.md):
+     verify facts yourself, ask one recommended-answer question per decision, and keep
+     `NEEDS CLARIFICATION` markers until each blocking decision is settled.
    - When planning checks, freezing inputs or reusing evidence, apply
      [candidate identity](references/candidate-identity.md) and select the provenance path:
      source-only observation records inspected revision/paths, dirty state and limits;
@@ -132,6 +136,9 @@ a previous permission. This is an agent instruction, not a runtime cache.
      rather than collecting a large static bundle. Inspect tests, UI journeys, dependencies
      and runtime/package constraints. For bugs, attempt symptom-specific reproduction
      before recommending repair or claiming a confirmed cause; missing access means a next probe.
+   - When a defect's cause is unknown, including an unknown-cause gap from Iterate, apply
+     [the root-cause investigation](references/root-cause-investigation.md) before naming
+     a cause: minimize the reproduction, rank refutable hypotheses and change one variable per probe.
    - When external freshness could change the decision, apply
      [the state-of-the-art procedure](references/state-of-the-art.md) before authorized
      bounded web research. Consider bleeding-edge or very recent work, especially within
@@ -142,7 +149,7 @@ a previous permission. This is an agent instruction, not a runtime cache.
      and comparing solutions. Search the repository first, compare reuse/extend/build
      and disclose unavailable channels. Reuse a current evidence-backed decision; this
      investigation is not installation permission.
-   For exact-candidate proof, use the contained [capture/validate/compare CLI](scripts/candidate_identity.py) with the [scope example](references/candidate-scope.example.json); consult the [manifest schema](references/candidate-identity.schema.json) and [manifest example](references/candidate-identity.example.json) when preparing or validating its JSON. Follow the candidate procedure above; equality is not acceptance.
+   - For exact-candidate proof, use the contained [capture/validate/compare CLI](scripts/candidate_identity.py) with the [scope example](references/candidate-scope.example.json); consult the [manifest schema](references/candidate-identity.schema.json) and [manifest example](references/candidate-identity.example.json) when preparing or validating its JSON. Follow the candidate procedure above; equality is not acceptance.
 
 4. [ ] **Integrate evidence and prepare the decision**
 

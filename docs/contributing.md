@@ -32,6 +32,8 @@ result → next action or stop**. Name the action to perform, its inputs and
 the skill to load next; a phase description is not enough.
 Put conditional details in a directly linked resource. Keep the method
 host-neutral; hooks remain a host-specific integration.
+Before changing a handoff or a shared rule, check the [Skill flow map](skill-flow.md)
+for callers, shared copies and loops it affects.
 
 Specify Goals/Non-goals, Given/When/Then criteria for behavior and measurable NFRs
 where relevant. Do not invent arbitrary numbers, implicit permissions

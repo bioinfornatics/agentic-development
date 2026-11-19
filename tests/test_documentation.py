@@ -8,7 +8,7 @@ class DocumentationLayout(unittest.TestCase):
     def test_user_docs_are_small_and_separate_from_receipts(self):
         docs = ROOT / 'docs'
         self.assertEqual({p.name for p in docs.iterdir()},
-                         {'AGENTS.md', 'getting-started.md', 'cycle.md', 'integrations.md', 'contributing.md'})
+                         {'AGENTS.md', 'getting-started.md', 'cycle.md', 'integrations.md', 'contributing.md', 'skill-flow.md'})
         for p in docs.iterdir():
             text = p.read_text()
             self.assertNotIn('agentic-devlopment-', text)
@@ -49,7 +49,8 @@ class DocumentationLayout(unittest.TestCase):
                     'docs/getting-started.md': '# Getting started',
                     'docs/cycle.md': '# Steering the development cycle',
                     'docs/integrations.md': '# Connecting tasks, commits and sessions',
-                    'docs/contributing.md': '# Contributing to the method'}
+                    'docs/contributing.md': '# Contributing to the method',
+                    'docs/skill-flow.md': '# How the Skills chain together'}
         for name, heading in expected.items():
             with self.subTest(path=name):
                 self.assertEqual((ROOT / name).read_text().splitlines()[0], heading)

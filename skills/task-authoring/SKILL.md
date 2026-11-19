@@ -9,7 +9,7 @@ description: Authors readable, restartable task tickets from established scope. 
 
 Create or repair a ticket from an existing goal, scope and criteria; return an
 actual tracker ID with verified readback, or a clearly labeled proposal when
-writing is unavailable. This is an optional bounded capability, not an eighth
+writing is unavailable. This is an optional bounded capability, not a
 development phase. Routine reads, claims, progress updates and closure return
 to the caller without authoring.
 

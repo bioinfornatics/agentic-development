@@ -11,18 +11,21 @@ flowchart TD
   cycle -.->|resume at first incomplete phase| plan & implement & test & judge & iterate
   research -->|bounded probe still needed| research
   research -->|cited context grounds the decision| plan
+  research -->|decision-critical gap stays unresolved| halt
   plan -->|unresolved technical prerequisite| research
   plan -->|ready task, implementation authorized| implement
   plan -->|roadmap-only request| halt
   implement -->|red, green, refactor| implement
   implement -->|scoped change + focused checks| test
   implement -->|defect needs a correction decision| iterate
+  implement -->|missing context, before edits| plan
   test -->|evidence recorded| judge
   test -->|confirmed repair need| iterate
+  test -->|unavailable mandatory check| halt
   judge -->|accepted| finalize
   judge -->|needs-correction| iterate
   judge -->|indeterminate: missing checks, once| test
-  judge -->|second indeterminate, same gap| halt
+  judge -->|second indeterminate, same candidate and gap| halt
   iterate -->|implementation defect, attempt +1| implement
   iterate -->|proof only, unchanged candidate| test
   iterate -->|unknown cause| research
@@ -41,8 +44,9 @@ state card and a restart prompt. `task-authoring` edits ticket text, then return
 | Loop | Bound | Counts as an attempt? |
 |---|---|---|
 | iterate → implement → test → judge | 3 authorized correction attempts per slice, unless the user sets another budget | Yes, recorded before dispatch; never reset |
-| judge → test → judge (indeterminate) | One retry; a second indeterminate verdict on the same gap stops | No |
-| iterate → research or plan (local replan) | Stops at a named deciding prerequisite; repeated speculation is not progress | No |
+| judge → test → judge (indeterminate) | One retry; a second indeterminate verdict on the same candidate and gap stops | No |
+| iterate or plan → research (replan) | Stops at a named deciding prerequisite; repeated speculation is not progress | No |
+| research root-cause probes | Stop probing after three refuted hypotheses and report what would decide | No |
 | research → research | One bounded probe at a time, within permissions | No |
 | implement red → green → refactor | Internal to one slice; scope growth returns to the coordinator | No |
 
@@ -53,23 +57,20 @@ state card and a restart prompt. `task-authoring` edits ticket text, then return
 | cycle | Beads integration or initialization, authorization and review policy, requirements baseline, judgment rubric, candidate identity, state template | `bd`, branch/status inventory, delegation, observed session/checkpoint links if Entire is integrated |
 | research | Delegated investigation, clarification interview, root-cause investigation, state of the art, reuse decision, knowledge pointers, readiness review | Workers: find files, analyze code, find patterns, optional state of the art; reproduction probes |
 | plan | Requirements baseline, review policy, judgment rubric, plan readiness review | `task-authoring` for authorized ticket writes, `bd dep add`, readback |
-| implement | Candidate identity, commit report | Project test runners; commit only with current authority |
+| implement | Candidate identity, commit report | Project test runners, `candidate_identity.py`; branch, worktree or commit only with current authority |
 | test | Test value, candidate identity | Project checks, `candidate_identity.py` capture/compare, browser capture for UI |
-| judge | Judgment rubric, finding verification, candidate identity | Read-only reviewers, check replay |
-| iterate | Candidate identity, review policy | Correction counter in tracker state; never edits code |
+| judge | Judgment rubric, finding verification, candidate identity | Read-only reviewers, check replay, `candidate_identity.py` compare |
+| iterate | Candidate identity, review policy | Correction counter in the tracker task, else a non-durable state card; never edits code |
 
-All phases share the delivery contracts and carry identical reference copies to stay portable.
+Any phase may load `task-authoring` and uses `bd` when the repository uses Beads. Shared contracts are byte-identical per Skill so each installs alone; `requirements-output.md` is phase-specific.
 
 ## Tool calls and their gates
 
-- **Beads:** `bd prime` only when context is missing or stale; check `bd where`
-  if it prints nothing. `bd dep add A B` means A waits on B. `bd init` and
-  `bd hooks` run only for authorized, controlled initialization.
-- **Git:** `candidate_identity.py` reads `git rev-parse` and `git ls-files --stage` (`compare`:
-  0 same, 1 different, 2 invalid). Research runs `git bisect` only in a separate authorized
-  worktree or clean checkout. Commits need current authority; nothing pushes automatically.
-- **Forge:** Skills never call `gh` or `glab`. Pull requests and publication follow
-  [the contributor workflow](../CONTRIBUTING.md), outside the Skills.
+- **Beads:** `bd prime` only when context is missing or stale; check `bd where` if it prints nothing.
+  `bd dep add A B` means A waits on B. `bd init` and `bd hooks` run only for authorized, controlled initialization.
+- **Git:** `candidate_identity.py` reads `git rev-parse` and `git ls-files --stage` (`compare`: 0 same, 1 different, 2 invalid).
+  Research runs `git bisect` only in a separate authorized worktree or clean checkout. Commits need current authority; nothing pushes automatically.
+- **Forge:** Skills never call `gh` or `glab`. Pull requests and publication follow [the contributor workflow](../CONTRIBUTING.md), outside the Skills.
 - **Evaluation:** Skill Creator runs `node "$CREATOR" full-eval` only for a requested Skill evaluation.
 - **Hooks:** Goose hooks run `observe.py` to report events; they never enforce or accept.
 
@@ -86,14 +87,14 @@ All phases share the delivery contracts and carry identical reference copies to 
 | Moment | Question | Skill rule that answers it |
 |---|---|---|
 | Before planning | Is every blocking decision settled? | Clarification interview: one recommended-answer question per decision |
-| Before coding | Which failing check proves each criterion? | Plan makes each behavioral task test-first with a criterion trace |
+| Before coding | Which failing check proves each criterion? | Plan makes each behavioral task test-first; Implement confirms red fails on the expected assertion |
 | During a bug fix | Is the cause confirmed, or only plausible? | Root-cause investigation: minimize, rank hypotheses, one variable per probe |
 | Before counting a pass | Did any test get weaker? | Test lists deleted, skipped or loosened assertions in the candidate diff |
 | Before acceptance | Who reviews, and on which frozen candidate? | Judge with plan-time independence; a repeated indeterminate verdict stops |
 
 ## Pitfalls to watch
 
-- A run started at Research or Plan never finalizes; resume `cycle` to persist results.
+- A run started directly at any phase Skill never finalizes; resume `cycle` to persist results.
 - Loading a Skill grants no permission: commits, pushes, closure and installs need current authority.
 
 For depth, read the [cycle entrypoint](../skills/cycle/SKILL.md) and the [cycle guide](cycle.md).

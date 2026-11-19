@@ -1,6 +1,6 @@
 ---
 name: plan
-description: Defines software roadmaps, user stories and executable task graphs with criteria, dependencies and verification gates. Use for planning from established research, decomposing user stories into ready tasks, or recording a plan as tracker tickets; single-ticket wording repair belongs to task-authoring.
+description: Defines software roadmaps, specifications, user stories and ready task graphs with acceptance criteria, dependencies and verification gates. Use when planning from established research, decomposing a user story into test-first tasks, or recording an approved plan in the tracker.
 ---
 
 # Plan

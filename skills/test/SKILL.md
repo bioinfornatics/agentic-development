@@ -79,7 +79,7 @@ This is an agent instruction, not a runtime cache.
    capabilities produce an explicit blocker, never simulated execution evidence.
    Use the coordinator's verified slice state when available; do not fabricate execution or acceptance.
 
-   Before committing or drafting a proposed, performed, failed or externally observed commit report, apply [the commit report](references/commit-report.md). Before drafting a planned session end, explicit wrap-up or recommended context transition report, apply [the session report](references/session-report.md).  These conditions govern earlier boundaries too.
+   Test never commits; apply [the commit report](references/commit-report.md) only to report an externally observed commit. Before drafting a planned session end, explicit wrap-up or recommended context transition report, apply [the session report](references/session-report.md).
 
 2. [ ] **Freeze the candidate and map checks**
 
@@ -162,7 +162,7 @@ This is an agent instruction, not a runtime cache.
 
    After investigation and before drafting any user-facing phase response (including blocked or unchanged results), apply [the common output contract](references/common-output.md) and [this phase's delivery contract](references/requirements-output.md); apply their checklists and selected delivery form (compact when eligible, otherwise five-section report). Combine overlapping reports without duplication. After reading delivery guidance, draft the response and, at an actual handoff, the fenced YAML state card and copy-ready restart prompt.
 
-   Announce the Judge context transition when applicable; Test reports evidence, not acceptance.
+   Announce the Judge context transition when applicable.
 
 6. [ ] **Execute the handoff or stop**
 
@@ -175,7 +175,8 @@ This is an agent instruction, not a runtime cache.
    with candidate identity, criteria/check matrix, actual results and missing evidence.
    For a confirmed repair need, Load `agentic-development:iterate` with the
    failing criterion and replay command; do not silently edit the tested candidate.
-   An unavailable mandatory check stays open and is handed off as a prerequisite.
+   An unavailable mandatory check stays open and is handed off as a prerequisite:
+   stop with its owner and the action that unblocks it.
 
    Use the host's available Skill-loading mechanism; these identifiers are not shell
    commands. If loading is unavailable, read the selected bundled SKILL.md and its

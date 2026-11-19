@@ -26,7 +26,7 @@ HANDOFF_ROUTES = {
     'cycle': set(),
     'research': {'plan'},
     'plan': {'implement', 'research'},
-    'implement': {'test', 'iterate'},
+    'implement': {'test', 'iterate', 'plan'},
     'test': {'judge', 'iterate'},
     'judge': {'iterate'},
     'iterate': {'implement', 'test', 'research', 'plan'},
@@ -35,7 +35,8 @@ HANDOFF_ROUTES = {
 DOC_EDGES = {(s, t) for s, targets in HANDOFF_ROUTES.items() for t in targets} | {
     ('cycle', p) for p in PHASES[1:]} | {
     ('research', 'research'), ('implement', 'implement'), ('judge', 'test'),
-    ('judge', 'finalize'), ('plan', 'halt'), ('judge', 'halt'), ('iterate', 'halt')}
+    ('judge', 'finalize'), ('plan', 'halt'), ('judge', 'halt'), ('iterate', 'halt'),
+    ('research', 'halt'), ('test', 'halt')}
 # Edges outside the Load routes, each tied to the Skill sentence that grounds it.
 EDGE_SOURCES = {
     ('research', 'research'): ('research', 'execute the next bounded probe within permission'),
@@ -45,6 +46,8 @@ EDGE_SOURCES = {
     ('judge', 'finalize'): ('cycle', 'After accepted judgment, persist results'),
     ('plan', 'halt'): ('plan', 'For roadmap-only work, return the planning artifact'),
     ('iterate', 'halt'): ('iterate', 'Stop corrective execution on exhaustion or repeated no-progress'),
+    ('research', 'halt'): ('research', 'Block Plan on decision-critical gaps'),
+    ('test', 'halt'): ('test', 'An unavailable mandatory check stays open'),
 }
 # Decisive condition keyword per edge: it must appear in the guide label and in
 # the grounding Skill text, so swapped or dropped conditions fail while rewording passes.
@@ -59,6 +62,9 @@ EDGE_KEYWORDS = {
     ('implement', 'implement'): ('refactor', 'implement'),
     ('implement', 'test'): ('focused checks', 'implement'),
     ('implement', 'iterate'): ('correction decision', 'implement'),
+    ('implement', 'plan'): ('missing context', 'implement'),
+    ('research', 'halt'): ('decision-critical', 'research'),
+    ('test', 'halt'): ('unavailable mandatory check', 'test'),
     ('test', 'judge'): ('record', 'test'),
     ('test', 'iterate'): ('repair', 'test'),
     ('judge', 'finalize'): ('accepted', 'judge'),

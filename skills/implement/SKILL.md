@@ -1,6 +1,6 @@
 ---
 name: implement
-description: Implements an authorized change test-first (observed red, minimal green, refactor) and keeps a change ledger of owned hunks and evidence. Use when executing a planned task, a feature task or a confirmed bug repair dispatched by Plan or Iterate.
+description: Executes an authorized change test-first (observed red, minimal green, refactor) and keeps a change ledger of owned hunks and evidence. Use when executing a planned task, a feature task or a confirmed bug repair dispatched by Plan or Iterate.
 ---
 
 # Implement
@@ -96,7 +96,7 @@ This is an agent instruction, not a runtime cache.
    and explicitly defined output-only exclusions. 
    For exact-candidate proof, use the contained [capture/validate/compare CLI](scripts/candidate_identity.py) with the [scope example](references/candidate-scope.example.json); consult the [manifest schema](references/candidate-identity.schema.json) and [manifest example](references/candidate-identity.example.json) when preparing or validating its JSON. Follow the candidate procedure above; equality is not acceptance.
 
-   Before committing or drafting a proposed, performed, failed or externally observed commit report, apply [the commit report](references/commit-report.md). Before drafting a planned session end, explicit wrap-up or recommended context transition report, apply [the session report](references/session-report.md).  These conditions govern earlier boundaries too.
+   Before committing or drafting a proposed, performed, failed or externally observed commit report, apply [the commit report](references/commit-report.md). Before drafting a planned session end, explicit wrap-up or recommended context transition report, apply [the session report](references/session-report.md).
 
    Confirm branch fit and announce impending branch action if needed. Check
    action-specific Git authorization before creation/switch. Non-Git work can
@@ -104,6 +104,8 @@ This is an agent instruction, not a runtime cache.
 
    Select one requirement-derived behavior test at an approved public seam; use
    independent expected values and establish an observed red before the production change.
+   Confirm the red fails on the expected assertion for the missing behavior, not on a
+   syntax, import, fixture or setup error; a test that passes before the change proves nothing.
    For a bug, require a symptom-specific red-capable reproduction, not an unrelated
    missing symbol. For instruction-only work, use source-contract/static checks and
    report their limits. Missing access to a seam for executable behavior is a capability
@@ -157,8 +159,8 @@ This is an agent instruction, not a runtime cache.
    fixture or expected value with its approved criterion change or test-value
    decision; an unjustified entry blocks handoff. Run cheap
    focused tests/type checks near changes, then risk-relevant broader regressions
-   before handoff; record commands and actual outputs. Full-suite execution depends
-   on scope/capability, not a typo ritual.
+   before handoff; record commands and actual outputs. Run the full suite when the
+   scope requires it and tooling allows.
 
    Before advancing a dependent batch, verify that the observed result satisfies
    the next affected consumer's input/precondition, including material format,
@@ -230,7 +232,10 @@ This is an agent instruction, not a runtime cache.
    with the exact candidate, criterion IDs, reproduction/tests, change ledger and limits.
    If evidence exposes a defect requiring a new correction decision, Load
    `agentic-development:iterate` with the finding, preserved diff and current
-   budget. Never call the implementation accepted because focused tests passed.
+   budget. If the task lacks the context needed to edit, Load `agentic-development:plan`
+   with the missing context before editing; return scope expansion, permission or
+   ownership conflicts to the coordinator/user. Never call the implementation accepted
+   because focused tests passed.
 
    Use the host's available Skill-loading mechanism; these identifiers are not shell
    commands. If loading is unavailable, read the selected bundled SKILL.md and its

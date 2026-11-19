@@ -1,6 +1,6 @@
 ---
 name: iterate
-description: Classifies a failed check or judge finding and routes the smallest authorized correction to Implement, Test, Research or Plan within a correction-attempt budget; it does not edit code. Use for judge findings, failed verification, missing proof, repeated failures or newly discovered scope risks.
+description: Classifies a failed check or judge finding and routes the smallest authorized correction within a correction-attempt budget; it does not edit code. Use for judge findings, failed verification, missing proof, repeated failures or newly discovered scope risks.
 ---
 
 # Iterate
@@ -131,7 +131,7 @@ This is an agent instruction, not a runtime cache.
 
    For returned repairs, re-run the original symptom and relevant regressions, remove temporary instrumentation and verify candidate freshness. Invalidate only proofs/judgment affected by changed inputs or freshness failures; preserve current candidate-bound evidence with explicit justification. Acceptance never transfers to changed code; prepare the frozen candidate for Judge.
 
-   Collect iteration report facts for inline delivery or an explicitly authorized saved report: classification, actions/results, retained/invalidated proof, counter and limits. Keep unmet real validation open; this phase grants no closure permission. Related repairs stay in the branch/session unless an actual transition trigger applies; objective change or Judge role may justify fresh context, never an implicit commit. Preserve dirty/staged/untracked state and exact resume conditions. Prepare immediate action, owner and prerequisite separately from conditional later phases.
+   Collect iteration report facts for inline delivery or an explicitly authorized saved report: classification, actions/results, retained/invalidated proof, counter and limits. Keep unmet real validation open; this phase grants no closure permission. Keep related repairs in this branch and session; recommend fresh context only for an objective change or Judge review, and never commit implicitly. Preserve dirty/staged/untracked state and exact resume conditions. Prepare immediate action, owner and prerequisite separately from conditional later phases.
 
 6. [ ] **Read delivery guidance and draft the phase response**
 
@@ -146,7 +146,7 @@ This is an agent instruction, not a runtime cache.
    phase result and proposed handoff, then stop; do not expand the request by loading
    or executing a new phase. If continuing is authorized, apply the routes below.
 
-   Immediately before executing or dispatching an authorized correction, recheck capability, current permission, red-before-repair and remaining budget. For phase-only requests return the proposal without starting an attempt. Increment and record the before/after counter in permitted state BEFORE dispatch; stop if required recording is unavailable. Diagnosis, planning and waiting never increment it. Never start after exhaustion or repeated no-progress.
+   Immediately before executing or dispatching an authorized correction, recheck capability, current permission, red-before-repair and remaining budget. For phase-only requests return the proposal without starting an attempt. Increment and record the before/after counter in permitted state BEFORE dispatch; stop if required recording is unavailable. Permitted state is the tracker task when writable; otherwise the state card, disclosed as not durable. Diagnosis, planning and waiting never increment it. Never start after exhaustion or repeated no-progress.
 
    For an authorized implementation correction, Load `agentic-development:implement`
    with its task, reproduction, owned paths and remaining budget, then route the changed

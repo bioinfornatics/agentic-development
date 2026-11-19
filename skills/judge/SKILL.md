@@ -148,8 +148,6 @@ This is an agent instruction, not a runtime cache.
    null. In small-task mode report score not-applicable, without numeric grading.
    Neither mode can override a failed mandatory gate or waive independence.
 
-   Unknown criteria and incomplete overall score remain null; never normalize partial assessment into a complete score.
-
    Accept only an exact candidate with every mandatory criterion evidenced and no
    blocking findings. Candidate changes invalidate affected judgment. Never silently
    relax criteria, retroactively redefine the rubric or approve your own human gate.
@@ -168,8 +166,8 @@ This is an agent instruction, not a runtime cache.
 
    Use the plan-time mode: `weighted` yields a 0–100 score only when every rubric
    criterion is assessed; unknowns leave the overall score null. `small-task` yields
-   score N/A. A high score never overrides mandatory gates; 75/100 can mean conformity,
-   not failure. At step 6 emit the delivery contract's result block inside explanation,
+   score N/A. A score never overrides a failed mandatory gate; a score below 100 is not
+   by itself a failure. At step 6 emit the delivery contract's result block inside explanation,
    with reasons and evidence; do not create another outer report or runtime JSON.
 
 
@@ -179,8 +177,7 @@ This is an agent instruction, not a runtime cache.
    saved report. Keep evidence, scoped verdict, rubric mode/score,
    insights (observed/inferred/to-verify), risks and unknowns separate; format the
    delivery only at the output gate below.
-   Use accepted, needs-correction or indeterminate with reasons. If no review ran,
-   report not-run and no score. Local acceptance is not real-provider approval.
+   Local acceptance is not real-provider approval.
    Collect verdict, review mode, rubric identity/version, score state/coverage,
    blockers and limitations for the result block; do not invent missing values.
 

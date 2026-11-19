@@ -39,15 +39,14 @@ Save a report only with an explicit destination and permission to write, followi
 the common output contract loaded at that step. Required evidence inputs and tracker
 updates retain their own gates; an inline response does not replace task truth.
 
-Apply contracts before their governed actions, even before the nominal step
-containing the link when its condition arises earlier. Load a reference only when its
-applicable content is absent, incomplete or outdated in the active context; reuse
-identical available content from another Skill's contained copy. The same ID/version
-with different content is a conflict, not proof of identity: resolve it before the
-affected action. A previous read or loaded marker does not prove availability.
-After compaction, a new session or worker, recover required unavailable instructions;
-on workspace changes revalidate applicability. Reusing authorization guidance never renews
-a previous permission. This is an agent instruction, not a runtime cache.
+Apply contracts before their governed actions, even before the step that links them.
+Read a reference only when it is absent, incomplete or outdated in the active context.
+Reuse identical copies from another Skill. The same ID/version with different content
+is a conflict, not proof of identity; resolve it before the affected action.
+A loaded marker or earlier read does not prove availability. After compaction, a new
+session or worker, reload missing required instructions. After workspace changes,
+recheck applicability. Reused authorization guidance never renews a permission.
+This is an agent instruction, not a runtime cache.
 
 1. [ ] **Verify prerequisites and current authority**
 
@@ -82,7 +81,7 @@ a previous permission. This is an agent instruction, not a runtime cache.
    edges; a populated tracker record alone does not prove execution readiness.
 
    If the repository uses Beads, apply [the Beads integration](references/beads-integration.md)
-   before choosing work or mutating task state. Use fresh `bd prime` guidance;
+   before choosing work or mutating task state. Run `bd prime` only when Beads context is missing or stale;
    retain task ownership, readback and phase gates;
    evaluate commit suitability after each confirmed closure without inferring Git authority.
 
@@ -215,7 +214,7 @@ a previous permission. This is an agent instruction, not a runtime cache.
    authorized work may continue. Partial returns are not accepted inputs. Record
    remaining worker dispositions rather than assuming completion or cancellation.
 
-   Default to at most three correction rounds for the same slice unless the user
+   Default to at most three correction attempts for the same slice unless the user
    sets another budget. After repeated failures, changed scope, exhausted budget,
    or incompatible evidence, stop and present the blocker, options and decision.
    A failed check cannot be turned green by deleting or weakening acceptance.

@@ -15,7 +15,7 @@ class ContextLoading(unittest.TestCase):
             end=text.index('\n\n', start)
             protocol=text[start:end]
             copies.append(protocol)
-            for rule in ('absent, incomplete or outdated', 'active context', 'another Skill', 'same ID/version', 'different content', 'loaded marker', 'compaction', 'worker', 'applicability', 'never renews'):
+            for rule in ('absent, incomplete or outdated', 'active context', 'another Skill', 'same ID/version', 'different content', 'loaded marker', 'not proof of identity', 'affected action', 'required instructions', 'compaction', 'worker', 'applicability', 'never renews'):
                 self.assertIn(rule, protocol, name)
             self.assertIn('not a runtime cache',protocol,name)
         self.assertEqual(len(set(copies)),1)

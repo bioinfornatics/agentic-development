@@ -34,15 +34,14 @@ updates retain their own gates; an inline response does not replace task truth.
 The coordinator bounds context and decisions; delegated mode workers perform deeper
 product discovery and technical investigation. Internal workers return the compact
 delegation contract; the coordinator alone produces the user-facing Research report.
-Apply contracts before their governed actions, even before the nominal step
-containing the link when its condition arises earlier. Load a reference only when its
-applicable content is absent, incomplete or outdated in the active context; reuse
-identical available content from another Skill's contained copy. The same ID/version
-with different content is a conflict, not proof of identity: resolve it before the
-affected action. A previous read or loaded marker does not prove availability.
-After compaction, a new session or worker, recover required unavailable instructions;
-on workspace changes revalidate applicability. Reusing authorization guidance never renews
-a previous permission. This is an agent instruction, not a runtime cache.
+Apply contracts before their governed actions, even before the step that links them.
+Read a reference only when it is absent, incomplete or outdated in the active context.
+Reuse identical copies from another Skill. The same ID/version with different content
+is a conflict, not proof of identity; resolve it before the affected action.
+A loaded marker or earlier read does not prove availability. After compaction, a new
+session or worker, reload missing required instructions. After workspace changes,
+recheck applicability. Reused authorization guidance never renews a permission.
+This is an agent instruction, not a runtime cache.
 
 1. [ ] **Frame the objective and verify authority**
 
@@ -63,7 +62,7 @@ a previous permission. This is an agent instruction, not a runtime cache.
      retain this phase's scope, ownership, review and evidence gates.
 
    - If the repository uses Beads, apply [the Beads integration](references/beads-integration.md)
-     before choosing work or mutating task state. Use fresh `bd prime` guidance;
+     before choosing work or mutating task state. Run `bd prime` only when Beads context is missing or stale;
      retain task ownership, readback and phase gates;
      evaluate commit suitability after each confirmed closure without inferring Git authority.
    - Before resuming artifact claims or executing consequential actions, apply

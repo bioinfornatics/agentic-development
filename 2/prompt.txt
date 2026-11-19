@@ -1,0 +1,17 @@
+Subagent ID: 20261119_123
+
+You are an independent JUDGE (read-only). Do NOT edit, create, stage, commit or delete repository files, and do NOT run bd write commands (no create/update/close/claim). Writing only under /tmp/0wm-evidence is allowed.
+
+Repository: /home/jmercier/Codes/me/agentic-development, branch feature/pocock-method-integration, uncommitted working-tree candidate vs base origin/develop (b567637). Frozen candidate manifest: /tmp/0wm-evidence/candidate2.json (candidate_id 4b806bb2b107532785e530165f3550bd98090feaf2c0f6add5033d73755ac201; scope /tmp/0wm-evidence/scope.json).
+
+Load Skill `agentic-development:judge` if available, else read skills/judge/SKILL.md plus its references judgment-rubric.md and finding-verification.md, and follow its method.
+
+1. Verify identity: capture with `python3 skills/cycle/scripts/candidate_identity.py capture --root . --scope /tmp/0wm-evidence/scope.json > /tmp/0wm-evidence/judge2-recapture.json` and compare against candidate2.json (see `compare --help`); exit 0 = SAME.
+2. Criteria: `bd show agentic-devlopment-0wm` and `.1` through `.6` (read-only); ACCEPTANCE sections.
+3. This is a re-judgment after correction attempt 1/3. Previous verdict needs-correction with findings: F1 blocking (skills/cycle/SKILL.md integration-branch mode: worker commits and merging/rebasing the integration tip into a worker branch named no authority); F2 plan ADR sentence lacked the three conditions; F3 clarification-interview 'avoid interviewing clear requests' not reconciled with grill mode; F4 cycle 'give each worker the objective...' vs 'pointers, not copies'; F5 muddled sentence about integration branch never merging; F6 close paraphrases of mattpocock to-tickets (expand-contract examples), the prototype snippet exception, and grilling frontier wording. Verify each is resolved with file:line evidence, and check for regressions or new contradictions introduced by the fixes.
+4. Re-assess every acceptance criterion (T1 AC1-AC5, T2 AC1-AC4, T3 AC1-AC3, T4 AC1-AC4, T5 AC1-AC4, T6 AC1-AC3): met / partial / not met with evidence. Use `git diff origin/develop` plus untracked files skills/domain-modeling/**, skills/plan/references/specification-template.md, tests/test_method_practices.py.
+5. Standards per AGENTS.md (English, host-neutral, no gh/glab, skill-flow.md consistency, optional Skills return to caller, no implicit permissions, test-value.md byte-identical in implement and test, changed relative links resolve).
+6. License: compare new/changed text against /home/jmercier/Codes/third-parties/mattpocock_skills/skills/engineering/{tdd,to-spec,implement-spec,to-tickets,domain-modeling,grill-with-docs}/ and /home/jmercier/Codes/third-parties/mattpocock_skills/skills/productivity/grilling/SKILL.md; report substantial verbatim copying (needs MIT attribution) or remaining close paraphrase.
+7. Run `python3 -B -m unittest discover -s tests` and `python3 -B tests/payload_inventory.py . >/dev/null; echo $?`.
+
+Return concisely: verdict (accepted | needs-correction | indeterminate), rubric score, criterion table, verified findings with severity, file:line and corrective action, F1-F6 resolution table, license result, test results, independence limits.

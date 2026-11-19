@@ -153,7 +153,7 @@ class WorkflowSourceContracts(unittest.TestCase):
             self.assertEqual(len(paths), 7)
             self.assertEqual(len({p.read_bytes() for p in paths}), 1)
         text = (SKILLS / "iterate/SKILL.md").read_text()
-        self.assertIn("do not increment the round counter", text)
+        self.assertIn("do not increment the attempt counter", text)
         self.assertIn("Stop corrective execution on exhaustion or repeated no-progress", text)
         self.assertIn("Never start after exhaustion or repeated no-progress", text)
         self.assertIn("Default maximum: three authorized attempts", text)

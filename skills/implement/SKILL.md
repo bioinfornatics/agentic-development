@@ -1,6 +1,6 @@
 ---
 name: implement
-description: Supports authorized software implementation. Use when executing an approved delivery plan, feature task or confirmed bug repair.
+description: Implements an authorized change test-first (observed red, minimal green, refactor) and keeps a change ledger of owned hunks and evidence. Use when executing a planned task, a feature task or a confirmed bug repair dispatched by Plan or Iterate.
 ---
 
 # Implement
@@ -127,20 +127,36 @@ a previous permission. This is an agent instruction, not a runtime cache.
    not required. Never delete a meaningful regression or weaken acceptance to get green.
    Mock only dependencies: assert the subject's contract, exact known outcomes and
    important errors, not the mock's setup or copied expected calculations.
+   Name each new test after the protected behavior and cite its criterion ID, unless
+   project conventions forbid it, so the suite reads as living documentation.
+
+   If code you must refactor or modify has no discriminating test at its public seam,
+   first add a characterization test of its current behavior and observe it green before
+   the change. Label it characterization, not specification: it pins today's behavior,
+   including defects, until a criterion says otherwise.
 
 3. [ ] **Implement minimal green and refactor**
 
    Make the smallest coherent production change to reach green; rerun the same checks,
    then refactor without changing behavior and rerun again. Preserve external contracts,
-   avoid unrelated cleanup and secrets. Parallelize only disjoint writable files;
-   return conflicting changes to the coordinator before writing.
+   avoid unrelated cleanup and secrets.
+
+   For parallel writers the default is disjoint paths in the shared tree. Use an
+   approved worktree per writer when writers would collide on files, build outputs,
+   branch or generated artifacts; otherwise serialize. This default grants no Git
+   authority: creating a worktree or branch still needs current permission. Return
+   conflicting changes to the coordinator before writing.
 
    Remove temporary debug instrumentation or explain retained authorized diagnostics.
 
 4. [ ] **Observe and integrate each coherent batch**
 
    After each coherent change batch inspect the actual diff, maintain the implementation
-   change ledger with owned paths/hunks and reasons, and emit the short checkpoint. Run cheap
+   change ledger with owned paths/hunks and reasons, and emit the short checkpoint.
+   For executable changes the ledger also records the red command and a failing-output
+   excerpt, and lists each deleted, skipped, renamed or loosened test, assertion,
+   fixture or expected value with its approved criterion change or test-value
+   decision; an unjustified entry blocks handoff. Run cheap
    focused tests/type checks near changes, then risk-relevant broader regressions
    before handoff; record commands and actual outputs. Full-suite execution depends
    on scope/capability, not a typo ritual.

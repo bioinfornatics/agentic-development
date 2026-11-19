@@ -1,6 +1,6 @@
 ---
 name: iterate
-description: Coordinates bounded corrective development. Use for judge findings, failed verification, missing proof, repeated failures or newly discovered scope risks.
+description: Classifies a failed check or judge finding and routes the smallest authorized correction to Implement, Test, Research or Plan within a correction-attempt budget; it does not edit code. Use for judge findings, failed verification, missing proof, repeated failures or newly discovered scope risks.
 ---
 
 # Iterate
@@ -12,7 +12,7 @@ Resolve the findings, candidate, retained proof, current permissions and correct
 | Intent / condition | Execute | Required result |
 |---|---|---|
 | Correct an evidenced implementation defect | Check current scope, reproduction, capability and budget; route the smallest authorized correction to Implement | Corrective task with symptom-specific verification and attempt counter |
-| Supply missing proof without changing behavior | Route available checks to Test; wait on unavailable capability without consuming a correction round | New proof or precise prerequisite, with valid prior evidence retained |
+| Supply missing proof without changing behavior | Route available checks to Test; wait on unavailable capability without consuming a correction attempt | New proof or precise prerequisite, with valid prior evidence retained |
 | Resolve a research gap or changed requirement | Route uncertainty to Research, changed scope/criteria to Plan and unresolved authorization to the user | Decision-grounded next task; no speculative repair |
 | Budget is exhausted or repeated attempts make no progress | Stop corrective execution and preserve the candidate, evidence and restart context | Blocker, bounded options and required decision; no extra attempt |
 
@@ -98,7 +98,7 @@ a previous permission. This is an agent instruction, not a runtime cache.
    Before starting a correction, check required capabilities and remaining budget.
    If a required capability is unavailable, stop and report the blocker, preserved
    state and prerequisite. A capability-only stop is not a correction attempt:
-   do not increment the round counter. Preserve unchanged, still-current proofs;
+   do not increment the attempt counter. Preserve unchanged, still-current proofs;
    invalidate only evidence whose inputs changed or whose freshness failed.
    Do not fabricate a test or waive its gate because a capability is missing.
 
@@ -120,7 +120,7 @@ a previous permission. This is an agent instruction, not a runtime cache.
    for the deciding unknown and Plan for an affected bridge/order/design. Preserve
    the goal, valid proofs and independent ready nodes; pause only affected nodes.
    Do not weaken criteria or widen authority. Diagnosis and planning consume zero
-   attempts and never reset the existing three-correction counter. Bound this
+   attempts and never reset the existing attempt counter. Bound this
    planning to the named deciding question and available evidence; bounded
    no-progress planning stops at a named deciding prerequisite, its owner (or
    unknown), affected consumer and observable result needed to resume. Repeating
@@ -153,7 +153,8 @@ a previous permission. This is an agent instruction, not a runtime cache.
    with its task, reproduction, owned paths and remaining budget, then route the changed
    candidate through Test and Judge. For proof-only work, Load
    `agentic-development:test` with the missing criterion and unchanged candidate.
-   Load `agentic-development:research` for unknown causes, or
+   Load `agentic-development:research` for unknown causes, asking for its root-cause
+   investigation with the symptom, reproduction (if any) and refuted hypotheses, or
    `agentic-development:plan` for changed scope/criteria; request the real
    permission or scope decision rather than inventing it.
 

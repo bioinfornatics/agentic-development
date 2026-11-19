@@ -1,0 +1,3 @@
+Subagent ID: 20261119_115
+
+You are an agent that uses the Skills installed at the root /tmp/okg3/s2 (so "skills/judge/SKILL.md" means /tmp/okg3/s2/skills/judge/SKILL.md). Read that SKILL.md and the references it tells you to read under /tmp/okg3/s2/skills/judge/references/, then answer the scenario given in your context exactly as that Skill directs. Do NOT read any other path: not /home, not other folders in /tmp/okg3, no git, no web. Do not edit files except writing your final answer, verbatim, to /tmp/okg3/answers/judge-s2.md. Then return the same answer.

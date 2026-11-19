@@ -3,7 +3,7 @@
   "checkpoint_id": "01M7TYDN5VTSJ2XA59AN191J58",
   "strategy": "manual-commit",
   "branch": "feature/test-living-documentation",
-  "checkpoints_count": 11,
+  "checkpoints_count": 12,
   "files_touched": [
     "docs/cycle.md",
     "docs/skill-flow.md",
@@ -74,6 +74,13 @@
       "compact_transcript": "/7/transcript.jsonl",
       "content_hash": "/7/content_hash.txt",
       "prompt": "/7/prompt.txt"
+    },
+    {
+      "metadata": "/8/metadata.json",
+      "transcript": "/8/full.jsonl",
+      "compact_transcript": "/8/transcript.jsonl",
+      "content_hash": "/8/content_hash.txt",
+      "prompt": "/8/prompt.txt"
     }
   ],
   "token_usage": {
@@ -81,7 +88,7 @@
     "cache_creation_tokens": 0,
     "cache_read_tokens": 0,
     "output_tokens": 0,
-    "api_call_count": 338
+    "api_call_count": 344
   },
   "redaction": {
     "replacements": 0,

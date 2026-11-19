@@ -3,16 +3,19 @@
   "checkpoint_id": "01M7TYDN5VTSJ2XA59AN191J58",
   "strategy": "manual-commit",
   "branch": "feature/test-living-documentation",
-  "checkpoints_count": 6,
+  "checkpoints_count": 7,
   "files_touched": [
     "docs/cycle.md",
     "docs/skill-flow.md",
     "skills/implement/SKILL.md",
+    "skills/implement/evals/evals.json",
     "skills/judge/SKILL.md",
+    "skills/judge/evals/evals.json",
     "skills/plan/SKILL.md",
     "skills/test/SKILL.md",
     "skills/test/references/test-value.md",
     "tests/test_context_loading.py",
+    "tests/test_eval_value.py",
     "tests/test_test_value.py"
   ],
   "sessions": [
@@ -36,6 +39,13 @@
       "compact_transcript": "/2/transcript.jsonl",
       "content_hash": "/2/content_hash.txt",
       "prompt": "/2/prompt.txt"
+    },
+    {
+      "metadata": "/3/metadata.json",
+      "transcript": "/3/full.jsonl",
+      "compact_transcript": "/3/transcript.jsonl",
+      "content_hash": "/3/content_hash.txt",
+      "prompt": "/3/prompt.txt"
     }
   ],
   "token_usage": {
@@ -43,7 +53,7 @@
     "cache_creation_tokens": 0,
     "cache_read_tokens": 0,
     "output_tokens": 0,
-    "api_call_count": 302
+    "api_call_count": 310
   },
   "redaction": {
     "replacements": 0,

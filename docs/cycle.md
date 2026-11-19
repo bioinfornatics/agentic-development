@@ -32,11 +32,12 @@ on every resumption, but do not skip a necessary check.
 ## Develop with rapid feedback
 
 For executable behavior:
-1. Write or reuse a test at a public interface.
-2. Observe a failure that actually reproduces the defect (**red**).
-3. Make the minimal correction and observe success (**green**).
-4. Refactor without changing behavior, then rerun tests.
-5. Move to the next behavior and relevant regressions.
+1. Start from the approved specification or ticket criteria; for a story, see its acceptance check fail first.
+2. Write or reuse one test at a public interface, just before the code it drives.
+3. Observe a failure that shows the missing behavior or reproduces the defect (**red**).
+4. Make the minimal correction and observe success (**green**).
+5. Refactor inside the slice without changing behavior, then rerun the same tests.
+6. Move to the next behavior and relevant regressions.
 
 Expected results come from the requirement or an independent oracle, not the tested code.
 A documentation-format check does not prove agent behavior.

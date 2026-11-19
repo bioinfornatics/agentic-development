@@ -135,7 +135,7 @@ class SkillFlowContract(unittest.TestCase):
         for phase, expected in HANDOFF_ROUTES.items():
             with self.subTest(phase=phase):
                 found = set(SKILL_REF.findall(handoff_step(skill(phase))))
-                self.assertEqual(found - {'task-authoring'}, expected)
+                self.assertEqual(found - {'task-authoring', 'domain-modeling'}, expected)
 
     def test_cycle_routing_table_names_every_phase(self):
         table = skill('cycle').split('## Workflow', 1)[0]
@@ -220,6 +220,35 @@ class SkillFlowContract(unittest.TestCase):
         for phase in PHASES:
             with self.subTest(phase=phase):
                 self.assertIn('Load `agentic-development:task-authoring`', skill(phase))
+
+    def test_domain_modeling_returns_to_caller_and_loads_only_from_research_and_plan(self):
+        text = skill('domain-modeling')
+        self.assertIn('STOP and return to the caller', text)
+        self.assertEqual(set(SKILL_REF.findall(text)), set())
+        for phase in PHASES:
+            with self.subTest(phase=phase):
+                expected = 1 if phase in ('research', 'plan') else 0
+                loads = re.findall(r'Load\s+`agentic-development:domain-modeling`', skill(phase))
+                self.assertEqual(len(loads), expected)
+        self.assertIn('`domain-modeling` (domain terms, decision records) are not phases', self.doc)
+        self.assertIn('never chains into a phase', self.doc)
+
+    def test_optional_capabilities_name_both_trigger_routes_and_fallback(self):
+        for rule in ('the workflow completes without them', 'a request matches its description',
+                     "a phase's conditional Load step names it", 'applies its contained guidance'):
+            self.assertIn(rule, self.doc)
+
+    def test_guide_orders_specification_then_tests_then_code(self):
+        order = self.doc.split('## Order of work', 1)[1].split('\n## ', 1)[0]
+        self.assertLess(order.index('Plan specifies'), order.index('Implement writes one test right before its code'))
+        self.assertIn('Implement starts only from an approved specification', order)
+        self.assertIn('never shown to fail is an evidence gap', order)
+        self.assertIn('approved spec', doc_labels(self.doc)[('plan', 'implement')])
+        self.assertIn('spec gap', doc_labels(self.doc)[('implement', 'plan')])
+
+    def test_grill_rounds_and_integration_branch_gates_are_documented(self):
+        self.assertIn('user confirms the shared understanding', self.doc)
+        self.assertIn('integration-branch batch mode needs current authority', self.doc)
 
     def test_skills_call_no_forge_cli_and_guide_says_so(self):
         forge = re.compile(r'`(gh|glab)\s|\b(gh|glab) (pr|mr|issue|release|api)\b')

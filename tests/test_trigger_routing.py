@@ -5,7 +5,7 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 MATRIX = ROOT / 'integration/trigger-routing.json'
-SKILLS = ('cycle', 'research', 'plan', 'implement', 'test', 'judge', 'iterate', 'task-authoring')
+SKILLS = ('cycle', 'research', 'plan', 'implement', 'test', 'judge', 'iterate', 'task-authoring', 'domain-modeling')
 PHASES = SKILLS[:7]
 
 

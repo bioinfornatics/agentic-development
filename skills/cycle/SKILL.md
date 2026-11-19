@@ -16,8 +16,8 @@ Reuse cycle while its guidance remains available; do not reload it per tool.
 | Order | Intent / condition | Skill | Required output / exit gate |
 |---|---|---|---|
 | 1 | Every new development objective: establish product context, including clear/familiar requests; on resume verify existing context | agentic-development:research | Cited purpose, users/outcome, current behavior, constraints, affected seams and assumptions sufficient for the next decision, or targeted missing-context probe |
-| 2 | Research context established or verified; define roadmap, scope, criteria or dependencies | agentic-development:plan | Proposed or approved scope, criteria, ownership, task graph and verification/review policy; investigate decision-blocking unknowns first |
-| 3 | Ready authorized implementation, feature, refactor or repair | agentic-development:implement | Minimal diff, preserved-work ledger and symptom-specific/static evidence as applicable |
+| 2 | Research context established or verified; define roadmap, scope, criteria or dependencies | agentic-development:plan | Proposed or approved scope, criteria (an unapproved specification stops for approval by the user or designated owner), ownership, task graph and verification/review policy; investigate decision-blocking unknowns first |
+| 3 | Ready authorized implementation, feature, refactor or repair whose specification or criteria are approved and whose failing checks are named | agentic-development:implement | Minimal diff, preserved-work ledger and symptom-specific/static evidence as applicable |
 | 4 | Worker result or exact candidate needing checks | agentic-development:test | Criterion-bound results, failures and environment/coverage limits |
 | 5 | Frozen candidate and evidence ready for acceptance assessment | agentic-development:judge | Scoped verdict, verified findings, agreed score mode and independence limits |
 | Loop | Failed check, rejected candidate or missing proof | agentic-development:iterate | Classified gap and smallest authorized correction/prerequisite; retain valid proof and correction budget |
@@ -206,11 +206,28 @@ This is an agent instruction, not a runtime cache.
    distinct, currently authorized tracker responsibility was explicitly assigned.
    Give each worker the objective,
    acceptance criteria, contract, approved scope, input artifacts and exclusive
-   writable paths. Workers cannot coordinate implicitly. Parallel writers must
+   writable paths, as pointers to where they are saved; copy an item only when it
+   has no saved locator. Workers cannot coordinate implicitly. Parallel writers must
    never share a file. Workers return result, exact changes, evidence, limitations
    and next action; the coordinator integrates these, not their unsupported claims.
    Name each contribution's required output and integration/join responsibility;
    do not write a live worker's owned paths or begin work depending on its return.
+   Typical pointers, not copies: the task ID and, when saved, the research report,
+   specification and relevant commits; start each worker in a fresh context.
+
+   Integration-branch batch mode is optional and used only when the user requests
+   it or approves it for this epic; the default above stays non-mutating. It needs
+   current scoped authority for each Git action: creating the integration branch,
+   one worktree and branch per worker based on it, each worker commit, each merge
+   or rebase that brings the integration tip into a worker branch, merging each
+   finished worker into the integration branch, and removing each worktree. Each
+   worker confirms its base, implements its one task test-first and, when authorized,
+   brings in the current integration tip before returning. Merge finished work one
+   worker at a time, then dispatch any tasks that the merge made ready. The
+   integration branch is the candidate for Test and Judge. Never merge it into
+   develop, main or any protected branch, push it, or remove a worktree without
+   that action's own authority. A missing grant stops only the affected action and
+   falls back to the default.
 
    Before Judge, freeze the candidate, checklist and evidence index; recommend a
    fresh context and prepare the handoff. Do not auto-commit. If no independent

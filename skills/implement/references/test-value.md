@@ -119,6 +119,13 @@ of the same scenario: the refusal leaves the site unchanged.
   a distinct product contract is discriminated (for example selecting the correct
   customer's ID, forwarding a mandated parameter, or translating a dependency error).
   Do not ban mocks or contractually meaningful interaction assertions wholesale.
+- Replace only system boundaries: external services, the clock, randomness and,
+  when a real or test instance is impractical, the database or file system. Do not
+  mock modules the project owns or internal collaborators; exercise them through
+  the public seam. At a boundary, pass the dependency in rather than constructing
+  it inside the subject, and prefer one named operation per external call over a
+  generic request function, so each replacement returns one specific shape. This
+  is boundary design, not permission to add injection layers to multiply tests.
 - When the contract determines an exact outcome, assert it, including important
   persisted effects or absence of forbidden effects. Non-null, truthy, nonnegative
   or shape-only checks cannot substitute for the known result. Tolerances or

@@ -48,7 +48,7 @@ class ProductionDiscovery(unittest.TestCase):
         files = [row["path"] for row in json.loads((self.out / "distribution.json").read_text())["files"]]
         self.assertFalse(any("fixture" in name or "synthetic-sessions" in name for name in files))
         self.assertIn("skills/cycle/assets/output-template.md", files)
-        self.assertEqual(len(list(self.out.rglob("SKILL.md"))), 8)
+        self.assertEqual(len(list(self.out.rglob("SKILL.md"))), 9)
 
     def test_unknown_top_level_capability_rejected(self):
         self.put("skills/unapproved/SKILL.md", "unapproved capability")

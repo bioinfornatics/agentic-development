@@ -54,7 +54,7 @@ class ProgressiveCommits(unittest.TestCase):
 
 class ShortSkillNames(unittest.TestCase):
     def test_exact_seven_phases_plus_optional_capability(self):
-        names = set(PHASE_NAMES) | {'task-authoring'}
+        names = set(PHASE_NAMES) | {'task-authoring', 'domain-modeling'}
         self.assertEqual({p.parent.name for p in (ROOT / 'skills').glob('*/SKILL.md')}, names)
         for name in names:
             path = ROOT / 'skills' / name / 'SKILL.md'

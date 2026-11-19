@@ -103,7 +103,7 @@ class TaskAuthoring(unittest.TestCase):
         import sys
         sys.path.insert(0, str(ROOT / 'tools'))
         from production import SKILLS
-        self.assertEqual(SKILLS, frozenset(PHASES) | {'task-authoring'})
+        self.assertEqual(SKILLS, frozenset(PHASES) | {'task-authoring', 'domain-modeling'})
         self.assertEqual({p.parent.name for p in (ROOT / 'skills').glob('*/SKILL.md')}, SKILLS)
         self.assertFalse((CAPABILITY / 'evals/evals.json').exists())
 

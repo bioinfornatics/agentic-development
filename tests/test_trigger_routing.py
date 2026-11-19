@@ -35,8 +35,23 @@ class TriggerRoutingMatrix(unittest.TestCase):
                 self.assertTrue(set(case['near_miss_for']) <= set(SKILLS))
                 self.assertFalse(set(case['near_miss_for']) & set(case['expected_skills']))
                 phases = set(case['expected_skills']) & set(PHASES[1:])
-                if phases:
-                    self.assertIn('cycle', case['expected_skills'])
+                self.assertLessEqual(len(phases), 1)
+                if 'cycle' not in case['expected_skills'] and phases:
+                    self.assertEqual(len(case['expected_skills']), 1)
+
+    def test_phase_only_requests_load_the_phase_alone(self):
+        # Decision qws.2 option A: cycle is not required for a request limited to one phase.
+        self.assertIn('a request limited to one phase loads that phase Skill alone', self.matrix['description'])
+        self.assertNotIn('cycle accompanies each development phase request', self.matrix['description'])
+        alone = [c for c in self.cases if len(c['expected_skills']) == 1 and c['expected_skills'][0] in PHASES[1:]]
+        self.assertGreaterEqual(len(alone), 6)
+        housekeeping = [c for c in self.cases if c['expected_skills'] == ['cycle']]
+        self.assertGreaterEqual(len(housekeeping), 2)
+        self.assertIn('a request that also asks for a later phase is an objective', self.matrix['description'])
+        objectives = ('Add a CSV export button', 'Le paiement échoue parfois', 'Coordinate the whole change')
+        for prefix in objectives:
+            case = next(c for c in self.cases if c['query'].startswith(prefix))
+            self.assertIn('cycle', case['expected_skills'], prefix)
 
     def test_every_skill_has_positives_and_neighbour_near_misses(self):
         for skill in SKILLS:

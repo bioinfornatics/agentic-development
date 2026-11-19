@@ -1,16 +1,17 @@
 ---
 name: cycle
-description: Coordinates evidence-driven software development. Use for every new or resumed development task, including single-phase investigation, planning, implementation, fixing bugs, testing or reviewing.
+description: Coordinates evidence-driven software development across phases. Use when starting or resuming a development objective such as a feature, fixing bugs, testing or reviewing, when working an epic in batches, or when claiming, updating or closing tracker tasks. A single-phase request may load only that phase Skill.
 ---
 
 # Cycle
 
 ## Select the action from the intent
 
-Load cycle when entering software-development work, including a single-phase
-request. Reuse it while its guidance remains available; do not reload per tool.
-For a single-phase request, coordinate only the requested phase and its necessary
-prerequisites; return its proposed handoff and stop rather than expand scope.
+Load cycle to start or resume an objective, work an epic in batches or claim, update or
+close tracker tasks. A request limited to one phase may load only that phase Skill, which
+returns its handoff without finalizing; if cycle is loaded for one, coordinate only that
+phase and its prerequisites, return its proposed handoff and stop rather than expand scope.
+Reuse cycle while its guidance remains available; do not reload it per tool.
 
 | Order | Intent / condition | Skill | Required output / exit gate |
 |---|---|---|---|

@@ -13,10 +13,28 @@ def workflow_steps(text):
             for i, match in enumerate(matches)]
 
 class CycleDisclosure(unittest.TestCase):
-    def test_activation_includes_single_phase_development(self):
+    def test_activation_covers_objectives_batches_and_tracker_work(self):
+        # Decision qws.2 option A: a request limited to one phase may load that phase Skill alone.
         description = (ROOT / 'skills/cycle/SKILL.md').read_text().split('description:', 1)[1].split('---', 1)[0]
-        for intent in ('software development', 'fixing bugs', 'testing', 'reviewing', 'single-phase'):
+        for intent in ('software development', 'fixing bugs', 'testing', 'reviewing', 'epic',
+                       'claiming', 'closing', 'single-phase request may load only that phase Skill'):
             self.assertIn(intent, description)
+        self.assertNotIn('including single-phase', description)
+
+    def test_body_allows_phase_only_loading_without_finalization(self):
+        text = (ROOT / 'skills/cycle/SKILL.md').read_text()
+        intro = text.split('| Order |', 1)[0]
+        self.assertIn('may load only that phase Skill', intro)
+        self.assertIn('without finalizing', intro)
+        self.assertNotIn('including a single-phase', intro)
+
+    def test_single_phase_eval_matches_phase_only_loading(self):
+        import json
+        cases = json.loads((ROOT / 'skills/cycle/evals/evals.json').read_text())['evals']
+        case = next(c for c in cases if c['name'] == 'cycle-single-phase-activation')
+        joined = ' '.join(case['assertions'])
+        self.assertNotIn('Cycle applies to single-phase development', joined)
+        self.assertIn('If cycle is loaded for a single-phase request', joined)
 
     def test_one_ordered_intent_router_and_explained_deviations(self):
         text = (ROOT / 'skills/cycle/SKILL.md').read_text()

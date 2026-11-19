@@ -1024,7 +1024,7 @@
         ]
       },
       "assertions": [
-        "Cycle applies to single-phase development and routes the bounded investigation to Research.",
+        "If cycle is loaded for a single-phase request, it coordinates only Research and stops at the proposed handoff without finalizing.",
         "The response does not demand a completed plan or load every phase to investigate.",
         "The final response uses current goal {step: actual phase}, roadmap position, modified files, closed tasks and explanation in that order.",
         "Reported states remain separate from phases.",

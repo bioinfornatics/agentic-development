@@ -102,7 +102,8 @@ class TicketAuthoring(unittest.TestCase):
                  'changed-scope-dependency-readiness'}
         self.assertTrue(existing | added <= {case['name'] for case in cases})
         allowed = {'id', 'name', 'subject', 'language', 'target', 'coverage_tags',
-                   'prompt', 'assertions', 'expected_output', 'files'}
+                   'prompt', 'assertions', 'expected_output', 'files',
+                   'preconditions', 'capabilities'}
         for case in cases:
             if case['name'] not in added:
                 continue

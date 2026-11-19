@@ -13,7 +13,10 @@ FEASIBILITY_SCENARIOS = {
     'iterate': {'local-replan-no-progress'},
 }
 SCENARIO_KEYS = {'id', 'name', 'subject', 'language', 'target', 'coverage_tags',
-                 'prompt', 'assertions', 'expected_output', 'files'}
+                 'prompt', 'assertions', 'expected_output', 'files',
+                 'preconditions', 'capabilities'}
+# design-evals requires declared capabilities; inert scenarios grant no browser, network or tools.
+INERT_CAPABILITIES = {'browser': False, 'network': False, 'tools': []}
 TAG_DIMENSIONS = {'phase', 'language', 'rule'}
 
 
@@ -32,6 +35,10 @@ def scenario_problems(phase, case):
     if (not isinstance(target, dict) or target.get('execution') != 'explain'
             or target.get('path') not in case.get('files', [])):
         problems.append('bad target')
+    capabilities = case.get('capabilities')
+    if capabilities is not None and any(
+            capabilities.get(key) != value for key, value in INERT_CAPABILITIES.items()):
+        problems.append('non-inert capabilities')
     tags = case.get('coverage_tags', [])
     for tag in tags:
         dimension, _, value = tag.partition(':')
@@ -200,6 +207,13 @@ class FeasibilityScenarioSubset(unittest.TestCase):
                 'expected_output': 'e', 'files': ['evals/inputs/ticket.md'],
                 'target': {'path': 'evals/inputs/ticket.md', 'execution': 'explain'}}
         self.assertEqual(scenario_problems('plan', case), [])
+        inert = dict(case, capabilities={'filesystem': True, 'agent_runner': True,
+                                         'browser': False, 'network': False, 'tools': []})
+        self.assertEqual(scenario_problems('plan', inert), [])
+        for key, value in (('network', True), ('browser', True), ('tools', ['shell'])):
+            with self.subTest(capability=key):
+                live = dict(case, capabilities=dict(inert['capabilities'], **{key: value}))
+                self.assertIn('non-inert capabilities', scenario_problems('plan', live))
         for target in (None, {'path': 'evals/inputs/ticket.md', 'execution': 'run'},
                        {'path': 'evals/inputs/other.md', 'execution': 'explain'}):
             with self.subTest(target=target):

@@ -390,8 +390,21 @@
         "rule:evidence-freshness"
       ],
       "target": {
+        "kind": "existing-skill",
         "path": "evals/inputs/replan-state.md",
         "execution": "explain"
+      },
+      "preconditions": [
+        "Scenario input is a read-only hypothetical fixture, not real test, tracker or repository output.",
+        "Execute explanation only in an isolated context with equal artifact access for paired variants.",
+        "No Research, Plan or implementation phase is executed; the consultation is diagnosis and planning only."
+      ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": []
       }
     }
   ]

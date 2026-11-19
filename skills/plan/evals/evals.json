@@ -659,10 +659,27 @@
       "name": "concrete-managed-service-ticket",
       "subject": "ticket-authoring",
       "language": "en",
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "preconditions": [
+        "Scenario input evals/inputs/context.md is a read-only hypothetical fixture, not real test or tracker output.",
+        "Execute explanation only in an isolated context with equal artifact access for paired variants.",
+        "No tracker, Git or filesystem writes are authorized; output is a proposed plan only."
+      ],
       "prompt": "Using evals/inputs/context.md, propose an implementation task for identities and secrets. I need to understand the selected solution, how it works and which files are involved.",
       "files": [
         "evals/inputs/context.md"
       ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": []
+      },
       "assertions": [
         "The ticket explicitly names managed service delivery rather than implying a self-hosted vault.",
         "Read/create/modify/preserve/exclude assets distinguish existing supplied paths from proposed output paths.",
@@ -680,10 +697,27 @@
       "name": "consolidate-updated-ticket",
       "subject": "ticket-repair",
       "language": "en",
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "preconditions": [
+        "Scenario input evals/inputs/ticket.md is a read-only hypothetical fixture, not real test or tracker output.",
+        "Execute explanation only in an isolated context with equal artifact access for paired variants.",
+        "No tracker, Git or filesystem writes are authorized; output is a proposed plan only."
+      ],
       "prompt": "The task in evals/inputs/ticket.md has become contradictory after our changes. Rewrite its current specification while keeping traceability and the existing criteria.",
       "files": [
         "evals/inputs/ticket.md"
       ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": []
+      },
       "assertions": [
         "One coherent current description uses managed secrets; no contradictory architecture blocks remain in it.",
         "Prior proposal and findings are retained in history/notes rather than silently discarded.",
@@ -701,10 +735,27 @@
       "name": "changed-scope-dependency-readiness",
       "subject": "ticket-dependencies",
       "language": "en",
+      "target": {
+        "kind": "existing-skill",
+        "path": ".",
+        "execution": "explain"
+      },
+      "preconditions": [
+        "Scenario input evals/inputs/dependencies.md is a read-only hypothetical fixture, not real test or tracker output.",
+        "Execute explanation only in an isolated context with equal artifact access for paired variants.",
+        "No tracker, Git or filesystem writes are authorized; output is a proposed plan only."
+      ],
       "prompt": "Review the plan in evals/inputs/dependencies.md before starting the redesign and explain what we can actually execute now.",
       "files": [
         "evals/inputs/dependencies.md"
       ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": []
+      },
       "assertions": [
         "The plan detects that architecture selection incorrectly waits on its implementation.",
         "Proposed dependency changes are cycle-free and implementation does not precede its unresolved design.",
@@ -722,10 +773,27 @@
       "name": "producer-consumer-and-goal-coverage",
       "subject": "agentic-development",
       "language": "en",
+      "target": {
+        "kind": "existing-skill",
+        "path": "evals/inputs/export-plan.md",
+        "execution": "explain"
+      },
+      "preconditions": [
+        "Scenario input evals/inputs/export-plan.md is a read-only hypothetical fixture, not real test or tracker output.",
+        "Execute explanation only in an isolated context with equal artifact access for paired variants.",
+        "No tracker, Git or filesystem writes are authorized; output is a proposed plan only."
+      ],
       "prompt": "Review evals/inputs/export-plan.md and propose the smallest plan that delivers the requested export.",
       "files": [
         "evals/inputs/export-plan.md"
       ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": []
+      },
       "assertions": [
         "The review identifies that A produces CSV while B requires a differently shaped JSON array; the dependency edge alone does not make that transition compatible.",
         "The review names B as affected and proposes a concrete contract-compatible bridge with ownership and a check, or a specific prerequisite that leaves B pending.",
@@ -740,21 +808,34 @@
         "language:en",
         "rule:transition-compatibility",
         "rule:goal-sufficiency"
-      ],
-      "target": {
-        "path": "evals/inputs/export-plan.md",
-        "execution": "explain"
-      }
+      ]
     },
     {
       "id": 103,
       "name": "low-risk-existing-evidence",
       "subject": "agentic-development",
       "language": "en",
+      "target": {
+        "kind": "existing-skill",
+        "path": "evals/inputs/label-plan.md",
+        "execution": "explain"
+      },
+      "preconditions": [
+        "Scenario input evals/inputs/label-plan.md is a read-only hypothetical fixture, not real test or tracker output.",
+        "Execute explanation only in an isolated context with equal artifact access for paired variants.",
+        "No tracker, Git or filesystem writes are authorized; output is a proposed plan only."
+      ],
       "prompt": "Check whether the task in evals/inputs/label-plan.md has enough evidence to proceed.",
       "files": [
         "evals/inputs/label-plan.md"
       ],
+      "capabilities": {
+        "filesystem": true,
+        "agent_runner": true,
+        "browser": false,
+        "network": false,
+        "tools": []
+      },
       "assertions": [
         "The assessment finds S1/T1 sufficient for the low-risk compatible label-change decision, while separating that decision from proof of the future changed candidate.",
         "The assessment does not make a new deployment, external research or proof-of-concept a mandatory prerequisite for this literal-only change.",
@@ -767,11 +848,7 @@
         "phase:plan",
         "language:en",
         "rule:proportional-evidence"
-      ],
-      "target": {
-        "path": "evals/inputs/label-plan.md",
-        "execution": "explain"
-      }
+      ]
     }
   ],
   "coverage_dimensions": {

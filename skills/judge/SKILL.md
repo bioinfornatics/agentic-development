@@ -40,8 +40,9 @@ This is an agent instruction, not a runtime cache.
 1. [ ] **Verify scope, authority and reviewer prerequisites**
 
    Apply [the requirements baseline](references/requirements-baseline.md) before
-   defining or changing scope, criteria or checks. Resolve the approved task baseline;
-   retain Goals/Non-goals, FR/GWT and relevant NFRs; keep missing requirements explicit.
+   defining or changing scope, criteria, checks or verification, and before running checks.
+   Resolve the approved task baseline; retain verified Goals/Non-goals, FR/GWT and relevant
+   quantified NFRs without inventing targets; keep missing requirements explicit.
 
    Apply [the authorization policy](references/authorization-policy.md) before
    resuming artifact claims or executing consequential actions; verify current
@@ -64,9 +65,10 @@ This is an agent instruction, not a runtime cache.
    retain task ownership, readback and phase gates;
    evaluate commit suitability after each confirmed closure without inferring Git authority.
 
-   Apply [the communication contract](references/communication-contract.md) before preparing
-   the first checkpoint or a Git/session transition, for ownership, transition, evidence
-   and conditional UI reporting safeguards. Apply these safeguards in standalone use too.
+   Apply [the communication contract](references/communication-contract.md) before
+   the first mutation and before preparing the first checkpoint or a Git/session transition,
+   for ownership, transition, evidence and conditional UI reporting safeguards, not an
+   up-front load of response templates. Apply these safeguards in standalone use too.
    Respond in the user's language. Verify tools and permissions; unavailable
    capabilities produce an explicit blocker, never simulated execution evidence.
    Use the coordinator's verified slice state when available; do not fabricate execution or acceptance.
@@ -86,12 +88,15 @@ This is an agent instruction, not a runtime cache.
 
 2. [ ] **Bind the frozen candidate and review basis**
 
-   Apply [candidate identity](references/candidate-identity.md) before freezing or comparing inputs
-   or reusing evidence; include staged, untracked and binary inputs
-   and explicitly defined output-only exclusions. Apply [the review policy](references/review-policy.md)
-   before agreeing acceptance, judging or closing a task/US. Independence and closure
-   requirements were set at plan time; a missing capability does not waive them.
+   Apply [candidate identity](references/candidate-identity.md) before planning checks,
+   freezing or comparing inputs or reusing evidence; include staged, untracked and binary inputs
+   and explicitly defined output-only exclusions.
    For exact-candidate proof, use the contained [capture/validate/compare CLI](scripts/candidate_identity.py) with the [scope example](references/candidate-scope.example.json); consult the [manifest schema](references/candidate-identity.schema.json) and [manifest example](references/candidate-identity.example.json) when preparing or validating its JSON. Follow the candidate procedure above; equality is not acceptance.
+
+   Apply [the review policy](references/review-policy.md) before setting or reporting
+   acceptance/review requirements, before implementation, and before proposing or agreeing
+   acceptance, judging or closing a task/US. Independence and closure requirements are
+   set at plan time, before implementation; a missing capability does not waive them.
 
    Match proofs to candidate/environment and scope. Inspect relevant code and
    actual test artifacts; do not accept builder summaries as sole proof.

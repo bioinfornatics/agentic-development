@@ -65,18 +65,21 @@ This is an agent instruction, not a runtime cache.
      before choosing work or mutating task state. Run `bd prime` only when Beads context is missing or stale;
      retain task ownership, readback and phase gates;
      evaluate commit suitability after each confirmed closure without inferring Git authority.
-   - Before resuming artifact claims or executing consequential actions, apply
-     [the authorization policy](references/authorization-policy.md); verify the current
-     authority and allowed probe effects, not historical permissions alone. Research
-     does not authorize production edits, Git initialization, installation or publication.
+   - Apply [the authorization policy](references/authorization-policy.md) before
+     resuming artifact claims or executing consequential actions; verify current
+     permission for the intended action, not historical approval.
+   - Treat allowed probe effects as part of current authority. Research does not
+     authorize production edits, Git initialization, installation or publication.
      Side-effecting probes require scoped authority and an isolated environment.
-   - Before defining or changing scope, criteria or verification, apply
-     [the requirements baseline](references/requirements-baseline.md). Bound the question
-     and deliverable; reuse verified Goals/Non-goals, FR/GWT and relevant quantified
-     NFRs without inventing targets. Investigation needs no completed plan.
-   - When setting acceptance/review obligations for the slice, or before agreeing
-     acceptance, judging or closing a task/US, apply [the review policy](references/review-policy.md).
-     Set required independence before implementation; missing capability does not waive it.
+   - Apply [the requirements baseline](references/requirements-baseline.md) before
+     defining or changing scope, criteria, checks or verification, and before running checks.
+     Resolve the approved task baseline; retain verified Goals/Non-goals, FR/GWT and relevant
+     quantified NFRs without inventing targets; keep missing requirements explicit.
+   - Bound the question and deliverable. Investigation needs no completed plan.
+   - Apply [the review policy](references/review-policy.md) before setting or reporting
+     acceptance/review requirements, before implementation, and before proposing or agreeing
+     acceptance, judging or closing a task/US. Independence and closure requirements are
+     set at plan time, before implementation; a missing capability does not waive them.
 
 2. [ ] **Select and dispatch bounded investigations**
 
@@ -123,14 +126,16 @@ This is an agent instruction, not a runtime cache.
      after reading the evidence, apply [the clarification interview](references/clarification-interview.md):
      verify facts yourself, ask one recommended-answer question per decision, and keep
      `NEEDS CLARIFICATION` markers until each blocking decision is settled.
-   - When planning checks, freezing inputs or reusing evidence, apply
-     [candidate identity](references/candidate-identity.md) and select the provenance path:
-     source-only observation records inspected revision/paths, dirty state and limits;
-     a preliminary check records command, inputs, environment and observed result with
-     limited provenance. Exact-candidate acceptance or proof reuse requires capture,
-     rerun and comparison under that contract, including staged, untracked, binary and
-     relevant environment inputs with output-only exclusions. Verify source identity
-     and freshness before accepting a worker's evidence as reusable.
+   - Apply [candidate identity](references/candidate-identity.md) before planning checks,
+     freezing or comparing inputs or reusing evidence; include staged, untracked and binary inputs
+     and explicitly defined output-only exclusions.
+     For exact-candidate proof, use the contained [capture/validate/compare CLI](scripts/candidate_identity.py) with the [scope example](references/candidate-scope.example.json); consult the [manifest schema](references/candidate-identity.schema.json) and [manifest example](references/candidate-identity.example.json) when preparing or validating its JSON. Follow the candidate procedure above; equality is not acceptance.
+   - Select the provenance path: source-only observation records inspected revision/paths,
+     dirty state and limits; a preliminary check records command, inputs, environment and
+     observed result with limited provenance. Exact-candidate acceptance or proof reuse
+     requires capture, rerun and comparison under that contract, including relevant
+     environment inputs. Verify source identity and freshness before accepting a worker's
+     evidence as reusable.
    - Retrieve likely entry points, traverse callers/data flow, explore based on findings
      and verify hypotheses with concrete files, documentation or reproducible probes.
      Tie technical findings to the product outcome; cite paths, symbols and versions
@@ -150,7 +155,6 @@ This is an agent instruction, not a runtime cache.
      and comparing solutions. Search the repository first, compare reuse/extend/build
      and disclose unavailable channels. Reuse a current evidence-backed decision; this
      investigation is not installation permission.
-   - For exact-candidate proof, use the contained [capture/validate/compare CLI](scripts/candidate_identity.py) with the [scope example](references/candidate-scope.example.json); consult the [manifest schema](references/candidate-identity.schema.json) and [manifest example](references/candidate-identity.example.json) when preparing or validating its JSON. Follow the candidate procedure above; equality is not acceptance.
 
 4. [ ] **Integrate evidence and prepare the decision**
 
@@ -168,10 +172,13 @@ This is an agent instruction, not a runtime cache.
      exclusive output path before authorized worker capture. The coordinator records
      verified pointers in Beads only when permitted and reads back updates. Local Markdown
      retains provenance/freshness limits; no automatic capture, publication or sync.
-   - Before preparing the first checkpoint or a Git/session transition, apply
-     [the communication contract](references/communication-contract.md). Preserve ownership,
-     evidence and conditional UI safeguards in standalone use too. Respond in the user's
-     language; unavailable capabilities are explicit, never simulated execution evidence.
+   - Apply [the communication contract](references/communication-contract.md) before
+     the first mutation and before preparing the first checkpoint or a Git/session transition,
+     for ownership, transition, evidence and conditional UI reporting safeguards, not an
+     up-front load of response templates. Apply these safeguards in standalone use too.
+     Respond in the user's language. Verify tools and permissions; unavailable
+     capabilities produce an explicit blocker, never simulated execution evidence.
+     Use the coordinator's verified slice state when available; do not fabricate execution or acceptance.
    - Before declaring research sufficient for the planning decision, apply
      [the Research readiness review](references/research-readiness-review.md).
      Resolve only decision-material gaps; retain supported premises, targeted

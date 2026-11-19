@@ -71,14 +71,33 @@ class TaskAuthoring(unittest.TestCase):
             self.assertTrue(path.is_file())
         self.assertIn('If Beads is used, before native operations', text)
         self.assertNotRegex(text, r'`bd [^`]+`')
-        authority = (CAPABILITY / 'references/authorization-policy.md').read_text()
+        authority = (CAPABILITY / 'references/authoring-authorization-limits.md').read_text()
         for rule in ('Loading guidance grants no permission', 'historical task notes',
                      'Do not steal a', 'close/reopen tasks', 'second task database'):
             self.assertIn(rule, authority)
-        bridge = (CAPABILITY / 'references/beads-integration.md').read_text()
+        bridge = (CAPABILITY / 'references/beads-authoring-bridge.md').read_text()
         for rule in ('current installed CLI help', 'database identity',
                      'Preserve the assigned owner and claim', 'read back the', 'reject cycles'):
             self.assertIn(rule, bridge)
+
+    def test_narrow_policy_files_do_not_reuse_phase_contract_names(self):
+        # FR-2 (agentic-devlopment-l0p): narrower task-authoring policy files must
+        # not share a filename with a different phase contract.
+        refs = CAPABILITY / 'references'
+        for new in ('authoring-authorization-limits.md', 'beads-authoring-bridge.md'):
+            self.assertTrue((refs / new).is_file(), new)
+        for old in ('authorization-policy.md', 'beads-integration.md'):
+            self.assertFalse((refs / old).exists(), old)
+        text = (CAPABILITY / 'SKILL.md').read_text()
+        links = {Path(link).name for link in re.findall(r'\]\(([^)#]+)', text)}
+        self.assertLessEqual({'authoring-authorization-limits.md', 'beads-authoring-bridge.md'}, links)
+        self.assertFalse(links & {'authorization-policy.md', 'beads-integration.md'})
+        for path in refs.iterdir():
+            for other in (ROOT / 'skills').glob('*/references/' + path.name):
+                if other.parent.parent == CAPABILITY:
+                    continue
+                with self.subTest(name=path.name, other=other.parent.parent.name):
+                    self.assertEqual(other.read_bytes(), path.read_bytes())
 
     def test_inventory_exact_allowlist_not_eighth_phase(self):
         import sys

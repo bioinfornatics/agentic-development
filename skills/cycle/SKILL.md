@@ -50,9 +50,15 @@ This is an agent instruction, not a runtime cache.
 
 1. [ ] **Verify prerequisites and current authority**
 
-   Apply [the communication contract](references/communication-contract.md) when preparing
-   the first checkpoint or a Git/session transition; it governs reporting safeguards,
-   not an up-front load of response templates. For a UI checkpoint apply [the checkpoint example](assets/checkpoint-example.md).
+   Apply [the communication contract](references/communication-contract.md) before
+   the first mutation and before preparing the first checkpoint or a Git/session transition,
+   for ownership, transition, evidence and conditional UI reporting safeguards, not an
+   up-front load of response templates. Apply these safeguards in standalone use too.
+   Respond in the user's language. Verify tools and permissions; unavailable
+   capabilities produce an explicit blocker, never simulated execution evidence.
+   Use the coordinator's verified slice state when available; do not fabricate execution or acceptance.
+
+   For a UI checkpoint apply [the checkpoint example](assets/checkpoint-example.md).
 
    For an explicitly requested Skill evaluation in a source checkout, read
    [evaluation piloting](references/session-evaluation.md) before launching runs.
@@ -76,6 +82,7 @@ This is an agent instruction, not a runtime cache.
    For routine reads, claims, progress updates or closure, do not load task-authoring.
    Resume this caller after verified ticket readback or an explicit proposal/error;
    retain this phase's scope, ownership, review and evidence gates.
+
    Require explicit delivery mechanisms and asset maps for ready implementation work.
    Route changed scope through consolidated ticket sections and reconciled dependency
    edges; a populated tracker record alone does not prove execution readiness.
@@ -94,21 +101,24 @@ This is an agent instruction, not a runtime cache.
    Apply [the authorization policy](references/authorization-policy.md) before
    resuming artifact claims or executing consequential actions; verify current
    permission for the intended action, not historical approval.
-   Apply [the review policy](references/review-policy.md)
-   before agreeing acceptance, judging or closing a task/US. Independence and closure
-   requirements are set before implementation, not waived by a missing capability.
+
+   Apply [the review policy](references/review-policy.md) before setting or reporting
+   acceptance/review requirements, before implementation, and before proposing or agreeing
+   acceptance, judging or closing a task/US. Independence and closure requirements are
+   set at plan time, before implementation; a missing capability does not waive them.
 
 2. [ ] **Frame or recover the bounded slice**
 
    Apply [the requirements baseline](references/requirements-baseline.md) before
-   defining or changing scope, criteria or checks. Resolve the approved task baseline;
-   retain Goals/Non-goals, FR/GWT and relevant NFRs; keep missing requirements explicit.
+   defining or changing scope, criteria, checks or verification, and before running checks.
+   Resolve the approved task baseline; retain verified Goals/Non-goals, FR/GWT and relevant
+   quantified NFRs without inventing targets; keep missing requirements explicit.
 
    Apply [the judgment rubric](references/judgment-rubric.md) before selecting
    acceptance criteria or review mode.
 
-   Apply [candidate identity](references/candidate-identity.md) when planning checks,
-   freezing inputs or reusing evidence; include staged, untracked and binary inputs
+   Apply [candidate identity](references/candidate-identity.md) before planning checks,
+   freezing or comparing inputs or reusing evidence; include staged, untracked and binary inputs
    and explicitly defined output-only exclusions.
    For exact-candidate proof, use the contained [capture/validate/compare CLI](scripts/candidate_identity.py) with the [scope example](references/candidate-scope.example.json); consult the [manifest schema](references/candidate-identity.schema.json) and [manifest example](references/candidate-identity.example.json) when preparing or validating its JSON. Follow the candidate procedure above; equality is not acceptance.
 

@@ -1,0 +1,18 @@
+Subagent ID: 20261119_122
+
+You are an independent JUDGE (read-only). Do NOT edit, create, stage, commit, or delete any file, and do NOT run any bd write command (no create/update/close/claim). Only read and run tests.
+
+Repository: /home/jmercier/Codes/me/agentic-development, branch feature/pocock-method-integration, uncommitted working-tree candidate versus base origin/develop (b567637). Frozen candidate manifest: /tmp/0wm-evidence/candidate.json (candidate_id a46882f7a8cf42a689949575c0cc6c4966c6f26abea91d5c4c2e642afc9e0a35, scope /tmp/0wm-evidence/scope.json).
+
+First, if available, load the Skill `agentic-development:judge` (or read skills/judge/SKILL.md and skills/judge/references/judgment-rubric.md and finding-verification.md directly) and follow its review method.
+
+Steps:
+1. Verify candidate identity: `python3 skills/cycle/scripts/candidate_identity.py capture --root . --scope /tmp/0wm-evidence/scope.json > /tmp/0wm-evidence/judge-recapture.json` then `python3 skills/cycle/scripts/candidate_identity.py compare /tmp/0wm-evidence/candidate.json /tmp/0wm-evidence/judge-recapture.json` (exit 0 = same). (Check `compare --help` for argument form.) Writing into /tmp/0wm-evidence is allowed.
+2. Read the criteria: `bd show agentic-devlopment-0wm` and `bd show agentic-devlopment-0wm.1` ... `.6` (read-only). Acceptance criteria are in the ACCEPTANCE section of each.
+3. Review the diff: `git diff origin/develop` plus untracked new files skills/domain-modeling/**, skills/plan/references/specification-template.md, tests/test_method_practices.py. For every acceptance criterion (T1 AC1-AC5, T2 AC1-AC4, T3 AC1-AC3, T4 AC1-AC4, T5 AC1-AC4, T6 AC1-AC3) give met / not met / partially, with file:line evidence.
+4. Repository standards: read AGENTS.md. Check: English only; Skills host-neutral; no gh/glab; skill-flow.md mirrors handoffs; new Skill returns to caller and is not chained into a phase; permissions not implicitly granted; shared references byte-identical where required (test-value.md in implement and test); docs/ pedagogical rules (docs/AGENTS.md).
+5. License: compare the new/changed text against /home/jmercier/Codes/third-parties/mattpocock_skills/skills/engineering/{tdd,to-spec,implement-spec,to-tickets,domain-modeling,grill-with-docs}/ and ../productivity/grilling/SKILL.md. Report any sentence copied substantially verbatim (which would need MIT attribution).
+6. Run `python3 -B -m unittest discover -s tests` and `python3 -B tests/payload_inventory.py . > /dev/null; echo $?` and report counts/exit codes. Also judge whether new tests are tautological or weak.
+7. Look for real defects: contradictions with existing Skill text (e.g. clarification interview "avoid interviewing clear requests" vs grill mode, plan "exact target paths" vs spec no-paths, implement refactor guard vs existing refactor text, test-value "do not add injection layers" vs boundary injection), broken relative links in changed Markdown, line limits.
+
+Return: verdict (accepted | needs-correction | indeterminate) with a weighted score summary if the rubric applies, a criterion table, verified findings each with severity (blocking/non-blocking), file:line and a concrete corrective action, license result, test results, and limits of your review. Be concise and evidence-based; do not invent passes.

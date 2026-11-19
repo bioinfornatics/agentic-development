@@ -3,13 +3,15 @@
   "checkpoint_id": "01M7TEXVS1T6TQ1EV5C1S02ZEJ",
   "strategy": "manual-commit",
   "branch": "develop",
-  "checkpoints_count": 7,
+  "checkpoints_count": 8,
   "files_touched": [
     "skills/implement/evals/evals.json",
     "skills/iterate/evals/evals.json",
     "skills/plan/evals/evals.json",
     "skills/research/evals/evals.json",
-    "tests/test_eval_design.py"
+    "tests/test_eval_design.py",
+    "tests/test_plan_research_readiness.py",
+    "tests/test_ticket_authoring.py"
   ],
   "sessions": [
     {
@@ -46,6 +48,13 @@
       "compact_transcript": "/4/transcript.jsonl",
       "content_hash": "/4/content_hash.txt",
       "prompt": "/4/prompt.txt"
+    },
+    {
+      "metadata": "/5/metadata.json",
+      "transcript": "/5/full.jsonl",
+      "compact_transcript": "/5/transcript.jsonl",
+      "content_hash": "/5/content_hash.txt",
+      "prompt": "/5/prompt.txt"
     }
   ],
   "token_usage": {
@@ -53,7 +62,7 @@
     "cache_creation_tokens": 0,
     "cache_read_tokens": 0,
     "output_tokens": 0,
-    "api_call_count": 712
+    "api_call_count": 720
   },
   "redaction": {
     "replacements": 2,

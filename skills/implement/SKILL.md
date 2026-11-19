@@ -145,6 +145,14 @@ a previous permission. This is an agent instruction, not a runtime cache.
    before handoff; record commands and actual outputs. Full-suite execution depends
    on scope/capability, not a typo ritual.
 
+   Before advancing a dependent batch, verify that the observed result satisfies
+   the next affected consumer's input/precondition, including material format,
+   interface, state, environment and authority. A passing producer check alone is
+   not a verified transition or project-wide completion. If feasibility or
+   compatibility fails, pause affected nodes and route the finding to Iterate with
+   the preserved diff, evidence and budget; independent ready nodes may continue
+   within current scope/authority. Do not stop the whole project by default.
+
    For UI/journey changes provide ASCII with CRUD and +/~/-/=, functional/visual
    differences and explicit observed/tested/inferred/not-run status. Record any
    capture independently of the drawing. Do not infer browser quality from code.

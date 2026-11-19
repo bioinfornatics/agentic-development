@@ -20,6 +20,13 @@ readiness impact and smallest deciding probe with an observable resolving result
 Absence of a search result is not evidence that a problem or capability is absent.
 Do not promote library documentation, generic design patterns or a familiar request
 into proof of actual local behavior.
+For a critical feasibility claim, identify the indispensable unproven operation,
+what evidence would refute it, and the smallest authorized deciding probe with an
+observable result in the relevant environment. Challenge risky compositions even
+when their components are documented: documentation is not execution. Existing
+applicable evidence can suffice for low-risk compatible work; no universal
+proof-of-concept is required. Missing probe authority/access blocks only the
+affected decision, not independent ready work.
 
 ## 2. Ask mixed sufficiency questions
 

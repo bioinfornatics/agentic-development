@@ -6,6 +6,46 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 
 
+FEASIBILITY_SCENARIOS = {
+    'research': {'documented-components-unproven-deployment'},
+    'plan': {'producer-consumer-and-goal-coverage', 'low-risk-existing-evidence'},
+    'implement': {'failed-transition-local-pause'},
+    'iterate': {'local-replan-no-progress'},
+}
+SCENARIO_KEYS = {'id', 'name', 'subject', 'language', 'target', 'coverage_tags',
+                 'prompt', 'assertions', 'expected_output', 'files'}
+TAG_DIMENSIONS = {'phase', 'language', 'rule'}
+
+
+def scenario_problems(phase, case):
+    """Return closed-subset violations for one inert feasibility scenario."""
+    base = (ROOT / 'skills' / phase).resolve()
+    problems = [f'extra key {key}' for key in sorted(set(case) - SCENARIO_KEYS)]
+    if type(case.get('id')) is not int:
+        problems.append('id is not an int')
+    if case.get('language') != 'en':
+        problems.append('language is not en')
+    for key in ('prompt', 'assertions', 'expected_output', 'files'):
+        if not case.get(key):
+            problems.append(f'empty {key}')
+    tags = case.get('coverage_tags', [])
+    for tag in tags:
+        dimension, _, value = tag.partition(':')
+        if dimension not in TAG_DIMENSIONS or not re.fullmatch(r'[a-z0-9]+(-[a-z0-9]+)*', value):
+            problems.append(f'malformed coverage tag {tag}')
+    if 'language:en' not in tags:
+        problems.append('missing language tag')
+    if 'phase:' + phase not in tags:
+        problems.append('missing phase tag')
+    for name in case.get('files', []):
+        path = (base / name).resolve()
+        if not path.is_relative_to(base) or not path.is_file() or 'SKILL.md' in name:
+            problems.append(f'bad input {name}')
+        elif name not in case.get('prompt', ''):
+            problems.append(f'input not named in prompt {name}')
+    return problems
+
+
 def source(phase, name):
     return (ROOT / 'skills' / phase / 'references' / name).read_text()
 
@@ -86,6 +126,29 @@ class ReadinessSourceContracts(unittest.TestCase):
             self.assertIn(rule.lower(), self.research.lower())
         self.assertIn('not reproduced behavior', self.research)
 
+    def test_feasibility_challenge_targets_indispensable_operation_not_docs(self):
+        # FEAS-1: an unsupported necessary operation can invalidate a composition;
+        # static wording checks detect omissions, not successful agent execution.
+        for text in (self.research, self.plan):
+            for rule in ('indispensable unproven operation', 'refute',
+                         'risky compositions', 'documentation is not execution',
+                         'no universal proof-of-concept'):
+                self.assertIn(rule, ' '.join(text.lower().split()))
+
+    def test_material_transitions_need_compatible_consumers_or_scoped_bridge(self):
+        # JOIN-1: dependency ordering alone cannot establish consumability.
+        for rule in ('output', 'next input/precondition', 'format', 'interface',
+                     'state', 'environment', 'authority', 'named bridge',
+                     'affected consumer', 'not a microtask per edge'):
+            self.assertIn(rule, ' '.join(self.plan.lower().split()))
+
+    def test_goal_coverage_is_bidirectional_and_not_graph_consistency(self):
+        # GOAL-1: both missing requested outcomes and unjustified work matter.
+        for rule in ('each material goal/criterion', 'contributing outcomes',
+                     'independent verification', 'each planned outcome',
+                     'enabling rationale', 'consistent graph is not goal sufficiency'):
+            self.assertIn(rule, ' '.join(self.plan.lower().split()))
+
     def test_proportional_scoped_stop_not_procedural_expansion(self):
         for text in (self.plan, self.research):
             for word in ('critical gaps', 'owner', 'probe', 'ready frontier',
@@ -98,6 +161,45 @@ class ReadinessSourceContracts(unittest.TestCase):
                      'not the rest of the ready frontier', 'No mandatory matrix',
                      'sufficient local evidence needs no external refresh'):
             self.assertIn(rule, self.research)
+
+
+class FeasibilityScenarioSubset(unittest.TestCase):
+    def test_new_feasibility_scenarios_use_the_closed_subset(self):
+        import json
+        for phase, names in FEASIBILITY_SCENARIOS.items():
+            suite = json.loads((ROOT / 'skills' / phase / 'evals/evals.json').read_text())
+            cases = {case['name']: case for case in suite['evals']}
+            for name in names:
+                with self.subTest(phase=phase, scenario=name):
+                    self.assertIn(name, cases)
+                    self.assertEqual(scenario_problems(phase, cases[name]), [])
+
+    def test_subset_check_rejects_known_violations(self):
+        case = {'id': '1', 'name': 'x', 'language': 'fr',
+                'coverage_tags': ['rule', 'rule:', 'foo:bar', 'rule:Not_Kebab'],
+                'prompt': 'p', 'assertions': ['a'], 'expected_output': 'e',
+                'files': ['SKILL.md', '../research/evals/evals.json', 'evals/inputs/missing.md'],
+                'execution_assertions': []}
+        problems = scenario_problems('plan', case)
+        for expected in ('extra key execution_assertions', 'id is not an int',
+                         'language is not en', 'malformed coverage tag rule',
+                         'malformed coverage tag rule:', 'malformed coverage tag foo:bar',
+                         'malformed coverage tag rule:Not_Kebab', 'missing language tag',
+                         'missing phase tag', 'bad input SKILL.md',
+                         'bad input ../research/evals/evals.json', 'bad input evals/inputs/missing.md'):
+            self.assertIn(expected, problems)
+
+    def test_subset_check_rejects_empty_fields_and_unnamed_inputs(self):
+        case = {'id': 1, 'name': 'x', 'language': 'en',
+                'coverage_tags': ['phase:plan', 'language:en'],
+                'prompt': 'no input named here', 'assertions': [],
+                'expected_output': '', 'files': ['evals/inputs/ticket.md']}
+        problems = scenario_problems('plan', case)
+        for expected in ('empty assertions', 'empty expected_output',
+                         'input not named in prompt evals/inputs/ticket.md'):
+            self.assertIn(expected, problems)
+        self.assertIn('empty files', scenario_problems('plan', {**case, 'files': []}))
+        self.assertIn('empty prompt', scenario_problems('plan', {**case, 'prompt': ''}))
 
 
 if __name__ == '__main__':

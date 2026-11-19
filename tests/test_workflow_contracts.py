@@ -130,6 +130,21 @@ class WorkflowSourceContracts(unittest.TestCase):
                     continue
                 self.assertTrue((p.parent / target).exists(), (p, target))
 
+    def test_batches_verify_the_next_consumer_and_pause_only_affected_nodes(self):
+        text = ' '.join((SKILLS / "implement/SKILL.md").read_text().lower().split())
+        for rule in ('observed result', 'next affected consumer', 'input/precondition',
+                     'pause affected nodes', 'independent ready nodes',
+                     'not a verified transition or project-wide completion'):
+            self.assertIn(rule, text)
+
+    def test_local_replan_preserves_goal_proofs_frontier_and_budget(self):
+        text = ' '.join((SKILLS / "iterate/SKILL.md").read_text().lower().split())
+        for rule in ('failed feasibility', 'failed transition', 'local replan',
+                     'preserve the goal', 'valid proofs', 'independent ready nodes',
+                     'diagnosis and planning consume zero attempts', 'never reset',
+                     'bounded no-progress planning', 'named deciding prerequisite'):
+            self.assertIn(rule, text)
+
     def test_shared_safety_policies_and_budget_guard_remain(self):
         for name in ("authorization-policy.md", "review-policy.md"):
             # These shared phase policies stay identical across the seven phases;

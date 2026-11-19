@@ -45,6 +45,94 @@ class GooseObserverBehavior(unittest.TestCase):
         self.assertEqual(record["handoff_check"], "structure-only")
         self.assertNotIn("accepted", json.dumps(record))
 
+    def test_stop_recognizes_canonical_five_section_report(self):
+        # Expected headings come from the user baseline/common-output, not the parser.
+        text = ("## current goal {step: implement}\nRepair the observer.\n"
+                "## roadmap position\nBounded task.\n"
+                "## modified files\nObserver and tests.\n"
+                "## closed tasks\nNone.\n"
+                "## explanation\nStructure is not acceptance.")
+        record = self.read_record(invoke({"event": "Stop", "last_assistant_message": text}))
+        self.assertEqual(record.get("report_format"), "canonical")
+        self.assertEqual(record.get("report_shape"), "complete")
+        self.assertEqual(record["handoff_check"], "structure-only")
+        self.assertEqual(record["checkpoint_sections"], [])
+        self.assertNotIn("accepted", record)
+
+    def test_stop_shape_boundaries_and_fenced_examples(self):
+        headings = ["## current goal {step: test}", "## roadmap position",
+                    "## modified files", "## closed tasks", "## explanation"]
+        canonical = "\n".join(headings)
+        legacy = "\n".join("## " + str(i) + ". Fixture" for i in range(1, 7))
+        cases = [
+            ("complete", "canonical", canonical),
+            ("complete", "canonical", canonical.replace("\n", "\r\n")),
+            ("partial", "canonical", "\n".join(headings[:-1])),
+            ("duplicate", "canonical", canonical + "\n" + headings[2]),
+            ("out-of-order", "canonical", "\n".join([headings[1], headings[0]] + headings[2:])),
+            ("mixed", "mixed", canonical + "\n## 1. Legacy"),
+            ("complete", "legacy", legacy),
+            ("partial", "legacy", "## 2. Fixture"),
+            ("duplicate", "legacy", legacy + "\n## 1. Fixture"),
+            ("out-of-order", "legacy", "## 2. Fixture\n## 1. Fixture"),
+            ("undetermined", "undetermined", "Done; no changes. Next action: stop."),
+            ("undetermined", "undetermined", ""),
+            ("undetermined", "undetermined", "## arbitrary PRIVATE-heading"),
+        ]
+        for phase in ("", "done", "IMPLEMENT", "<phase>", "private-sensitive-phase"):
+            cases.append(("malformed", "canonical", canonical.replace("step: test", "step: " + phase)))
+        cases.append(("malformed", "canonical", canonical.replace(" {step: test}", "")))
+        for opening, closing in (("```markdown", "```"), ("~~~markdown", "~~~~"),
+                                 ("   ````markdown", "   ````")):
+            example = opening + "\n" + canonical + "\n" + legacy + "\n" + closing
+            cases.append(("undetermined", "undetermined", example))
+            cases.append(("complete", "canonical", example + "\n" + canonical))
+        cases.extend([
+            ("undetermined", "undetermined", "````\n```\n" + canonical),
+            ("undetermined", "undetermined", "~~~\n```\n" + canonical),
+            ("undetermined", "undetermined", "```\n" + canonical),
+        ])
+        for shape, report_format, text in cases:
+            with self.subTest(shape=shape, report_format=report_format, text=text[:45]):
+                result = invoke({"event": "Stop", "last_assistant_message": text})
+                record = self.read_record(result)
+                self.assertEqual(record["report_shape"], shape)
+                self.assertEqual(record["report_format"], report_format)
+                self.assertEqual(record["handoff_check"], "structure-only")
+                self.assertNotIn("PRIVATE-heading", result.stderr.decode())
+                self.assertNotIn("private-sensitive-phase", result.stderr.decode())
+                self.assertNotIn("valid", record)
+                self.assertNotIn("accepted", record)
+
+    def test_stop_all_canonical_phases(self):
+        for phase in ("cycle", "research", "plan", "implement", "test", "judge", "iterate"):
+            text = ("## current goal {step: " + phase + "}\n## roadmap position\n"
+                    "## modified files\n## closed tasks\n## explanation")
+            record = self.read_record(invoke({"event": "Stop", "last_assistant_message": text}))
+            self.assertEqual(record["report_shape"], "complete")
+
+    def test_stop_missing_or_nonstring_message_is_unavailable(self):
+        for payload in ({"event": "Stop"}, *({"event": "Stop", "last_assistant_message": value}
+                                            for value in (None, [], {}, 42, False))):
+            record = self.read_record(invoke(payload))
+            self.assertEqual(record["handoff_check"], "unavailable")
+            self.assertNotIn("report_shape", record)
+            self.assertNotIn("report_format", record)
+
+    def test_stop_sensitive_and_maximum_input_remain_bounded(self):
+        secret = "PRIVATE-key-and-/sensitive/path"
+        payload = {"event": "Stop", "last_assistant_message":
+                   "## current goal {step: " + secret + "}\n## " + secret + "\n" + secret}
+        result = invoke(payload)
+        self.assertEqual(self.read_record(result)["report_shape"], "malformed")
+        self.assertNotIn(secret.encode(), result.stdout + result.stderr)
+        # Exactly 1 MiB of valid input is accepted; one byte more is ignored.
+        prefix = b'{"event":"Stop","last_assistant_message":"'
+        suffix = b'"}'
+        raw = prefix + b'x' * (1048576 - len(prefix) - len(suffix)) + suffix
+        self.assertEqual(self.read_record(invoke(raw))["report_shape"], "undetermined")
+        self.assertEqual(self.read_record(invoke(raw + b' '))["code"], "payload-too-large")
+
     def test_no_message_and_unknown_optional_fields(self):
         record = self.read_record(invoke({"event": "Stop", "extra": [1, 2]}))
         self.assertEqual(record["handoff_check"], "unavailable")

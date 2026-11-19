@@ -716,6 +716,62 @@
         "journey:readiness",
         "risk:dependency-order"
       ]
+    },
+    {
+      "id": 102,
+      "name": "producer-consumer-and-goal-coverage",
+      "subject": "agentic-development",
+      "language": "en",
+      "prompt": "Review evals/inputs/export-plan.md and propose the smallest plan that delivers the requested export.",
+      "files": [
+        "evals/inputs/export-plan.md"
+      ],
+      "assertions": [
+        "The review identifies that A produces CSV while B requires a differently shaped JSON array; the dependency edge alone does not make that transition compatible.",
+        "The review names B as affected and proposes a concrete contract-compatible bridge with ownership and a check, or a specific prerequisite that leaves B pending.",
+        "The review recognizes that individually valid A/B checks and an acyclic graph do not cover R1: selecting a month and downloading the CSV remain absent.",
+        "The least viable proposal includes the missing selection-to-download integration and an independent observable download check, including the header-only boundary.",
+        "The proposal traces retained or removed preview/help outcomes to R1 or an explicit enabling rationale rather than expanding into scheduling, email or storage.",
+        "The review keeps C and any other genuinely independent ready work separate from the blocked B transition, without claiming global plan approval or a completed separate review."
+      ],
+      "expected_output": "A minimal goal-complete ordering that resolves the CSV/JSON transition and retains explicit review limits.",
+      "coverage_tags": [
+        "phase:plan",
+        "language:en",
+        "rule:transition-compatibility",
+        "rule:goal-sufficiency"
+      ],
+      "target": {
+        "path": "evals/inputs/export-plan.md",
+        "execution": "explain"
+      }
+    },
+    {
+      "id": 103,
+      "name": "low-risk-existing-evidence",
+      "subject": "agentic-development",
+      "language": "en",
+      "prompt": "Check whether the task in evals/inputs/label-plan.md has enough evidence to proceed.",
+      "files": [
+        "evals/inputs/label-plan.md"
+      ],
+      "assertions": [
+        "The assessment finds S1/T1 sufficient for the low-risk compatible label-change decision, while separating that decision from proof of the future changed candidate.",
+        "The assessment does not make a new deployment, external research or proof-of-concept a mandatory prerequisite for this literal-only change.",
+        "The assessment retains the rendered-label and unchanged-download checks without adding speculative behavior or widening the two-file task.",
+        "The assessment distinguishes individual task readiness from the absent separate whole-plan review; it does not claim that global review completed.",
+        "The assessment proposes the source read and scoped edit as a next action, not as work actually executed in this consultation."
+      ],
+      "expected_output": "A proportional readiness assessment reusing applicable evidence without imposing a universal proof-of-concept.",
+      "coverage_tags": [
+        "phase:plan",
+        "language:en",
+        "rule:proportional-evidence"
+      ],
+      "target": {
+        "path": "evals/inputs/label-plan.md",
+        "execution": "explain"
+      }
     }
   ],
   "coverage_dimensions": {

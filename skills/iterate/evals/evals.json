@@ -361,6 +361,38 @@
           "grading": "instrumented-execution-only"
         }
       ]
+    },
+    {
+      "id": 105,
+      "name": "local-replan-no-progress",
+      "subject": "agentic-development",
+      "language": "en",
+      "prompt": "Review evals/inputs/replan-state.md and recommend the next useful action.",
+      "files": [
+        "evals/inputs/replan-state.md"
+      ],
+      "assertions": [
+        "The review classifies J1 as a failed producer-to-consumer transition and scopes the replan to B and dependent D rather than unrelated C.",
+        "The review stops repeating speculative adapter plans after the two no-progress passes and names Bea's preview-contract decision as the deciding prerequisite.",
+        "The resume condition includes a recorded contract choice and representative input/output example usable to verify B's transition; it is more specific than a generic request for more context.",
+        "The review proposes Research for any deciding contract unknown and Plan for the affected bridge/order after that input, without claiming either phase was executed.",
+        "The review retains the counter at two of three before and after this diagnosis/planning-only consultation; it neither consumes an attempt nor resets the counter.",
+        "The review retains unchanged candidate-bound A1 with its producer-only limit, keeps J1 and the unmet download proof visible, and preserves both existing diffs.",
+        "The review preserves R1 and independent C without weakening criteria, adding excluded capabilities or claiming closure."
+      ],
+      "expected_output": "A bounded no-progress stop with a named decision owner, observable resume input and preserved proofs/counter.",
+      "coverage_tags": [
+        "phase:iterate",
+        "language:en",
+        "rule:local-replan",
+        "rule:no-progress",
+        "rule:iteration-budget",
+        "rule:evidence-freshness"
+      ],
+      "target": {
+        "path": "evals/inputs/replan-state.md",
+        "execution": "explain"
+      }
     }
   ]
 }

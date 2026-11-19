@@ -66,7 +66,8 @@ def probe(binary, source, output, fault=None):
                     "function": {"name": name, "arguments": json.dumps(arguments)}}]}
                 finish = "tool_calls"
             else:
-                text = chr(10).join("## " + str(i) + ". Fixture section" for i in range(1, 7))
+                text = chr(10).join(("## current goal {step: test}", "## roadmap position",
+                                     "## modified files", "## closed tasks", "## explanation"))
                 message = {"role": "assistant", "content": text}
                 finish = "stop"
             if body.get("stream"):
@@ -132,7 +133,9 @@ def probe(binary, source, output, fault=None):
         "failed_edit_observed": counts["PostToolUseFailure"] == 1,
         "session_start_observed": counts["SessionStart"] >= 1,
         "stop_structure_observed": any(x.get("event") == "Stop" and
-            x.get("checkpoint_sections") == [1, 2, 3, 4, 5, 6] for x in records),
+            x.get("report_format") == "canonical" and x.get("report_shape") == "complete" and
+            x.get("handoff_check") == "structure-only" and
+            x.get("checkpoint_sections") == [] for x in records),
         "pretool_matching_only": counts["PreToolUseResult"] == 4,
         "tool_effects_retained": (work / "fixture.txt").exists() and
             (work / "fixture.txt").read_text() == "second" and

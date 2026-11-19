@@ -22,6 +22,12 @@ reason. Do not demand extra headings or copy this checklist into every ticket.
 | Which inspected inputs are needed first, what is created or modified, and what must stay untouched? | Are Read/Create/Modify/Preserve/Exclude paths or assets verified/proposed honestly, ownership conflicts resolved and adjacent work excluded? |
 | What can a fresh worker do first using only this ID and its references? | Does the first restart action name an accessible input, operation, prerequisite and expected result within current permissions? |
 
+For a critical feasibility claim, name the indispensable unproven operation,
+evidence that would refute it and the smallest authorized deciding probe. Challenge
+risky compositions, not just component availability: documentation is not execution.
+Reuse applicable evidence for low-risk compatible work; no universal proof-of-concept
+is required. An unproven indispensable operation leaves affected nodes pending.
+
 Use exact documents/resources instead of invented code paths for non-code work.
 Unknown critical input blocks the affected ticket only; retain the rest of the ready
 frontier. Record each gap's decision owner (unknown if not established), impact and
@@ -46,6 +52,15 @@ Ask the reviewer:
   treating backlog size or intended delegation as active work?
 - What is the least viable ordering that delivers the requested usable outcome?
   Are outcomes covered without speculative capabilities or missing integration?
+  Trace each material goal/criterion to contributing outcomes and independent
+  verification; trace each planned outcome back to a goal/criterion or an explicit
+  enabling rationale (including necessary housekeeping). A consistent graph is not
+  goal sufficiency: a valid subset can still omit the requested usable outcome.
+- For each material producer-to-consumer transition, does the output satisfy the
+  next input/precondition in format, interface, state, environment and authority
+  where relevant? Ordering alone is not compatibility. Identify a named bridge
+  and its owner/verification or block the affected consumer with a deciding
+  prerequisite; this is not a microtask per edge.
 - Which implicit semantic dependencies are missing from native edges: a foundation
   contract before a consumer, architecture selection before its implementation,
   credential/bootstrap or security boundary before the operation relying on it?

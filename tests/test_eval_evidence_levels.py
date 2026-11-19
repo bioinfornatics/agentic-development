@@ -53,9 +53,16 @@ class EvalEvidenceLevels(unittest.TestCase):
                     # New ticket scenarios use the creator's current closed subset.
                     # Legacy instrumented-order contracts remain frozen below;
                     # current subset/fixture checks live in test_ticket_authoring.py.
-                    if skill == "plan" and case["name"] in {
-                            "concrete-managed-service-ticket", "consolidate-updated-ticket",
-                            "changed-scope-dependency-readiness"}:
+                    current_subset_cases = {
+                        "concrete-managed-service-ticket", "consolidate-updated-ticket",
+                        "changed-scope-dependency-readiness",
+                        "documented-components-unproven-deployment",
+                        "producer-consumer-and-goal-coverage",
+                        "low-risk-existing-evidence",
+                        "failed-transition-local-pause",
+                        "local-replan-no-progress",
+                    }
+                    if case["name"] in current_subset_cases:
                         self.assertNotIn("navigation_expectations", case)
                         self.assertNotIn("execution_assertions", case)
                         for requirement in ORDER_REQUIREMENTS + OTHER_ORDER_REQUIREMENTS:

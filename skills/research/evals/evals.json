@@ -931,6 +931,34 @@
           "grading": "instrumented-execution-only"
         }
       ]
+    },
+    {
+      "id": 101,
+      "name": "documented-components-unproven-deployment",
+      "subject": "agentic-development",
+      "language": "en",
+      "prompt": "Assess the approach in evals/inputs/deployment-notes.md and tell me what is known before we plan it.",
+      "files": [
+        "evals/inputs/deployment-notes.md"
+      ],
+      "assertions": [
+        "The assessment distinguishes D1/D2 component documentation from evidence that the combined worker can start and read the archive in the tenant cluster.",
+        "The indispensable startup-and-archive-read operation remains unverified rather than being declared feasible from documentation alone.",
+        "The assessment names an observable refuting result, such as admission rejection or a failed token exchange/archive read in the relevant tenant environment.",
+        "The smallest proposed deciding probe exercises the combined startup and archive-read operation, with an observable success or failure result.",
+        "The missing tenant access and deployment authority are attached to the affected deployment decision, with Maya as the prerequisite owner; independent reporting-label planning is not blocked."
+      ],
+      "expected_output": "A source-grounded feasibility assessment with a bounded deciding probe and scoped access prerequisite.",
+      "coverage_tags": [
+        "phase:research",
+        "language:en",
+        "rule:feasibility",
+        "rule:local-replan"
+      ],
+      "target": {
+        "path": "evals/inputs/deployment-notes.md",
+        "execution": "explain"
+      }
     }
   ]
 }

@@ -529,6 +529,34 @@
           "grading": "instrumented-execution-only"
         }
       ]
+    },
+    {
+      "id": 104,
+      "name": "failed-transition-local-pause",
+      "subject": "agentic-development",
+      "language": "en",
+      "prompt": "Given evals/inputs/batch-result.md, advise what the implementation batch can do next.",
+      "files": [
+        "evals/inputs/batch-result.md"
+      ],
+      "assertions": [
+        "The advice identifies J1 as a failed A-to-B transition, not evidence that the passing CSV producer check establishes end-to-end success.",
+        "The advice pauses B and its dependent download node D pending compatibility resolution, rather than automatically halting independent C.",
+        "The advice states C can continue only within its existing independent scope and authority and does not claim to execute it during this consultation.",
+        "The advice routes the transition finding to Iterate with A1/J1, the preserved CSV diff and the existing two-of-three attempt counter.",
+        "The advice preserves the user theme edit and still-current producer evidence while keeping R1 download completion unproven."
+      ],
+      "expected_output": "A dependency-local pause and Iterate handoff proposal preserving independent work and evidence.",
+      "coverage_tags": [
+        "phase:implement",
+        "language:en",
+        "rule:local-replan",
+        "rule:transition-compatibility"
+      ],
+      "target": {
+        "path": "evals/inputs/batch-result.md",
+        "execution": "explain"
+      }
     }
   ]
 }

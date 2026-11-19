@@ -88,6 +88,10 @@ a previous permission. This is an agent instruction, not a runtime cache.
 
    Classify each open item as implementation defect, missing proof/capability,
    research gap or scope/acceptance decision. Link it to evidence and criterion.
+   Distinguish failed feasibility (an indispensable operation is unsupported or
+   refuted) from a failed transition (producer output does not satisfy a consumer's
+   input/precondition). Name affected nodes and deciding evidence rather than
+   treating every mismatch as an implementation defect.
 
 3. [ ] **Check capability and remaining budget**
 
@@ -112,6 +116,15 @@ a previous permission. This is an agent instruction, not a runtime cache.
    Reuse a matching tracker task rather than one per hunk; link its US/spec and
    precise corrective check. Changed scope/domain assumptions require Research/Plan,
    not speculative functionality or unrelated rewrites.
+   For failed feasibility or transition, propose a local replan through Research
+   for the deciding unknown and Plan for an affected bridge/order/design. Preserve
+   the goal, valid proofs and independent ready nodes; pause only affected nodes.
+   Do not weaken criteria or widen authority. Diagnosis and planning consume zero
+   attempts and never reset the existing three-correction counter. Bound this
+   planning to the named deciding question and available evidence; bounded
+   no-progress planning stops at a named deciding prerequisite, its owner (or
+   unknown), affected consumer and observable result needed to resume. Repeating
+   speculative plans without new deciding evidence is not progress.
 
 5. [ ] **Verify available outcomes and preserve restart state**
 

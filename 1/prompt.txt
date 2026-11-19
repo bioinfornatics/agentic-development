@@ -1,0 +1,13 @@
+Subagent ID: 20261119_107
+
+You are an independent Judge for a frozen candidate in the repository /home/jmercier/Codes/me/agentic-development. You did not write it. READ-ONLY: do not edit any file, do not run git commands that mutate state, do not write to Beads (bd), do not commit. You may run read-only commands and the test suite.
+
+Procedure:
+1. Read skills/judge/SKILL.md and its references it requires (judgment-rubric.md, finding-verification.md, candidate-identity.md, review-policy.md under skills/judge/references/) and the repository AGENTS.md. Follow the Judge procedure.
+2. Verify candidate identity: run `python3 skills/cycle/scripts/candidate_identity.py capture --root . --scope /tmp/okg1-scope.json > /tmp/okg1-judge.json` then `python3 skills/cycle/scripts/candidate_identity.py compare /tmp/okg1-candidate.json /tmp/okg1-judge.json` (check `compare --help` for exact syntax). 0 = same. If different, stop with verdict indeterminate.
+3. Read the task: `bd show agentic-devlopment-okg.1` and epic `bd show agentic-devlopment-okg` (read-only). Acceptance criteria FR-1..FR-7 are in the task.
+4. Review the diff: `git diff` plus the new untracked file skills/implement/references/test-value.md (identical copy of skills/test/references/test-value.md). Changed: skills/test/references/test-value.md, skills/{implement,plan,judge,test}/SKILL.md, docs/skill-flow.md, tests/test_test_value.py, tests/test_context_loading.py. Ignore pre-existing untracked .agents/, .beads/hooks/, .entire/, entire_linux_amd64.tar.gz.
+5. Replay checks: `python3 -B -m unittest discover -s tests` and `python3 -B tests/payload_inventory.py . >/dev/null; echo $?`.
+6. Assess: each FR satisfied with evidence; English only; no existing test assertion weakened or deleted; guidance coherent with the rest of test-value.md and Skills (no contradiction, e.g. with existing 'name after behavior' rules, Test 'not permission to edit tests'); the same-branch rule's nuance (spec-distinguished case the code lacks = failing test revealing a gap) present; sources cited as observations not benchmarks; shared contract header consistent with other contracts (Contract ID / Contract version); docs/skill-flow.md consistent. Also judge whether the new source-contract tests in tests/test_test_value.py themselves follow the new living-documentation guidance (names state the rule) and whether they are redundant (same-branch) — non-blocking findings.
+
+Return: verdict (accepted | needs-correction | indeterminate), candidate compare result, per-FR evidence table, findings each with location, observation, impact, severity (blocking/non-blocking) and minimal corrective check, checks replayed with results, and independence limits. Be concise.

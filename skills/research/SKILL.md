@@ -1,6 +1,6 @@
 ---
 name: research
-description: Establishes evidence-backed product context, current behavior and bug root causes before planning. Use for every new development objective, clarifying unresolved requirements, investigating why a failure happens, or verifying research freshness on resumed work, even when the request is clear or familiar.
+description: Establishes evidence-backed product context, current behavior and bug root causes before planning. Use for every new development objective, clarifying unresolved requirements, diagnosing why something fails, regresses or is flaky (including diagnosis-only requests), or verifying research freshness on resumed work, even when the request is clear or familiar.
 ---
 
 # Research

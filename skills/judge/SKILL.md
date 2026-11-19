@@ -1,6 +1,6 @@
 ---
 name: judge
-description: Reviews a frozen software candidate for acceptance. Use when testing is complete or an independent judgment of requirement fidelity and repository standards is requested.
+description: Reviews a frozen software candidate, such as a branch, diff or pull request, for acceptance. Use when testing is complete, when a user asks whether a change meets its acceptance criteria, or when an independent judgment of requirement fidelity and repository standards is requested.
 ---
 
 # Judge
@@ -14,6 +14,7 @@ Resolve approved scope, frozen candidate, evidence index, review mode and indepe
 | Review a tested candidate for acceptance | Verify scope, candidate, evidence and required independence; review every mandatory criterion | Scoped verdict, actionable findings and uncertainties |
 | Review requirement fidelity and repository standards | Assess requested behavior separately from documented quality standards | Separate requirement and standards findings with sources and corrective checks |
 | Score a candidate | Apply the review mode and rubric agreed before implementation | Evidence-derived weighted score/coverage, or N/A in predefined small-task mode |
+| Review a branch, diff or pull request without Test evidence | Bind its exact head commit as the frozen candidate; review it against stated criteria and standards; name the missing Test evidence | Findings labeled non-acceptance; indeterminate unless a confirmed defect requires correction; not merge approval |
 | Evidence or required independence is missing | Record the exact gap; use indeterminate unless a known defect already requires correction | Specific prerequisite, not self-approval or an invented pass |
 
 Execute the selected action through the workflow below and verify its result

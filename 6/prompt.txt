@@ -1,0 +1,7 @@
+Subagent ID: 20261119_86
+
+Independent read-only re-judge (do not edit, commit or change tracker). Repo /home/jmercier/Codes/me/agentic-development. Task agentic-devlopment-qws.1 was accepted on candidate /tmp/jyz/qws1-full.diff; the coordinator then applied the judge's three optional wording fixes. New frozen candidate: /tmp/jyz/qws1-v2.diff (sha256 prefix 955fe780; verify). Only three lines changed in each of 7 identical copies of skills/*/references/requirements-baseline.md:
+- Ready frontier: 'the ready tasks of the active epic that serve its primary deliverable; plan detail stops there, distant work stays coarse.'
+- WIP: 'work in progress, the active Batch; any WIP candidate is unverified, not accepted.'
+- Phase-only request: 'a request limited to one phase; it returns that phase result and proposed handoff, then stops.'
+Check: candidate matches working tree for those paths; 7 copies byte-identical; new wording is consistent with skills/plan/SKILL.md, skills/*/references/ticket-authoring.md (frontier/readiness), implement WIP usage, cycle phase-only sentence; no new contradiction (e.g. does 'ready tasks' wrongly imply unblocked = ready? does 'active epic' conflict with plan's next-epic refinement horizon?). Run python3 -B -m unittest discover -s tests and python3 -B tests/payload_inventory.py . Return verdict accepted | needs-correction | indeterminate with findings (file:line, evidence, fix). Be concise.

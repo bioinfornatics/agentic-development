@@ -161,6 +161,12 @@ class SharedParagraphIdentity(unittest.TestCase):
                 with self.subTest(phase=phase, fragment=fragment):
                     self.assertTrue(fragment in text, (phase, fragment))
 
+    def test_slice_state_rule_is_scoped_to_delegated_workers(self):
+        for phase in ('cycle', 'research', 'plan', 'implement', 'test', 'judge', 'iterate'):
+            with self.subTest(phase=phase):
+                text = ' '.join((ROOT / 'skills' / phase / 'SKILL.md').read_text().split())
+                self.assertIn("When acting as a delegated worker, use the coordinator's verified slice state", text)
+                self.assertNotIn("Use the coordinator's verified slice state when available", text)
 
 if __name__ == '__main__':
     unittest.main()

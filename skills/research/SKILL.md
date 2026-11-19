@@ -178,7 +178,7 @@ This is an agent instruction, not a runtime cache.
      up-front load of response templates. Apply these safeguards in standalone use too.
      Respond in the user's language. Verify tools and permissions; unavailable
      capabilities produce an explicit blocker, never simulated execution evidence.
-     Use the coordinator's verified slice state when available; do not fabricate execution or acceptance.
+     When acting as a delegated worker, use the coordinator's verified slice state; do not fabricate execution or acceptance.
    - Before declaring research sufficient for the planning decision, apply
      [the Research readiness review](references/research-readiness-review.md).
      Resolve only decision-material gaps; retain supported premises, targeted

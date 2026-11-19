@@ -80,7 +80,7 @@ This is an agent instruction, not a runtime cache.
    up-front load of response templates. Apply these safeguards in standalone use too.
    Respond in the user's language. Verify tools and permissions; unavailable
    capabilities produce an explicit blocker, never simulated execution evidence.
-   Use the coordinator's verified slice state when available; do not fabricate execution or acceptance.
+   When acting as a delegated worker, use the coordinator's verified slice state; do not fabricate execution or acceptance.
 
    Test never commits; apply [the commit report](references/commit-report.md) only to report an externally observed commit. Before drafting a planned session end, explicit wrap-up or recommended context transition report, apply [the session report](references/session-report.md).
 

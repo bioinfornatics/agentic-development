@@ -93,9 +93,10 @@ A worker summary is not plan approval or independent acceptance of implementatio
 
 If the host has no worker capability (verified, not merely unused), the coordinator
 asks these questions directly after construction, records `direct, reduced
-independence` in report limits and may proceed to approval. Ask the user only for
-a missing permission. This is not independent review or acceptance.
-Absence means the host's available tool list has no subagent or delegation tool; record that observation in report limits.
+independence` in report limits and may proceed to approval. Absence means the host's
+available tool list has no subagent or delegation tool; record that observation in
+report limits. Ask the user only for a missing permission. This is not independent
+review or acceptance.
 
 If delegation is unavailable although capability exists, name the exact prerequisite:
 coordinator/user supplies a separate non-builder read-only reviewer with access to

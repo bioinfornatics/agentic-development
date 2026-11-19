@@ -55,7 +55,7 @@ This is an agent instruction, not a runtime cache.
    up-front load of response templates. Apply these safeguards in standalone use too.
    Respond in the user's language. Verify tools and permissions; unavailable
    capabilities produce an explicit blocker, never simulated execution evidence.
-   Use the coordinator's verified slice state when available; do not fabricate execution or acceptance.
+   When acting as a delegated worker, use the coordinator's verified slice state; do not fabricate execution or acceptance.
 
    Before creating or repairing task descriptions or acceptance criteria, verify
    current scope and write authority. Conditionally Load `agentic-development:task-authoring`

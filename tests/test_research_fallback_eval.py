@@ -17,7 +17,9 @@ LABEL = "direct, reduced independence"
 
 def scenario():
     cases = json.loads(SUITE.read_text())["evals"]
-    return next(c for c in cases if c["name"] == NAME)
+    matches = [c for c in cases if c["name"] == NAME]
+    assert len(matches) == 1, f"expected one research eval named {NAME}, found {len(matches)}"
+    return matches[0]
 
 
 def text(case):

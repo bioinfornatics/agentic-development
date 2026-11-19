@@ -93,6 +93,12 @@ class NoDelegationFallback(unittest.TestCase):
         self.assertIn('never claim independence', judge)
         self.assertNotIn(LABEL, judge)
 
+    def test_plan_review_states_absence_evidence_next_to_its_condition(self):
+        text = ' '.join((ROOT / 'skills/plan/references/plan-readiness-review.md').read_text().split())
+        condition = text.index('If the host has no worker capability (verified, not merely unused)')
+        evidence = text.index("Absence means the host's available tool list")
+        self.assertLess(condition, evidence)
+        self.assertLess(evidence, text.index('Ask the user only for a missing permission', condition))
 
 if __name__ == '__main__':
     unittest.main()

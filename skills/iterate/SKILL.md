@@ -71,7 +71,7 @@ This is an agent instruction, not a runtime cache.
    up-front load of response templates. Apply these safeguards in standalone use too.
    Respond in the user's language. Verify tools and permissions; unavailable
    capabilities produce an explicit blocker, never simulated execution evidence.
-   Use the coordinator's verified slice state when available; do not fabricate execution or acceptance.
+   When acting as a delegated worker, use the coordinator's verified slice state; do not fabricate execution or acceptance.
 
 2. [ ] **Bind evidence and classify the gap**
 

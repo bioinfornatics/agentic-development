@@ -1,0 +1,16 @@
+Subagent ID: 20261119_91
+
+Independent read-only Judge (no edits, commits or tracker changes). Repo /home/jmercier/Codes/me/agentic-development, HEAD 3a11b06 plus uncommitted candidate.
+
+Task agentic-devlopment-qws.2 (bd show agentic-devlopment-qws.2; read its notes). User decision, option A: a single-phase request loads only its phase Skill; narrow cycle's description to new/resumed objectives, multi-phase/batch coordination and tracker claims/updates/closure; update trigger-routing expectations; small paid verification re-run.
+
+Frozen candidate: /tmp/jyz/qws2.diff (sha256 prefix 1addc0f5; verify it equals git diff for skills/cycle/SKILL.md, integration/trigger-routing.json, tests/test_cycle_disclosure.py, tests/test_trigger_routing.py). Tests were changed red-first (they failed 3x on old source for the expected missing wording).
+Verification evidence: evidence/qws2-trigger-rerun-20261119/ (score.txt, results2.jsonl, README.txt); baseline before change: evidence/qws-trigger-routing-20261119/results.jsonl with that run's matrix.json (expectations differ: old matrix required cycle with every phase case).
+
+Check:
+1. Does the change implement option A faithfully and nothing more? Is cycle's new description third-person what+when, under 1024 chars, consistent with cycle's body (routing table, single-phase handling, finalization only by cycle), docs/getting-started.md, docs/skill-flow.md (incl. pitfall 'A run started directly at any phase Skill never finalizes'), AGENTS.md and phase Skills' phase-only sentences? Any contradiction left anywhere (grep for 'single-phase', 'Load cycle', 'cycle accompanies')?
+2. Were the two test changes legitimate decision updates rather than weakened tests? Do the new tests fail if the decision is reverted?
+3. Matrix: are the reclassified phase-only expectations reasonable; are cases 0, 2, 17 (new objective) correctly kept with cycle?
+4. Recompute score from results2.jsonl vs matrix2.json and compare with the baseline (be careful: the baseline matrix had different expectations; compare raw load rates per case). Are any claims about improvement supported (close issue cycle 0/3->3/3; implement French case; no new false positives)? What regressed (case 2 cycle 3/3 -> 0/3)?
+5. Run python3 -B -m unittest discover -s tests, python3 -B tests/payload_inventory.py . and node /home/jmercier/.cache/agent-plugins-patch-proof/repo/skills/skill-creator/scripts/skill-creator.mjs audit skills/cycle --format json. Check cycle SKILL.md line count vs the 300-line Contents threshold.
+Return verdict accepted | needs-correction | indeterminate with findings (severity, file:line, evidence, fix). Concise.

@@ -1,6 +1,6 @@
 ---
 name: test
-description: Verifies software candidates against acceptance criteria. Use for testing implementations or regression repairs, or rechecking evidence after candidate changes.
+description: Verifies a software candidate against its acceptance criteria and records criterion-bound evidence, not acceptance. Use for testing implementations or regression repairs, or rechecking evidence after candidate changes.
 ---
 
 # Test
@@ -28,26 +28,33 @@ Save a report only with an explicit destination and permission to write, followi
 the common output contract loaded at that step. Required evidence inputs and tracker
 updates retain their own gates; an inline response does not replace task truth.
 
-Apply contracts before their governed actions, even before the nominal step
-containing the link when its condition arises earlier. Load a reference only when its
-applicable content is absent, incomplete or outdated in the active context; reuse
-identical available content from another Skill's contained copy. The same ID/version
-with different content is a conflict, not proof of identity: resolve it before the
-affected action. A previous read or loaded marker does not prove availability.
-After compaction, a new session or worker, recover required unavailable instructions;
-on workspace changes revalidate applicability. Reusing authorization guidance never renews
-a previous permission. This is an agent instruction, not a runtime cache.
+Apply contracts before their governed actions, even before the step that links them.
+Read a reference only when it is absent, incomplete or outdated in the active context.
+Reuse identical copies from another Skill. The same ID/version with different content
+is a conflict, not proof of identity; resolve it before the affected action.
+A loaded marker or earlier read does not prove availability. After compaction, a new
+session or worker, reload missing required instructions. After workspace changes,
+recheck applicability. Reused authorization guidance never renews a permission.
+This is an agent instruction, not a runtime cache.
 
 1. [ ] **Verify test inputs and authority**
 
    Verify repository root, local instructions, tools and task goal.
 
-   Before creating or repairing task descriptions or acceptance criteria, apply
-   [ticket authoring](references/ticket-authoring.md); verify readable purpose,
-   criteria, ordered inputs and restart context without duplicating execution history.
+   Before creating or repairing task descriptions or acceptance criteria, verify
+   current scope and write authority. Conditionally Load `agentic-development:task-authoring`
+   using the host's available Skill-loading mechanism (not a shell command), with
+   established goal, scope, criteria, native tracker context and current authority.
+   Reuse its guidance when already available and current; do not load both routes
+   normally. If the optional capability is unavailable, apply contained
+   [ticket authoring](references/ticket-authoring.md) directly and report direct
+   reading, not activation; do not retry loading or block routine work on its absence.
+   For routine reads, claims, progress updates or closure, do not load task-authoring.
+   Resume this caller after verified ticket readback or an explicit proposal/error;
+   retain this phase's scope, ownership, review and evidence gates.
 
    If the repository uses Beads, apply [the Beads integration](references/beads-integration.md)
-   before choosing work or mutating task state. Use fresh `bd prime` guidance;
+   before choosing work or mutating task state. Run `bd prime` only when Beads context is missing or stale;
    retain task ownership, readback and phase gates;
    evaluate commit suitability after each confirmed closure without inferring Git authority.
 
@@ -58,12 +65,12 @@ a previous permission. This is an agent instruction, not a runtime cache.
    Apply [the requirements baseline](references/requirements-baseline.md) before
    defining or changing scope, criteria or verification, and before running checks.
    Reuse verified Goals/Non-goals, FR/GWT and applicable quantified NFRs; do not
-   invent targets. Investigation needs a bounded question, not a completed plan.
+   invent targets. A check needs a named criterion or risk, not a complete test plan.
 
    Apply [the review policy](references/review-policy.md)
-   before implementation or setting review requirements, and before agreeing acceptance,
-   judging or closing a task/US. Independence and closure
-   requirements are set before implementation, not waived by a missing capability.
+   before reporting review requirements or proposing acceptance, judging or closure.
+   Independence and closure requirements were set at plan time; a missing capability
+   does not waive them.
 
    Apply [the communication contract](references/communication-contract.md) before
    the first mutation, checkpoint or Git/session transition, for ownership, transition, evidence
@@ -123,6 +130,16 @@ a previous permission. This is an agent instruction, not a runtime cache.
    checks do not establish functional quality. Do not repair the frozen candidate or
    weaken criteria. If checks mutate inputs, record before/after identities and rerun on
    a stable candidate or disclose that proof does not match the final candidate.
+
+   Inspect the candidate diff for test changes before counting a pass. List each
+   deleted, skipped, renamed or loosened test, assertion, fixture or expected value
+   with its criterion; a weakening not justified by an approved criterion change is a
+   FAIL of that criterion, not a pass. For a regression repair, prefer evidence that the new test fails without
+   the fix (observed red or revert-the-fix) over a green run alone.
+
+   Report each check by the behavior and criterion ID it proves, so the matrix reads
+   as living documentation. Flag a test whose name or assertion does not reveal the
+   protected behavior as a readability finding, not a failure.
 
 4. [ ] **Integrate observations and coverage limits**
 

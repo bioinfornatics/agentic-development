@@ -1,13 +1,24 @@
-# Common delivery output contract v1.4.0
+# Common delivery output contract v1.4.1
 
 Contract ID: agentic-development/common-output
-Contract version: 1.4.0
+Contract version: 1.4.1
 
 Read after investigation and before drafting every user-facing phase delivery,
 including blocked, unchanged and standalone results. Reuse unchanged guidance
 already loaded in this context; verify it before delivery rather than rereading blindly.
 This document governs response formatting, not permission to act. Requirements
 must already have been resolved before the actions they govern.
+
+## Contents
+
+- [Compact bounded delivery](#compact-bounded-delivery)
+- [Mandatory five-section final report at full-delivery boundaries](#mandatory-five-section-final-report-at-full-delivery-boundaries)
+- [Report delivery and optional saving](#report-delivery-and-optional-saving)
+- [Phase, progress and roadmap semantics](#phase-progress-and-roadmap-semantics)
+- [Boundary facts and preservation](#boundary-facts-and-preservation)
+- [Common delivery checklist](#common-delivery-checklist)
+- [State card inside explanation](#state-card-inside-explanation)
+- [Handoff readability gate](#handoff-readability-gate)
 
 ## Compact bounded delivery
 

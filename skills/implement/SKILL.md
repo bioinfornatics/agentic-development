@@ -1,6 +1,6 @@
 ---
 name: implement
-description: Supports authorized software implementation. Use when executing an approved delivery plan, feature task or confirmed bug repair.
+description: Implements an authorized change test-first (observed red, minimal green, refactor) and keeps a change ledger of owned hunks and evidence. Use when executing a planned task, a feature task or a confirmed bug repair dispatched by Plan or Iterate.
 ---
 
 # Implement
@@ -28,26 +28,33 @@ Save a report only with an explicit destination and permission to write, followi
 the common output contract loaded at that step. Required evidence inputs and tracker
 updates retain their own gates; an inline response does not replace task truth.
 
-Apply contracts before their governed actions, even before the nominal step
-containing the link when its condition arises earlier. Load a reference only when its
-applicable content is absent, incomplete or outdated in the active context; reuse
-identical available content from another Skill's contained copy. The same ID/version
-with different content is a conflict, not proof of identity: resolve it before the
-affected action. A previous read or loaded marker does not prove availability.
-After compaction, a new session or worker, recover required unavailable instructions;
-on workspace changes revalidate applicability. Reusing authorization guidance never renews
-a previous permission. This is an agent instruction, not a runtime cache.
+Apply contracts before their governed actions, even before the step that links them.
+Read a reference only when it is absent, incomplete or outdated in the active context.
+Reuse identical copies from another Skill. The same ID/version with different content
+is a conflict, not proof of identity; resolve it before the affected action.
+A loaded marker or earlier read does not prove availability. After compaction, a new
+session or worker, reload missing required instructions. After workspace changes,
+recheck applicability. Reused authorization guidance never renews a permission.
+This is an agent instruction, not a runtime cache.
 
 1. [ ] **Verify implementation inputs and authority**
 
    Verify repository root, local instructions, tools and task goal.
 
-   Before creating or repairing task descriptions or acceptance criteria, apply
-   [ticket authoring](references/ticket-authoring.md); verify readable purpose,
-   criteria, ordered inputs and restart context without duplicating execution history.
+   Before creating or repairing task descriptions or acceptance criteria, verify
+   current scope and write authority. Conditionally Load `agentic-development:task-authoring`
+   using the host's available Skill-loading mechanism (not a shell command), with
+   established goal, scope, criteria, native tracker context and current authority.
+   Reuse its guidance when already available and current; do not load both routes
+   normally. If the optional capability is unavailable, apply contained
+   [ticket authoring](references/ticket-authoring.md) directly and report direct
+   reading, not activation; do not retry loading or block routine work on its absence.
+   For routine reads, claims, progress updates or closure, do not load task-authoring.
+   Resume this caller after verified ticket readback or an explicit proposal/error;
+   retain this phase's scope, ownership, review and evidence gates.
 
    If the repository uses Beads, apply [the Beads integration](references/beads-integration.md)
-   before choosing work or mutating task state. Use fresh `bd prime` guidance;
+   before choosing work or mutating task state. Run `bd prime` only when Beads context is missing or stale;
    retain task ownership, readback and phase gates;
    evaluate commit suitability after each confirmed closure without inferring Git authority.
 
@@ -119,23 +126,47 @@ a previous permission. This is an agent instruction, not a runtime cache.
    not required. Never delete a meaningful regression or weaken acceptance to get green.
    Mock only dependencies: assert the subject's contract, exact known outcomes and
    important errors, not the mock's setup or copied expected calculations.
+   Name each new test after the protected behavior and cite its criterion ID, unless
+   project conventions forbid it, so the suite reads as living documentation.
+
+   If code you must refactor or modify has no discriminating test at its public seam,
+   first add a characterization test of its current behavior and observe it green before
+   the change. Label it characterization, not specification: it pins today's behavior,
+   including defects, until a criterion says otherwise.
 
 3. [ ] **Implement minimal green and refactor**
 
    Make the smallest coherent production change to reach green; rerun the same checks,
    then refactor without changing behavior and rerun again. Preserve external contracts,
-   avoid unrelated cleanup and secrets. Parallelize only disjoint writable files;
-   return conflicting changes to the coordinator before writing.
+   avoid unrelated cleanup and secrets.
+
+   For parallel writers the default is disjoint paths in the shared tree. Use an
+   approved worktree per writer when writers would collide on files, build outputs,
+   branch or generated artifacts; otherwise serialize. This default grants no Git
+   authority: creating a worktree or branch still needs current permission. Return
+   conflicting changes to the coordinator before writing.
 
    Remove temporary debug instrumentation or explain retained authorized diagnostics.
 
 4. [ ] **Observe and integrate each coherent batch**
 
    After each coherent change batch inspect the actual diff, maintain the implementation
-   change ledger with owned paths/hunks and reasons, and emit the short checkpoint. Run cheap
+   change ledger with owned paths/hunks and reasons, and emit the short checkpoint.
+   For executable changes the ledger also records the red command and a failing-output
+   excerpt, and lists each deleted, skipped, renamed or loosened test, assertion,
+   fixture or expected value with its approved criterion change or test-value
+   decision; an unjustified entry blocks handoff. Run cheap
    focused tests/type checks near changes, then risk-relevant broader regressions
    before handoff; record commands and actual outputs. Full-suite execution depends
    on scope/capability, not a typo ritual.
+
+   Before advancing a dependent batch, verify that the observed result satisfies
+   the next affected consumer's input/precondition, including material format,
+   interface, state, environment and authority. A passing producer check alone is
+   not a verified transition or project-wide completion. If feasibility or
+   compatibility fails, pause affected nodes and route the finding to Iterate with
+   the preserved diff, evidence and budget; independent ready nodes may continue
+   within current scope/authority. Do not stop the whole project by default.
 
    For UI/journey changes provide ASCII with CRUD and +/~/-/=, functional/visual
    differences and explicit observed/tested/inferred/not-run status. Record any

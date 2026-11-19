@@ -39,15 +39,14 @@ Save a report only with an explicit destination and permission to write, followi
 the common output contract loaded at that step. Required evidence inputs and tracker
 updates retain their own gates; an inline response does not replace task truth.
 
-Apply contracts before their governed actions, even before the nominal step
-containing the link when its condition arises earlier. Load a reference only when its
-applicable content is absent, incomplete or outdated in the active context; reuse
-identical available content from another Skill's contained copy. The same ID/version
-with different content is a conflict, not proof of identity: resolve it before the
-affected action. A previous read or loaded marker does not prove availability.
-After compaction, a new session or worker, recover required unavailable instructions;
-on workspace changes revalidate applicability. Reusing authorization guidance never renews
-a previous permission. This is an agent instruction, not a runtime cache.
+Apply contracts before their governed actions, even before the step that links them.
+Read a reference only when it is absent, incomplete or outdated in the active context.
+Reuse identical copies from another Skill. The same ID/version with different content
+is a conflict, not proof of identity; resolve it before the affected action.
+A loaded marker or earlier read does not prove availability. After compaction, a new
+session or worker, reload missing required instructions. After workspace changes,
+recheck applicability. Reused authorization guidance never renews a permission.
+This is an agent instruction, not a runtime cache.
 
 1. [ ] **Verify prerequisites and current authority**
 
@@ -66,15 +65,23 @@ a previous permission. This is an agent instruction, not a runtime cache.
    assumptions. A request to implement this slice authorizes its scoped code changes,
    not Git commits, remote operations, production actions or unrelated work.
 
-   Before creating or repairing task descriptions or acceptance criteria, apply
-   [ticket authoring](references/ticket-authoring.md); verify readable purpose,
-   criteria, ordered inputs and restart context without duplicating execution history.
+   Before creating or repairing task descriptions or acceptance criteria, verify
+   current scope and write authority. Conditionally Load `agentic-development:task-authoring`
+   using the host's available Skill-loading mechanism (not a shell command), with
+   established goal, scope, criteria, native tracker context and current authority.
+   Reuse its guidance when already available and current; do not load both routes
+   normally. If the optional capability is unavailable, apply contained
+   [ticket authoring](references/ticket-authoring.md) directly and report direct
+   reading, not activation; do not retry loading or block routine work on its absence.
+   For routine reads, claims, progress updates or closure, do not load task-authoring.
+   Resume this caller after verified ticket readback or an explicit proposal/error;
+   retain this phase's scope, ownership, review and evidence gates.
    Require explicit delivery mechanisms and asset maps for ready implementation work.
    Route changed scope through consolidated ticket sections and reconciled dependency
    edges; a populated tracker record alone does not prove execution readiness.
 
    If the repository uses Beads, apply [the Beads integration](references/beads-integration.md)
-   before choosing work or mutating task state. Use fresh `bd prime` guidance;
+   before choosing work or mutating task state. Run `bd prime` only when Beads context is missing or stale;
    retain task ownership, readback and phase gates;
    evaluate commit suitability after each confirmed closure without inferring Git authority.
 
@@ -131,9 +138,24 @@ a previous permission. This is an agent instruction, not a runtime cache.
    as different levels. Keep distant work coarse and detail the ready frontier only.
    One run stays within one active epic; an epic may need multiple runs/sessions.
    One agent/session has one main verifiable task, not necessarily one phase or commit.
+   Select one primary deliverable and its exit criteria; each action or contribution
+   must serve it or follow an explicit authorized objective switch. Do not start
+   several main tasks sequentially and leave them in progress: multiple active tasks
+   require actual active workers with distinct assignments, not intended delegation.
+   Distinguish planned/selected work, verified claims and observed execution in the
+   existing tracker/checkpoint; a claim alone proves neither a running delegate nor
+   permission. Keep contributions under the main task unless independently resumable
+   outcomes require separate authorized tickets; no ticket per file or phase.
    Before writes, verify that the task ID leads to goal, requirement, scope, dependencies,
    checks and restart context. In Beads, parents express hierarchy, blocking edges express
    prerequisites; claim is not a file lock. Repair missing task context, not a second tracker.
+
+   Before switching an unfinished primary deliverable, record its result, blocked or
+   suspended disposition, candidate/diff, evidence, owner, worker dispositions and
+   exact resume prerequisite. Verify replacement scope and authority before starting
+   it. A switch grants no implicit closure, cancellation, reset or discard of work;
+   use only authorized supported tracker/worker operations and read back their results.
+   If required persistence fails, stop the affected transition, not unrelated work.
 
    Keep related build/test/corrections in one session. Recommend a fresh context for an
    independent US, repository/worktree change, major research handoff, stale assumptions
@@ -152,12 +174,22 @@ a previous permission. This is an agent instruction, not a runtime cache.
    Use delegation only if available and useful, subject to required isolation or
    independence. Coordinator baseline verification and bounded questions from
    sufficient available sources need no worker; deeper Research investigations
-   follow that phase's dispatch policy.
+   follow that phase's dispatch policy. For useful independent contributions with
+   ready inputs, available capability and exclusive writable paths, launch the ready
+   workers before awaiting their results. Record the dependency, capability, isolation
+   or proportionality reason when serialization is necessary; do not manufacture
+   parallelism by adding trivial work or splitting one coherent outcome.
+   Record actual invocation handles/worker identifiers and observed status separately
+   from proposed assignments; unavailable lifecycle evidence remains unknown, never
+   simulated. One coordinator updates each issue; workers return evidence unless a
+   distinct, currently authorized tracker responsibility was explicitly assigned.
    Give each worker the objective,
    acceptance criteria, contract, approved scope, input artifacts and exclusive
    writable paths. Workers cannot coordinate implicitly. Parallel writers must
    never share a file. Workers return result, exact changes, evidence, limitations
    and next action; the coordinator integrates these, not their unsupported claims.
+   Name each contribution's required output and integration/join responsibility;
+   do not write a live worker's owned paths or begin work depending on its return.
 
    Before Judge, freeze the candidate, checklist and evidence index; recommend a
    fresh context and prepare the handoff. Do not auto-commit. If no independent
@@ -176,8 +208,13 @@ a previous permission. This is an agent instruction, not a runtime cache.
    and result locator before integration. Reconcile conflicts; failed or partial results
    remain provisional, not accepted gates. Preserve valid proof and expose invalidated
    evidence; source-only checks remain static.
+   Before dependent edits, checks or dispatch, join and verify the required worker
+   contributions, candidate identity and integration compatibility. A required live,
+   failed or incomplete worker leaves that dependent action pending; independent
+   authorized work may continue. Partial returns are not accepted inputs. Record
+   remaining worker dispositions rather than assuming completion or cancellation.
 
-   Default to at most three correction rounds for the same slice unless the user
+   Default to at most three correction attempts for the same slice unless the user
    sets another budget. After repeated failures, changed scope, exhausted budget,
    or incompatible evidence, stop and present the blocker, options and decision.
    A failed check cannot be turned green by deleting or weakening acceptance.

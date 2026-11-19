@@ -1,12 +1,24 @@
-# Communication contract v1.8.0
+# Communication contract v1.8.1
 
 Contract ID: agentic-development/communication-contract
-Contract version: 1.8.0
+Contract version: 1.8.1
 
 Mandatory for every phase. This is an instruction contract, not a tool firewall.
 Respond in the user's language. Keep evidence and decisions inspectable; do not
 request or expose private reasoning. Use explicit unknown values rather than
 inventing roadmap identifiers, permissions, test results, or acceptance.
+
+## Contents
+
+- [Common checkpoint](#common-checkpoint)
+- [Required structure and notification fields](#required-structure-and-notification-fields)
+- [Roadmap and working tree](#roadmap-and-working-tree)
+- [Early transition notices](#early-transition-notices)
+- [Evidence, judgment and confidence](#evidence-judgment-and-confidence)
+- [UI reporting (conditional)](#ui-reporting-conditional)
+- [Action-specific reports (load only when applicable)](#action-specific-reports-load-only-when-applicable)
+- [Conditional shared task truth](#conditional-shared-task-truth)
+- [Trust and acceptance invariants](#trust-and-acceptance-invariants)
 
 ## Common checkpoint
 

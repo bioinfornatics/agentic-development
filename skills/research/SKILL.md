@@ -34,15 +34,14 @@ updates retain their own gates; an inline response does not replace task truth.
 The coordinator bounds context and decisions; delegated mode workers perform deeper
 product discovery and technical investigation. Internal workers return the compact
 delegation contract; the coordinator alone produces the user-facing Research report.
-Apply contracts before their governed actions, even before the nominal step
-containing the link when its condition arises earlier. Load a reference only when its
-applicable content is absent, incomplete or outdated in the active context; reuse
-identical available content from another Skill's contained copy. The same ID/version
-with different content is a conflict, not proof of identity: resolve it before the
-affected action. A previous read or loaded marker does not prove availability.
-After compaction, a new session or worker, recover required unavailable instructions;
-on workspace changes revalidate applicability. Reusing authorization guidance never renews
-a previous permission. This is an agent instruction, not a runtime cache.
+Apply contracts before their governed actions, even before the step that links them.
+Read a reference only when it is absent, incomplete or outdated in the active context.
+Reuse identical copies from another Skill. The same ID/version with different content
+is a conflict, not proof of identity; resolve it before the affected action.
+A loaded marker or earlier read does not prove availability. After compaction, a new
+session or worker, reload missing required instructions. After workspace changes,
+recheck applicability. Reused authorization guidance never renews a permission.
+This is an agent instruction, not a runtime cache.
 
 1. [ ] **Frame the objective and verify authority**
 
@@ -50,12 +49,20 @@ a previous permission. This is an agent instruction, not a runtime cache.
      sources. Missing roadmap information is explicit; do not invent goals or expand
      bounded research to fill hierarchy labels. Resolve decision-blocking context
      only; roadmap proposals belong to requested planning or a decision-blocking need.
-   - Before creating or repairing task descriptions or acceptance criteria, apply
-     [ticket authoring](references/ticket-authoring.md); verify readable purpose,
-     criteria, ordered inputs and restart context without duplicating execution history.
+   - Before creating or repairing task descriptions or acceptance criteria, verify
+     current scope and write authority. Conditionally Load `agentic-development:task-authoring`
+     using the host's available Skill-loading mechanism (not a shell command), with
+     established goal, scope, criteria, native tracker context and current authority.
+     Reuse its guidance when already available and current; do not load both routes
+     normally. If the optional capability is unavailable, apply contained
+     [ticket authoring](references/ticket-authoring.md) directly and report direct
+     reading, not activation; do not retry loading or block routine work on its absence.
+     For routine reads, claims, progress updates or closure, do not load task-authoring.
+     Resume this caller after verified ticket readback or an explicit proposal/error;
+     retain this phase's scope, ownership, review and evidence gates.
 
    - If the repository uses Beads, apply [the Beads integration](references/beads-integration.md)
-     before choosing work or mutating task state. Use fresh `bd prime` guidance;
+     before choosing work or mutating task state. Run `bd prime` only when Beads context is missing or stale;
      retain task ownership, readback and phase gates;
      evaluate commit suitability after each confirmed closure without inferring Git authority.
    - Before resuming artifact claims or executing consequential actions, apply
@@ -81,10 +88,10 @@ a previous permission. This is an agent instruction, not a runtime cache.
    beyond those inputs. This direct path never waives mandatory isolation or independence.
    Before dispatch, read [the internal investigation contract](references/delegated-investigation.md).
    These are intent labels, not required tool names: workers map them to available tools.
-   Do not inject the full session or concatenate raw reports. If a deeper selected
-   investigation requires delegation and it is unavailable, identify the blocker and
-   obtain explicit permission for direct investigation; no silent fallback or waiver
-   of mandatory isolation/independence. Select adaptively, not a mandatory four-worker batch.
+   Do not inject the full session or concatenate raw reports. If a deeper investigation
+   needs a worker and none is available, report the blocker and obtain
+   explicit permission for direct investigation; never fall back silently or waive required
+   isolation or independence. Select workers adaptively, not as a mandatory four-worker batch.
 
    | Mode | Question | Action and observable result |
    |---|---|---|
@@ -110,6 +117,10 @@ a previous permission. This is an agent instruction, not a runtime cache.
      Reuse existing context after coverage and freshness checks; a clear or familiar
      request is not research evidence. Missing facts remain unknown; ask when they block
      a coherent next decision. Read glossary/ADRs when domain terms or irreversible decisions matter.
+   - When a decision-critical requirement, scope boundary or trade-off stays unresolved
+     after reading the evidence, apply [the clarification interview](references/clarification-interview.md):
+     verify facts yourself, ask one recommended-answer question per decision, and keep
+     `NEEDS CLARIFICATION` markers until each blocking decision is settled.
    - When planning checks, freezing inputs or reusing evidence, apply
      [candidate identity](references/candidate-identity.md) and select the provenance path:
      source-only observation records inspected revision/paths, dirty state and limits;
@@ -124,6 +135,9 @@ a previous permission. This is an agent instruction, not a runtime cache.
      rather than collecting a large static bundle. Inspect tests, UI journeys, dependencies
      and runtime/package constraints. For bugs, attempt symptom-specific reproduction
      before recommending repair or claiming a confirmed cause; missing access means a next probe.
+   - When a defect's cause is unknown, including an unknown-cause gap from Iterate, apply
+     [the root-cause investigation](references/root-cause-investigation.md) before naming
+     a cause: minimize the reproduction, rank refutable hypotheses and change one variable per probe.
    - When external freshness could change the decision, apply
      [the state-of-the-art procedure](references/state-of-the-art.md) before authorized
      bounded web research. Consider bleeding-edge or very recent work, especially within
@@ -134,7 +148,7 @@ a previous permission. This is an agent instruction, not a runtime cache.
      and comparing solutions. Search the repository first, compare reuse/extend/build
      and disclose unavailable channels. Reuse a current evidence-backed decision; this
      investigation is not installation permission.
-   For exact-candidate proof, use the contained [capture/validate/compare CLI](scripts/candidate_identity.py) with the [scope example](references/candidate-scope.example.json); consult the [manifest schema](references/candidate-identity.schema.json) and [manifest example](references/candidate-identity.example.json) when preparing or validating its JSON. Follow the candidate procedure above; equality is not acceptance.
+   - For exact-candidate proof, use the contained [capture/validate/compare CLI](scripts/candidate_identity.py) with the [scope example](references/candidate-scope.example.json); consult the [manifest schema](references/candidate-identity.schema.json) and [manifest example](references/candidate-identity.example.json) when preparing or validating its JSON. Follow the candidate procedure above; equality is not acceptance.
 
 4. [ ] **Integrate evidence and prepare the decision**
 
@@ -156,6 +170,10 @@ a previous permission. This is an agent instruction, not a runtime cache.
      [the communication contract](references/communication-contract.md). Preserve ownership,
      evidence and conditional UI safeguards in standalone use too. Respond in the user's
      language; unavailable capabilities are explicit, never simulated execution evidence.
+   - Before declaring research sufficient for the planning decision, apply
+     [the Research readiness review](references/research-readiness-review.md).
+     Resolve only decision-material gaps; retain supported premises, targeted
+     impact paths and the next discriminating probe, not a blanket catalog.
    - Collect research report facts for inline delivery or an explicitly authorized
      saved report: product context, outcome, evidence, affected seams,
      assumptions, options, unknowns and next decision/probe. This is not a competing tracker.

@@ -1,0 +1,16 @@
+Subagent ID: 20261119_125
+
+You are an independent JUDGE (read-only). Do NOT edit/create/stage/commit/delete repository files; no bd write commands. Writing only under /tmp/0wm-evidence is allowed.
+
+Repository /home/jmercier/Codes/me/agentic-development, branch feature/pocock-method-integration, uncommitted working tree vs origin/develop. Frozen candidate: /tmp/0wm-evidence/candidate3.json (candidate_id ebe6772d7954cc231f2757f7356f1d090e71ede463b43cd526673732e06da003, scope /tmp/0wm-evidence/scope.json). Previous candidate 4b806bb2 was accepted at task scope (see /tmp/0wm-evidence/judge2-verdict.md) with non-blocking findings N1-N4. The builder then changed only:
+- N1 skills/plan/references/specification-template.md (~line 36): decision-record candidates now require hard to reverse + surprising + real trade-off.
+- N2 docs/skill-flow.md (~line 72): integration-branch gate list now includes worker commit and merge or rebase.
+- N3 skills/cycle/SKILL.md (~line 215): duplicate pointer-briefing sentence reduced to 'Typical pointers, not copies: ...'.
+- N4 skills/implement/SKILL.md (~line 122) 'write only what the current failing test demands'; skills/domain-modeling/references/adr-format.md 'When to write one' candidate list rewritten; skills/plan/SKILL.md expand-contract closing sentence reworded.
+
+Load Skill `agentic-development:judge` if available (else read skills/judge/SKILL.md and its judgment-rubric.md). Then:
+1. Verify identity: capture with `python3 skills/cycle/scripts/candidate_identity.py capture --root . --scope /tmp/0wm-evidence/scope.json > /tmp/0wm-evidence/judge3-recapture.json` and `compare` with candidate3.json (exit 0 = SAME).
+2. Verify N1-N4 are resolved and that no regression or new contradiction was introduced; confirm all acceptance criteria in `bd show agentic-devlopment-0wm.1` .. `.6` still hold (T5 AC1 especially, T3 AC2, T4 AC3, T1 AC4).
+3. License: compare the changed sentences with /home/jmercier/Codes/third-parties/mattpocock_skills/skills/engineering/{tdd,to-tickets,domain-modeling}/ — any substantial verbatim copying?
+4. Run `python3 -B -m unittest discover -s tests` and `python3 -B tests/payload_inventory.py . >/dev/null; echo $?`.
+Return concisely: verdict (accepted | needs-correction | indeterminate) for task-scope criteria of 0wm.1-.6, score, N1-N4 table, findings with severity/file:line, license result, test results, independence limits. Save a short verdict to /tmp/0wm-evidence/judge3-verdict.md.

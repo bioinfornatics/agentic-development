@@ -3,7 +3,7 @@
   "checkpoint_id": "01M7TEXQEMH1N5VKAH8VF2TTPR",
   "strategy": "manual-commit",
   "branch": "develop",
-  "checkpoints_count": 17,
+  "checkpoints_count": 18,
   "files_touched": [
     "skills/cycle/references/candidate-identity.md",
     "skills/implement/SKILL.md",
@@ -130,6 +130,13 @@
       "compact_transcript": "/14/transcript.jsonl",
       "content_hash": "/14/content_hash.txt",
       "prompt": "/14/prompt.txt"
+    },
+    {
+      "metadata": "/15/metadata.json",
+      "transcript": "/15/full.jsonl",
+      "compact_transcript": "/15/transcript.jsonl",
+      "content_hash": "/15/content_hash.txt",
+      "prompt": "/15/prompt.txt"
     }
   ],
   "token_usage": {
@@ -137,7 +144,7 @@
     "cache_creation_tokens": 0,
     "cache_read_tokens": 0,
     "output_tokens": 0,
-    "api_call_count": 837
+    "api_call_count": 844
   },
   "redaction": {
     "replacements": 2,

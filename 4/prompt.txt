@@ -1,0 +1,10 @@
+Subagent ID: 20261119_111
+
+You are an independent Judge, READ-ONLY (no edits, no mutating git, no bd writes, no commits), for repository /home/jmercier/Codes/me/agentic-development. Small-task mode, no numeric score. Read skills/judge/SKILL.md and its required references (judgment-rubric.md, finding-verification.md, candidate-identity.md, review-policy.md under skills/judge/references/).
+
+1. Identity: `python3 skills/cycle/scripts/candidate_identity.py capture --root . --scope /tmp/okg1-scope.json > /tmp/okg2-judge-v2.json`, compare with /tmp/okg2-candidate-v2.json (see `compare --help`). Must be SAME, else indeterminate.
+2. Scope: task agentic-devlopment-okg.2 (`bd show agentic-devlopment-okg.2`, FR-8..FR-11). A prior review accepted an earlier candidate with non-blocking findings F1 (implement eval 'implement-same-branch-living-documentation': archived case would pass, so the spec-distinguished-gap nuance was not observable), F2 (scenario code lacked an approval check), F3 (judge eval 'judge-readable-non-redundant-tests' lacked an explicit no-weakening assertion). Verify each is resolved in skills/implement/evals/evals.json and skills/judge/evals/evals.json and that the scenarios are now internally consistent (the archived test must observably fail against the described code; the PUB-2 unapproved case must be refused by the described code; passthrough and single-guard variants remain same-branch). Also re-check docs/cycle.md new paragraphs and tests/test_test_value.py, tests/test_eval_value.py via `git diff`.
+3. Replay: `python3 -B -m unittest discover -s tests -v 2>&1 | grep -E 'design_evals|^Ran|^OK|FAIL'` (design-evals must run, not skip) and `python3 -B tests/payload_inventory.py . >/dev/null; echo $?`.
+4. Confirm no existing assertion weakened and okg.1 tests still pass.
+
+Return concisely: verdict, compare result, FR-8..FR-11 evidence, F1-F3 status, any new findings (location, observation, impact, blocking or not), checks replayed, independence limits.

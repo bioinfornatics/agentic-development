@@ -3,34 +3,42 @@
   "checkpoint_id": "01M7TB6QXCC456BK5TE6XTDB2A",
   "strategy": "manual-commit",
   "branch": "develop",
-  "checkpoints_count": 6,
+  "checkpoints_count": 7,
   "files_touched": [
     "AGENTS.md",
     "docs/cycle.md",
     "docs/skill-flow.md",
     "skills/cycle/SKILL.md",
     "skills/cycle/references/beads-integration.md",
+    "skills/cycle/references/requirements-baseline.md",
     "skills/cycle/references/ticket-authoring.md",
     "skills/implement/SKILL.md",
     "skills/implement/references/beads-integration.md",
+    "skills/implement/references/requirements-baseline.md",
     "skills/implement/references/ticket-authoring.md",
     "skills/iterate/references/beads-integration.md",
+    "skills/iterate/references/requirements-baseline.md",
     "skills/iterate/references/ticket-authoring.md",
     "skills/judge/references/beads-integration.md",
+    "skills/judge/references/requirements-baseline.md",
     "skills/judge/references/ticket-authoring.md",
     "skills/plan/SKILL.md",
     "skills/plan/references/beads-integration.md",
     "skills/plan/references/plan-readiness-review.md",
+    "skills/plan/references/requirements-baseline.md",
     "skills/plan/references/ticket-authoring.md",
     "skills/research/references/beads-integration.md",
+    "skills/research/references/requirements-baseline.md",
     "skills/research/references/ticket-authoring.md",
     "skills/task-authoring/references/ticket-authoring.md",
     "skills/test/references/beads-integration.md",
+    "skills/test/references/requirements-baseline.md",
     "skills/test/references/ticket-authoring.md",
     "tests/test_batch_loop.py",
     "tests/test_batch_tracker.py",
     "tests/test_deliverable_focus.py",
-    "tests/test_planning_horizon.py"
+    "tests/test_planning_horizon.py",
+    "tests/test_trigger_routing.py"
   ],
   "sessions": [
     {
@@ -74,6 +82,13 @@
       "compact_transcript": "/5/transcript.jsonl",
       "content_hash": "/5/content_hash.txt",
       "prompt": "/5/prompt.txt"
+    },
+    {
+      "metadata": "/6/metadata.json",
+      "transcript": "/6/full.jsonl",
+      "compact_transcript": "/6/transcript.jsonl",
+      "content_hash": "/6/content_hash.txt",
+      "prompt": "/6/prompt.txt"
     }
   ],
   "token_usage": {
@@ -81,7 +96,7 @@
     "cache_creation_tokens": 0,
     "cache_read_tokens": 0,
     "output_tokens": 0,
-    "api_call_count": 84
+    "api_call_count": 99
   },
   "redaction": {
     "replacements": 0,

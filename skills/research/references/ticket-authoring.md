@@ -1,7 +1,7 @@
-# Readable and restartable task tickets v1.4.0
+# Readable and restartable task tickets v1.5.0
 
 Contract ID: agentic-development/ticket-authoring
-Contract version: 1.4.0
+Contract version: 1.5.0
 
 Apply before creating or repairing task descriptions or acceptance criteria in any
 agreed tracker; apply the Beads bridge when relevant. This is authoring guidance,
@@ -33,8 +33,8 @@ not an enforcement engine or permission to mutate tickets.
    affected maintainer/system, concrete difficulty and verifiable deliverable.
 3. Bound one independently reviewable result. Identify its primary outcome and exit
    criteria, or its bounded contribution to the current primary deliverable. Several
-   ready tickets are choices, not simultaneous execution by one agent; selection
-   alone does not start them. Split when outcomes need different
+   ready tickets are choices for a coordinator batch (see below); selection alone
+   does not start them. Split when outcomes need different
    prerequisites or acceptance decisions, not by file or phase mechanically.
    Technical detail comes after the problem, expected outcome, limits, success
    criteria and open decisions. How describes the approach; acceptance criteria describe results, not
@@ -88,8 +88,10 @@ capabilities need a decision/probe, not an invented implementation; use a small
 text diagram only when it clarifies the flow.
 
 Detail the bounded ready frontier serving the selected primary deliverable, not
-every distant roadmap item. Keep future ideas coarse unless current scope authorizes
-backlog authoring; an authorized backlog is legitimate planning, not active work.
+every distant roadmap item. Create tickets only for the active epic and the next
+epic in line; other epics keep goal, outcomes and rough scope with no child tasks.
+Detail a distant epic only when the user explicitly asks in the current request;
+that requested backlog is planning, not active work.
 Do not expand a bounded request into speculative detailed tickets merely to populate
 a roadmap. Before calling an implementation ticket ready, provide a verified
 file/asset map:
@@ -123,8 +125,10 @@ inputs, expected outputs, actual owners and integration/join prerequisites
 recoverable through native fields or small resolvable references. Distinguish
 proposed assignments from actual delegates; required live, failed or partial
 contributions leave dependent work unready until their verified join, without
-blocking unrelated permitted work. Do not force delegation or add a universal
-metadata block; the caller retains dispatch and integration procedures.
+blocking other permitted batch work. Do not force delegation or add a universal
+metadata block; the caller retains dispatch and integration procedures. A
+coordinator batch may run several independent ready tickets with one task per
+worker; one agent still works one ticket at a time.
 
 ## Consolidate updates, do not append competing specifications
 

@@ -20,6 +20,15 @@ The coordinator chooses the next step and finalizes traceability.
 Reuse research only after checking its context coverage and freshness; reuse a plan that is still valid. Do not restart the whole cycle
 on every resumption, but do not skip a necessary check.
 
+## Work one epic in batches
+
+1. Keep one active epic across sessions; only you decide to switch it.
+2. Pull ready work from that epic only, for example `bd ready --parent <epic>`.
+3. Form the batch from all ready, independent tasks; the host's subagent limit sets its size.
+4. Give each worker one task and its own files; the coordinator owns the batch.
+5. Close or release every batch task before pulling the next batch.
+6. When no ready task remains, refine the next batch through Research → Plan (a proposal; tracker writes need your authority).
+
 ## Develop with rapid feedback
 
 For executable behavior:

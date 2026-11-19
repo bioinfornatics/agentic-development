@@ -136,19 +136,26 @@ This is an agent instruction, not a runtime cache.
 
    Treat roadmap outcomes, epic capabilities, user-story behavior and executable tasks
    as different levels. Keep distant work coarse and detail the ready frontier only.
-   One run stays within one active epic; an epic may need multiple runs/sessions.
-   One agent/session has one main verifiable task, not necessarily one phase or commit.
-   Select one primary deliverable and its exit criteria; each action or contribution
+   Keep exactly one active epic across runs and sessions; an epic may need several runs.
+   Pull work only from its descendants (`bd ready --parent <epic>`). Switch the active
+   epic only on an explicit user decision, never because another epic has ready work.
+   Work in progress is the active batch: only its tasks are claimed or in_progress.
+   The coordinator owns the batch and each worker owns one task, not one phase or commit.
+   Give each task one primary deliverable and its exit criteria; each action or contribution
    must serve it or follow an explicit authorized objective switch. Do not start
-   several main tasks sequentially and leave them in progress: multiple active tasks
+   several tasks sequentially and leave them in progress: multiple active tasks
    require actual active workers with distinct assignments, not intended delegation.
    Distinguish planned/selected work, verified claims and observed execution in the
    existing tracker/checkpoint; a claim alone proves neither a running delegate nor
-   permission. Keep contributions under the main task unless independently resumable
+   permission. Keep contributions under their batch task unless independently resumable
    outcomes require separate authorized tickets; no ticket per file or phase.
    Before writes, verify that the task ID leads to goal, requirement, scope, dependencies,
    checks and restart context. In Beads, parents express hierarchy, blocking edges express
    prerequisites; claim is not a file lock. Repair missing task context, not a second tracker.
+
+   When the active epic has no ready tasks for the next batch, propose Research → Plan
+   refinement for it, or for the next epic in line once it is complete; switching the active epic still needs
+   the user's decision. Refine one batch ahead, not the whole backlog; tracker writes need current authority.
 
    Before switching an unfinished primary deliverable, record its result, blocked or
    suspended disposition, candidate/diff, evidence, owner, worker dispositions and
@@ -174,7 +181,10 @@ This is an agent instruction, not a runtime cache.
    Use delegation only if available and useful, subject to required isolation or
    independence. Coordinator baseline verification and bounded questions from
    sufficient available sources need no worker; deeper Research investigations
-   follow that phase's dispatch policy. For useful independent contributions with
+   follow that phase's dispatch policy. Form the batch from all ready, unblocked,
+   mutually independent tasks of the active epic. Bound it only by the host's subagent
+   concurrency limit, never by a plugin cap. Dispatch one subagent per task with disjoint
+   writable paths; use an approved worktree only when tasks would collide, with current authority. For useful independent contributions with
    ready inputs, available capability and exclusive writable paths, launch the ready
    workers before awaiting their results. Record the dependency, capability, isolation
    or proportionality reason when serialization is necessary; do not manufacture
@@ -211,8 +221,10 @@ This is an agent instruction, not a runtime cache.
    Before dependent edits, checks or dispatch, join and verify the required worker
    contributions, candidate identity and integration compatibility. A required live,
    failed or incomplete worker leaves that dependent action pending; independent
-   authorized work may continue. Partial returns are not accepted inputs. Record
+   authorized batch tasks may continue. Partial returns are not accepted inputs. Record
    remaining worker dispositions rather than assuming completion or cancellation.
+   Do not pull or claim tasks outside the active batch until every batch task is
+   closed or released with a named blocker.
 
    Default to at most three correction attempts for the same slice unless the user
    sets another budget. After repeated failures, changed scope, exhausted budget,

@@ -150,9 +150,9 @@ This is an agent instruction, not a runtime cache.
 
    Remove temporary debug instrumentation or explain retained authorized diagnostics.
 
-4. [ ] **Observe and integrate each coherent batch**
+4. [ ] **Observe and integrate each coherent change set**
 
-   After each coherent change batch inspect the actual diff, maintain the implementation
+   After each coherent change set inspect the actual diff, maintain the implementation
    change ledger with owned paths/hunks and reasons, and emit the short checkpoint.
    For executable changes the ledger also records the red command and a failing-output
    excerpt, and lists each deleted, skipped, renamed or loosened test, assertion,
@@ -162,7 +162,7 @@ This is an agent instruction, not a runtime cache.
    before handoff; record commands and actual outputs. Run the full suite when the
    scope requires it and tooling allows.
 
-   Before advancing a dependent batch, verify that the observed result satisfies
+   Before advancing a dependent node group, verify that the observed result satisfies
    the next affected consumer's input/precondition, including material format,
    interface, state, environment and authority. A passing producer check alone is
    not a verified transition or project-wide completion. If feasibility or

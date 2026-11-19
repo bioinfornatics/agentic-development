@@ -54,7 +54,8 @@ clean develop@SHA -> verified generated tree -> generated-only PR -> main (squas
 - Verify claim and update results by readback; one tracker owner per issue; a claim is not a file lock or Git permission.
 - The task ID alone must recover goal, requirement, scope, inputs, dependencies, checks, ownership and restart context.
 - Repair missing task context; no competing Markdown task databases, MEMORY.md or obsolete .loop state.
-- Hierarchy: roadmap -> epic -> US -> task; one active epic/run and one main task/agent. US is a convention, not an assumed CLI type.
+- Hierarchy: roadmap -> epic -> US -> task; one active epic across runs, switched only by explicit user decision. US is a convention, not an assumed CLI type.
+- WIP is the active batch: all ready, independent tasks of the active epic, bounded only by host subagent concurrency; the coordinator owns the batch, one task per worker; close or release every batch task before pulling more.
 - Parent means hierarchy; bd dep add A B means A depends on B. Detail the ready frontier, not a task per file or phase.
 - .beads/issues.jsonl is only an optional snapshot: at authorized task-state checkpoints export after permitted updates, review privacy/staged bytes and record time/coverage.
 - Never edit/import a snapshot to sync status or close tasks to complete it; export does not authorize Git publication or Dolt sync.

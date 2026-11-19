@@ -77,7 +77,7 @@ class TicketAuthoring(unittest.TestCase):
                      'reject cycles', 'architecture selection depend on',
                      'Readback checks', 'not only nonempty fields'):
             self.assertIn(rule, text)
-        self.assertIn('Contract version: 1.4.0', text)
+        self.assertIn('Contract version: 1.5.0', text)
         for phase in ('cycle', 'plan', 'implement'):
             entry = (ROOT / 'skills' / phase / 'SKILL.md').read_text()
             self.assertIn('name: ' + phase + '\n', entry)

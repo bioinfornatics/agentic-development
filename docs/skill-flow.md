@@ -7,7 +7,7 @@ Use this map to see which Skill runs when, where each loop ends and which tools 
 ```mermaid
 flowchart TD
   user([User intent]) --> cycle[cycle: route and coordinate]
-  cycle -->|new or resumed objective| research
+  cycle -->|new or resumed objective, or next-batch refinement| research
   cycle -.->|resume at first incomplete phase| plan & implement & test & judge & iterate
   research -->|bounded probe still needed| research
   research -->|cited context grounds the decision| plan

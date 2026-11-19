@@ -61,7 +61,7 @@ class SharedTerms(unittest.TestCase):
                   for p in PHASES}
         self.assertEqual(len(copies), 1)
         text = copies.pop().decode()
-        self.assertIn('Contract version: 1.4.0', text)
+        self.assertIn('Contract version: 1.5.0', text)
         terms = text.split('## Terms', 1)[1].split('\n## ', 1)[0]
         for term in ('Roadmap', 'Epic', 'User story', 'Task', 'Slice', 'Primary deliverable',
                      'Contribution', 'Candidate', 'Evidence level', 'Gate', 'Correction attempt'):

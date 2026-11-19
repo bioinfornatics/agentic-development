@@ -100,7 +100,9 @@ class DeliverableFocusSourceContracts(unittest.TestCase):
                            r'frontier', r'roadmap|backlog')
         self.assert_policy(self.frontier, r'future|distant', r'coarse',
                            r'(not|no|avoid|never)', r'speculative|ticket|detail')
-        self.assert_policy(self.frontier, r'authoriz|requested', r'backlog',
+        # Backlog detail is legitimate only on an explicit current-request override.
+        self.assert_policy(self.frontier, r'explicitly asks?.*current request',
+                           r'requested backlog',
                            r'not.*active|non.?active|not.*running|not.*execution')
         # Planning review must challenge focus/joins, not merely count ticket fields.
         self.assert_policy(self.readiness, r'primary.*(deliverable|outcome)',

@@ -1,7 +1,7 @@
-# Requirements baseline v1.4.0
+# Requirements baseline v1.5.0
 
 Contract ID: agentic-development/requirements-baseline
-Contract version: 1.4.0
+Contract version: 1.5.0
 
 Read before defining or changing scope, criteria or verification, and before implementation.
 Reuse a verified baseline; investigation needs a bounded question, not a completed plan.
@@ -12,11 +12,12 @@ These requirements govern actions, not final-response formatting.
 Use one meaning per term across phases:
 
 - **Roadmap**: ordered outcomes and major dependencies; distant work stays coarse.
-- **Epic**: one capability delivered by one or more user stories; one active epic per run.
+- **Epic**: one capability delivered by one or more user stories; one active epic across runs, switched only by explicit user decision.
 - **User story** (US): observable user behavior with Goals/Non-goals and criteria; a convention, not a tracker type.
 - **Task**: one tracker issue whose result can be reviewed and resumed from its ID alone.
 - **Slice**: the bounded, verifiable work a session or branch is executing now.
-- **Primary deliverable**: the single outcome and exit criteria every action in the session serves.
+- **Batch**: all ready, independent tasks of the active epic in progress together, one task per worker; it is the work in progress.
+- **Primary deliverable**: the single outcome and exit criteria every action on a task serves.
 - **Contribution**: a worker's bounded part of the primary deliverable, with exclusive writable paths.
 - **Candidate**: the exact inputs under check or judgment; frozen candidates do not change during review.
 - **Evidence level**: static/source, mocked, installed-package or real-environment; never promote one to another.

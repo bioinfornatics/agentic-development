@@ -122,8 +122,13 @@ This is an agent instruction, not a runtime cache.
    execution frontier sufficient to produce it. Planning selects that frontier only;
    it grants no permission to create tickets, claim tasks or start work. A ticket is not
    active merely because it exists or has no blockers. Keep future needs coarse; do not
-   turn a bounded delivery request into speculative detailed tickets. Explicitly
-   requested/authorized backlog authoring remains legitimate.
+   turn a bounded delivery request into speculative detailed tickets.
+
+   Create tasks only for the active epic and the next epic in line. Other epics
+   hold goal, outcomes and rough scope with no child tasks. Write detailed tasks for
+   a distant epic only when the user explicitly asks in the current request; that
+   requested backlog is planning, not active work. Refine one batch ahead: detail
+   the next batch while the current one runs, not the whole epic.
 
    For useful parallel contributions to this deliverable, name available inputs,
    separately verifiable outputs, dependencies, exclusive paths, proposed owners

@@ -1,0 +1,8 @@
+Subagent ID: 20261119_129
+
+You are an independent JUDGE (read-only). No repository edits, no git staging/commit, no bd writes. Writing only under /tmp/da4-evidence.
+
+Repository /home/jmercier/Codes/me/agentic-development. Frozen candidate /tmp/da4-evidence/candidate2.json (scope /tmp/da4-evidence/scope.json). Prior verdict on this task: /tmp/da4-evidence/judge-verdict.md (needs-correction, F1 medium, F2-F5 low). Load `agentic-development:judge` if available, else read skills/judge/SKILL.md.
+
+Steps: (1) recapture `python3 skills/cycle/scripts/candidate_identity.py capture --root . --scope /tmp/da4-evidence/scope.json > /tmp/da4-evidence/recapture2.json` and compare to candidate2.json (exit 0 = SAME). (2) Read `bd show agentic-devlopment-da4.1` (read-only), verify AC1-AC4. (3) Verify F1-F5 resolved with file:line: skills/implement/SKILL.md (outer check pending mark, owner task, instruction-only static check), skills/plan/SKILL.md (owner assignment), skills/test/SKILL.md ('story pending'), skills/judge/SKILL.md (story acceptance check), skills/cycle/SKILL.md row 2 approver wording, docs/skill-flow.md order of work (100-line limit), docs/cycle.md + website/i18n/fr/cycle.md item 1. Check for new contradictions (e.g. an expected-failure mark vs Test's 'skipped or loosened test is a FAIL' rule; Judge indeterminate rule; full-suite rule in implement). (4) Run `python3 -B -m unittest discover -s tests` and `python3 -B tests/payload_inventory.py . >/dev/null; echo $?`.
+Return concisely: verdict (accepted | needs-correction | indeterminate), score, F1-F5 table, any new findings with severity/file:line, tests, independence limits. Save to /tmp/da4-evidence/judge2-verdict.md.

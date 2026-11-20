@@ -1,0 +1,31 @@
+Compare the Dolt remote refs/dolt/data with the local Beads database without changing either. Then, if it is ok, run `bd dolt push --force`
+
+---
+
+2. **Archive, then force-push:** keep the old data under another name first, for example `git push origin refs/dolt/data:refs/dolt-archive/2026-08`. Check that the archive exists, then run `bd dolt push --force`. This needs your explicit approval for both pushes.
+
+---
+
+what next
+
+---
+
+1. **Publish `develop` to `main`.** This is the only way users get PR #36 and #37. The steps are in `CONTRIBUTING.md`:
+   - Create a Beads task.
+   - Freeze `develop@9f1d49f` and generate the installable files from it.
+   - Verify them with `tools/production.py`.
+   - Open a PR to `main` containing only the generated files, get an independent review, then squash-merge.
+   - Decide first whether this release needs a version bump (`0.5.0` → `0.6.0`, since a Skill was added).
+2. **Record the Dolt archive** with `bd remember`, so a later session knows that `refs/dolt-archive/2026-08` holds the old tracker. This is a small step.
+3. **Decide on the old tracker's unfinished work.** The archive still has in-progress issues (`cuka`, `cas8`, `f0pi`, about eval interpretation and scenario budgets) and 2 open epics. You can bring the relevant ones into the current tracker or leave them archived.
+4. **Clean up the untracked files.** `.beads/hooks/` holds the Entire Git hooks that `core.hooksPath` points to, and `.entire/` holds Entire's session data. They probably belong in `.gitignore`, and the tarball can be deleted. Each of these needs your decision; I won't remove anything on my own.
+5. **Start a new objective.** With no open epic, new product work starts from Research.
+
+**My recommendation is step 1, with step 2 done first since it's quick.** Do the publication in a fresh session, because it has its own release checks and needs an independent review.
+
+---
+
+1. **Version.** `plugin.json` : Bump to `0.6.0`
+2. Publication permission: yes do main promotion following our dedicated flow to publish plugins with runtime apps
+3. Old tracker's unfinished work (step 3): to investigate and get a well understanding
+4. Untracked files (step 4): add, commit and push: `.agents/`, `.beads/hooks/` and `.entire/`. Delete :  `entire_linux_amd64.tar.gz`

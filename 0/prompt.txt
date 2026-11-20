@@ -1,0 +1,5 @@
+familly-cp6.1.3/grind familly-cp6.1.3
+
+---
+
+/grind close agentic-devlopment-bdc with its recorded evidence and delete the merged branches feature/release-0.6.0 and production/bdc-2882dae. For agentic-devlopment-qlb: drop the 8 obsolete archived items, decide on cas8 and cuka, carry over memories lesson-beads-002 and claude-agent-skills-platform, then close qlb.

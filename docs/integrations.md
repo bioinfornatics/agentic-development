@@ -31,7 +31,7 @@ Before an authorized commit, inspect the exact staged files and hunks.
 After success, record the hash, message and paths actually committed, then link
 the result to the task. If the tracker cannot be updated, say so and
 retain the commit with a restart action. Do not claim that the handoff
-has been recorded. Do not push automatically.
+has been recorded. Do not push automatically, except a fast-forward push under a verified Level 2 grant.
 
 ## GitHub CLI: review and check CI
 
@@ -84,4 +84,4 @@ Choose perform when a coherent verified diff and scoped commit authority exist;
 propose when authority is missing; skip when already committed or no source diff
 exists; blocked when ownership, checks or capability prevent a safe commit.
 Record the reason in the final explanation and a real hash only after success.
-Closure is not permission to commit, and no automatic push or Dolt sync follows.
+Closure is not permission to commit, and no automatic push or Dolt sync follows, except a Level 2 fast-forward push under a verified grant covering that branch.

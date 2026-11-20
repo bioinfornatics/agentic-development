@@ -1,7 +1,7 @@
-# Conditional Beads integration v1.3.0
+# Conditional Beads integration v1.4.0
 
 Contract ID: agentic-development/beads-integration
-Contract version: 1.3.0
+Contract version: 1.4.0
 Apply only when the repository uses Beads; this is a bridge, not a CLI manual.
 
 ## Obtain current operating instructions
@@ -33,8 +33,8 @@ Apply only when the repository uses Beads; this is a bridge, not a CLI manual.
 
 ## Post-closure commit evaluation
 
-- After each confirmed closure, evaluate and report perform / propose / skip / blocked, accounting for
-  already committed work. Evaluation is not permission to commit; use the entrypoint-linked commit
-  safeguards for exact owned/staged paths and verified receipts. Never auto-push. Git publication and
-  Dolt synchronization need separate scoped authority. JSONL is an optional export, not live task truth
-  or a Dolt backup; never import/edit it to sync status. Report local-only or failed persistence honestly.
+- After each confirmed closure, report perform / propose / skip / blocked, accounting for
+  already committed work. Evaluation is not permission: perform only under a verified standing Git
+  autonomy grant (Level 1 commit, Level 2 fast-forward push of a covered branch) with exact owned/staged
+  paths and verified receipts. Never auto-push otherwise; publication and Dolt sync need
+  separate scoped authority. JSONL is an optional export, not task truth or a Dolt backup; never import/edit it to sync status. Report local-only or failed persistence honestly.

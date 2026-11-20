@@ -203,6 +203,14 @@ class SkillFlowContract(unittest.TestCase):
                 self.assertIn(gate, text)
         self.assertIn('commits only with current authority', agents)
 
+    def test_standing_grant_push_gate_is_documented_with_skills(self):
+        doc = flat(self.doc)
+        self.assertIn('standing Git autonomy grant', flat(skill('cycle')))
+        self.assertIn('standing Git autonomy grant', flat(skill('implement')))
+        for rule in ('`git push`', 'fast-forward', 'Level 2', 'never `develop` or `main`',
+                     'default or release branches', 'Dolt sync'):
+            self.assertIn(rule, doc)
+
     def test_guide_has_one_worked_example(self):
         self.assertEqual(self.doc.count('## Example'), 1)
 
@@ -259,7 +267,7 @@ class SkillFlowContract(unittest.TestCase):
 
     def test_guide_names_gated_tool_calls(self):
         for command in ['bd prime', 'bd where', 'bd dep add', 'bd init', 'bd hooks',
-                        'candidate_identity.py', 'git ls-files --stage', 'node "$CREATOR" full-eval', 'observe.py']:
+                        'candidate_identity.py', 'git ls-files --stage', 'git push', 'node "$CREATOR" full-eval', 'observe.py']:
             self.assertIn(command, self.doc)
 
 

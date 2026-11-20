@@ -229,11 +229,13 @@ This is an agent instruction, not a runtime cache.
    the emoji never replaces meaningful text or proves task completion. Choose the
    type/emoji from the actual staged change, not from a parent epic or intended work.
 
-   A commit is optional and separately authorized. Before an authorized commit,
+   A commit is optional and separately authorized, per commit or by a verified
+   standing Git autonomy grant in the authorization policy. Before an authorized commit,
    announce coverage, checks/limits, exact owned paths/hunks and message; inspect
    staged content to exclude initial user changes and unrelated files. Do not use
    indiscriminate staging. Report actual hash only after success. If not permitted,
-   return a proposed message and preserve uncommitted state. Never auto-push.
+   return a proposed message and preserve uncommitted state. Never auto-push
+   unless a verified Level 2 grant covers this branch, and then fast-forward only.
 
    After each performed commit emit the mandatory contract commit report with
    verified committed files, problem/feature, actual metadata and remaining state.

@@ -1,7 +1,7 @@
-# Communication contract v1.8.1
+# Communication contract v1.8.2
 
 Contract ID: agentic-development/communication-contract
-Contract version: 1.8.1
+Contract version: 1.8.2
 
 Mandatory for every phase. This is an instruction contract, not a tool firewall.
 Respond in the user's language. Keep evidence and decisions inspectable; do not
@@ -80,7 +80,8 @@ should use an independent context when available, not an automatic branch change
 Session change never implies a commit. Preserve incomplete uncommitted work and
 record staged/unstaged/untracked state. Do not claim to launch a fresh session if
 the host cannot do it; prepare the handoff and explain the user action needed.
-No automatic push, merge, deployment, package publication, or destructive action.
+No automatic push, merge, deployment, package publication, or destructive action, except a
+fast-forward push under a verified Level 2 standing Git autonomy grant (authorization policy).
 
 ## Evidence, judgment and confidence
 

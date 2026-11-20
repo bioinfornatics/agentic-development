@@ -230,10 +230,6 @@ class ApprovalStopAndOuterLoop(unittest.TestCase):
         self.assertIn('Plan stops for approval by you or a designated owner', doc)
 
 
-if __name__ == '__main__':
-    unittest.main()
-
-
 class SmallTaskApproval(unittest.TestCase):
     # agentic-devlopment-04y AC-F4: a single small task names its approver and stop rule.
     def test_plan_names_approver_and_stops(self):
@@ -247,3 +243,7 @@ class SmallTaskApproval(unittest.TestCase):
         text = flat(read('skills/implement/SKILL.md'))
         gate = text.split('Specification gate:', 1)[1].split('returns to Plan', 1)[0]
         self.assertIn('approved by the user or designated owner', gate)
+
+
+if __name__ == '__main__':
+    unittest.main()

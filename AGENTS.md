@@ -78,7 +78,7 @@ clean develop@SHA -> verified generated tree -> generated-only PR -> main (squas
 - Route: cycle -> research -> plan -> implement -> test -> judge; iterate is the only correction loop. Map: [skill flow](docs/skill-flow.md).
 - Bounds: 3 correction attempts per slice, counted before dispatch; one Judge indeterminate retry via Test; replans stop at a named deciding prerequisite.
 - task-authoring and domain-modeling return to their caller; never chain them into a phase. A phase-only request stops at its proposed handoff.
-- Skills call bd, candidate_identity.py (read-only Git), git bisect only in a separate authorized worktree or clean checkout, commits only with current authority and, on request, Skill Creator; never add gh/glab calls to Skills.
+- Skills call bd, candidate_identity.py (read-only Git), git bisect only in a separate authorized worktree or clean checkout, commits only with current authority, branch, worktree, merge and rebase calls only in Cycle's opt-in integration-branch mode, each with current scoped authority, and, on request, Skill Creator; never add gh/glab calls to Skills.
 - Change a handoff route, loop bound or tool call together with docs/skill-flow.md and tests/test_skill_flow.py.
 
 ## Permissions and preservation

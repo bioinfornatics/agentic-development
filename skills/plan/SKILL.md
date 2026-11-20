@@ -119,11 +119,12 @@ This is an agent instruction, not a runtime cache.
    [the specification template](references/specification-template.md): goals and
    non-goals, user stories pointing to criterion IDs, error and boundary cases,
    quality targets, decisions, test approach and open questions. For a single small
-   task, its approved ticket criteria are the specification. The specification
-   states behavior and decisions; file paths and code go in near-term tasks, since
-   they change with every refactor while the agreed behavior does not. Build it from
-   settled research and decisions; return any unsettled blocking decision to Research
-   rather than invent it.
+   task, its approved ticket criteria are the specification; the user or designated
+   owner approves them, and until then ask one approval question and stop. The
+   specification states behavior and decisions; file paths and code go in near-term
+   tasks, since they change with every refactor while the agreed behavior does not.
+   Build it from settled research and decisions; return any unsettled blocking
+   decision to Research rather than invent it.
    Record the specification's approval status, approver and date where the tracker
    keeps durable context, and link it from every task that implements it; a drafted
    or proposed specification is not approval. A task is implementation-ready only
@@ -188,10 +189,10 @@ This is an agent instruction, not a runtime cache.
    result would be visible to its consumer: prefer a public seam the code already
    has, the outermost one that can still observe it. A new seam is a cost; add one
    only when no existing seam observes the guarantee, and say why in the task.
-   For each product guarantee, identify a concrete
-   incorrect behavior, independent oracle and cheapest valid check; record what the
-   seam would detect and which it cannot. Plan distinct risk coverage, not one test per function,
-   file or implementation variation. For each rule plan an allowed and a refused example,
+   For each product guarantee, identify a concrete incorrect behavior, independent
+   oracle and cheapest valid check; record what the seam would detect and which it
+   cannot. Plan distinct risk coverage, not one test per function, file or
+   implementation variation. For each rule plan an allowed and a refused example,
    then only the cases the specification distinguishes; choose the seam level by the
    guarantee, a domain outcome for a rule or status and error code for a public API
    contract. Existing suite size is neither a preservation obligation nor a target;

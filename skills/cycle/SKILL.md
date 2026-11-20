@@ -225,7 +225,7 @@ This is an agent instruction, not a runtime cache.
    brings in the current integration tip before returning. Merge finished work one
    worker at a time, then dispatch any tasks that the merge made ready. The
    integration branch is the candidate for Test and Judge. Never merge it into
-   develop, main or any protected branch, push it, or remove a worktree without
+   the target branch or any protected branch, push it, or remove a worktree without
    that action's own authority. A missing grant stops only the affected action and
    falls back to the default.
 

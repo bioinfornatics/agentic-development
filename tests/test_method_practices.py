@@ -124,11 +124,20 @@ class IntegrationBranchMode(unittest.TestCase):
         for rule in ('optional', 'default above stays non-mutating', 'current scoped authority',
                      'creating the integration branch', 'removing each worktree',
                      'each worker commit', 'each merge or rebase that brings the integration tip',
-                     'when authorized', 'Never merge it into develop, main or any protected branch',
+                     'when authorized', 'Never merge it into the target branch or any protected branch',
                      'candidate for Test and Judge', 'falls back to the default'):
             self.assertIn(rule, mode)
         self.assertIn('pointers, not copies', text)
         self.assertIn('copy an item only when it has no saved locator', text)
+
+    def test_agents_tool_list_names_integration_branch_git_calls(self):
+        # agentic-devlopment-04y AC-F3: each Cycle Git call is named with its authority gate.
+        agents = flat(read('AGENTS.md'))
+        line = agents.split('Skills call bd', 1)[1].split('never add gh/glab', 1)[0]
+        for call in ('branch', 'worktree', 'merge', 'rebase'):
+            self.assertIn(call, line)
+        self.assertIn("Cycle's opt-in integration-branch mode", line)
+        self.assertIn('each with current scoped authority', line)
 
     def test_plan_adr_candidate_uses_three_conditions(self):
         plan = flat(read('skills/plan/SKILL.md'))
@@ -223,3 +232,18 @@ class ApprovalStopAndOuterLoop(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class SmallTaskApproval(unittest.TestCase):
+    # agentic-devlopment-04y AC-F4: a single small task names its approver and stop rule.
+    def test_plan_names_approver_and_stops(self):
+        plan = flat(read('skills/plan/SKILL.md'))
+        clause = plan.split('For a single small task', 1)[1].split('The specification states', 1)[0]
+        self.assertIn('user or designated owner', clause)
+        self.assertIn('stop', clause)
+        self.assertIn('one approval question', clause)
+
+    def test_implement_names_the_approver(self):
+        text = flat(read('skills/implement/SKILL.md'))
+        gate = text.split('Specification gate:', 1)[1].split('returns to Plan', 1)[0]
+        self.assertIn('approved by the user or designated owner', gate)

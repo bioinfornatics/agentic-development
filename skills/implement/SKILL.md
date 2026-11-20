@@ -89,7 +89,8 @@ This is an agent instruction, not a runtime cache.
 
    Read the approved plan, acceptance criteria, local instructions and ownership
    ledger. Specification gate: production edits start only from an approved
-   specification, or for a single small task approved ticket criteria; a missing,
+   specification, or for a single small task ticket criteria approved by the user or
+   designated owner; a missing,
    draft or since-changed specification returns to Plan before any edit. A gap or
    contradiction found in the specification during work is a Plan decision, not a
    silent code choice. Reinspect branch/status/diff and compare pre-existing hunks. Block

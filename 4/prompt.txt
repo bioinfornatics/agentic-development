@@ -1,0 +1,15 @@
+Subagent ID: 20261120_9
+
+Read-only review. Do not edit anything. Repo: /home/jmercier/Codes/me/agentic-development, working tree (uncommitted) on feature/pocock-method-integration vs HEAD 80efa95. Upstream (MIT, Matt Pocock): /home/jmercier/Codes/third-parties/mattpocock_skills.
+
+Question 1 (provenance): For each changed file below, compare it with its upstream counterpart by reading both. Judge close paraphrase, not just n-gram overlap: same sentence-by-sentence sequence of ideas, same section or bullet order, distinctive upstream conventions or phrasings reworded with synonyms, or the same specific examples. Generic practice names (TDD, tracer bullet, expand-contract, seam, ADR, glossary, bounded context, system boundary, dependency injection) and widely known ideas are acceptable.
+- skills/domain-modeling/SKILL.md, references/glossary-format.md, references/adr-format.md ↔ skills/engineering/domain-modeling/* and engineering/grill-with-docs
+- skills/plan/SKILL.md (git diff shows the changed passages) and skills/plan/references/specification-template.md ↔ engineering/to-spec, to-tickets, tdd
+- skills/research/references/clarification-interview.md ↔ productivity/grilling, grill-me, engineering/grill-with-docs
+- skills/implement/SKILL.md (changed passages) and skills/implement/references/test-value.md ↔ engineering/tdd/SKILL.md, mocking.md, tests.md
+Also scan the rest of each listed file (not only the diff) for remaining close paraphrase.
+For each file, give a verdict: independent / borderline / still close paraphrase, quoting the specific passages for borderline or close.
+
+Question 2 (behavior preserved): Use `git diff 80efa95 -- skills/` to confirm that no behavior was lost. Behaviors to check include gates, approval stops, authority rules, task dependencies, test-list/outer-check rules, refactor-in-slice, boundary-mocking rules, grill-mode end conditions, domain-modeling write/proposal/STOP rules and the decision-record criteria. Also check that `bd show agentic-devlopment-0wm`, `bd show agentic-devlopment-9f1`, `bd show agentic-devlopment-da4` and their child tasks (`bd list --parent <id>` or `bd dep tree`) still describe requirements the rewritten text meets. List any requirement that is now missing or weakened, with file:line.
+
+Return a concise report: verdict table, quoted problem passages, and any lost requirements.

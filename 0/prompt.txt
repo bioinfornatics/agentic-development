@@ -1,0 +1,14 @@
+Subagent ID: 20261120_10
+
+Read-only review. Do not edit anything. Repo /home/jmercier/Codes/me/agentic-development, uncommitted working tree on feature/pocock-method-integration (compare with HEAD 80efa95 using git diff). Upstream (MIT, Matt Pocock): /home/jmercier/Codes/third-parties/mattpocock_skills/skills.
+
+A previous review judged these passages still close paraphrases. They have been rewritten again. Re-judge them:
+1. skills/plan/SKILL.md: the task-sizing, tracer-bullet and expand-contract paragraph (search for 'Size a task by the session') and the seam sentences (search for 'A new seam is a cost') ↔ engineering/to-tickets, to-spec, tdd.
+2. skills/research/references/clarification-interview.md: the whole file, especially '## Grill mode' ↔ productivity/grilling, grill-me, engineering/grill-with-docs.
+3. skills/implement/SKILL.md: search for 'tracer bullet' and 'independent oracle the plan named' ↔ engineering/tdd/SKILL.md, tests.md.
+4. skills/implement/references/test-value.md: the mocking bullet ↔ engineering/tdd/mocking.md.
+5. skills/plan/references/specification-template.md: intro and sections ↔ engineering/to-spec.
+6. skills/domain-modeling/SKILL.md and references/*.md ↔ engineering/domain-modeling/*.
+Judge close paraphrase, not only n-gram overlap: same sequence of ideas, same bullet or section order, distinctive upstream phrasings reworded with synonyms, the same specific examples or conventions. Generic, widely known practice ideas (TDD, tracer bullet, expand-contract/parallel change, seams, ADRs, glossaries, dependency injection, mock only at boundaries, ask one question with a recommendation) are acceptable when the expression and organization are independent.
+Also confirm, from the git diff, that no gate, approval stop, authority rule, task-dependency rule, test-first rule, boundary-mocking rule, grill-mode end condition or domain-modeling write/proposal/STOP rule was lost.
+Return a verdict per file (independent / borderline / still close), quoting any remaining problem passage with the upstream text it mirrors, and list any lost requirement with file:line. Keep it concise.

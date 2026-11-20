@@ -1,0 +1,22 @@
+Subagent ID: 20261120_6
+
+Rewrite flagged passages in repo /home/jmercier/Codes/me/agentic-development (branch feature/pocock-method-integration) so they no longer closely paraphrase Matt Pocock's MIT-licensed skills. You may edit ONLY:
+- skills/plan/SKILL.md
+- skills/plan/references/specification-template.md
+
+Upstream to compare against (read-only): /home/jmercier/Codes/third-parties/mattpocock_skills/skills/engineering/{to-spec,to-tickets,tdd}/SKILL.md (and tdd/tests.md).
+
+Review findings:
+(a) specification-template.md mirrors to-spec's section order and has the near-verbatim sentence 'Keep file paths and code snippets out of the specification: they age quickly.'
+(b) plan/SKILL.md around lines 135-205 closely paraphrases upstream in three places: the seam sentences (~180-184; 'highest public seam', 'as few new seams as possible'), the vertical/tracer-bullet slice rules (~138-140), and the expand-contract fallback (~141-148).
+(c) Lines 146-148 and 203 are long.
+Read upstream and our files first. Rewrite those passages and the template in our own structure, order, vocabulary and examples. Generic practice names (expand-contract / parallel change, tracer bullet, vertical slice, seam, user story, acceptance criterion) are fine; upstream's sentences, sequences and section lists are not.
+For the template, choose our own section set and order, built around this repository's method: Goals/Non-goals, user stories, criterion IDs with Given/When/Then, error and boundary cases, NFRs with metric/target, decisions, test approach, open questions. It must still state that every user story maps to at least one criterion, and that the specification describes behavior and decisions, not file paths or code, in our own words and with our own reason.
+
+Keep every behavior the plan currently requires; only the wording and structure change. That includes: spec approval stop; linking to the approved spec; the test list planned but not written in advance; one outer acceptance check at the highest agreed seam, assigned to the story's first task; expand-contract with introduce → migrate tasks each depending on the introduction → a removal task depending on every migration task; prefer the highest existing public seam and add as few new seams as possible; tracer-bullet first slice; the ADR candidate via domain-modeling with its criteria; the domain-modeling conditional load.
+
+DO NOT edit tests. tests/test_method_practices.py pins phrases. Keep these verbatim if you can (they are our own wording): 'references/specification-template.md', 'every user story maps to at least one criterion', 'expand-contract', 'tracer-bullet', 'This test list (criterion, behavior, seam, oracle) is planned here', 'not all tests in advance', 'one outer acceptance check at the highest agreed seam', "Assign writing it to the story's first task", 'present it with one approval question and stop', 'do not hand off to Implement until the user or designated owner approves', 'skip it when any of these is missing'.
+Replace these pins, because they are upstream-derived, and report the exact new phrase for each: section headings '## Problem', '## Solution', '## User stories', '## Acceptance criteria', '## Implementation decisions', '## Testing decisions', '## Out of scope'; 'Keep file paths and code snippets out of the specification'; 'each depending on that introduction'; 'depending on every migration task'; 'highest public seam'; 'as few new seams as possible'; and in plan/SKILL.md the ADR wording 'surprising without context and the result of a real trade-off'. Another worker is renaming the domain-modeling decision-record criteria to our own wording (cost to undo / rationale not visible in code / alternatives actually weighed), so phrase the plan's ADR candidate the same way in our own words.
+Also check other tests that grep plan/SKILL.md (`grep -rn "plan" tests/*.py | grep -i "skill('plan')\|plan/SKILL"`) and keep any phrases they pin.
+
+Self-check: list any sentence that still shares five or more consecutive content words with upstream. Run `python3 -B -m unittest discover -s tests 2>&1 | tail -30` and report which failures come only from the replaced pins listed above. Return: a summary, the pin-replacement table, test results and the self-check. Don't commit.

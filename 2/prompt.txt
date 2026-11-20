@@ -1,0 +1,20 @@
+Subagent ID: 20261120_7
+
+Rewrite flagged passages in repo /home/jmercier/Codes/me/agentic-development (branch feature/pocock-method-integration) so they no longer closely paraphrase Matt Pocock's MIT-licensed skills. You may edit ONLY:
+- skills/research/references/clarification-interview.md
+- skills/implement/SKILL.md
+- skills/implement/references/test-value.md AND skills/test/references/test-value.md (these two must stay byte-identical; edit one, then copy it over the other)
+
+Upstream to compare against (read-only): /home/jmercier/Codes/third-parties/mattpocock_skills/skills/productivity/{grilling,grill-me}/SKILL.md, skills/engineering/grill-with-docs/SKILL.md, skills/engineering/tdd/{SKILL.md,mocking.md,tests.md}.
+
+Review findings:
+- clarification-interview.md: the base procedure phrasing (since commit 15f2fa2), such as a recommended answer 'phrased so that "yes" accepts it' and 'never ask the user for a fact you can verify', plus the grill-mode bullets, mirror upstream grilling/grill-with-docs.
+- implement/SKILL.md ~lines 118-136: the expected-values sentence (~120-121) and the tracer-bullet sentence (~133-135) are near-verbatim from tdd.
+- test-value.md ~lines 118-130: system-boundary mocking follows tdd/mocking.md's order, including 'one specific shape'.
+Read upstream and our files first. Rewrite those passages in our own structure, order, vocabulary and examples. Generic practice names (TDD, red/green/refactor, tracer bullet, test double, system boundary, dependency injection) are fine; upstream's sentences and bullet sequences are not. Also restructure the grill-mode section so it doesn't follow upstream's bullet order.
+
+Keep every behavior unchanged. Clarification interview: one question at a time with a recommended answer the user can accept; verify facts yourself and never ask the user for them; at most three per turn; grill mode only when the user asks; full-frontier rounds; ready decisions keep being asked; it ends when the user confirms the shared understanding; NEEDS CLARIFICATION markers. Implement: tracer bullet; expected values from an independent source; refactor stays inside the owned slice and starts only from green, without editing assertions; anything else becomes a separate planned task; outer acceptance check; pending mark / expected-failure mark; exclusion recorded in the change ledger. Test-value: replace only system boundaries, never project-owned modules; pass the dependency in; this is not permission to add injection layers.
+
+DO NOT edit tests. tests/test_method_practices.py (and possibly other tests) pin phrases. Keep these verbatim (our own wording): 'at most three per turn', '## Grill mode', '## Example' (section that follows grill mode), 'only when the user asks', 'present all decisions that are ready under step 2', 'keep asking the ready decisions meanwhile', 'user confirms the shared understanding', 'NEEDS CLARIFICATION', 'unless the user explicitly asks for grill mode', 'evidenced facts are still verified, never asked', 'tracer bullet', 'Refactoring stays inside the owned slice', 'starts only from green', 'without editing their assertions', 'separate planned task', 'prefer an expected-failure mark', 'list the exclusion in the change ledger', 'Replace only system boundaries', 'Do not mock modules the project owns', 'pass the dependency in', 'not permission to add injection layers'. If any of these is itself a close upstream paraphrase, replace it and report the new phrase. Run `grep -rn "clarification-interview\|implement/SKILL\|skill('implement')\|test-value" tests/*.py` and keep other pinned phrases too, or report the ones you changed.
+
+Self-check: list any sentence that still shares five or more consecutive content words with upstream. Run `python3 -B -m unittest discover -s tests 2>&1 | tail -30` (other workers are editing domain-modeling and plan files at the same time, so ignore failures in those) and `cmp skills/implement/references/test-value.md skills/test/references/test-value.md`. Return: a summary, any pin replacements, test results and the self-check. Don't commit.

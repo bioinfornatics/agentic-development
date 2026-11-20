@@ -1,0 +1,22 @@
+est-ce que le  hook entire bloque encore?
+
+---
+
+j'ai ajouté un skills: adversarial-skill-review ajoute le , 
+faits les commit et push et merhe necessaire sur devlop afin d'avoir un espace propre
+
+---
+
+peux tu utiliser a here string pour envoyer la réponse a entire
+
+---
+
+je pensais que la commande suivante evitait d'avoir la questions/terminal interactif `entire configure --checkpoint-push-policy automatic --local=true  --project=true --telemetry=false`
+
+---
+
+a
+
+---
+
+ok maintenant nous avons appliqué la meme config entire dans cd dépot (agentic-development) on était bloqué a cause du hook entire, tu peux terminer le travail

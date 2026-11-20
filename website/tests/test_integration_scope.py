@@ -21,7 +21,9 @@ class IntegrationScope(unittest.TestCase):
 
     def test_site_declares_standalone_source_boundary(self):
         text = (ROOT / 'website/README.md').read_text()
-        self.assertIn('Standalone source 0.5.0', text)
+        import json
+        version = json.loads((ROOT / 'plugin.json').read_text())['version']
+        self.assertIn(f'Standalone source {version}', text)
         self.assertIn('no configured remote', text)
 
     def test_only_one_pages_deployment_workflow(self):

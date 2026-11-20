@@ -5,6 +5,12 @@ for execution. This is a decision review, not another phase or ticket-authoring
 procedure. Reuse the caller's established scope, authoring guidance, research,
 review policy and current permissions. Readiness is not acceptance.
 
+## Contents
+
+- [1. Challenge each individual ready ticket](#1-challenge-each-individual-ready-ticket)
+- [2. Delegate the complete-plan logical challenge](#2-delegate-the-complete-plan-logical-challenge)
+- [3. Stop with an executable frontier](#3-stop-with-an-executable-frontier)
+
 ## 1. Challenge each individual ready ticket
 
 Read the actual ticket, canonical criteria, native fields and resolvable references.
@@ -18,6 +24,7 @@ reason. Do not demand extra headings or copy this checklist into every ticket.
 | Why is this result useful to the actual user, maintainer or system, and what changes afterward? | Is one usable, independently reviewable outcome tied to a verified requirement rather than a file/phase activity? |
 | What must already exist or be decided, and what evidence shows those prerequisites hold? | Are actual prerequisites, native blocking edges and textual assumptions consistent, with no critical unresolved input? |
 | Which supported research premise justifies this approach, and what would invalidate it? | Are decision-material hypotheses supported or explicitly unresolved rather than asserted as facts? |
+| Which approved specification does this ticket implement, and who approved it? | Is the linked specification (or, for a single small task, its criteria) approved, with criteria unchanged since approval? |
 | How will a reader distinguish success from a plausible but incorrect result? | Do stable source-derived criteria have independent observable checks, including relevant errors/boundaries and approved applicable NFRs? |
 | Which inspected inputs are needed first, what is created or modified, and what must stay untouched? | Are Read/Create/Modify/Preserve/Exclude paths or assets verified/proposed honestly, ownership conflicts resolved and adjacent work excluded? |
 | What can a fresh worker do first using only this ID and its references? | Does the first restart action name an accessible input, operation, prerequisite and expected result within current permissions? |
@@ -47,7 +54,7 @@ context and exposure limits. No source, tracker, Git or candidate writes.
 
 Ask the reviewer:
 - What is the primary deliverable and its exit criteria? Does the selected ready
-  frontier suffice, distinct from the complete roadmap and authorized backlog?
+  frontier suffice, distinct from the roadmap and any user-requested backlog?
   Are planned tickets, verified claims and actual execution distinguished without
   treating backlog size or intended delegation as active work?
 - What is the least viable ordering that delivers the requested usable outcome?
@@ -85,19 +92,29 @@ coordinator verifies invocation, completion, source identity and result locator,
 reconciles findings under existing permissions and retains unresolved contradictions.
 A worker summary is not plan approval or independent acceptance of implementation.
 
-If delegation is unavailable, name the exact prerequisite: coordinator/user supplies
-a separate non-builder read-only reviewer with access to this complete plan and
-criteria. Keep the global approval gate pending; no silent direct fallback or
-self-acceptance. This blocks approval of the affected plan, not unrelated authorized
-work. Run this challenge once before approval; rerun only when changes affect the
-graph, criteria or material inputs, not for every minor wording edit.
+If the host has no worker capability (verified, not merely unused), the coordinator
+asks these questions directly after construction, records `direct, reduced
+independence` in report limits and may proceed to approval. Absence means the host's
+available tool list has no subagent or delegation tool; record that observation in
+report limits. Ask the user only for a missing permission. This is not independent
+review or acceptance.
+
+If delegation is unavailable although capability exists, name the exact prerequisite:
+coordinator/user supplies a separate non-builder read-only reviewer with access to
+this complete plan and criteria. Keep the global approval gate pending;
+no silent direct fallback or self-acceptance. This blocks approval of the affected
+plan, not unrelated authorized work. Run this challenge once before approval; rerun only when
+changes affect the graph, criteria or material inputs, not for every minor wording edit.
 
 ## 3. Stop with an executable frontier
 
 Finish when every applicable readiness question is answered (or inactive with a
 reason), critical gaps have named impacts/owners/probes, and the global review is
 complete or has its precise prerequisite. Report ready/blocked nodes and the next
-executable action, not a speculative backlog or bulk ticket rewrite. Neither this
+executable action, not a speculative backlog or bulk ticket rewrite. Confirm tasks
+exist only for the active epic and the next epic in line; other epics keep goal,
+outcomes and rough scope with no child tasks unless the current request explicitly
+asks for detail. Neither this
 review nor task authoring grants execution authority. Use proportional checks;
 no automatic exhaustive web research, full test suite or evaluation campaign, and
 no performance or agent-effectiveness claim from source readiness.

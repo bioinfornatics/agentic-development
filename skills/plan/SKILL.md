@@ -1,6 +1,6 @@
 ---
 name: plan
-description: Defines software roadmaps, user stories and executable task graphs with criteria, dependencies and verification gates. Use for planning from established research, decomposing user stories into ready tasks, or recording a plan as tracker tickets; single-ticket wording repair belongs to task-authoring.
+description: Defines software roadmaps, specifications, user stories and ready task graphs with acceptance criteria, dependencies and verification gates. Use when planning from established research, decomposing a user story into test-first tasks, or recording an approved plan in the tracker.
 ---
 
 # Plan
@@ -49,12 +49,13 @@ This is an agent instruction, not a runtime cache.
    speculative implementation. Verify approval status and inspect root, branch,
    dirty files and dependencies; do not invent roadmap approval or accepted outcomes.
 
-   Apply [the communication contract](references/communication-contract.md) when preparing
-   the first checkpoint or a Git/session transition, for ownership, transition, evidence
-   and conditional UI reporting safeguards. Apply these safeguards in standalone use too.
+   Apply [the communication contract](references/communication-contract.md) before
+   the first mutation and before preparing the first checkpoint or a Git/session transition,
+   for ownership, transition, evidence and conditional UI reporting safeguards, not an
+   up-front load of response templates. Apply these safeguards in standalone use too.
    Respond in the user's language. Verify tools and permissions; unavailable
    capabilities produce an explicit blocker, never simulated execution evidence.
-   Use the coordinator's verified slice state when available; do not fabricate execution or acceptance.
+   When acting as a delegated worker, use the coordinator's verified slice state; do not fabricate execution or acceptance.
 
    Before creating or repairing task descriptions or acceptance criteria, verify
    current scope and write authority. Conditionally Load `agentic-development:task-authoring`
@@ -80,8 +81,9 @@ This is an agent instruction, not a runtime cache.
 2. [ ] **Define the requested outcome and scope**
 
    Apply [the requirements baseline](references/requirements-baseline.md) before
-   defining or changing scope, criteria or checks. Resolve the approved task baseline;
-   retain Goals/Non-goals, FR/GWT and relevant NFRs; keep missing requirements explicit.
+   defining or changing scope, criteria, checks or verification, and before running checks.
+   Resolve the approved task baseline; retain verified Goals/Non-goals, FR/GWT and relevant
+   quantified NFRs without inventing targets; keep missing requirements explicit.
 
    Plan at the requested level: roadmap outcomes, epic capability, user story
    behavior or independently reviewable tasks. Define in/out scope, observable
@@ -91,14 +93,15 @@ This is an agent instruction, not a runtime cache.
 
 3. [ ] **Set verification and review gates**
 
-   Apply [candidate identity](references/candidate-identity.md) when planning checks,
-   freezing inputs or reusing evidence; include staged, untracked and binary inputs
+   Apply [candidate identity](references/candidate-identity.md) before planning checks,
+   freezing or comparing inputs or reusing evidence; include staged, untracked and binary inputs
    and explicitly defined output-only exclusions.
    For exact-candidate proof, use the contained [capture/validate/compare CLI](scripts/candidate_identity.py) with the [scope example](references/candidate-scope.example.json); consult the [manifest schema](references/candidate-identity.schema.json) and [manifest example](references/candidate-identity.example.json) when preparing or validating its JSON. Follow the candidate procedure above; equality is not acceptance.
 
-   Apply [the review policy](references/review-policy.md)
-   before agreeing acceptance, judging or closing a task/US. Independence and closure
-   requirements are set before implementation, not waived by a missing capability.
+   Apply [the review policy](references/review-policy.md) before setting or reporting
+   acceptance/review requirements, before implementation, and before proposing or agreeing
+   acceptance, judging or closing a task/US. Independence and closure requirements are
+   set at plan time, before implementation; a missing capability does not waive them.
 
    Apply [the default judgment rubric](references/judgment-rubric.md) before agreeing
    acceptance unless an explicitly approved replacement is supplied. Record its
@@ -111,19 +114,56 @@ This is an agent instruction, not a runtime cache.
    before implementation. Use proportional checks for a narrow task without
    claiming broader US or release acceptance.
 
+   Specify before implementing. A user story or epic delivered by more than one task,
+   or across sessions, needs a written specification; apply
+   [the specification template](references/specification-template.md): goals and
+   non-goals, user stories pointing to criterion IDs, error and boundary cases,
+   quality targets, decisions, test approach and open questions. For a single small
+   task, its approved ticket criteria are the specification; the user or designated
+   owner approves them, and until then ask one approval question and stop. The
+   specification states behavior and decisions; file paths and code go in near-term
+   tasks, since they change with every refactor while the agreed behavior does not.
+   Build it from settled research and decisions; return any unsettled blocking
+   decision to Research rather than invent it.
+   Record the specification's approval status, approver and date where the tracker
+   keeps durable context, and link it from every task that implements it; a drafted
+   or proposed specification is not approval. A task is implementation-ready only
+   when its specification is approved and its criteria are unchanged since approval.
+   When a drafted specification awaits approval, present it with one approval question
+   and stop; do not hand off to Implement until the user or designated owner approves.
+
 4. [ ] **Build the ready task frontier**
 
    Plan from verifiable roadmap outcomes to an epic capability, user-story behavior,
    then coherent tasks. US is a convention, not an assumed tracker type. Detail the
    next executable frontier; retain distant needs, risks and major dependencies.
-   A task is small when its result can be reviewed and resumed independently, not
-   because it edits few files. Do not split by function/file or phase mechanically.
+   Size a task by the session that will execute it: a worker holding only its task
+   ID can make one reviewable change and leave checks green before that session
+   ends. File count is not the measure. The first task of a story is a
+   tracer-bullet: the thinnest path that makes the story's outer acceptance check
+   reachable, so later tasks extend a working path instead of assembling layers.
+   If existing code obstructs that path, cleaning it up is its own task, ordered
+   before it. When old and new forms must coexist while callers move, for example
+   a configuration key read across the codebase is renamed, use expand-contract
+   (parallel change) and model it as a dependency graph, not one task. The
+   introduce task adds the new form beside the old. Migrate tasks move callers,
+   each with a dependency on the introduce task and sized as above. One remove task
+   depends on all migrate tasks and deletes the old form. Every one of these tasks
+   leaves checks green; a migrate task that cannot means the introduce task is
+   incomplete, so extend it, for example with an adapter serving both forms, and
+   replan instead of accepting a red intermediate state. Do not split by function,
+   file or phase mechanically.
    Identify the primary deliverable and exit criteria, then select the bounded ready
    execution frontier sufficient to produce it. Planning selects that frontier only;
    it grants no permission to create tickets, claim tasks or start work. A ticket is not
    active merely because it exists or has no blockers. Keep future needs coarse; do not
-   turn a bounded delivery request into speculative detailed tickets. Explicitly
-   requested/authorized backlog authoring remains legitimate.
+   turn a bounded delivery request into speculative detailed tickets.
+
+   Create tasks only for the active epic and the next epic in line. Other epics
+   hold goal, outcomes and rough scope with no child tasks. Write detailed tasks for
+   a distant epic only when the user explicitly asks in the current request; that
+   requested backlog is planning, not active work. Refine one batch ahead: detail
+   the next batch while the current one runs, not the whole epic.
 
    For useful parallel contributions to this deliverable, name available inputs,
    separately verifiable outputs, dependencies, exclusive paths, proposed owners
@@ -145,12 +185,19 @@ This is an agent instruction, not a runtime cache.
    to recover what, why, boundaries and checks. Fill gaps before declaring ready.
 
    Agree meaningful behavior seams before tests; reuse an already authorized seam
-   without repetitive confirmation. For each product guarantee, identify a concrete
-   incorrect behavior, independent oracle and cheapest valid check; record what the
-   seam catches and misses. Plan distinct risk coverage, not one test per function,
-   file or implementation variation. Existing suite size is neither a preservation
-   obligation nor a target; authorized rationalization may retain, merge, remove or
-   replace checks without weakening acceptance. Prefer representative integration
+   without repetitive confirmation. For each guarantee, name the seam where a wrong
+   result would be visible to its consumer: prefer a public seam the code already
+   has, the outermost one that can still observe it. A new seam is a cost; add one
+   only when no existing seam observes the guarantee, and say why in the task.
+   For each product guarantee, identify a concrete incorrect behavior, independent
+   oracle and cheapest valid check; record what the seam would detect and which it
+   cannot. Plan distinct risk coverage, not one test per function, file or
+   implementation variation. For each rule plan an allowed and a refused example,
+   then only the cases the specification distinguishes; choose the seam level by the
+   guarantee, a domain outcome for a rule or status and error code for a public API
+   contract. Existing suite size is neither a preservation obligation nor a target;
+   authorized rationalization may retain, merge, remove or replace checks without
+   weakening acceptance. Prefer representative integration
    journeys plus cheap direct rule cases; justify expensive repetitions by a distinct
    risk/confidence question, budget and stop rule. Define required CI jobs and any
    approved time/cost target separately from local summed test durations; unknown
@@ -158,10 +205,24 @@ This is an agent instruction, not a runtime cache.
 
    Make each behavioral task test-first: its first step names the failing check
    (new or existing) for every criterion ID it owns, and its exit requires that check
-   green. Deliver a criterion -> task -> check trace so every criterion has an owner
-   and a check, and every task serves a criterion or a named verifiable deliverable. When a choice is hard to reverse
-   (data model, public API, dependency, deployment shape), propose a short ADR
-   (context, decision, consequences) as a planning output; skip it for reversible choices.
+   green. This test list (criterion, behavior, seam, oracle) is planned here; the test
+   code is written in Implement, one test immediately before the code it drives, not
+   all tests in advance. For each user story, name one outer acceptance check at the
+   highest agreed seam that passes only when the whole story works; slice checks are
+   the inner loop beneath it. Assign writing it to the story's first task, which the
+   story's other tasks depend on, and making it pass to the story's last task.
+   Deliver a criterion -> task -> check trace so every criterion has an owner and a
+   check, and every task serves a criterion or a named verifiable deliverable.
+   Propose a short ADR candidate (context, decision, reason) as a planning output
+   when a choice is costly to undo (data model, public API, dependency, deployment
+   shape), its rationale will not be visible in the code, and alternatives were
+   actually weighed; skip it when any of these is missing.
+   When criteria or tasks need a new or disputed domain term, or an ADR must be
+   written, Conditionally Load `agentic-development:domain-modeling` using the host's
+   available Skill-loading mechanism, with the question, sources and current write
+   authority. If it is unavailable, keep the term or ADR as a labeled planning
+   proposal and report direct reasoning, not activation. Resume this caller after
+   its proposal or verified readback; use settled glossary terms in criteria and tickets.
 
    For the near-term implementation frontier, name the delivery mechanism (service,
    managed/self-hosted, runtime) and data/credential flow in the technical second
@@ -201,8 +262,11 @@ This is an agent instruction, not a runtime cache.
 
    Before approving the complete current plan for execution, apply the global
    delegated challenge from the Plan readiness review linked in step 4. Review
-   the whole graph, including implicit prerequisites; do not substitute ticket
-   readback or self-review for this gate.
+   the whole graph, including implicit prerequisites; ticket readback never
+   substitutes for this gate. With no worker capability (verified, not merely
+   unused), run the challenge directly, record `direct, reduced independence`
+   in report limits and proceed; ask the user only for a missing permission.
+   Absence means the host's available tool list has no subagent or delegation tool; record that observation in report limits.
 
    Verify actual delegated planning completion, source identity and result locator
    before integration. Reconcile conflicts and retain unresolved decisions and missing

@@ -1,22 +1,23 @@
 ---
 name: cycle
-description: Coordinates evidence-driven software development. Use for every new or resumed development task, including single-phase investigation, planning, implementation, fixing bugs, testing or reviewing.
+description: Coordinates evidence-driven software development across phases. Use when starting or resuming a development objective such as a feature, fixing bugs, testing or reviewing, when working an epic in batches, or when claiming, updating or closing tracker tasks. A single-phase request may load only that phase Skill.
 ---
 
 # Cycle
 
 ## Select the action from the intent
 
-Load cycle when entering software-development work, including a single-phase
-request. Reuse it while its guidance remains available; do not reload per tool.
-For a single-phase request, coordinate only the requested phase and its necessary
-prerequisites; return its proposed handoff and stop rather than expand scope.
+Load cycle to start or resume an objective, work an epic in batches or claim, update or
+close tracker tasks. A request limited to one phase may load only that phase Skill, which
+returns its handoff without finalizing; if cycle is loaded for one, coordinate only that
+phase and its prerequisites, return its proposed handoff and stop rather than expand scope.
+Reuse cycle while its guidance remains available; do not reload it per tool.
 
 | Order | Intent / condition | Skill | Required output / exit gate |
 |---|---|---|---|
 | 1 | Every new development objective: establish product context, including clear/familiar requests; on resume verify existing context | agentic-development:research | Cited purpose, users/outcome, current behavior, constraints, affected seams and assumptions sufficient for the next decision, or targeted missing-context probe |
-| 2 | Research context established or verified; define roadmap, scope, criteria or dependencies | agentic-development:plan | Proposed or approved scope, criteria, ownership, task graph and verification/review policy; investigate decision-blocking unknowns first |
-| 3 | Ready authorized implementation, feature, refactor or repair | agentic-development:implement | Minimal diff, preserved-work ledger and symptom-specific/static evidence as applicable |
+| 2 | Research context established or verified; define roadmap, scope, criteria or dependencies | agentic-development:plan | Proposed or approved scope, criteria (an unapproved specification stops for approval by the user or designated owner), ownership, task graph and verification/review policy; investigate decision-blocking unknowns first |
+| 3 | Ready authorized implementation, feature, refactor or repair whose specification or criteria are approved and whose failing checks are named | agentic-development:implement | Minimal diff, preserved-work ledger and symptom-specific/static evidence as applicable |
 | 4 | Worker result or exact candidate needing checks | agentic-development:test | Criterion-bound results, failures and environment/coverage limits |
 | 5 | Frozen candidate and evidence ready for acceptance assessment | agentic-development:judge | Scoped verdict, verified findings, agreed score mode and independence limits |
 | Loop | Failed check, rejected candidate or missing proof | agentic-development:iterate | Classified gap and smallest authorized correction/prerequisite; retain valid proof and correction budget |
@@ -50,9 +51,15 @@ This is an agent instruction, not a runtime cache.
 
 1. [ ] **Verify prerequisites and current authority**
 
-   Apply [the communication contract](references/communication-contract.md) when preparing
-   the first checkpoint or a Git/session transition; it governs reporting safeguards,
-   not an up-front load of response templates. For a UI checkpoint apply [the checkpoint example](assets/checkpoint-example.md).
+   Apply [the communication contract](references/communication-contract.md) before
+   the first mutation and before preparing the first checkpoint or a Git/session transition,
+   for ownership, transition, evidence and conditional UI reporting safeguards, not an
+   up-front load of response templates. Apply these safeguards in standalone use too.
+   Respond in the user's language. Verify tools and permissions; unavailable
+   capabilities produce an explicit blocker, never simulated execution evidence.
+   When acting as a delegated worker, use the coordinator's verified slice state; do not fabricate execution or acceptance.
+
+   For a UI checkpoint apply [the checkpoint example](assets/checkpoint-example.md).
 
    For an explicitly requested Skill evaluation in a source checkout, read
    [evaluation piloting](references/session-evaluation.md) before launching runs.
@@ -76,6 +83,7 @@ This is an agent instruction, not a runtime cache.
    For routine reads, claims, progress updates or closure, do not load task-authoring.
    Resume this caller after verified ticket readback or an explicit proposal/error;
    retain this phase's scope, ownership, review and evidence gates.
+
    Require explicit delivery mechanisms and asset maps for ready implementation work.
    Route changed scope through consolidated ticket sections and reconciled dependency
    edges; a populated tracker record alone does not prove execution readiness.
@@ -94,21 +102,24 @@ This is an agent instruction, not a runtime cache.
    Apply [the authorization policy](references/authorization-policy.md) before
    resuming artifact claims or executing consequential actions; verify current
    permission for the intended action, not historical approval.
-   Apply [the review policy](references/review-policy.md)
-   before agreeing acceptance, judging or closing a task/US. Independence and closure
-   requirements are set before implementation, not waived by a missing capability.
+
+   Apply [the review policy](references/review-policy.md) before setting or reporting
+   acceptance/review requirements, before implementation, and before proposing or agreeing
+   acceptance, judging or closing a task/US. Independence and closure requirements are
+   set at plan time, before implementation; a missing capability does not waive them.
 
 2. [ ] **Frame or recover the bounded slice**
 
    Apply [the requirements baseline](references/requirements-baseline.md) before
-   defining or changing scope, criteria or checks. Resolve the approved task baseline;
-   retain Goals/Non-goals, FR/GWT and relevant NFRs; keep missing requirements explicit.
+   defining or changing scope, criteria, checks or verification, and before running checks.
+   Resolve the approved task baseline; retain verified Goals/Non-goals, FR/GWT and relevant
+   quantified NFRs without inventing targets; keep missing requirements explicit.
 
    Apply [the judgment rubric](references/judgment-rubric.md) before selecting
    acceptance criteria or review mode.
 
-   Apply [candidate identity](references/candidate-identity.md) when planning checks,
-   freezing inputs or reusing evidence; include staged, untracked and binary inputs
+   Apply [candidate identity](references/candidate-identity.md) before planning checks,
+   freezing or comparing inputs or reusing evidence; include staged, untracked and binary inputs
    and explicitly defined output-only exclusions.
    For exact-candidate proof, use the contained [capture/validate/compare CLI](scripts/candidate_identity.py) with the [scope example](references/candidate-scope.example.json); consult the [manifest schema](references/candidate-identity.schema.json) and [manifest example](references/candidate-identity.example.json) when preparing or validating its JSON. Follow the candidate procedure above; equality is not acceptance.
 
@@ -136,19 +147,26 @@ This is an agent instruction, not a runtime cache.
 
    Treat roadmap outcomes, epic capabilities, user-story behavior and executable tasks
    as different levels. Keep distant work coarse and detail the ready frontier only.
-   One run stays within one active epic; an epic may need multiple runs/sessions.
-   One agent/session has one main verifiable task, not necessarily one phase or commit.
-   Select one primary deliverable and its exit criteria; each action or contribution
+   Keep exactly one active epic across runs and sessions; an epic may need several runs.
+   Pull work only from its descendants (`bd ready --parent <epic>`). Switch the active
+   epic only on an explicit user decision, never because another epic has ready work.
+   Work in progress is the active batch: only its tasks are claimed or in_progress.
+   The coordinator owns the batch and each worker owns one task, not one phase or commit.
+   Give each task one primary deliverable and its exit criteria; each action or contribution
    must serve it or follow an explicit authorized objective switch. Do not start
-   several main tasks sequentially and leave them in progress: multiple active tasks
+   several tasks sequentially and leave them in progress: multiple active tasks
    require actual active workers with distinct assignments, not intended delegation.
    Distinguish planned/selected work, verified claims and observed execution in the
    existing tracker/checkpoint; a claim alone proves neither a running delegate nor
-   permission. Keep contributions under the main task unless independently resumable
+   permission. Keep contributions under their batch task unless independently resumable
    outcomes require separate authorized tickets; no ticket per file or phase.
    Before writes, verify that the task ID leads to goal, requirement, scope, dependencies,
    checks and restart context. In Beads, parents express hierarchy, blocking edges express
    prerequisites; claim is not a file lock. Repair missing task context, not a second tracker.
+
+   When the active epic has no ready tasks for the next batch, propose Research → Plan
+   refinement for it, or for the next epic in line once it is complete; switching the active epic still needs
+   the user's decision. Refine one batch ahead, not the whole backlog; tracker writes need current authority.
 
    Before switching an unfinished primary deliverable, record its result, blocked or
    suspended disposition, candidate/diff, evidence, owner, worker dispositions and
@@ -174,7 +192,10 @@ This is an agent instruction, not a runtime cache.
    Use delegation only if available and useful, subject to required isolation or
    independence. Coordinator baseline verification and bounded questions from
    sufficient available sources need no worker; deeper Research investigations
-   follow that phase's dispatch policy. For useful independent contributions with
+   follow that phase's dispatch policy. Form the batch from all ready, unblocked,
+   mutually independent tasks of the active epic. Bound it only by the host's subagent
+   concurrency limit, never by a plugin cap. Dispatch one subagent per task with disjoint
+   writable paths; use an approved worktree only when tasks would collide, with current authority. For useful independent contributions with
    ready inputs, available capability and exclusive writable paths, launch the ready
    workers before awaiting their results. Record the dependency, capability, isolation
    or proportionality reason when serialization is necessary; do not manufacture
@@ -185,11 +206,28 @@ This is an agent instruction, not a runtime cache.
    distinct, currently authorized tracker responsibility was explicitly assigned.
    Give each worker the objective,
    acceptance criteria, contract, approved scope, input artifacts and exclusive
-   writable paths. Workers cannot coordinate implicitly. Parallel writers must
+   writable paths, as pointers to where they are saved; copy an item only when it
+   has no saved locator. Workers cannot coordinate implicitly. Parallel writers must
    never share a file. Workers return result, exact changes, evidence, limitations
    and next action; the coordinator integrates these, not their unsupported claims.
    Name each contribution's required output and integration/join responsibility;
    do not write a live worker's owned paths or begin work depending on its return.
+   Typical pointers, not copies: the task ID and, when saved, the research report,
+   specification and relevant commits; start each worker in a fresh context.
+
+   Integration-branch batch mode is optional and used only when the user requests
+   it or approves it for this epic; the default above stays non-mutating. It needs
+   current scoped authority for each Git action: creating the integration branch,
+   one worktree and branch per worker based on it, each worker commit, each merge
+   or rebase that brings the integration tip into a worker branch, merging each
+   finished worker into the integration branch, and removing each worktree. Each
+   worker confirms its base, implements its one task test-first and, when authorized,
+   brings in the current integration tip before returning. Merge finished work one
+   worker at a time, then dispatch any tasks that the merge made ready. The
+   integration branch is the candidate for Test and Judge. Never merge it into
+   the target branch or any protected branch, push it, or remove a worktree without
+   that action's own authority. A missing grant stops only the affected action and
+   falls back to the default.
 
    Before Judge, freeze the candidate, checklist and evidence index; recommend a
    fresh context and prepare the handoff. Do not auto-commit. If no independent
@@ -211,8 +249,10 @@ This is an agent instruction, not a runtime cache.
    Before dependent edits, checks or dispatch, join and verify the required worker
    contributions, candidate identity and integration compatibility. A required live,
    failed or incomplete worker leaves that dependent action pending; independent
-   authorized work may continue. Partial returns are not accepted inputs. Record
+   authorized batch tasks may continue. Partial returns are not accepted inputs. Record
    remaining worker dispositions rather than assuming completion or cancellation.
+   Do not pull or claim tasks outside the active batch until every batch task is
+   closed or released with a named blocker.
 
    Default to at most three correction attempts for the same slice unless the user
    sets another budget. After repeated failures, changed scope, exhausted budget,

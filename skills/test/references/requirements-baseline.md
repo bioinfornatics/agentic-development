@@ -1,7 +1,7 @@
-# Requirements baseline v1.4.0
+# Requirements baseline v1.6.0
 
 Contract ID: agentic-development/requirements-baseline
-Contract version: 1.4.0
+Contract version: 1.6.0
 
 Read before defining or changing scope, criteria or verification, and before implementation.
 Reuse a verified baseline; investigation needs a bounded question, not a completed plan.
@@ -12,16 +12,23 @@ These requirements govern actions, not final-response formatting.
 Use one meaning per term across phases:
 
 - **Roadmap**: ordered outcomes and major dependencies; distant work stays coarse.
-- **Epic**: one capability delivered by one or more user stories; one active epic per run.
+- **Epic**: one capability delivered by one or more user stories; one active epic across runs, switched only by explicit user decision.
 - **User story** (US): observable user behavior with Goals/Non-goals and criteria; a convention, not a tracker type.
 - **Task**: one tracker issue whose result can be reviewed and resumed from its ID alone.
 - **Slice**: the bounded, verifiable work a session or branch is executing now.
-- **Primary deliverable**: the single outcome and exit criteria every action in the session serves.
+- **Batch**: all ready, independent tasks of the active epic in progress together, one task per worker; it is the work in progress.
+- **Ready frontier**: the ready tasks of the active epic that serve its primary deliverable; plan detail stops there, distant work stays coarse.
+- **WIP**: work in progress, the active Batch; any WIP candidate is unverified, not accepted.
+- **Primary deliverable**: the single outcome and exit criteria every action on a task serves.
 - **Contribution**: a worker's bounded part of the primary deliverable, with exclusive writable paths.
 - **Candidate**: the exact inputs under check or judgment; frozen candidates do not change during review.
 - **Evidence level**: static/source, mocked, installed-package or real-environment; never promote one to another.
 - **Gate**: a named condition that must hold before an action (exit, approval, readiness or readability gate).
 - **Correction attempt**: one authorized corrective execution; diagnosis, planning and waiting consume none.
+- **Seam**: a public behavior boundary where a test controls inputs and observes results without private internals; a missing seam is a finding, not proof.
+- **Phase-only request**: a request limited to one phase; it returns that phase result and proposed handoff, then stops.
+- **Finalize**: the cycle coordinator step after accepted judgment that persists results and performs only authorized closure or Git actions; not a worker phase.
+- **Entire**: optional session/checkpoint context capture when integrated; never task truth, evidence of acceptance or a tracker substitute.
 
 ## Goals and Non-goals
 

@@ -1,6 +1,6 @@
 ---
 name: judge
-description: Reviews a frozen software candidate for acceptance. Use when testing is complete or an independent judgment of requirement fidelity and repository standards is requested.
+description: Reviews a frozen software candidate, such as a branch, diff or pull request, for acceptance. Use when testing is complete, when a user asks whether a change meets its acceptance criteria, or when an independent judgment of requirement fidelity and repository standards is requested.
 ---
 
 # Judge
@@ -14,6 +14,7 @@ Resolve approved scope, frozen candidate, evidence index, review mode and indepe
 | Review a tested candidate for acceptance | Verify scope, candidate, evidence and required independence; review every mandatory criterion | Scoped verdict, actionable findings and uncertainties |
 | Review requirement fidelity and repository standards | Assess requested behavior separately from documented quality standards | Separate requirement and standards findings with sources and corrective checks |
 | Score a candidate | Apply the review mode and rubric agreed before implementation | Evidence-derived weighted score/coverage, or N/A in predefined small-task mode |
+| Review a branch, diff or pull request without Test evidence | Bind its exact head commit as the frozen candidate; review it against stated criteria and standards; name the missing Test evidence | Findings labeled non-acceptance; indeterminate unless a confirmed defect requires correction; not merge approval |
 | Evidence or required independence is missing | Record the exact gap; use indeterminate unless a known defect already requires correction | Specific prerequisite, not self-approval or an invented pass |
 
 Execute the selected action through the workflow below and verify its result
@@ -40,8 +41,9 @@ This is an agent instruction, not a runtime cache.
 1. [ ] **Verify scope, authority and reviewer prerequisites**
 
    Apply [the requirements baseline](references/requirements-baseline.md) before
-   defining or changing scope, criteria or checks. Resolve the approved task baseline;
-   retain Goals/Non-goals, FR/GWT and relevant NFRs; keep missing requirements explicit.
+   defining or changing scope, criteria, checks or verification, and before running checks.
+   Resolve the approved task baseline; retain verified Goals/Non-goals, FR/GWT and relevant
+   quantified NFRs without inventing targets; keep missing requirements explicit.
 
    Apply [the authorization policy](references/authorization-policy.md) before
    resuming artifact claims or executing consequential actions; verify current
@@ -64,12 +66,13 @@ This is an agent instruction, not a runtime cache.
    retain task ownership, readback and phase gates;
    evaluate commit suitability after each confirmed closure without inferring Git authority.
 
-   Apply [the communication contract](references/communication-contract.md) before preparing
-   the first checkpoint or a Git/session transition, for ownership, transition, evidence
-   and conditional UI reporting safeguards. Apply these safeguards in standalone use too.
+   Apply [the communication contract](references/communication-contract.md) before
+   the first mutation and before preparing the first checkpoint or a Git/session transition,
+   for ownership, transition, evidence and conditional UI reporting safeguards, not an
+   up-front load of response templates. Apply these safeguards in standalone use too.
    Respond in the user's language. Verify tools and permissions; unavailable
    capabilities produce an explicit blocker, never simulated execution evidence.
-   Use the coordinator's verified slice state when available; do not fabricate execution or acceptance.
+   When acting as a delegated worker, use the coordinator's verified slice state; do not fabricate execution or acceptance.
 
    Before deriving a judgment, apply [the judgment rubric](references/judgment-rubric.md) unless
    an explicitly approved replacement rubric is supplied. Record its version.
@@ -86,12 +89,15 @@ This is an agent instruction, not a runtime cache.
 
 2. [ ] **Bind the frozen candidate and review basis**
 
-   Apply [candidate identity](references/candidate-identity.md) before freezing or comparing inputs
-   or reusing evidence; include staged, untracked and binary inputs
-   and explicitly defined output-only exclusions. Apply [the review policy](references/review-policy.md)
-   before agreeing acceptance, judging or closing a task/US. Independence and closure
-   requirements were set at plan time; a missing capability does not waive them.
+   Apply [candidate identity](references/candidate-identity.md) before planning checks,
+   freezing or comparing inputs or reusing evidence; include staged, untracked and binary inputs
+   and explicitly defined output-only exclusions.
    For exact-candidate proof, use the contained [capture/validate/compare CLI](scripts/candidate_identity.py) with the [scope example](references/candidate-scope.example.json); consult the [manifest schema](references/candidate-identity.schema.json) and [manifest example](references/candidate-identity.example.json) when preparing or validating its JSON. Follow the candidate procedure above; equality is not acceptance.
+
+   Apply [the review policy](references/review-policy.md) before setting or reporting
+   acceptance/review requirements, before implementation, and before proposing or agreeing
+   acceptance, judging or closing a task/US. Independence and closure requirements are
+   set at plan time, before implementation; a missing capability does not waive them.
 
    Match proofs to candidate/environment and scope. Inspect relevant code and
    actual test artifacts; do not accept builder summaries as sole proof.
@@ -122,6 +128,18 @@ This is an agent instruction, not a runtime cache.
    exact outcomes, success/error ambiguity and missing important error paths cannot
    support the claimed guarantee. Review rationalization decisions against preserved
    product coverage, not legacy volume; a green test count is not quality or acceptance.
+   Ask whether a reader, without opening the implementation, can explain the rule each
+   new test protects and give a concrete example; an unreadable test or a same-branch
+   duplicate (an input-only variant that neither the code nor the specification
+   distinguishes) is a non-blocking finding unless a criterion requires otherwise.
+   For each behavioral criterion, check that its proving check was shown to fail:
+   a red recorded before the change, or a revert-the-fix or counterexample run on the
+   candidate when the behavior already existed. A check never shown to fail is an
+   evidence gap for that criterion: indeterminate unless a known defect already
+   requires correction; Test can supply the missing run. Instruction-only criteria
+   rely on labeled static evidence instead and are not held to this rule. At story
+   acceptance, also check that the story's outer acceptance check failed first and now
+   passes; before the story's last task, its pending state is expected, not a defect.
    Check observed failing counterexamples versus hypothetical faults and required
    end-to-end CI wall time versus aggregate/local durations. Missing measurements or
    discrimination stay explicit; do not infer CI acceptance from parallel local runs.
@@ -148,8 +166,6 @@ This is an agent instruction, not a runtime cache.
    null. In small-task mode report score not-applicable, without numeric grading.
    Neither mode can override a failed mandatory gate or waive independence.
 
-   Unknown criteria and incomplete overall score remain null; never normalize partial assessment into a complete score.
-
    Accept only an exact candidate with every mandatory criterion evidenced and no
    blocking findings. Candidate changes invalidate affected judgment. Never silently
    relax criteria, retroactively redefine the rubric or approve your own human gate.
@@ -168,8 +184,8 @@ This is an agent instruction, not a runtime cache.
 
    Use the plan-time mode: `weighted` yields a 0–100 score only when every rubric
    criterion is assessed; unknowns leave the overall score null. `small-task` yields
-   score N/A. A high score never overrides mandatory gates; 75/100 can mean conformity,
-   not failure. At step 6 emit the delivery contract's result block inside explanation,
+   score N/A. A score never overrides a failed mandatory gate; a score below 100 is not
+   by itself a failure. At step 6 emit the delivery contract's result block inside explanation,
    with reasons and evidence; do not create another outer report or runtime JSON.
 
 
@@ -179,8 +195,7 @@ This is an agent instruction, not a runtime cache.
    saved report. Keep evidence, scoped verdict, rubric mode/score,
    insights (observed/inferred/to-verify), risks and unknowns separate; format the
    delivery only at the output gate below.
-   Use accepted, needs-correction or indeterminate with reasons. If no review ran,
-   report not-run and no score. Local acceptance is not real-provider approval.
+   Local acceptance is not real-provider approval.
    Collect verdict, review mode, rubric identity/version, score state/coverage,
    blockers and limitations for the result block; do not invent missing values.
 

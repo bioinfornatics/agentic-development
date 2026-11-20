@@ -97,6 +97,7 @@ class NoContradictingPushWording(unittest.TestCase):
             for match in self.PATTERN.finditer(flat(path.read_text())):
                 with self.subTest(path=str(path.relative_to(ROOT))):
                     self.assertIn('Level 2', match.group(0))
+                    self.assertIn('verified', match.group(0))
 
     def test_grant_scope_excludes_merges_and_worktrees(self):
         text = flat(read('skills/cycle/references/authorization-policy.md'))

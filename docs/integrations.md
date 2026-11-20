@@ -84,4 +84,4 @@ Choose perform when a coherent verified diff and scoped commit authority exist;
 propose when authority is missing; skip when already committed or no source diff
 exists; blocked when ownership, checks or capability prevent a safe commit.
 Record the reason in the final explanation and a real hash only after success.
-Closure is not permission to commit, and no automatic push or Dolt sync follows, except a Level 2 fast-forward push.
+Closure is not permission to commit, and no automatic push or Dolt sync follows, except a Level 2 fast-forward push under a verified grant covering that branch.

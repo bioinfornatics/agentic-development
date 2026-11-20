@@ -138,7 +138,15 @@ This is an agent instruction, not a runtime cache.
    deleted, skipped, renamed or loosened test, assertion, fixture or expected value
    with its criterion; a weakening not justified by an approved criterion change is a
    FAIL of that criterion, not a pass. For a regression repair, prefer evidence that the new test fails without
-   the fix (observed red or revert-the-fix) over a green run alone.
+   the fix (observed red or revert-the-fix) over a green run alone. For every behavioral
+   criterion, confirm discrimination: the Implement ledger's red observed before the
+   production edit, or a revert-the-fix or counterexample run on the candidate when
+   authorized. A check never shown to fail is reported as undiscriminated for that
+   criterion, not as a failure and not as full proof. A story's outer acceptance check
+   marked pending by Implement for a later task is reported as story pending, not as a
+   failure or weakening, provided the task it names exists and is not closed; a missing
+   or closed owner task, or an unlisted suite exclusion, is a finding. When the story
+   completes, confirm it failed first and now passes.
 
    Report each check by the behavior and criterion ID it proves, so the matrix reads
    as living documentation. Flag a test whose name or assertion does not reveal the

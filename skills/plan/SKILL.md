@@ -114,13 +114,45 @@ This is an agent instruction, not a runtime cache.
    before implementation. Use proportional checks for a narrow task without
    claiming broader US or release acceptance.
 
+   Specify before implementing. A user story or epic delivered by more than one task,
+   or across sessions, needs a written specification; apply
+   [the specification template](references/specification-template.md): goals and
+   non-goals, user stories pointing to criterion IDs, error and boundary cases,
+   quality targets, decisions, test approach and open questions. For a single small
+   task, its approved ticket criteria are the specification; the user or designated
+   owner approves them, and until then ask one approval question and stop. The
+   specification states behavior and decisions; file paths and code go in near-term
+   tasks, since they change with every refactor while the agreed behavior does not.
+   Build it from settled research and decisions; return any unsettled blocking
+   decision to Research rather than invent it.
+   Record the specification's approval status, approver and date where the tracker
+   keeps durable context, and link it from every task that implements it; a drafted
+   or proposed specification is not approval. A task is implementation-ready only
+   when its specification is approved and its criteria are unchanged since approval.
+   When a drafted specification awaits approval, present it with one approval question
+   and stop; do not hand off to Implement until the user or designated owner approves.
+
 4. [ ] **Build the ready task frontier**
 
    Plan from verifiable roadmap outcomes to an epic capability, user-story behavior,
    then coherent tasks. US is a convention, not an assumed tracker type. Detail the
    next executable frontier; retain distant needs, risks and major dependencies.
-   A task is small when its result can be reviewed and resumed independently, not
-   because it edits few files. Do not split by function/file or phase mechanically.
+   Size a task by the session that will execute it: a worker holding only its task
+   ID can make one reviewable change and leave checks green before that session
+   ends. File count is not the measure. The first task of a story is a
+   tracer-bullet: the thinnest path that makes the story's outer acceptance check
+   reachable, so later tasks extend a working path instead of assembling layers.
+   If existing code obstructs that path, cleaning it up is its own task, ordered
+   before it. When old and new forms must coexist while callers move, for example
+   a configuration key read across the codebase is renamed, use expand-contract
+   (parallel change) and model it as a dependency graph, not one task. The
+   introduce task adds the new form beside the old. Migrate tasks move callers,
+   each with a dependency on the introduce task and sized as above. One remove task
+   depends on all migrate tasks and deletes the old form. Every one of these tasks
+   leaves checks green; a migrate task that cannot means the introduce task is
+   incomplete, so extend it, for example with an adapter serving both forms, and
+   replan instead of accepting a red intermediate state. Do not split by function,
+   file or phase mechanically.
    Identify the primary deliverable and exit criteria, then select the bounded ready
    execution frontier sufficient to produce it. Planning selects that frontier only;
    it grants no permission to create tickets, claim tasks or start work. A ticket is not
@@ -153,10 +185,14 @@ This is an agent instruction, not a runtime cache.
    to recover what, why, boundaries and checks. Fill gaps before declaring ready.
 
    Agree meaningful behavior seams before tests; reuse an already authorized seam
-   without repetitive confirmation. For each product guarantee, identify a concrete
-   incorrect behavior, independent oracle and cheapest valid check; record what the
-   seam catches and misses. Plan distinct risk coverage, not one test per function,
-   file or implementation variation. For each rule plan an allowed and a refused example,
+   without repetitive confirmation. For each guarantee, name the seam where a wrong
+   result would be visible to its consumer: prefer a public seam the code already
+   has, the outermost one that can still observe it. A new seam is a cost; add one
+   only when no existing seam observes the guarantee, and say why in the task.
+   For each product guarantee, identify a concrete incorrect behavior, independent
+   oracle and cheapest valid check; record what the seam would detect and which it
+   cannot. Plan distinct risk coverage, not one test per function, file or
+   implementation variation. For each rule plan an allowed and a refused example,
    then only the cases the specification distinguishes; choose the seam level by the
    guarantee, a domain outcome for a rule or status and error code for a public API
    contract. Existing suite size is neither a preservation obligation nor a target;
@@ -169,10 +205,24 @@ This is an agent instruction, not a runtime cache.
 
    Make each behavioral task test-first: its first step names the failing check
    (new or existing) for every criterion ID it owns, and its exit requires that check
-   green. Deliver a criterion -> task -> check trace so every criterion has an owner
-   and a check, and every task serves a criterion or a named verifiable deliverable. When a choice is hard to reverse
-   (data model, public API, dependency, deployment shape), propose a short ADR
-   (context, decision, consequences) as a planning output; skip it for reversible choices.
+   green. This test list (criterion, behavior, seam, oracle) is planned here; the test
+   code is written in Implement, one test immediately before the code it drives, not
+   all tests in advance. For each user story, name one outer acceptance check at the
+   highest agreed seam that passes only when the whole story works; slice checks are
+   the inner loop beneath it. Assign writing it to the story's first task, which the
+   story's other tasks depend on, and making it pass to the story's last task.
+   Deliver a criterion -> task -> check trace so every criterion has an owner and a
+   check, and every task serves a criterion or a named verifiable deliverable.
+   Propose a short ADR candidate (context, decision, reason) as a planning output
+   when a choice is costly to undo (data model, public API, dependency, deployment
+   shape), its rationale will not be visible in the code, and alternatives were
+   actually weighed; skip it when any of these is missing.
+   When criteria or tasks need a new or disputed domain term, or an ADR must be
+   written, Conditionally Load `agentic-development:domain-modeling` using the host's
+   available Skill-loading mechanism, with the question, sources and current write
+   authority. If it is unavailable, keep the term or ADR as a labeled planning
+   proposal and report direct reasoning, not activation. Resume this caller after
+   its proposal or verified readback; use settled glossary terms in criteria and tickets.
 
    For the near-term implementation frontier, name the delivery mechanism (service,
    managed/self-hosted, runtime) and data/credential flow in the technical second

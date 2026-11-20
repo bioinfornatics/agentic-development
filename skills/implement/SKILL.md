@@ -88,7 +88,12 @@ This is an agent instruction, not a runtime cache.
    verify current user authority instead of treating stale planning-only text as law.
 
    Read the approved plan, acceptance criteria, local instructions and ownership
-   ledger. Reinspect branch/status/diff and compare pre-existing hunks. Block
+   ledger. Specification gate: production edits start only from an approved
+   specification, or for a single small task ticket criteria approved by the user or
+   designated owner; a missing,
+   draft or since-changed specification returns to Plan before any edit. A gap or
+   contradiction found in the specification during work is a Plan decision, not a
+   silent code choice. Reinspect branch/status/diff and compare pre-existing hunks. Block
    conflicting ownership; do not overwrite another contributor's work. Recover missing context or return to Plan before edits.
 
 2. [ ] **Prepare the owned slice and reproduction**
@@ -114,10 +119,23 @@ This is an agent instruction, not a runtime cache.
    finding: preserve its behavioral criterion as unverified, do not substitute static
    checks or proceed with a required reproduction gate unmet.
 
-   Read relevant glossary/ADRs and preserve public contracts. Expected values come from
-   specification, worked example or independent oracle, not copied production logic.
-   Reuse suitable tests; finish one vertical behavior slice before the next rather than
-   writing all speculative tests then all code. Apply [test value](references/test-value.md)
+   Read relevant glossary/ADRs and preserve public contracts. Every assertion's expected
+   result comes from the independent oracle the plan named for its criterion, or from
+   another independent oracle recorded in the change ledger when the plan named none;
+   production logic is never used to compute it.
+   When the task owns a user story's outer acceptance check, write it first and observe
+   it failing for the missing behavior. Until the story's last task, keep it visibly
+   pending, not deleted or silently skipped: prefer an expected-failure mark; keep it
+   outside the required suite only when the runner has no such mark, and then list the
+   exclusion in the change ledger. Either way name the story and the task that will make
+   it pass.
+   The task that completes the story removes that mark and observes it pass; only then
+   is the story complete. For an instruction-only story the outer check is a labeled
+   static check. Inner slices then follow the loop below.
+   Reuse suitable tests. Work through the planned test list one item at a time: red,
+   green, refactor, then the next item. The first item is the tracer bullet, the
+   thinnest check that crosses every layer the story needs, so later items extend a
+   path already shown to work. Apply [test value](references/test-value.md)
    before adding a test: name its product guarantee, concrete incorrect behavior and
    marginal detection beyond existing checks; select the cheapest valid oracle, not a
    test-count or coverage-percentage target. A variant that changes only an input value
@@ -145,8 +163,10 @@ This is an agent instruction, not a runtime cache.
 3. [ ] **Implement minimal green and refactor**
 
    Make the smallest coherent production change to reach green; rerun the same checks,
-   then refactor without changing behavior and rerun again. Preserve external contracts,
-   avoid unrelated cleanup and secrets.
+   then refactor without changing behavior and rerun again. Refactoring stays inside the
+   owned slice and its paths, starts only from green and must keep the same checks green
+   without editing their assertions; a wider restructuring is a separate planned task.
+   Preserve external contracts, avoid unrelated cleanup and secrets.
 
    For parallel writers the default is disjoint paths in the shared tree. Use an
    approved worktree per writer when writers would collide on files, build outputs,
@@ -160,10 +180,12 @@ This is an agent instruction, not a runtime cache.
 
    After each coherent change set inspect the actual diff, maintain the implementation
    change ledger with owned paths/hunks and reasons, and emit the short checkpoint.
-   For executable changes the ledger also records the red command and a failing-output
-   excerpt, and lists each deleted, skipped, renamed or loosened test, assertion,
-   fixture or expected value with its approved criterion change or test-value
-   decision; an unjustified entry blocks handoff. Run cheap
+   For executable changes the ledger also records, per behavioral criterion ID, the red
+   command and a failing-output excerpt observed before that criterion's production
+   edit, and lists each deleted, skipped, renamed or loosened test, assertion,
+   fixture or expected value with its approved criterion change, test-value decision
+   or pending outer acceptance check naming its owner task; an unjustified entry
+   blocks handoff. Run cheap
    focused tests/type checks near changes, then risk-relevant broader regressions
    before handoff; record commands and actual outputs. Run the full suite when the
    scope requires it and tooling allows.

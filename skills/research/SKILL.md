@@ -1,6 +1,6 @@
 ---
 name: research
-description: Establishes evidence-backed product context, current behavior and bug root causes before planning. Use for every new development objective, clarifying unresolved requirements, diagnosing why something fails, regresses or is flaky (including diagnosis-only requests), or verifying research freshness on resumed work, even when the request is clear or familiar.
+description: Establishes evidence-backed product context, current behavior and bug root causes before planning. Use for every new development objective, clarifying unresolved requirements, diagnosing why something fails, regresses or is flaky (including diagnosis-only requests), grilling or stress-testing a plan or design, or verifying research freshness on resumed work, even when the request is clear or familiar.
 ---
 
 # Research
@@ -17,6 +17,7 @@ probe effects; do not require a finished plan or exhaustive product research.
 |---|---|---|
 | Start any new development objective, including a clear feature, refactor or small change | Establish product purpose, users, requested outcome, current behavior, constraints and relevant implementation/test seams from primary sources | Cited product-context baseline, affected paths, assumptions and planning inputs |
 | Resume work or receive existing research | Read the context baseline and verify coverage and freshness against the objective, source and environment; investigate gaps or drift only | Verified reuse rationale or targeted refreshed context; no mechanical restart |
+| Grill or stress-test a plan, design or idea at the user's request | Apply the clarification interview in grill mode: walk every open decision with recommended answers, verify facts yourself, sharpen domain terms | Shared understanding confirmed by the user, settled decisions and term or decision-record proposals; no approval or write permission |
 | Investigate a reported bug | Establish affected user behavior and intended product outcome, then locate the symptom's public seam and attempt the smallest authorized reproduction | Context-linked observed red and bounded cause hypothesis, or missing fixture/access and next probe |
 
 Execute the selected action through the workflow below and verify its result
@@ -122,6 +123,13 @@ This is an agent instruction, not a runtime cache.
      Reuse existing context after coverage and freshness checks; a clear or familiar
      request is not research evidence. Missing facts remain unknown; ask when they block
      a coherent next decision. Read glossary/ADRs when domain terms or irreversible decisions matter.
+   - When a domain term conflicts with its glossary, stays vague or overloaded, or a
+     glossary entry or decision record must be written, Conditionally Load
+     `agentic-development:domain-modeling` using the host's available Skill-loading
+     mechanism, with the question, sources and current write authority. If it is
+     unavailable, record the term conflict or decision candidate in this phase's
+     output and report direct reasoning, not activation. Resume this caller after
+     its proposal or verified readback; reading vocabulary alone does not load it.
    - When a decision-critical requirement, scope boundary or trade-off stays unresolved
      after reading the evidence, apply [the clarification interview](references/clarification-interview.md):
      verify facts yourself, ask one recommended-answer question per decision, and keep

@@ -173,9 +173,10 @@ class PayloadInventory(unittest.TestCase):
             "skills/cycle/SKILL.md", "skills/research/SKILL.md", "skills/plan/SKILL.md",
             "skills/implement/SKILL.md", "skills/test/SKILL.md", "skills/judge/SKILL.md",
             "skills/iterate/SKILL.md", "skills/task-authoring/SKILL.md",
+            "skills/domain-modeling/SKILL.md",
         }
         skill_files = [p for p in files if p.endswith("/SKILL.md")]
-        self.assertEqual(len(skill_files), 8)
+        self.assertEqual(len(skill_files), 9)
         self.assertEqual(set(skill_files), expected_skills)
         for path in files:
             parts = path.split("/")

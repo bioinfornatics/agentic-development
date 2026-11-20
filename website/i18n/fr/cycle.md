@@ -32,11 +32,12 @@ Réutilisez une recherche après vérification de sa couverture du contexte et d
 ## Développer avec un retour rapide
 
 Pour un comportement exécutable :
-1. Écrivez ou réutilisez un test à une interface publique.
-2. Observez un échec qui reproduit réellement le défaut (**red**).
-3. Réalisez la correction minimale et observez le succès (**green**).
-4. Refactorisez sans changer le comportement, puis relancez les tests.
-5. Passez au comportement suivant et aux régressions pertinentes.
+1. Partez de la spécification ou des critères approuvés ; pour une story, voyez d'abord échouer son test d'acceptation.
+2. Écrivez ou réutilisez un test à une interface publique, juste avant le code qu'il guide.
+3. Observez un échec qui montre le comportement manquant ou reproduit le défaut (**red**).
+4. Réalisez la correction minimale et observez le succès (**green**).
+5. Refactorisez dans la tranche sans changer le comportement, puis relancez les mêmes tests.
+6. Passez au comportement suivant et aux régressions pertinentes.
 
 Les résultats attendus proviennent de l'exigence ou d'un oracle indépendant, pas du code testé.
 Une vérification du format documentaire ne prouve pas le comportement d'un agent.

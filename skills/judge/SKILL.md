@@ -132,6 +132,14 @@ This is an agent instruction, not a runtime cache.
    new test protects and give a concrete example; an unreadable test or a same-branch
    duplicate (an input-only variant that neither the code nor the specification
    distinguishes) is a non-blocking finding unless a criterion requires otherwise.
+   For each behavioral criterion, check that its proving check was shown to fail:
+   a red recorded before the change, or a revert-the-fix or counterexample run on the
+   candidate when the behavior already existed. A check never shown to fail is an
+   evidence gap for that criterion: indeterminate unless a known defect already
+   requires correction; Test can supply the missing run. Instruction-only criteria
+   rely on labeled static evidence instead and are not held to this rule. At story
+   acceptance, also check that the story's outer acceptance check failed first and now
+   passes; before the story's last task, its pending state is expected, not a defect.
    Check observed failing counterexamples versus hypothetical faults and required
    end-to-end CI wall time versus aggregate/local durations. Missing measurements or
    discrimination stay explicit; do not infer CI acceptance from parallel local runs.

@@ -9,7 +9,7 @@ description: Authors readable, restartable task tickets from established scope. 
 
 Create or repair a ticket from an existing goal, scope and criteria; return an
 actual tracker ID with verified readback, or a clearly labeled proposal when
-writing is unavailable. This is an optional bounded capability, not an eighth
+writing is unavailable. This is an optional bounded capability, not a
 development phase. Routine reads, claims, progress updates and closure return
 to the caller without authoring.
 
@@ -17,7 +17,7 @@ to the caller without authoring.
 
 1. Verify supplied goal, scope, criteria, native tracker context and current
    authority. Before any write, apply the contained
-   [authorization limits](references/authorization-policy.md).
+   [authorization limits](references/authoring-authorization-limits.md).
    Inspect matching work and its native fields/history; reuse a matching ticket
    rather than create competing work. Consume established decisions, do not invent
    missing targets, requirements or approvals. Name decision-blocking gaps.
@@ -31,7 +31,7 @@ to the caller without authoring.
    unresolved mandatory facts remain gaps, not invented readiness.
 3. Use the chosen tracker's available supported create/repair operation only within
    current authority. If Beads is used, before native operations apply the contained
-   [Beads authoring bridge](references/beads-integration.md); other trackers do not
+   [Beads authoring bridge](references/beads-authoring-bridge.md); other trackers do not
    require Beads commands. Missing write capability or permission yields a proposal,
    never a counterfeit created ID. Failed writes remain errors, not success.
 4. After an actual write, read back the ID, purpose, criteria, ordered inputs,

@@ -1,6 +1,6 @@
 ---
 name: implement
-description: Implements an authorized change test-first (observed red, minimal green, refactor) and keeps a change ledger of owned hunks and evidence. Use when executing a planned task, a feature task or a confirmed bug repair dispatched by Plan or Iterate.
+description: Executes an authorized change test-first (observed red, minimal green, refactor) and keeps a change ledger of owned hunks and evidence. Use when executing a planned task, a feature task or a confirmed bug repair dispatched by Plan or Iterate.
 ---
 
 # Implement
@@ -63,20 +63,22 @@ This is an agent instruction, not a runtime cache.
    permission for the intended action, not historical approval.
 
    Apply [the requirements baseline](references/requirements-baseline.md) before
-   defining or changing scope, criteria or checks. Resolve the approved task baseline;
-   retain Goals/Non-goals, FR/GWT and relevant NFRs; keep missing requirements explicit.
+   defining or changing scope, criteria, checks or verification, and before running checks.
+   Resolve the approved task baseline; retain verified Goals/Non-goals, FR/GWT and relevant
+   quantified NFRs without inventing targets; keep missing requirements explicit.
 
-   Apply [the review policy](references/review-policy.md)
-   before implementation or setting review requirements, and before agreeing acceptance,
-   judging or closing a task/US. Independence and closure
-   requirements are set before implementation, not waived by a missing capability.
+   Apply [the review policy](references/review-policy.md) before setting or reporting
+   acceptance/review requirements, before implementation, and before proposing or agreeing
+   acceptance, judging or closing a task/US. Independence and closure requirements are
+   set at plan time, before implementation; a missing capability does not waive them.
 
    Apply [the communication contract](references/communication-contract.md) before
-   the first mutation, checkpoint or Git/session transition, for ownership, transition, evidence
-   and conditional UI reporting safeguards. Apply these safeguards in standalone use too.
+   the first mutation and before preparing the first checkpoint or a Git/session transition,
+   for ownership, transition, evidence and conditional UI reporting safeguards, not an
+   up-front load of response templates. Apply these safeguards in standalone use too.
    Respond in the user's language. Verify tools and permissions; unavailable
    capabilities produce an explicit blocker, never simulated execution evidence.
-   Use the coordinator's verified slice state when available; do not fabricate execution or acceptance.
+   When acting as a delegated worker, use the coordinator's verified slice state; do not fabricate execution or acceptance.
 
    Before implementation, verify that the ticket names its service/runtime mechanism,
    ordered approach, inspected inputs, proposed outputs, preserved assets and exact
@@ -86,17 +88,22 @@ This is an agent instruction, not a runtime cache.
    verify current user authority instead of treating stale planning-only text as law.
 
    Read the approved plan, acceptance criteria, local instructions and ownership
-   ledger. Reinspect branch/status/diff and compare pre-existing hunks. Block
+   ledger. Specification gate: production edits start only from an approved
+   specification, or for a single small task ticket criteria approved by the user or
+   designated owner; a missing,
+   draft or since-changed specification returns to Plan before any edit. A gap or
+   contradiction found in the specification during work is a Plan decision, not a
+   silent code choice. Reinspect branch/status/diff and compare pre-existing hunks. Block
    conflicting ownership; do not overwrite another contributor's work. Recover missing context or return to Plan before edits.
 
 2. [ ] **Prepare the owned slice and reproduction**
 
    Apply [candidate identity](references/candidate-identity.md) before planning checks,
-   freezing inputs or reusing evidence; include staged, untracked and binary inputs
-   and explicitly defined output-only exclusions. 
+   freezing or comparing inputs or reusing evidence; include staged, untracked and binary inputs
+   and explicitly defined output-only exclusions.
    For exact-candidate proof, use the contained [capture/validate/compare CLI](scripts/candidate_identity.py) with the [scope example](references/candidate-scope.example.json); consult the [manifest schema](references/candidate-identity.schema.json) and [manifest example](references/candidate-identity.example.json) when preparing or validating its JSON. Follow the candidate procedure above; equality is not acceptance.
 
-   Before committing or drafting a proposed, performed, failed or externally observed commit report, apply [the commit report](references/commit-report.md). Before drafting a planned session end, explicit wrap-up or recommended context transition report, apply [the session report](references/session-report.md).  These conditions govern earlier boundaries too.
+   Before committing or drafting a proposed, performed, failed or externally observed commit report, apply [the commit report](references/commit-report.md). Before drafting a planned session end, explicit wrap-up or recommended context transition report, apply [the session report](references/session-report.md).
 
    Confirm branch fit and announce impending branch action if needed. Check
    action-specific Git authorization before creation/switch. Non-Git work can
@@ -104,18 +111,35 @@ This is an agent instruction, not a runtime cache.
 
    Select one requirement-derived behavior test at an approved public seam; use
    independent expected values and establish an observed red before the production change.
+   Confirm the red fails on the expected assertion for the missing behavior, not on a
+   syntax, import, fixture or setup error; a test that passes before the change proves nothing.
    For a bug, require a symptom-specific red-capable reproduction, not an unrelated
    missing symbol. For instruction-only work, use source-contract/static checks and
    report their limits. Missing access to a seam for executable behavior is a capability
    finding: preserve its behavioral criterion as unverified, do not substitute static
    checks or proceed with a required reproduction gate unmet.
 
-   Read relevant glossary/ADRs and preserve public contracts. Expected values come from
-   specification, worked example or independent oracle, not copied production logic.
-   Reuse suitable tests; finish one vertical behavior slice before the next rather than
-   writing all speculative tests then all code. Before adding a test, name its product guarantee,
-   concrete incorrect behavior and marginal detection beyond existing checks; select
-   the cheapest valid oracle, not a test-count or coverage-percentage target.
+   Read relevant glossary/ADRs and preserve public contracts. Every assertion's expected
+   result comes from the independent oracle the plan named for its criterion, or from
+   another independent oracle recorded in the change ledger when the plan named none;
+   production logic is never used to compute it.
+   When the task owns a user story's outer acceptance check, write it first and observe
+   it failing for the missing behavior. Until the story's last task, keep it visibly
+   pending, not deleted or silently skipped: prefer an expected-failure mark; keep it
+   outside the required suite only when the runner has no such mark, and then list the
+   exclusion in the change ledger. Either way name the story and the task that will make
+   it pass.
+   The task that completes the story removes that mark and observes it pass; only then
+   is the story complete. For an instruction-only story the outer check is a labeled
+   static check. Inner slices then follow the loop below.
+   Reuse suitable tests. Work through the planned test list one item at a time: red,
+   green, refactor, then the next item. The first item is the tracer bullet, the
+   thinnest check that crosses every layer the story needs, so later items extend a
+   path already shown to work. Apply [test value](references/test-value.md)
+   before adding a test: name its product guarantee, concrete incorrect behavior and
+   marginal detection beyond existing checks; select the cheapest valid oracle, not a
+   test-count or coverage-percentage target. A variant that changes only an input value
+   needs a distinct branch in the code or a case the specification distinguishes.
    Testability means a minimal meaningful public seam with controlled external inputs
    and observable outputs/effects. Do not add speculative abstractions, exports of
    private helpers, injection layers or production-only switches solely to multiply
@@ -126,8 +150,10 @@ This is an agent instruction, not a runtime cache.
    not required. Never delete a meaningful regression or weaken acceptance to get green.
    Mock only dependencies: assert the subject's contract, exact known outcomes and
    important errors, not the mock's setup or copied expected calculations.
-   Name each new test after the protected behavior and cite its criterion ID, unless
-   project conventions forbid it, so the suite reads as living documentation.
+   Name each new test after the rule (protected behavior) it protects and keep its
+   criterion ID in a docstring or marker unless project conventions differ; arrange only
+   the conditions that matter, perform one action and assert the outcome and its relevant
+   effects, so the suite reads as living documentation.
 
    If code you must refactor or modify has no discriminating test at its public seam,
    first add a characterization test of its current behavior and observe it green before
@@ -137,8 +163,10 @@ This is an agent instruction, not a runtime cache.
 3. [ ] **Implement minimal green and refactor**
 
    Make the smallest coherent production change to reach green; rerun the same checks,
-   then refactor without changing behavior and rerun again. Preserve external contracts,
-   avoid unrelated cleanup and secrets.
+   then refactor without changing behavior and rerun again. Refactoring stays inside the
+   owned slice and its paths, starts only from green and must keep the same checks green
+   without editing their assertions; a wider restructuring is a separate planned task.
+   Preserve external contracts, avoid unrelated cleanup and secrets.
 
    For parallel writers the default is disjoint paths in the shared tree. Use an
    approved worktree per writer when writers would collide on files, build outputs,
@@ -148,19 +176,21 @@ This is an agent instruction, not a runtime cache.
 
    Remove temporary debug instrumentation or explain retained authorized diagnostics.
 
-4. [ ] **Observe and integrate each coherent batch**
+4. [ ] **Observe and integrate each coherent change set**
 
-   After each coherent change batch inspect the actual diff, maintain the implementation
+   After each coherent change set inspect the actual diff, maintain the implementation
    change ledger with owned paths/hunks and reasons, and emit the short checkpoint.
-   For executable changes the ledger also records the red command and a failing-output
-   excerpt, and lists each deleted, skipped, renamed or loosened test, assertion,
-   fixture or expected value with its approved criterion change or test-value
-   decision; an unjustified entry blocks handoff. Run cheap
+   For executable changes the ledger also records, per behavioral criterion ID, the red
+   command and a failing-output excerpt observed before that criterion's production
+   edit, and lists each deleted, skipped, renamed or loosened test, assertion,
+   fixture or expected value with its approved criterion change, test-value decision
+   or pending outer acceptance check naming its owner task; an unjustified entry
+   blocks handoff. Run cheap
    focused tests/type checks near changes, then risk-relevant broader regressions
-   before handoff; record commands and actual outputs. Full-suite execution depends
-   on scope/capability, not a typo ritual.
+   before handoff; record commands and actual outputs. Run the full suite when the
+   scope requires it and tooling allows.
 
-   Before advancing a dependent batch, verify that the observed result satisfies
+   Before advancing a dependent node group, verify that the observed result satisfies
    the next affected consumer's input/precondition, including material format,
    interface, state, environment and authority. A passing producer check alone is
    not a verified transition or project-wide completion. If feasibility or
@@ -192,7 +222,7 @@ This is an agent instruction, not a runtime cache.
 
    Check recorded observations: requirement-derived observed red before executable production changes, the smallest green change and same-check refactor reruns; for instruction-only work, label checks static. Retain actual commands/results, relevant regressions and any UI journey/capture limits.
 
-   Keep missing evidence, public-seam access, tools, permissions and required review/independence explicit; passing focused checks is not acceptance. Verify candidate/check provenance and identify what remains unverified. Freeze exact handoff candidate.
+   Keep missing evidence, public-seam access, tools, permissions and required review/independence explicit; passing focused checks is not acceptance. Verify candidate/check provenance and identify what remains unverified. Freeze exact handoff candidate, after any commit below.
 
    Describe the actual outcome and scope using the project message convention,
    with verified task IDs when the tracker applies. Use Gitmoji only when the project convention approves it;
@@ -209,8 +239,9 @@ This is an agent instruction, not a runtime cache.
    verified committed files, problem/feature, actual metadata and remaining state.
 
    Verify identity, actual message and committed paths. Link results in Beads only when
-   permitted and read back updates. After HEAD/index changes retain original provenance;
-   rebind documented equality or rerun rather than invent proof on the new commit.
+   permitted and read back updates. After a performed commit, capture the handoff candidate again
+   and freeze its new candidate_id; reuse pre-commit evidence only through the
+   commit rebind in candidate identity, otherwise rerun. Never claim checks ran on the new commit.
    Failed mandatory checks leave a documented WIP candidate, not acceptance.
 
 6. [ ] **Verify readiness and draft the phase response**
@@ -230,7 +261,10 @@ This is an agent instruction, not a runtime cache.
    with the exact candidate, criterion IDs, reproduction/tests, change ledger and limits.
    If evidence exposes a defect requiring a new correction decision, Load
    `agentic-development:iterate` with the finding, preserved diff and current
-   budget. Never call the implementation accepted because focused tests passed.
+   budget. If the task lacks the context needed to edit, Load `agentic-development:plan`
+   with the missing context before editing; return scope expansion, permission or
+   ownership conflicts to the coordinator/user. Never call the implementation accepted
+   because focused tests passed.
 
    Use the host's available Skill-loading mechanism; these identifiers are not shell
    commands. If loading is unavailable, read the selected bundled SKILL.md and its

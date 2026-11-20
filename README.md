@@ -31,13 +31,13 @@ Goal / need → Research → Plan → Implement → Test → Judge → Scoped ac
 Keep requirements, decisions, and restart context explicit; make small, reviewable changes; separate test results from acceptance and report missing evidence. Use the whole cycle or the phase your task needs. These are agent instructions, not an enforcement engine or a guarantee of correct software.
 
 Install: `goose plugin install https://github.com/bioinfornatics/agentic-development.git`.
-Check: `goose skills list` — the generated candidate should expose exactly eight Skills: seven phases plus optional task-authoring, no evaluation fixtures.
+Check: `goose skills list` — the generated candidate should expose exactly nine Skills: seven phases plus optional task-authoring and domain-modeling, no evaluation fixtures.
 Update: `goose plugin update agentic-development`. See [Goose Plugins](https://goose-docs.ai/docs/guides/context-engineering/plugins) and [Agent Skills](https://goose-docs.ai/docs/guides/context-engineering/using-skills).
-### Optional task-authoring capability
+### Optional capabilities
 The seven development phases remain Cycle, Research, Plan, Implement, Test, Judge and Iterate. `agentic-development:task-authoring` creates or repairs readable tickets from established scope and returns verified tracker readback or an explicit proposal.
-Load it conditionally through the host's Skill loader only for creation/repair, not routine reads, claims, updates or closure. It stops and returns to its caller.
-Individual phases retain full contained ticket guidance as a direct-reading fallback when this optional capability is absent; normal use does not load both routes.
+Load it conditionally through the host's Skill loader only for creation/repair, not routine reads, claims, updates or closure. It stops and returns to its caller. Individual phases retain full contained ticket guidance as a direct-reading fallback when this optional capability is absent; normal use does not load both routes.
 Eight physical guidance copies preserve contained portability; this extraction does not claim elimination of all duplication or measured context/behavior improvement.
+`agentic-development:domain-modeling` sharpens conflicting or vague domain terms and, with write authority, records glossary entries and decision records that are hard to reverse, surprising and the result of a real trade-off. Research and Plan load it conditionally; reading existing vocabulary does not. It returns a proposal or verified readback to its caller and is not a phase. Optional means not a phase: the workflow completes without these capabilities. Each loads when a request matches its description or when a phase's conditional Load step names it.
 
 ## Dependencies and workflow tools
 The Skills are Markdown instructions: use an agent that can load them and your project's own development tools. No package installation or build is required for the Skills.

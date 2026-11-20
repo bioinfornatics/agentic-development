@@ -63,29 +63,32 @@ This is an agent instruction, not a runtime cache.
    permission for the intended action, not historical approval.
 
    Apply [the requirements baseline](references/requirements-baseline.md) before
-   defining or changing scope, criteria or verification, and before running checks.
-   Reuse verified Goals/Non-goals, FR/GWT and applicable quantified NFRs; do not
-   invent targets. A check needs a named criterion or risk, not a complete test plan.
+   defining or changing scope, criteria, checks or verification, and before running checks.
+   Resolve the approved task baseline; retain verified Goals/Non-goals, FR/GWT and relevant
+   quantified NFRs without inventing targets; keep missing requirements explicit.
 
-   Apply [the review policy](references/review-policy.md)
-   before reporting review requirements or proposing acceptance, judging or closure.
-   Independence and closure requirements were set at plan time; a missing capability
-   does not waive them.
+   A check needs a named criterion or risk, not a complete test plan.
+
+   Apply [the review policy](references/review-policy.md) before setting or reporting
+   acceptance/review requirements, before implementation, and before proposing or agreeing
+   acceptance, judging or closing a task/US. Independence and closure requirements are
+   set at plan time, before implementation; a missing capability does not waive them.
 
    Apply [the communication contract](references/communication-contract.md) before
-   the first mutation, checkpoint or Git/session transition, for ownership, transition, evidence
-   and conditional UI reporting safeguards. Apply these safeguards in standalone use too.
+   the first mutation and before preparing the first checkpoint or a Git/session transition,
+   for ownership, transition, evidence and conditional UI reporting safeguards, not an
+   up-front load of response templates. Apply these safeguards in standalone use too.
    Respond in the user's language. Verify tools and permissions; unavailable
    capabilities produce an explicit blocker, never simulated execution evidence.
-   Use the coordinator's verified slice state when available; do not fabricate execution or acceptance.
+   When acting as a delegated worker, use the coordinator's verified slice state; do not fabricate execution or acceptance.
 
-   Before committing or drafting a proposed, performed, failed or externally observed commit report, apply [the commit report](references/commit-report.md). Before drafting a planned session end, explicit wrap-up or recommended context transition report, apply [the session report](references/session-report.md).  These conditions govern earlier boundaries too.
+   Test never commits; apply [the commit report](references/commit-report.md) only to report an externally observed commit. Before drafting a planned session end, explicit wrap-up or recommended context transition report, apply [the session report](references/session-report.md).
 
 2. [ ] **Freeze the candidate and map checks**
 
    Apply [candidate identity](references/candidate-identity.md) before planning checks,
-   freezing inputs or reusing evidence; include staged, untracked and binary inputs
-   and explicitly defined output-only exclusions. 
+   freezing or comparing inputs or reusing evidence; include staged, untracked and binary inputs
+   and explicitly defined output-only exclusions.
    For exact-candidate proof, use the contained [capture/validate/compare CLI](scripts/candidate_identity.py) with the [scope example](references/candidate-scope.example.json); consult the [manifest schema](references/candidate-identity.schema.json) and [manifest example](references/candidate-identity.example.json) when preparing or validating its JSON. Follow the candidate procedure above; equality is not acceptance.
 
    Freeze candidate identity and the acceptance/check matrix before running
@@ -135,11 +138,20 @@ This is an agent instruction, not a runtime cache.
    deleted, skipped, renamed or loosened test, assertion, fixture or expected value
    with its criterion; a weakening not justified by an approved criterion change is a
    FAIL of that criterion, not a pass. For a regression repair, prefer evidence that the new test fails without
-   the fix (observed red or revert-the-fix) over a green run alone.
+   the fix (observed red or revert-the-fix) over a green run alone. For every behavioral
+   criterion, confirm discrimination: the Implement ledger's red observed before the
+   production edit, or a revert-the-fix or counterexample run on the candidate when
+   authorized. A check never shown to fail is reported as undiscriminated for that
+   criterion, not as a failure and not as full proof. A story's outer acceptance check
+   marked pending by Implement for a later task is reported as story pending, not as a
+   failure or weakening, provided the task it names exists and is not closed; a missing
+   or closed owner task, or an unlisted suite exclusion, is a finding. When the story
+   completes, confirm it failed first and now passes.
 
    Report each check by the behavior and criterion ID it proves, so the matrix reads
    as living documentation. Flag a test whose name or assertion does not reveal the
-   protected behavior as a readability finding, not a failure.
+   protected behavior, or a same-branch duplicate that adds no distinct fault, as a
+   readability or redundancy finding, not a failure.
 
 4. [ ] **Integrate observations and coverage limits**
 
@@ -162,7 +174,7 @@ This is an agent instruction, not a runtime cache.
 
    After investigation and before drafting any user-facing phase response (including blocked or unchanged results), apply [the common output contract](references/common-output.md) and [this phase's delivery contract](references/requirements-output.md); apply their checklists and selected delivery form (compact when eligible, otherwise five-section report). Combine overlapping reports without duplication. After reading delivery guidance, draft the response and, at an actual handoff, the fenced YAML state card and copy-ready restart prompt.
 
-   Announce the Judge context transition when applicable; Test reports evidence, not acceptance.
+   Announce the Judge context transition when applicable.
 
 6. [ ] **Execute the handoff or stop**
 
@@ -175,7 +187,8 @@ This is an agent instruction, not a runtime cache.
    with candidate identity, criteria/check matrix, actual results and missing evidence.
    For a confirmed repair need, Load `agentic-development:iterate` with the
    failing criterion and replay command; do not silently edit the tested candidate.
-   An unavailable mandatory check stays open and is handed off as a prerequisite.
+   An unavailable mandatory check stays open and is handed off as a prerequisite:
+   stop with its owner and the action that unblocks it.
 
    Use the host's available Skill-loading mechanism; these identifiers are not shell
    commands. If loading is unavailable, read the selected bundled SKILL.md and its

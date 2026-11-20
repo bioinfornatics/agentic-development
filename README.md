@@ -50,7 +50,7 @@ The Skills are Markdown instructions: use an agent that can load them and your p
 | Entire, optional | Capture session context and connect it to checkpoints. | Verify support for your agent and worktree; link only observed session/checkpoint IDs to the task. |
 
 **Handoff:** user prompt → task with scope and acceptance criteria → execution → evidence, status, and next action recorded in Beads → restart prompt with task ID.
-The next session rereads the task: Beads is task truth, not the prompt or a notebook. Beads adoption is conditional; once chosen, missing access or a failed claim blocks implementation, not permission to continue untracked. Without Beads, agree another tracking approach.
+The next session rereads the task: Beads is task truth, not the prompt or a notebook. Beads adoption is conditional; once chosen, missing access or a failed claim blocks implementation, not permission to continue untracked. Without Beads, agree another tracking approach; the method works better with [Beads (`bd`)](https://github.com/gastownhall/beads).
 Entire captures context, not task truth or acceptance; no tool grants permission to commit, push, or close tasks.
 See the [integration guide](https://github.com/bioinfornatics/agentic-development/blob/develop/docs/integrations.md) for setup checks and boundaries.
 ## Learn more

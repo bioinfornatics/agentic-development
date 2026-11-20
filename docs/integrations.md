@@ -3,6 +3,8 @@
 Adopting these integrations is conditional. In a project using Beads, its task
 tracking contract is mandatory; missing access or a failed claim blocks implementation.
 Verify tools and permissions; presence proves neither activation nor compatibility.
+Without a Beads workspace the agent tells you once per session that the method works better with
+[Beads (`bd`)](https://github.com/gastownhall/beads); install it yourself if you choose to.
 
 ## Beads: recover the work
 
@@ -20,6 +22,16 @@ The task must be sufficient to recover objective, scope, criteria, inputs, verif
 and restart context. Keep results and useful links in the tracker. A parent expresses
 hierarchy; a dependency expresses a prerequisite. Do not duplicate status in
 another Markdown notebook. Do not reinitialize an existing workspace.
+
+## Beads: persist the tracker
+
+After a confirmed task or epic closure, and before a handoff or session end: if Git tracks
+`.beads/issues.jsonl`, run `bd export -o .beads/issues.jsonl`, check the diff for private data and
+commit that file alone as `chore(beads): snapshot (<IDs>)` on your working branch, never on `develop`
+or `main`; if `bd dolt remote list` shows a remote, run `bd dolt push` at epic closure, handoff or session end, never forced. Grant a
+**Beads sync grant** once (repository, epic or branch pattern, expiry, source), for example
+*"Beads sync for this epic until Friday"*, and the agent performs these steps; otherwise it proposes
+them. It is separate from the Git levels: pushing the snapshot commit still needs Level 2.
 
 ## Git: record an explainable change
 
@@ -84,4 +96,4 @@ Choose perform when a coherent verified diff and scoped commit authority exist;
 propose when authority is missing; skip when already committed or no source diff
 exists; blocked when ownership, checks or capability prevent a safe commit.
 Record the reason in the final explanation and a real hash only after success.
-Closure is not permission to commit, and no automatic push or Dolt sync follows, except a Level 2 fast-forward push under a verified grant covering that branch.
+Closure is not permission to commit, and no automatic push follows, except a Level 2 fast-forward push under a verified grant covering that branch. Dolt sync follows a verified Beads sync grant.

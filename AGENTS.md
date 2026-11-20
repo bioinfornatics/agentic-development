@@ -57,8 +57,8 @@ clean develop@SHA -> verified generated tree -> generated-only PR -> main (squas
 - Hierarchy: roadmap -> epic -> US -> task; one active epic across runs, switched only by explicit user decision. US is a convention, not an assumed CLI type.
 - WIP is the active batch: all ready, independent tasks of the active epic, bounded only by host subagent concurrency; the coordinator owns the batch, one task per worker; close or release every batch task before pulling more.
 - Parent means hierarchy; bd dep add A B means A depends on B. Detail the ready frontier, not a task per file or phase.
-- .beads/issues.jsonl is only an optional snapshot: at authorized task-state checkpoints export after permitted updates, review privacy/staged bytes and record time/coverage.
-- Never edit/import a snapshot to sync status or close tasks to complete it; export does not authorize Git publication or Dolt sync.
+- .beads/issues.jsonl snapshot commits (alone, chore(beads)) and bd dolt push (never --force) follow the [Beads persistence checkpoints](skills/cycle/references/beads-integration.md) under a verified Beads sync grant, else proposed.
+- Never edit/import a snapshot to sync status or close tasks to complete it.
 
 ## Method and handoff
 
@@ -83,7 +83,7 @@ clean develop@SHA -> verified generated tree -> generated-only PR -> main (squas
 
 ## Permissions and preservation
 
-- Commit, push, merge, install, hook changes, deployment, tracker closure and Dolt sync require current scoped authority.
+- Commit, push, merge, install, hook changes, deployment, tracker closure and Dolt sync require current scoped authority; only the grants' listed actions may instead use a verified standing Git grant (commit/fast-forward push) or Beads sync grant (snapshot commit/Dolt push).
 - Historical approvals/artifacts are context, not permission; follow [authorization policy](skills/cycle/references/authorization-policy.md).
 - Local subtree instructions override parent rules for their paths, never current user permissions.
 - Preserve initial dirty hunks, .beads/, evidence/, installed plugins, secrets, and existing host/Git hooks; preserve local Beads Skill if present.

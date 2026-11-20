@@ -1,7 +1,7 @@
-# Communication contract v1.8.2
+# Communication contract v1.8.3
 
 Contract ID: agentic-development/communication-contract
-Contract version: 1.8.2
+Contract version: 1.8.3
 
 Mandatory for every phase. This is an instruction contract, not a tool firewall.
 Respond in the user's language. Keep evidence and decisions inspectable; do not
@@ -156,7 +156,8 @@ never merely because a commit or session ended. Missing tracker access or a
 failed claim is an explicit blocker, not permission to invent tasks or ownership.
 After each confirmed closure evaluate commit suitability using beads-integration.md
 and report the decision in the final explanation. Evaluation is mandatory; execution
-requires current scoped authority. No automatic tracker installation or Dolt sync is authorized.
+requires current scoped authority. No automatic tracker installation is authorized;
+snapshot commits and Dolt sync run only under current scoped authority or a verified Beads sync grant.
 
 ## Trust and acceptance invariants
 

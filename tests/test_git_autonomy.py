@@ -34,8 +34,8 @@ class AuthorizationPolicyGrant(unittest.TestCase):
 
     def test_ac6_copies_identical_and_version_bumped(self):
         self.assertEqual(len(set(self.blobs)), 1)
-        self.assertIn('Contract version: 1.1.0', self.text)
-        self.assertIn('v1.1.0', self.text.splitlines()[0])
+        self.assertIn('Contract version: 1.2.0', self.text)
+        self.assertIn('v1.2.0', self.text.splitlines()[0])
 
     def test_ac1_level_0_is_the_default(self):
         for rule in ('Level 0', 'default', 'propose', 'no push'):

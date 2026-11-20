@@ -107,7 +107,7 @@ are not fully locked. Never upload or serve the repository itself.
 
 ## Integration boundary
 
-Standalone source 0.6.0 uses the seven short phase Skill names, the optional
+Standalone source 0.7.0 uses the seven short phase Skill names, the optional
 task-authoring and domain-modeling Skills, and the current
 five-section final report, conditional commit evaluation and correction policy.
 English guides in ../docs/ remain canonical; the builder does not create duplicate

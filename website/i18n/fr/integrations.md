@@ -2,6 +2,8 @@
 
 Ces intégrations sont facultatives. Vérifiez leurs outils et permissions dans le
 projet courant ; leur présence ne prouve ni leur activation ni leur compatibilité.
+Sans espace Beads, l'agent indique une fois par session que la méthode fonctionne mieux avec
+[Beads (`bd`)](https://github.com/gastownhall/beads) ; installez-le vous-même si vous le souhaitez.
 
 ## Beads : retrouver le travail
 
@@ -13,6 +15,17 @@ La tâche doit suffire à retrouver l'objectif, le périmètre, les critères, l
 la vérification et le contexte de reprise. Conservez résultats et liens utiles dans le tracker.
 Un parent exprime une hiérarchie ; une dépendance exprime un prérequis. Ne dupliquez pas
 les statuts dans un autre carnet Markdown. Ne réinitialisez pas un espace existant.
+
+## Beads : persister le tracker
+
+Après la clôture confirmée d'une tâche ou d'un epic, et avant une passation ou une fin de session :
+si Git suit `.beads/issues.jsonl`, lancez `bd export -o .beads/issues.jsonl`, vérifiez le diff
+(aucune donnée privée) et commitez ce fichier seul en `chore(beads): snapshot (<IDs>)` sur votre
+branche de travail, jamais sur `develop` ou `main` ; si `bd dolt remote list` affiche un remote,
+lancez `bd dolt push` à la clôture d'un epic, à une passation ou en fin de session, sans forcer.
+Accordez une fois une **Beads sync grant** (dépôt, epic ou motif de branche, échéance, source),
+par exemple *« Beads sync pour cet epic jusqu'à vendredi »*, et l'agent exécute ces étapes ;
+sinon il les propose. Elle est distincte des niveaux Git : pousser le commit de snapshot exige le niveau 2.
 
 ## Git : enregistrer un changement explicable
 
@@ -78,4 +91,4 @@ Choisissez perform si un diff cohérent vérifié et une autorisation de commit 
 propose si l'autorisation manque ; skip si le travail est déjà committé ou sans diff source ;
 blocked si la propriété, les vérifications ou une capacité empêchent un commit sûr.
 Consignez la raison dans l'explication finale et un hash réel uniquement après succès.
-La clôture n'autorise pas le commit ; aucun push automatique ni synchronisation Dolt ne suit.
+La clôture n'autorise pas le commit ; aucun push automatique ne suit, sauf un push fast-forward de niveau 2 sous une autorisation vérifiée couvrant cette branche. La synchronisation Dolt suit une Beads sync grant vérifiée.

@@ -93,6 +93,12 @@ This is an agent instruction, not a runtime cache.
    retain task ownership, readback and phase gates;
    evaluate commit suitability after each confirmed closure without inferring Git authority.
 
+   If the repository has no Beads workspace (Beads not adopted), say once per session that
+   agentic-development works better with Beads (`bd`): https://github.com/gastownhall/beads.
+   This notice does not block work; never install, initialize or configure Beads for it, and
+   agree another tracking approach with the user. If a Beads workspace exists but `bd` is missing
+   or unusable, report missing task access as a blocker instead. Show no notice when Beads is present.
+
    If Beads is explicitly chosen but not yet initialized, read [controlled Beads initialization](references/beads-initialization.md)
    before any setup. It documents minimal agent integration with reviewed optional Git hooks and
    a storage-only skip profile, with root, capability, permission and effect checks. Never reinitialize

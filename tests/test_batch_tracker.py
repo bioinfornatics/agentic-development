@@ -10,7 +10,7 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 NAMES = ('cycle', 'research', 'plan', 'implement', 'test', 'judge', 'iterate')
 PREVIOUS_VERSION = (1, 3, 0)
-EXPECTED_VERSION = '1.4.0'
+EXPECTED_VERSION = '1.5.0'
 
 
 def copies():

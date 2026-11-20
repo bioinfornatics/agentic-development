@@ -93,6 +93,12 @@ This is an agent instruction, not a runtime cache.
    retain task ownership, readback and phase gates;
    evaluate commit suitability after each confirmed closure without inferring Git authority.
 
+   If the repository has no Beads workspace (Beads not adopted), say once per session that
+   agentic-development works better with Beads (`bd`): https://github.com/gastownhall/beads.
+   This notice does not block work; never install, initialize or configure Beads for it, and
+   agree another tracking approach with the user. If a Beads workspace exists but `bd` is missing
+   or unusable, report missing task access as a blocker instead. Show no notice when Beads is present.
+
    If Beads is explicitly chosen but not yet initialized, read [controlled Beads initialization](references/beads-initialization.md)
    before any setup. It documents minimal agent integration with reviewed optional Git hooks and
    a storage-only skip profile, with root, capability, permission and effect checks. Never reinitialize
@@ -230,7 +236,7 @@ This is an agent instruction, not a runtime cache.
    falls back to the default.
 
    Before Judge, freeze the candidate, checklist and evidence index; recommend a
-   fresh context and prepare the handoff. Do not auto-commit. If no independent
+   fresh context and prepare the handoff. Do not auto-commit before accepted closure. If no independent
    context exists, disclose self-review and limit the verdict; never label it
    independent. Apply the plan-time review policy; do not waive required independence
    or close a US on self-review without explicit scoped authority. Do not mutate
@@ -308,6 +314,9 @@ This is an agent instruction, not a runtime cache.
 
    After accepted judgment, persist results and perform only currently
    authorized issue closure or Git actions; keep unmet parent/release gates open.
+   Under a verified standing Git autonomy grant, commit each closed batch task
+   separately (Level 1) and push only a covered branch fast-forward (Level 2);
+   without one, propose the commit and continue the batch.
 
    Use the host's available Skill-loading mechanism; these identifiers are not shell
    commands. If loading is unavailable, read the selected bundled SKILL.md and its

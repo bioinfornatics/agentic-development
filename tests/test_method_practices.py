@@ -48,14 +48,15 @@ class DomainModelingSkill(unittest.TestCase):
 
     def test_decision_record_needs_all_three_conditions(self):
         adr = flat(read('skills/domain-modeling/references/adr-format.md'))
-        self.assertIn('All three conditions must hold', adr)
-        for condition in ('Hard to reverse', 'Surprising without context', 'A real trade-off'):
+        self.assertIn('Offer a record only when every answer is yes', adr)
+        for condition in ('Alternatives actually weighed?', 'Costly to undo?', 'Reason invisible in the code?'):
             self.assertIn(condition, adr)
-        self.assertIn('hard to reverse, surprising without context and the result of a real trade-off', self.text)
+        self.assertIn('alternatives were actually weighed, undoing it would be costly and its reason is invisible in the code',
+                      self.text)
 
     def test_glossary_excludes_implementation_detail(self):
         glossary = flat(read('skills/domain-modeling/references/glossary-format.md'))
-        for rule in ('_Avoid_', 'not a specification', 'General programming notions'):
+        for rule in ('Not:', 'It holds meanings only', 'infrastructure vocabulary belongs to the code'):
             self.assertIn(rule, glossary)
 
 
@@ -73,7 +74,7 @@ class ResearchGrillMode(unittest.TestCase):
         self.assertIn('at most three per turn', text)
         grill = text.split('## Grill mode', 1)[1].split('## Example', 1)[0]
         for rule in ('only when the user asks', 'present all decisions that are ready under step 2',
-                     'keep asking the ready decisions meanwhile', 'user confirms the shared understanding',
+                     'keep asking the ready decisions meanwhile', 'user confirms the recorded decisions are complete',
                      'NEEDS CLARIFICATION'):
             self.assertIn(rule, grill)
 
@@ -85,15 +86,17 @@ class PlanSpecification(unittest.TestCase):
 
     def test_template_maps_stories_to_criteria_without_paths(self):
         self.assertIn('references/specification-template.md', self.plan)
-        for section in ('## Problem', '## Solution', '## User stories', '## Acceptance criteria',
-                        '## Implementation decisions', '## Testing decisions', '## Out of scope'):
+        for section in ('## Context', '## Goals', '## Non-goals', '## Stories', '## Criteria',
+                        '## Errors and boundaries', '## Quality targets', '## Decisions', '## Test approach',
+                        '## Open questions'):
             self.assertIn(section, self.template)
-        self.assertIn('Keep file paths and code snippets out of the specification', self.template)
+        self.assertIn('the specification describes behavior and decisions, not file paths or code', self.template)
         self.assertIn('every user story maps to at least one criterion', self.template)
 
     def test_expand_contract_and_fewest_highest_seams(self):
-        for rule in ('expand-contract', 'each depending on that introduction', 'depending on every migration task',
-                     'highest public seam', 'as few new seams as possible', 'tracer-bullet'):
+        for rule in ('expand-contract', 'each with a dependency on the introduce task', 'depends on all migrate tasks',
+                     'prefer a public seam the code already has', 'A new seam is a cost',
+                     'tracer-bullet', 'replan instead of accepting a red intermediate state'):
             self.assertIn(rule, self.plan)
 
 
@@ -129,7 +132,9 @@ class IntegrationBranchMode(unittest.TestCase):
 
     def test_plan_adr_candidate_uses_three_conditions(self):
         plan = flat(read('skills/plan/SKILL.md'))
-        self.assertIn('surprising without context and the result of a real trade-off', plan)
+        for criterion in ('costly to undo', 'its rationale will not be visible in the code',
+                          'alternatives were actually weighed'):
+            self.assertIn(criterion, plan)
         self.assertIn('skip it when any of these is missing', plan)
 
     def test_grill_is_the_only_interview_exception_for_clear_requests(self):

@@ -1,36 +1,49 @@
 # Decision record format
 
-A decision record explains why a lasting choice was made, so that a later reader
-does not undo it by accident. Follow the repository's existing location and
-numbering when one exists; otherwise use `docs/adr/NNNN-short-slug.md`, numbered
-one above the highest existing record, and create the directory only for the
-first record.
+A decision record keeps the reason for a lasting choice beside the project, so the
+choice is not quietly undone later.
 
-## When to write one
+## Location
 
-All three conditions must hold:
+Use the repository's existing decision folder and numbering when one exists. Otherwise
+use `docs/decisions/NNNN-short-slug.md`, numbered one above the highest existing record,
+and create the folder together with the first record.
 
-1. **Hard to reverse**: changing the choice later has a meaningful cost.
-2. **Surprising without context**: a reader of the code would ask why.
-3. **A real trade-off**: genuine alternatives existed and one was chosen for reasons.
+## Test before offering a record
 
-Ask what a newcomer would most likely get wrong: a data store or vendor that is
-costly to leave, a hidden external constraint such as a regulation or a partner's
-response time, who owns which data and what is explicitly refused, a departure from
-the usual approach, or an alternative that looks better but was rejected for a
-reason. A reversible, unsurprising or uncontested choice needs no record.
+Answer three questions about the choice. Offer a record only when every answer is yes;
+a single no means no record.
 
-## Template
+1. **Alternatives actually weighed?** At least one other option was considered and
+   turned down for a stated reason.
+2. **Costly to undo?** Reverting would take real effort or coordination, for example
+   migrating data, changing a public API, a dependency or the deployment shape, or
+   renegotiating with someone outside the team.
+3. **Reason invisible in the code?** A careful reader of the source could not work out
+   why, and the choice looks like an oversight.
+
+Choices that pass: pricing a ride when the bike is locked rather than unlocked; keeping
+rider location history for thirty days because of a privacy commitment; reconciling dock
+counts nightly because dock firmware cannot push events. A naming preference, a library
+swapped behind an interface or the only workable option does not pass.
+
+## Shape
 
 ~~~md
-# Reports read from a replica
+# 0004 Price rides at lock time
 
-Monthly reports scan months of data and slowed down live scheduling, so they now
-read from a read-only replica and may lag by up to a few minutes.
+Status: accepted
+
+Docks lose connectivity during peak-hour unlock bursts, so the fare is computed when
+the bike is locked and the ride closes. Rejected: pricing at unlock with a later
+correction, which produced refunds riders found confusing.
 ~~~
 
-One paragraph stating context, decision and reason is often enough. Add a
-status (proposed, accepted, deprecated, superseded by a named record), the
-considered options or the consequences only when they help a future reader.
-Never rewrite an accepted record to change its decision; write a new record that
-supersedes it.
+Give the number and title, a status line (proposed, accepted, deprecated or superseded by NNNN),
+then the situation, the choice, its reason and the rejected options in plain prose.
+Length follows the decision; a few sentences usually suffice.
+
+## Changing a decision
+
+Never edit the decision of an accepted record. Write a new record that names the one it
+replaces, then change only the old record's status line to `superseded by NNNN`.

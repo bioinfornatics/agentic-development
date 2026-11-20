@@ -116,12 +116,14 @@ This is an agent instruction, not a runtime cache.
 
    Specify before implementing. A user story or epic delivered by more than one task,
    or across sessions, needs a written specification; apply
-   [the specification template](references/specification-template.md): the user's
-   problem and solution, numbered user stories mapped to criterion IDs, decisions,
-   testing decisions and exclusions. For a single small task, its approved ticket
-   criteria are the specification. Keep file paths and code out of the specification;
-   exact paths belong to near-term tasks. Synthesize from settled research and
-   decisions; return any unsettled blocking decision to Research rather than invent it.
+   [the specification template](references/specification-template.md): goals and
+   non-goals, user stories pointing to criterion IDs, error and boundary cases,
+   quality targets, decisions, test approach and open questions. For a single small
+   task, its approved ticket criteria are the specification. The specification
+   states behavior and decisions; file paths and code go in near-term tasks, since
+   they change with every refactor while the agreed behavior does not. Build it from
+   settled research and decisions; return any unsettled blocking decision to Research
+   rather than invent it.
    Record the specification's approval status, approver and date where the tracker
    keeps durable context, and link it from every task that implements it; a drafted
    or proposed specification is not approval. A task is implementation-ready only
@@ -134,18 +136,22 @@ This is an agent instruction, not a runtime cache.
    Plan from verifiable roadmap outcomes to an epic capability, user-story behavior,
    then coherent tasks. US is a convention, not an assumed tracker type. Detail the
    next executable frontier; retain distant needs, risks and major dependencies.
-   A task is small when its result can be reviewed and resumed independently, not
-   because it edits few files. Prefer tracer-bullet slices: each task crosses every
-   layer it needs for one observable behavior and fits one fresh worker context; schedule
-   a preparatory refactor that makes the slice easy as its own first task. A change
-   that touches too many callers to stay green in one slice, such as replacing a
-   widely used configuration key or function signature, follows expand-contract
-   (parallel change): one task introduces the new form while the old one keeps
-   working; caller-migration tasks, grouped by package or directory and each
-   depending on that introduction, keep checks green; a final task, depending on every
-   migration task, deletes the old form. If a migration task would break checks on its
-   own, group the dependent ones on one integration branch and require green checks
-   at the verification task that depends on them all, not at each step. Do not split by function/file or phase mechanically.
+   Size a task by the session that will execute it: a worker holding only its task
+   ID can make one reviewable change and leave checks green before that session
+   ends. File count is not the measure. The first task of a story is a
+   tracer-bullet: the thinnest path that makes the story's outer acceptance check
+   reachable, so later tasks extend a working path instead of assembling layers.
+   If existing code obstructs that path, cleaning it up is its own task, ordered
+   before it. When old and new forms must coexist while callers move, for example
+   a configuration key read across the codebase is renamed, use expand-contract
+   (parallel change) and model it as a dependency graph, not one task. The
+   introduce task adds the new form beside the old. Migrate tasks move callers,
+   each with a dependency on the introduce task and sized as above. One remove task
+   depends on all migrate tasks and deletes the old form. Every one of these tasks
+   leaves checks green; a migrate task that cannot means the introduce task is
+   incomplete, so extend it, for example with an adapter serving both forms, and
+   replan instead of accepting a red intermediate state. Do not split by function,
+   file or phase mechanically.
    Identify the primary deliverable and exit criteria, then select the bounded ready
    execution frontier sufficient to produce it. Planning selects that frontier only;
    it grants no permission to create tickets, claim tasks or start work. A ticket is not
@@ -178,10 +184,13 @@ This is an agent instruction, not a runtime cache.
    to recover what, why, boundaries and checks. Fill gaps before declaring ready.
 
    Agree meaningful behavior seams before tests; reuse an already authorized seam
-   without repetitive confirmation. Prefer existing seams to new ones and the highest
-   public seam that observes the guarantee; propose as few new seams as possible. For each product guarantee, identify a concrete
+   without repetitive confirmation. For each guarantee, name the seam where a wrong
+   result would be visible to its consumer: prefer a public seam the code already
+   has, the outermost one that can still observe it. A new seam is a cost; add one
+   only when no existing seam observes the guarantee, and say why in the task.
+   For each product guarantee, identify a concrete
    incorrect behavior, independent oracle and cheapest valid check; record what the
-   seam catches and misses. Plan distinct risk coverage, not one test per function,
+   seam would detect and which it cannot. Plan distinct risk coverage, not one test per function,
    file or implementation variation. For each rule plan an allowed and a refused example,
    then only the cases the specification distinguishes; choose the seam level by the
    guarantee, a domain outcome for a rule or status and error code for a public API
@@ -200,11 +209,13 @@ This is an agent instruction, not a runtime cache.
    all tests in advance. For each user story, name one outer acceptance check at the
    highest agreed seam that passes only when the whole story works; slice checks are
    the inner loop beneath it. Assign writing it to the story's first task, which the
-   story's other tasks depend on, and making it pass to the story's last task. Deliver a criterion -> task -> check trace so every criterion has an owner
-   and a check, and every task serves a criterion or a named verifiable deliverable. When a choice is hard to reverse
-   (data model, public API, dependency, deployment shape), surprising without context
-   and the result of a real trade-off, propose a short ADR candidate (context, decision,
-   reason) as a planning output; skip it when any of these is missing.
+   story's other tasks depend on, and making it pass to the story's last task.
+   Deliver a criterion -> task -> check trace so every criterion has an owner and a
+   check, and every task serves a criterion or a named verifiable deliverable.
+   Propose a short ADR candidate (context, decision, reason) as a planning output
+   when a choice is costly to undo (data model, public API, dependency, deployment
+   shape), its rationale will not be visible in the code, and alternatives were
+   actually weighed; skip it when any of these is missing.
    When criteria or tasks need a new or disputed domain term, or an ADR must be
    written, Conditionally Load `agentic-development:domain-modeling` using the host's
    available Skill-loading mechanism, with the question, sources and current write

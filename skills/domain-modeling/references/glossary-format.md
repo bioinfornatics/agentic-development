@@ -1,39 +1,45 @@
 # Glossary format
 
-A glossary fixes the words a project uses for its own domain concepts. It is not
-a specification, a design note or a record of implementation choices.
+The glossary records the meaning of words the project uses for its own domain. It holds
+meanings only: requirements, designs, implementation choices and working notes belong
+elsewhere.
 
-## Layout
+## Location
 
-One context, the common case: a single `GLOSSARY.md` at the repository root.
+1. If the repository already keeps a glossary or vocabulary page, extend it in place and
+   follow its existing shape.
+2. Otherwise, a project with one context uses `docs/glossary.md`.
+3. A project with several bounded contexts uses `docs/glossary/index.md`, which lists
+   each context with a one-line purpose, the path of its glossary and the identifiers
+   or events it shares with others. Each context then has `docs/glossary/<context>.md`.
+
+Create a file only when its first term is settled; never commit an empty skeleton.
+
+## Entry shape
 
 ~~~md
-# Clinic scheduling
+# Bike sharing
 
-Books patients with practitioners and keeps the agenda consistent.
+## Dock
+A fixed slot at a station that holds and charges one bike.
+Not: rack, stand, station
 
-## Language
-
-**Appointment**:
-A reserved time slot that links one patient to one practitioner.
-_Avoid_: booking, meeting
-
-**No-show**:
-An appointment the patient neither attended nor cancelled before it started.
-_Avoid_: missed visit, absence
+## Ride
+One rental, from unlocking a bike at a dock to locking it at any dock.
+Not: trip, journey, session
 ~~~
 
-Several bounded contexts: a root `GLOSSARY-MAP.md` links each context's own
-glossary and states how the contexts relate, such as the events or identifiers
-they share.
+## Admitting a term
 
-## Rules
+Answer these in order before writing an entry:
 
-- Include only concepts specific to this domain. General programming notions,
-  such as timeouts or error types, do not belong even when the code uses them often.
-- Choose one canonical term per concept and list the rejected synonyms under `_Avoid_`.
-- Define what the concept is in one or two sentences, not what the code does with it.
-- Group terms under subheadings only when natural clusters appear.
-- Create the file, or a context's file, only when its first term is resolved.
-- When a definition changes, update it in place; a changed meaning with lasting
-  consequences may also need a decision record.
+1. Would someone who works in the domain, without reading the code, use this word?
+   If not, leave it out: infrastructure vocabulary belongs to the code.
+2. Which single word will the project use from now on? The others go on its `Not:`
+   line.
+3. Can a reader decide, for a real case, whether it is an instance? Draw that line,
+   as the Ride entry does from unlock to lock, instead of describing processing steps.
+
+Keep entries alphabetical, and split a long context by sub-domain only when readers
+struggle to find terms. When a meaning changes, edit the entry in place; if the
+change alters a lasting choice, run the decision record test as well.

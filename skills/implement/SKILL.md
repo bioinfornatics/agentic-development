@@ -118,8 +118,10 @@ This is an agent instruction, not a runtime cache.
    finding: preserve its behavioral criterion as unverified, do not substitute static
    checks or proceed with a required reproduction gate unmet.
 
-   Read relevant glossary/ADRs and preserve public contracts. Expected values come from
-   specification, worked example or independent oracle, not copied production logic.
+   Read relevant glossary/ADRs and preserve public contracts. Every assertion's expected
+   result comes from the independent oracle the plan named for its criterion, or from
+   another independent oracle recorded in the change ledger when the plan named none;
+   production logic is never used to compute it.
    When the task owns a user story's outer acceptance check, write it first and observe
    it failing for the missing behavior. Until the story's last task, keep it visibly
    pending, not deleted or silently skipped: prefer an expected-failure mark; keep it
@@ -129,10 +131,10 @@ This is an agent instruction, not a runtime cache.
    The task that completes the story removes that mark and observes it pass; only then
    is the story complete. For an instruction-only story the outer check is a labeled
    static check. Inner slices then follow the loop below.
-   Reuse suitable tests; finish one vertical behavior slice before the next rather than
-   writing all speculative tests then all code. Treat each slice as a tracer bullet:
-   one seam, one failing test, the minimal code to pass it, then let what it taught
-   you shape the next test; write only what the current failing test demands. Apply [test value](references/test-value.md)
+   Reuse suitable tests. Work through the planned test list one item at a time: red,
+   green, refactor, then the next item. The first item is the tracer bullet, the
+   thinnest check that crosses every layer the story needs, so later items extend a
+   path already shown to work. Apply [test value](references/test-value.md)
    before adding a test: name its product guarantee, concrete incorrect behavior and
    marginal detection beyond existing checks; select the cheapest valid oracle, not a
    test-count or coverage-percentage target. A variant that changes only an input value

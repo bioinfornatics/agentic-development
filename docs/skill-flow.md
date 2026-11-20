@@ -51,7 +51,7 @@ Every phase verifies inputs and authority, works, integrates observations, then 
 | iterate → implement → test → judge | 3 authorized correction attempts per slice, unless the user sets another budget | Yes, recorded before dispatch; never reset |
 | judge → test → judge (indeterminate) | One retry; a second indeterminate verdict on the same candidate and gap stops | No |
 | iterate or plan → research (replan) | Stops at a named deciding prerequisite; repeated speculation is not progress | No |
-| research grill mode (interview rounds) | Ends when no open decision remains and the user confirms the shared understanding; a deferred blocker stays a marker | No |
+| research grill mode (interview rounds) | Ends when no open decision remains and the user confirms the recorded decisions are complete; a deferred blocker stays a marker | No |
 | research root-cause probes | Stop probing after three refuted hypotheses and report what would decide | No |
 | research → research | One bounded probe at a time, within permissions | No |
 | implement red → green → refactor | Internal to one slice; scope growth returns to the coordinator | No |

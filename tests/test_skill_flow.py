@@ -247,7 +247,7 @@ class SkillFlowContract(unittest.TestCase):
         self.assertIn('spec gap', doc_labels(self.doc)[('implement', 'plan')])
 
     def test_grill_rounds_and_integration_branch_gates_are_documented(self):
-        self.assertIn('user confirms the shared understanding', self.doc)
+        self.assertIn('user confirms the recorded decisions are complete', self.doc)
         self.assertIn('integration-branch batch mode needs current authority', self.doc)
 
     def test_skills_call_no_forge_cli_and_guide_says_so(self):

@@ -1,52 +1,61 @@
 # Specification template
 
-Use this template when an epic or user story needs a written specification that
-several tasks and sessions will rely on. It synthesizes settled research and
-decisions; it is not an interview and does not approve scope. Write it in the
-project's glossary terms and respect existing decision records.
+Use this template when an epic or user story will be delivered by several tasks or
+across sessions, so that every worker reads the same agreed behavior. Drafting it
+approves nothing; it only writes down what is already settled.
 
-Keep file paths and code snippets out of the specification: they age quickly.
-Exact paths belong to near-term tasks. When an earlier experiment fixed a shape
-that prose would blur, such as a status transition table or a payload schema,
-quote only that shape and name the experiment as its source.
+- Source: every statement traces to Research evidence or a user decision. A point
+  that is not settled goes to Open questions instead of being guessed.
+- Vocabulary: use the project's glossary terms and the decisions already recorded.
+- Durability: the specification describes behavior and decisions, not file paths or
+  code, because it must stay true while a refactor moves and renames the code under
+  it. Concrete paths belong in near-term task tickets. A data or state structure
+  that was itself decided is recorded under Decisions.
 
 ## Sections
 
 ~~~md
-## Problem
-What the user cannot do today, from the user's perspective.
+## Context
+Current behavior from the user's perspective, who it affects and the evidence for it
+(research note, ticket, observed defect). One short paragraph.
 
-## Solution
-What changes for the user, from the user's perspective.
+## Goals
+Outcomes this work must deliver, each observable by a user, operator or caller.
 
-## Goals and Non-goals
-Explicit outcomes in scope and the closest tempting exclusions.
+## Non-goals
+The nearest tempting extensions left out, and deferred work with its follow-up owner.
 
-## User stories
-Numbered, covering every actor and situation in scope:
-1. As a <actor>, I want <capability>, so that <benefit>. Criteria: FR-1, FR-2.
+## Stories
+One line per actor and situation in scope, each pointing to its criteria:
+S1. A warehouse operator needs to cancel a pick list before dispatch, to avoid
+    shipping a withdrawn order. -> FR-1, FR-2
 
-## Acceptance criteria
-| ID / story | Given | When | Then | Check / seam |
-Include error, boundary and refusal paths; NFRs need an approved metric, target,
-unit, workload, environment and method, or stay unresolved.
+## Criteria
+| ID | Story | Given | When | Then | Check and seam |
+Behavioral criteria only; each ID is referenced by at least one story.
 
-## Implementation decisions
-Modules and interfaces to build or change, contracts, schema changes and
-architectural choices, with the reason when it is not obvious. Choices that are hard
-to reverse, surprising without context and a real trade-off become decision-record
-candidates.
+## Errors and boundaries
+Refusals, invalid input, limits, empty and maximum cases, concurrency, cancellation
+and partial failure, each as its own criterion ID with Given/When/Then.
 
-## Testing decisions
-Agreed public seams (prefer existing and the highest that observes the guarantee),
-what each catches and misses, independent oracles, required evidence level and
-similar existing tests to follow.
+## Quality targets
+NFRs with metric, target, unit, workload or window, environment and measurement
+method. A target nobody approved stays unresolved; N/A needs a stated reason.
 
-## Out of scope
-Deferred or rejected work, with the owner of any follow-up.
+## Decisions
+Each choice with the alternatives considered and why this one won: components affected,
+named by responsibility, contracts, data shapes, interfaces, dependencies, deployment
+shape. A choice that is costly to undo,
+whose rationale the code will not show, and that followed a real comparison of
+alternatives is a decision-record candidate.
+
+## Test approach
+Agreed seams, starting from the outermost existing public one that can observe each
+guarantee; which failures each seam detects and which it cannot; independent oracles; required
+evidence level; the outer acceptance check per story; existing checks to imitate.
 
 ## Open questions
-`NEEDS CLARIFICATION: <question>` for each unsettled decision and who decides it.
+`NEEDS CLARIFICATION: <question>` with the person who decides and what it blocks.
 ~~~
 
 ## Readiness

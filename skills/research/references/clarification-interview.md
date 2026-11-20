@@ -7,36 +7,39 @@ unless the user explicitly asks for grill mode below.
 
 ## Procedure
 
-1. Separate facts from decisions. Look up facts yourself in code, documentation,
-   tracker or history; never ask the user for a fact you can verify.
-2. List the open decisions and their dependencies. Ask only decisions whose
-   prerequisites are already settled.
-3. Ask one decision per question, at most three per turn (grill mode below asks
-   every ready decision), numbered. For each,
-   give your recommended answer and the reason, phrased so that "yes" accepts it.
+1. Sort each gap into a fact or a decision. A fact has an answer somewhere you
+   can read: code, documentation, tracker or history. Find it, cite where it came
+   from, and do not turn it into a question; the user is asked for decisions only.
+2. Map how the open decisions depend on each other. A decision is ready once
+   everything it relies on is settled; only ready decisions are asked.
+3. Put each ready decision in its own numbered question, at most three per turn
+   (grill mode below lifts this bound). Attach the answer you propose and why, so
+   the user can simply agree with it or overrule it.
 4. Record each answer where it belongs: Goal or Non-goal, FR with Given/When/Then,
    NFR target, assumption, or ADR candidate for a hard-to-reverse choice.
-5. Recompute which decisions became ready and repeat. Mark anything still open as
-   `NEEDS CLARIFICATION: <question>`; planning is not ready while a marker blocks it.
+5. After every reply, check which decisions have become ready and continue. Anything
+   still unresolved is written as `NEEDS CLARIFICATION: <question>`; planning is not
+   ready while such a marker blocks it.
 6. Stop when no decision-blocking marker remains, or when the user defers a
    decision. A deferred blocking decision stays a Plan blocker with its owner.
 
 ## Grill mode
 
-Use grill mode only when the user asks to grill or stress-test a plan, design or
-idea; ordinary research keeps the default procedure above.
+Grill mode is the same procedure run to exhaustion. Use it only when the user asks
+to grill or stress-test a plan, design or idea; ordinary research keeps the
+default. Only these settings differ:
 
-- Keep the dependency list from step 2 current: an answer can settle decisions
-  and reveal new ones. In each round present all decisions that are ready under
-  step 2, numbered, each with a recommended answer; hold any decision that depends
-  on another question of the same round for the next round.
-- Send fact lookups to fresh-context workers when available and keep asking the
-  ready decisions meanwhile; only decisions that need a pending fact wait for it.
-- When domain terms conflict or stay vague, or a choice is hard to reverse, apply
-  the domain-modeling route of the calling phase.
-- Finish only when no open decision remains and the user confirms the shared
-  understanding. Do not act on the result before that confirmation; a deferred
-  blocking decision stays a `NEEDS CLARIFICATION` marker with its owner.
+| Setting | Default | Grill mode |
+|---|---|---|
+| Questions per message | At most three ready decisions | One message: present all decisions that are ready under step 2, each with its proposed answer |
+| Fact not yet found | Look it up before asking | Delegate the lookup to a separate worker when the host offers one and keep asking the ready decisions meanwhile |
+| End | No decision-blocking marker remains | No open decision remains and the user confirms the recorded decisions are complete; nothing is acted on before then |
+
+Readiness is still recomputed after every reply, so a question whose answer
+depends on another one in the same message waits. A blocking decision the user
+defers keeps its `NEEDS CLARIFICATION` marker and owner in both modes.
+Conflicting or vague domain terms and hard-to-reverse choices go through the
+domain-modeling route of the calling phase.
 
 ## Example
 

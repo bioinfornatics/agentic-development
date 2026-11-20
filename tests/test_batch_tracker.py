@@ -9,8 +9,8 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 NAMES = ('cycle', 'research', 'plan', 'implement', 'test', 'judge', 'iterate')
-PREVIOUS_VERSION = (1, 2, 0)
-EXPECTED_VERSION = '1.3.0'
+PREVIOUS_VERSION = (1, 3, 0)
+EXPECTED_VERSION = '1.4.0'
 
 
 def copies():
@@ -34,7 +34,7 @@ class BatchTrackerBridge(unittest.TestCase):
         self.assertGreater(version, PREVIOUS_VERSION)
         self.assertIn('Contract version: ' + EXPECTED_VERSION, self.text)
         title = self.text.splitlines()[0]
-        self.assertNotIn('1.2.0', title)
+        self.assertNotIn('1.3.0', title)
         if re.search(r'v[0-9]+\.[0-9]+\.[0-9]+', title):
             self.assertIn('v' + EXPECTED_VERSION, title)
 
